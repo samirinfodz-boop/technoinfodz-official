@@ -65,5 +65,27 @@
         // ملاحظة: هنا يجب أن تستمر بقية الدوال الخاصة بجلب البيانات من GitHub (fetch) 
         // وعرضها وحذفها كما كانت في النسخة السابقة.
     </script>
+    // هذه هي الدالة التي تنفذ أمر "إضافة منتج" للمدير
+async function showAddModal() {
+    // التأكد من وجود الصلاحية (التوكن)
+    if (!GITHUB_TOKEN) {
+        alert("خطأ: يرجى تفعيل وضع الإدارة أولاً بالضغط 5 مرات على الشعار");
+        return;
+    }
+
+    const name = prompt("أدخل اسم المنتج (مثال: طابعة HENEX):");
+    if (!name) return; // إلغاء إذا لم يتم إدخال اسم
+
+    const price = prompt("أدخل السعر (دج):");
+    const category = prompt("أدخل الصنف (مثلاً: معدات أو برمجيات):");
+    const image = prompt("رابط صورة المنتج (اختياري):");
+
+    // إضافة المنتج للقائمة المحلية ثم حفظه في GitHub
+    const newProduct = { name, price, category, image };
+    products.push(newProduct);
+    
+    // استدعاء دالة الحفظ التي ترسل البيانات لملف products.json
+    await saveToGitHub("إضافة منتج جديد بواسطة المدير: " + name);
+}
 </body>
 </html>
