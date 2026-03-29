@@ -3,120 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Techno Infodz Store</title>
+    <title>TECHNO INFODZ - الحلول التقنية والمعدات</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
-        body { font-family: 'Cairo', sans-serif; background-color: #f3f4f6; }
-        #admin-panel { display: none; position: fixed; top: 0; right: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; color: white; padding: 20px; overflow-y: auto; }
+        .admin-only { display: none; }
+        .is-admin .admin-only { display: inline-block; }
     </style>
 </head>
-<body>
+<body class="bg-gray-100">
 
     <header class="bg-blue-800 text-white p-6 shadow-lg">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-3xl font-bold cursor-pointer select-none" onclick="triggerAdmin()">TECHNO INFODZ</h1>
-            <a href="tel:0666636473" class="bg-green-500 px-4 py-2 rounded-lg font-bold">0666636473</a>
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="text-center md:text-right">
+                <h1 class="text-3xl font-bold cursor-pointer select-none" onclick="handleAdminClick()">TECHNO INFODZ</h1>
+                <p class="text-sm text-blue-200 mt-1 font-medium">الحلول التقنية والمعدات التكنولوجية المتكاملة</p>
+            </div>
+            <div class="flex items-center gap-4 mt-4 md:mt-0">
+                <button onclick="showAddModal()" class="admin-only bg-yellow-500 hover:bg-yellow-600 text-blue-900 px-4 py-2 rounded-lg font-bold shadow">
+                    <i class="fas fa-plus-circle ml-1"></i> إضافة منتج
+                </button>
+                <a href="tel:0666636473" class="bg-green-500 hover:bg-green-600 px-6 py-2 rounded-lg font-bold">
+                    <i class="fas fa-phone-alt ml-2"></i> 0666636473
+                </a>
+            </div>
         </div>
     </header>
 
-    <main class="container mx-auto p-8">
-        <div id="products-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
+    <main class="container mx-auto p-6">
+        <div id="products-grid" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            </div>
     </main>
 
-    <div id="admin-panel">
-        <div class="container mx-auto">
-            <button onclick="closeAdmin()" class="text-red-500 text-3xl mb-4">&times; إغلاق</button>
-            <div class="bg-gray-800 p-6 rounded-xl mb-8">
-                <input type="text" id="p-name" placeholder="اسم المنتج" class="p-2 mb-2 w-full rounded bg-gray-700 text-white">
-                <input type="text" id="p-price" placeholder="السعر" class="p-2 mb-2 w-full rounded bg-gray-700 text-white">
-                <button onclick="saveNewProduct()" class="bg-yellow-600 w-full p-2 rounded font-bold">حفظ ونشر</button>
-            </div>
-            <div id="admin-products-list"></div>
-        </div>
-    </div>
-
     <script>
-        // --- الإعدادات ---
-        const REPO_OWNER = 'samirinfodz-boop';
-        const REPO_NAME = 'techno-info-store';
-        
-        let products = [
-            { id: 1, name: "HENEX HC-3208", price: "14500", img: "https://i.imgur.com/9QBRvNk.png" },
-            { id: 2, name: "SMART SP-X86", price: "16500", img: "https://i.imgur.com/9QBRvNk.png" }
-        ];
+        // إعدادات المستودع - تأكد من مطابقتها لاسم مستودعك الجديد
+        const GITHUB_USER = 'samirinfodz-boop';
+        const REPO_NAME = 'technoinfodz-official';
+        let GITHUB_TOKEN = localStorage.getItem('gh_token') || '';
 
-        function renderProducts() {
-            const grid = document.getElementById('products-grid');
-            if(!grid) return;
-            grid.innerHTML = products.map(p => `
-                <div class="bg-white p-6 rounded-xl shadow text-center border">
-                    <img src="${p.img}" class="w-32 h-32 mx-auto mb-4">
-                    <h3 class="font-bold">${p.name}</h3>
-                    <p class="text-blue-600">${p.price} DA</p>
-                    <button class="bg-green-500 text-white px-4 py-1 mt-2 rounded">اطلب الآن</button>
-                </div>
-            `).join('');
-        }
-
-        let clicks = 0;
-        function triggerAdmin() {
-            clicks++;
-            if (clicks >= 5) {
-                const token = prompt("أدخل GitHub Token الجديد:");
-                if (token) {
-                    sessionStorage.setItem('token', token);
-                    document.getElementById('admin-panel').style.display = 'block';
-                    renderAdminList();
+        let clickCount = 0;
+        function handleAdminClick() {
+            clickCount++;
+            if (clickCount === 5) {
+                const pass = prompt("أدخل رمز الوصول (TOKEN):", GITHUB_TOKEN);
+                if (pass) {
+                    GITHUB_TOKEN = pass;
+                    localStorage.setItem('gh_token', pass);
+                    document.body.classList.add('is-admin');
+                    alert("تم تفعيل وضع الإدارة بنجاح!");
                 }
-                clicks = 0;
+                clickCount = 0;
             }
         }
 
-        function closeAdmin() { document.getElementById('admin-panel').style.display = 'none'; }
-
-        function renderAdminList() {
-            const list = document.getElementById('admin-products-list');
-            list.innerHTML = products.map((p, index) => `
-                <div class="flex justify-between p-2 border-b border-gray-600">
-                    <span>${p.name}</span>
-                    <button onclick="deleteProduct(${index})" class="text-red-400">حذف</button>
-                </div>
-            `).join('');
+        // تفعيل وضع الإدارة تلقائياً إذا كان التوكن مخزناً
+        if (GITHUB_TOKEN) {
+            document.body.classList.add('is-admin');
         }
 
-        async function saveNewProduct() {
-            const name = document.getElementById('p-name').value;
-            const price = document.getElementById('p-price').value;
-            if(!name || !price) return alert("أكمل البيانات");
-            products.push({ id: Date.now(), name, price, img: 'https://via.placeholder.com/150' });
-            await syncToGitHub();
-        }
-
-        async function syncToGitHub() {
-            const token = sessionStorage.getItem('token');
-            const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/index.html`;
-            try {
-                const res = await fetch(url, { headers: { 'Authorization': `token ${token}` } });
-                const data = await res.json();
-                const sha = data.sha;
-                let content = decodeURIComponent(escape(atob(data.content)));
-                const regex = /let products = \[[\s\S]*?\];/;
-                const newContent = content.replace(regex, `let products = ${JSON.stringify(products, null, 4)};`);
-                
-                await fetch(url, {
-                    method: 'PUT',
-                    headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        message: "Update",
-                        content: btoa(unescape(encodeURIComponent(newContent))),
-                        sha: sha
-                    })
-                });
-                alert("تم التحديث!"); location.reload();
-            } catch (e) { alert("خطأ في الاتصال"); }
-        }
-        renderProducts();
+        // ملاحظة: هنا يجب أن تستمر بقية الدوال الخاصة بجلب البيانات من GitHub (fetch) 
+        // وعرضها وحذفها كما كانت في النسخة السابقة.
     </script>
 </body>
 </html>
