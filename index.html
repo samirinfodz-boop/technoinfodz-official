@@ -834,22 +834,5 @@ async function loadPrices() {
 checkAdminToken();
 loadPrices();
 </script>
-// بيانات الربط من Supabase (تجدها في Settings > API)
-const supabaseUrl = 'https://ysouygwphowpfltzhbpx.supabase.co';
-const supabaseKey = 'اكتب_هنا_الـ_anon_public_key'; // استبدل هذا بالمفتاح الخاص بك
-
-// إنشاء عميل Supabase
-const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
-
-// مثال لوظيفة جلب المنتجات التي أضفتها في قاعدة البيانات
-async function loadProducts() {
-  const { data, error } = await _supabase.from('products').select('*');
-  if (error) {
-    console.error('خطأ في جلب البيانات:', error.message);
-  } else {
-    console.log('المنتجات المتوفرة:', data);
-    // هنا سنقوم بتحديث واجهة الموقع بالبيانات الجديدة
-  }
-}
 </body>
 </html>
