@@ -3,188 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>متجر الاحترافي | البرمجيات والحلول</title>
+    <title>TECHNO INFODZ | حلول البرمجيات الاحترافية</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); }
+        .admin-only { display: none; } /* مخفي افتراضياً عن الزوار */
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-slate-900 text-white font-sans">
 
-    <nav class="bg-white shadow-md p-4 sticky top-0 z-50">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-blue-600">Smart Shop</h1>
-            <div class="flex gap-4">
-                <button onclick="showView('visitor')" class="hover:text-blue-500">الرئيسية</button>
-                <button onclick="toggleCart()" class="relative">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1">0</span>
-                </button>
-                <button id="admin-btn" onclick="showAdminAccess()" class="bg-gray-200 px-3 py-1 rounded hover:bg-gray-300">لوحة المدير</button>
-            </div>
-        </div>
+    <nav class="p-6 flex justify-between items-center border-b border-slate-800">
+        <h1 class="text-2xl font-bold text-blue-400">TECHNO INFODZ</h1>
+        <div id="admin-panel" class="admin-only bg-red-500/20 p-2 rounded text-xs">وضع المدير نشط</div>
     </nav>
 
-    <section id="visitor-view" class="container mx-auto p-6">
-        <h2 class="text-xl font-bold mb-6 border-b-2 border-blue-500 pb-2">منتجاتنا المتاحة</h2>
-        <div id="products-grid" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            </div>
+    <header class="py-20 text-center px-4">
+        <h2 class="text-5xl font-extrabold mb-6 bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
+            شريكك الموثوق في حلول البرمجيات
+        </h2>
+        <p class="text-slate-400 max-w-2xl mx-auto text-lg mb-8">
+            نقدم لكم أفضل برامج التسيير التجاري (Pme pro, Hyper pro, Pos) وخدمات الدعم الفني المتكاملة.
+        </p>
+        <a href="#products" class="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-full font-bold transition">اكتشف برامجنا</a>
+    </header>
+
+    <section id="products" class="py-16 container mx-auto px-4 grid md:grid-cols-3 gap-8">
+        <div class="glass p-6 rounded-2xl border border-slate-700 hover:border-blue-500 transition cursor-pointer">
+            <i class="fas fa-chart-line text-4xl text-blue-500 mb-4"></i>
+            <h3 class="text-xl font-bold mb-2">Pme pro</h3>
+            <p class="text-slate-400 mb-4 text-sm">الحل الأمثل للمؤسسات الصغيرة والمتوسطة لإدارة شاملة.</p>
+            <button onclick="addToCart('Pme pro')" class="w-full py-2 bg-slate-800 rounded hover:bg-blue-600 transition">طلب الآن</button>
+        </div>
+        <div class="glass p-6 rounded-2xl border border-slate-700 hover:border-emerald-500 transition cursor-pointer">
+            <i class="fas fa-rocket text-4xl text-emerald-500 mb-4"></i>
+            <h3 class="text-xl font-bold mb-2">Hyper pro</h3>
+            <p class="text-slate-400 mb-4 text-sm">أداء فائق السرعة لتسيير نقاط البيع والمخازن الكبرى.</p>
+            <button onclick="addToCart('Hyper pro')" class="w-full py-2 bg-slate-800 rounded hover:bg-emerald-600 transition">طلب الآن</button>
+        </div>
+        <div class="glass p-6 rounded-2xl border border-slate-700 hover:border-purple-500 transition cursor-pointer">
+            <i class="fas fa-cash-register text-4xl text-purple-500 mb-4"></i>
+            <h3 class="text-xl font-bold mb-2">Pos System</h3>
+            <p class="text-slate-400 mb-4 text-sm">نظام نقاط بيع سهل الاستخدام للمحلات والأنشطة المختلفة.</p>
+            <button onclick="addToCart('Pos System')" class="w-full py-2 bg-slate-800 rounded hover:bg-purple-600 transition">طلب الآن</button>
+        </div>
     </section>
 
-    <section id="admin-view" class="container mx-auto p-6 hidden">
-        <div class="flex justify-between items-center mb-6">
-            <h2 class="text-xl font-bold text-red-600">إدارة المخزون (صلاحية المدير)</h2>
-            <button onclick="showAddModal()" class="bg-green-600 text-white px-4 py-2 rounded">إضافة منتج جديد +</button>
-        </div>
-        <div class="overflow-x-auto bg-white rounded shadow">
-            <table class="w-full text-right">
-                <thead class="bg-gray-100">
-                    <tr>
-                        <th class="p-3">الصورة</th>
-                        <th class="p-3">اسم المنتج</th>
-                        <th class="p-3">السعر</th>
-                        <th class="p-3">الإجراءات</th>
-                    </tr>
-                </thead>
-                <tbody id="admin-table-body">
-                    </tbody>
-            </table>
-        </div>
-    </section>
-
-    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex justify-center items-center">
-        <div class="bg-white p-6 rounded-lg w-96 max-h-[80vh] overflow-y-auto">
-            <h3 class="text-lg font-bold mb-4">سلة المشتريات</h3>
-            <div id="cart-items" class="space-y-3"></div>
-            <hr class="my-4">
-            <div class="flex justify-between font-bold">
-                <span>الإجمالي:</span>
-                <span id="cart-total">0</span>
-            </div>
-            <button onclick="toggleCart()" class="w-full mt-4 bg-gray-500 text-white py-2 rounded">إغلاق</button>
-        </div>
-    </div>
-
-    <div id="add-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex justify-center items-center">
-        <div class="bg-white p-6 rounded-lg w-full max-w-md">
-            <h3 class="text-lg font-bold mb-4">إضافة منتج جديد</h3>
-            <div class="space-y-4">
-                <input type="text" id="p-name" placeholder="اسم المنتج" class="w-full border p-2 rounded">
-                <input type="number" id="p-price" placeholder="السعر" class="w-full border p-2 rounded">
-                <input type="text" id="p-img" placeholder="رابط الصورة" class="w-full border p-2 rounded">
-                <button onclick="saveProduct()" class="w-full bg-blue-600 text-white py-2 rounded">حفظ البيانات</button>
-                <button onclick="closeAddModal()" class="w-full text-gray-500">إلغاء</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // --- البيانات والمنطق البرمجي ---
-        let products = [
-            { id: 1, name: 'Pme pro', price: 15000, img: 'https://via.placeholder.com/150' },
-            { id: 2, name: 'Hyper pro', price: 25000, img: 'https://via.placeholder.com/150' }
-        ];
-        let cart = [];
-        let adminToken = ""; // سيتم تخزينه عند "تسجيل الدخول"
-
-        // 1. التحكم في العرض
-        function showView(view) {
-            document.getElementById('visitor-view').classList.add('hidden');
-            document.getElementById('admin-view').classList.add('hidden');
-            document.getElementById(view + '-view').classList.remove('hidden');
-        }
-
-        // 2. التحقق من صلاحية المدير (Token Check)
-        function showAdminAccess() {
-            if (!adminToken) {
-                const pass = prompt("أدخل رمز الوصول (Token) الخاص بالمدير:");
-                if (pass === "ADMIN123") { // مثال مبسط
-                    adminToken = "valid-token-xyz";
-                    renderAdminTable();
-                    showView('admin');
-                } else {
-                    alert("عذراً، لا تملك الصلاحية.");
-                }
-            } else {
-                showView('admin');
-            }
-        }
-
-        // 3. عرض المنتجات للزوار
-        function renderVisitorProducts() {
-            const grid = document.getElementById('products-grid');
-            grid.innerHTML = products.map(p => `
-                <div class="bg-white p-4 rounded shadow-sm border hover:shadow-lg transition">
-                    <img src="${p.img}" class="w-full h-40 object-cover mb-4 rounded">
-                    <h3 class="font-bold text-lg">${p.name}</h3>
-                    <p class="text-blue-600 font-bold mb-4">${p.price} د.ج</p>
-                    <button onclick="addToCart(${p.id})" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">أضف للسلة</button>
-                </div>
-            `).join('');
-        }
-
-        // 4. عرض جدول المدير
-        function renderAdminTable() {
-            const tbody = document.getElementById('admin-table-body');
-            tbody.innerHTML = products.map(p => `
-                <tr class="border-b">
-                    <td class="p-3"><img src="${p.img}" class="w-12 h-12 rounded"></td>
-                    <td class="p-3 font-medium">${p.name}</td>
-                    <td class="p-3 text-green-600">${p.price} د.ج</td>
-                    <td class="p-3">
-                        <button class="text-red-500" onclick="deleteProduct(${p.id})"><i class="fas fa-trash"></i></button>
-                    </td>
-                </tr>
-            `).join('');
-        }
-
-        // 5. وظائف السلة
-        function addToCart(id) {
-            const product = products.find(p => p.id === id);
-            cart.push(product);
-            updateCartUI();
-        }
-
-        function updateCartUI() {
-            document.getElementById('cart-count').innerText = cart.length;
-            const cartItems = document.getElementById('cart-items');
-            cartItems.innerHTML = cart.map(item => `
-                <div class="flex justify-between items-center text-sm">
-                    <span>${item.name}</span>
-                    <span class="font-bold">${item.price} د.ج</span>
-                </div>
-            `).join('');
-            const total = cart.reduce((sum, item) => sum + item.price, 0);
-            document.getElementById('cart-total').innerText = total + " د.ج";
-        }
-
-        function toggleCart() {
-            document.getElementById('cart-modal').classList.toggle('hidden');
-        }
-
-        // 6. إضافة منتج جديد (مدير فقط)
-        function showAddModal() {
-            if(!adminToken) return alert("سجل دخولك كمدير أولاً");
-            document.getElementById('add-modal').classList.remove('hidden');
-        }
-
-        function closeAddModal() {
-            document.getElementById('add-modal').classList.add('hidden');
-        }
-
-        function saveProduct() {
-            const name = document.getElementById('p-name').value;
-            const price = Number(document.getElementById('p-price').value);
-            const img = document.getElementById('p-img').value || 'https://via.placeholder.com/150';
-
-            if(name && price) {
-                products.push({ id: Date.now(), name, price, img });
-                renderVisitorProducts();
-                renderAdminTable();
-                closeAddModal();
-            }
-        }
-
-        // التشغيل الأولي
-        renderVisitorProducts();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
