@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TECHNO INFODZ — حلول برمجية متكاملة</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TECHNO INFODZ — حلول برمجية متكاملة</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  </head>
+  <style>
+    :root {
+      --bg-deep:    #090d14;
+      --bg-panel:   #0e1520;
+      --bg-card:    #121b2a;
+      --accent:     #00d4ff;
+      --accent2:    #0066ff;
+      --accent3:    #7b2fff;
+      --text-dim:   #5a7a99;
+      --text-mid:   #8fb0cc;
+      --text-main:  #cce0f5;
+      --text-bright:#f0f8ff;
+      --green:      #00ff9d;
+      --warn:       #ff6b35;
+      --border:     rgba(0,212,255,.12);
+      --glow:       0 0 40px rgba(0,212,255,.18);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg-deep);
+      color: var(--text-main);
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      overflow-x: hidden;
+    }
+    ::selection { background: var(--accent); color: #000; }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg-deep); }
+    ::-webkit-scrollbar-thumb { background: var(--accent2); border-radius: 4px; }
+
+    /* ── GRID OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(0,212,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,255,.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    /* ── NOISE TEXTURE ── */
+    body::after {
+      content: '';
+      position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: .025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px;
+    }
+
+    /* ── GLOW ORBS ── */
+    .orb {
+      position: fixed; border-radius: 50%; pointer-events: none; z-index: 0;
+      filter: blur(120px); opacity: .18;
+    }
+    .orb-1 { width: 600px; height: 600px; background: var(--accent2); top: -200px; right: -200px; }
+    .orb-2 { width: 400px; height: 400px; background: var(--accent3); bottom: 10%; left: -150px; }
+
+    /* ── TYPOGRAPHY ── */
+    .mono { font-family: 'Space Mono', monospace; }
+    .gradient-text {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 50%, var(--accent3) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: linear-gradient(135deg, var(--accent2), var(--accent3));
+      color: #fff; padding: .75rem 1.75rem; border-radius: 8px;
+      font-weight: 600; font-size: .95rem; border: none; cursor: pointer;
+      position: relative; overflow: hidden; transition: transform .2s, box-shadow .2s;
+      text-decoration: none;
+    }
+    .btn-primary::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      opacity: 0; transition: opacity .3s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,102,255,.4); }
+    .btn-primary:hover::before { opacity: 1; }
+    .btn-primary span { position: relative; z-index: 1; }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: .5rem;
+      border: 1px solid var(--border); color: var(--text-main);
+      padding: .75rem 1.75rem; border-radius: 8px;
+      font-weight: 500; cursor: pointer; background: transparent;
+      transition: border-color .2s, color .2s, background .2s;
+      text-decoration: none;
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); background: rgba(0,212,255,.05); }
+
+    /* ── CARDS ── */
+    .glass-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      position: relative; overflow: hidden;
+      transition: transform .3s, box-shadow .3s, border-color .3s;
+    }
+    .glass-card::before {
+      content: ''; position: absolute; inset: 0; opacity: 0;
+      background: linear-gradient(135deg, rgba(0,212,255,.06), rgba(0,102,255,.04));
+      transition: opacity .3s;
+    }
+    .glass-card:hover { transform: translateY(-6px); box-shadow: var(--glow); border-color: rgba(0,212,255,.3); }
+    .glass-card:hover::before { opacity: 1; }
+
+    /* ── NAV ── */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between;
+      transition: background .3s, backdrop-filter .3s;
+    }
+    #navbar.scrolled {
+      background: rgba(9,13,20,.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: 'Space Mono', monospace; font-size: 1.1rem; color: var(--accent); letter-spacing: .05em; text-decoration: none; }
+    .nav-logo span { color: var(--text-dim); }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { color: var(--text-mid); text-decoration: none; font-size: .9rem; transition: color .2s; }
+    .nav-links a:hover { color: var(--accent); }
+    #hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    #hamburger span { display: block; width: 24px; height: 2px; background: var(--text-mid); border-radius: 2px; transition: all .3s; }
+    #mobile-menu {
+      display: none; position: fixed; inset: 0; z-index: 99;
+      background: rgba(9,13,20,.97); backdrop-filter: blur(20px);
+      flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+    }
+    #mobile-menu.open { display: flex; }
+    #mobile-menu a { color: var(--text-bright); font-size: 1.4rem; text-decoration: none; transition: color .2s; }
+    #mobile-menu a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      padding: 6rem 1.5rem 4rem; position: relative; z-index: 1;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(0,212,255,.08); border: 1px solid rgba(0,212,255,.2);
+      padding: .35rem 1rem; border-radius: 100px; font-size: .8rem;
+      color: var(--accent); margin-bottom: 1.5rem;
+    }
+    .hero-badge::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.8)} }
+    .hero-title { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 700; line-height: 1.15; margin-bottom: 1.2rem; }
+    .hero-sub { color: var(--text-mid); font-size: 1.1rem; max-width: 560px; line-height: 1.7; margin-bottom: 2rem; }
+    .hero-stats { display: flex; gap: 2.5rem; margin-top: 3rem; flex-wrap: wrap; }
+    .stat { border-right: 1px solid var(--border); padding-right: 2rem; }
+    .stat:last-child { border-right: none; }
+    .stat-num { font-family: 'Space Mono', monospace; font-size: 1.8rem; color: var(--accent); }
+    .stat-label { font-size: .8rem; color: var(--text-dim); margin-top: .2rem; }
+    .hero-visual { position: relative; width: 100%; max-width: 480px; }
+    .terminal {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.5rem; font-family: 'Space Mono', monospace; font-size: .8rem;
+    }
+    .terminal-bar { display: flex; gap: .4rem; margin-bottom: 1rem; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-r { background: #ff5f56; } .dot-y { background: #ffbd2e; } .dot-g { background: #27c93f; }
+    .terminal-line { color: var(--text-dim); margin-bottom: .4rem; }
+    .terminal-line .cmd { color: var(--accent); }
+    .terminal-line .ok { color: var(--green); }
+    .terminal-line .comment { color: #3d5a70; }
+    .cursor { display: inline-block; width: 8px; height: 1em; background: var(--accent); vertical-align: middle; animation: blink 1s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    .float-card {
+      position: absolute; background: var(--bg-panel); border: 1px solid var(--border);
+      border-radius: 10px; padding: .7rem 1rem; font-size: .78rem;
+      display: flex; align-items: center; gap: .5rem; color: var(--text-main);
+      animation: floatY 3s ease-in-out infinite;
+    }
+    .float-card .icon { font-size: 1.2rem; }
+    .float-card-1 { top: -20px; right: -20px; animation-delay: 0s; }
+    .float-card-2 { bottom: -10px; left: -30px; animation-delay: 1s; }
+    @keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+
+    /* ── SECTIONS ── */
+    section { position: relative; z-index: 1; }
+    .section-label {
+      font-family: 'Space Mono', monospace; font-size: .75rem; letter-spacing: .15em;
+      color: var(--accent); text-transform: uppercase; margin-bottom: .75rem;
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .section-label::before { content: '//'; color: var(--text-dim); }
+    .section-title { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; line-height: 1.2; margin-bottom: 1rem; }
+    .section-desc { color: var(--text-mid); font-size: 1rem; max-width: 560px; line-height: 1.7; }
+
+    /* ── PRODUCT CARDS ── */
+    .product-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 1.25rem; position: relative;
+    }
+    .product-icon::after {
+      content: ''; position: absolute; inset: 0; border-radius: 14px;
+      background: inherit; filter: blur(16px); opacity: .5; z-index: -1;
+    }
+    .tag {
+      display: inline-block; font-size: .7rem; font-family: 'Space Mono', monospace;
+      padding: .2rem .6rem; border-radius: 4px; margin-right: .3rem; margin-bottom: .3rem;
+    }
+
+    /* ── SERVICES ── */
+    .service-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.5rem;
+      transition: border-color .3s, background .3s;
+    }
+    .service-card:hover { border-color: rgba(0,212,255,.3); background: rgba(0,212,255,.03); }
+    .service-icon { font-size: 2rem; margin-bottom: .75rem; }
+
+    /* ── CART ── */
+    #cart-btn {
+      position: fixed; bottom: 2rem; left: 2rem; z-index: 90;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent2), var(--accent3));
+      border: none; cursor: pointer; font-size: 1.3rem;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 24px rgba(0,102,255,.4); transition: transform .2s;
+    }
+    #cart-btn:hover { transform: scale(1.1); }
+    #cart-count {
+      position: absolute; top: -4px; right: -4px;
+      background: var(--warn); color: #fff;
+      width: 20px; height: 20px; border-radius: 50%;
+      font-size: .7rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    #cart-panel {
+      position: fixed; bottom: 6rem; left: 1.5rem; z-index: 90;
+      background: var(--bg-panel); border: 1px solid var(--border);
+      border-radius: 16px; width: 300px; padding: 1.25rem;
+      display: none; box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    }
+    #cart-panel.open { display: block; }
+    .cart-item { display: flex; justify-content: space-between; align-items: center; padding: .6rem 0; border-bottom: 1px solid var(--border); font-size: .85rem; }
+    .cart-item:last-child { border-bottom: none; }
+    .remove-item { background: none; border: none; color: var(--warn); cursor: pointer; font-size: 1rem; }
+
+    /* ── TOAST ── */
+    #toast {
+      position: fixed; top: 5rem; right: 1.5rem; z-index: 200;
+      background: var(--bg-card); border: 1px solid var(--green);
+      color: var(--green); padding: .75rem 1.25rem; border-radius: 8px;
+      font-size: .85rem; transform: translateY(-20px); opacity: 0;
+      transition: all .3s; pointer-events: none;
+    }
+    #toast.show { transform: translateY(0); opacity: 1; }
+
+    /* ── ADMIN ── */
+    #admin-bar {
+      display: none; position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: linear-gradient(90deg, var(--accent3), var(--accent2));
+      color: #fff; padding: .5rem 1.5rem;
+      font-family: 'Space Mono', monospace; font-size: .75rem;
+      align-items: center; justify-content: space-between;
+    }
+    #admin-bar.visible { display: flex; }
+    .admin-btn {
+      background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3);
+      color: #fff; padding: .3rem .8rem; border-radius: 6px; cursor: pointer;
+      font-size: .75rem; transition: background .2s;
+    }
+    .admin-btn:hover { background: rgba(255,255,255,.25); }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 1.5rem 2rem;
+      position: relative; z-index: 1;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      #hamburger { display: flex; }
+      .hero-stats { gap: 1.5rem; }
+      .stat { border-right: none; padding-right: 0; }
+      .float-card-1 { right: 0; top: -30px; }
+      .float-card-2 { display: none; }
+      #cart-panel { width: calc(100vw - 3rem); left: 1.5rem; }
+    }
+
+    /* ── DIVIDER ── */
+    .h-divider {
+      border: none; border-top: 1px solid var(--border);
+      margin: 0; position: relative; z-index: 1;
+    }
+
+    /* ── PRICE TAG ── */
+    .price-tag {
+      font-family: 'Space Mono', monospace;
+      color: var(--accent); font-size: 1.3rem; font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── AMBIENT ORBS ─── -->
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<!-- ─── ADMIN BAR ─── -->
+<div id="admin-bar">
+  <span>⚡ وضع المشرف — TECHNO INFODZ Admin Panel</span>
+  <div style="display:flex;gap:.5rem;">
+    <button class="admin-btn" onclick="openPriceEditor()">✏️ تعديل الأسعار</button>
+    <button class="admin-btn" onclick="logout()">خروج</button>
+  </div>
+</div>
+
+<!-- ─── TOAST ─── -->
+<div id="toast">✓ تمت الإضافة إلى السلة</div>
+
+<!-- ─── NAVBAR ─── -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">TECHNO<span>INFODZ</span></a>
+  <ul class="nav-links">
+    <li><a href="#products">البرمجيات</a></li>
+    <li><a href="#services">الخدمات</a></li>
+    <li><a href="#about">من نحن</a></li>
+    <li><a href="#contact">تواصل معنا</a></li>
+  </ul>
+  <div id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ─── MOBILE MENU ─── -->
+<div id="mobile-menu">
+  <button onclick="toggleMenu()" style="position:absolute;top:1.5rem;left:1.5rem;background:none;border:none;color:var(--text-mid);font-size:1.5rem;cursor:pointer;">✕</button>
+  <a href="#products" onclick="toggleMenu()">البرمجيات</a>
+  <a href="#services" onclick="toggleMenu()">الخدمات</a>
+  <a href="#about" onclick="toggleMenu()">من نحن</a>
+  <a href="#contact" onclick="toggleMenu()">تواصل معنا</a>
+</div>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div style="max-width:1200px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;width:100%;">
+
+    <div>
+      <div class="hero-badge">
+        <span>🟢 نشط — خدمات جزائر</span>
+      </div>
+      <h1 class="hero-title">
+        حلول رقمية <span class="gradient-text">ذكية</span><br/>لمؤسستك
+      </h1>
+      <p class="hero-sub">
+        برمجيات إدارة متكاملة، دعم تقني احترافي، وشبكات آمنة — كل ما تحتاجه لتحويل أعمالك رقمياً.
+      </p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <a href="https://wa.me/213666636473?text=مرحباً،%20أريد%20الاستفسار%20عن%20خدماتكم" target="_blank" class="btn-primary">
+          <span>💬 تواصل عبر واتساب</span>
+        </a>
+        <a href="#products" class="btn-ghost">استكشف البرمجيات</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num" data-count="150">0</div><div class="stat-label">عميل نشط</div></div>
+        <div class="stat"><div class="stat-num" data-count="8">0</div><div class="stat-label">سنوات خبرة</div></div>
+        <div class="stat"><div class="stat-num" data-count="3">0</div><div class="stat-label">منتجات برمجية</div></div>
+      </div>
+    </div>
+
+    <div class="hero-visual" style="position:relative;">
+      <div class="terminal">
+        <div class="terminal-bar">
+          <span class="dot dot-r"></span>
+          <span class="dot dot-y"></span>
+          <span class="dot dot-g"></span>
+        </div>
+        <div class="terminal-line"><span class="comment">// TECHNO INFODZ — v2.0</span></div>
+        <div class="terminal-line" style="margin-top:.75rem;"><span class="cmd">$ </span>init --system pme-pro</div>
+        <div class="terminal-line"><span class="ok">✓</span> تشغيل قاعدة البيانات...</div>
+        <div class="terminal-line"><span class="cmd">$ </span>deploy --env production</div>
+        <div class="terminal-line" style="margin-top:.5rem;"><span class="cmd">$ </span>status --all<span class="cursor"></span></div>
+      </div>
+      <div class="float-card float-card-1">
+        <span class="icon">🔐</span>
+        <div><div style="font-size:.65rem;color:var(--text-dim);">حماية البيانات</div><div style="color:var(--green);font-size:.75rem;">SSL / نشط</div></div>
+      </div>
+      <div class="float-card float-card-2">
+        <span class="icon">⚡</span>
+        <div><div style="font-size:.65rem;color:var(--text-dim);">وقت الاستجابة</div><div style="color:var(--accent);font-size:.75rem;">12ms avg</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="h-divider" />
+
+<!-- ─── PRODUCTS ─── -->
+<section id="products" style="padding:5rem 1.5rem;">
+  <div style="max-width:1200px;margin:auto;">
+    <div class="reveal">
+      <p class="section-label">البرمجيات</p>
+      <h2 class="section-title">حلول <span class="gradient-text">إدارية</span> متكاملة</h2>
+      <p class="section-desc">منتجاتنا مصممة خصيصاً للسوق الجزائري، بواجهات عربية وفرنسية تلبي احتياجات PME والمتاجر.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:3rem;" id="products-grid">
+
+      <!-- PME PRO -->
+      <div class="glass-card reveal" style="padding:2rem;">
+        <div class="product-icon" style="background:linear-gradient(135deg,#0066ff22,#0066ff44);">📊</div>
+        <h3 style="font-size:1.3rem;font-weight:700;margin-bottom:.5rem;">PME Pro</h3>
+        <p style="color:var(--text-mid);font-size:.9rem;line-height:1.6;margin-bottom:1rem;">نظام إدارة متكامل للمؤسسات الصغيرة والمتوسطة — محاسبة، مخزون، فوترة، وتقارير لحظية.</p>
+        <div style="margin-bottom:1.25rem;">
+          <span class="tag" style="background:rgba(0,102,255,.12);color:#4d9fff;">محاسبة</span>
+          <span class="tag" style="background:rgba(0,102,255,.12);color:#4d9fff;">مخزون</span>
+          <span class="tag" style="background:rgba(0,102,255,.12);color:#4d9fff;">تقارير</span>
+        </div>
+        <div class="price-tag" id="price-pme">السعر: تواصل معنا</div>
+        <button class="btn-primary" style="margin-top:1rem;width:100%;justify-content:center;" onclick="addToCart('PME Pro')">
+          <span>🛒 إضافة للسلة</span>
+        </button>
+      </div>
+
+      <!-- HYPER PRO -->
+      <div class="glass-card reveal" style="padding:2rem;">
+        <div class="product-icon" style="background:linear-gradient(135deg,#7b2fff22,#7b2fff44);">🏪</div>
+        <h3 style="font-size:1.3rem;font-weight:700;margin-bottom:.5rem;">Hyper Pro</h3>
+        <p style="color:var(--text-mid);font-size:.9rem;line-height:1.6;margin-bottom:1rem;">برنامج إدارة السوبرماركت والمتاجر الكبرى — باركود، كاشير، ولوحة تحكم مرئية.</p>
+        <div style="margin-bottom:1.25rem;">
+          <span class="tag" style="background:rgba(123,47,255,.12);color:#b07fff;">باركود</span>
+          <span class="tag" style="background:rgba(123,47,255,.12);color:#b07fff;">كاشير</span>
+          <span class="tag" style="background:rgba(123,47,255,.12);color:#b07fff;">تقارير مبيعات</span>
+        </div>
+        <div class="price-tag" id="price-hyper">السعر: تواصل معنا</div>
+        <button class="btn-primary" style="margin-top:1rem;width:100%;justify-content:center;background:linear-gradient(135deg,var(--accent3),var(--accent2));" onclick="addToCart('Hyper Pro')">
+          <span>🛒 إضافة للسلة</span>
+        </button>
+      </div>
+
+      <!-- POS -->
+      <div class="glass-card reveal" style="padding:2rem;">
+        <div class="product-icon" style="background:linear-gradient(135deg,#00d4ff22,#00d4ff44);">🖥️</div>
+        <h3 style="font-size:1.3rem;font-weight:700;margin-bottom:.5rem;">POS System</h3>
+        <p style="color:var(--text-mid);font-size:.9rem;line-height:1.6;margin-bottom:1rem;">نقطة بيع احترافية للمطاعم والمقاهي والمتاجر — سريعة، بسيطة، وتعمل offline.</p>
+        <div style="margin-bottom:1.25rem;">
+          <span class="tag" style="background:rgba(0,212,255,.12);color:#4dd9ff;">مطاعم</span>
+          <span class="tag" style="background:rgba(0,212,255,.12);color:#4dd9ff;">Offline</span>
+          <span class="tag" style="background:rgba(0,212,255,.12);color:#4dd9ff;">تقارير يومية</span>
+        </div>
+        <div class="price-tag" id="price-pos">السعر: تواصل معنا</div>
+        <button class="btn-primary" style="margin-top:1rem;width:100%;justify-content:center;background:linear-gradient(135deg,var(--accent),var(--accent2));" onclick="addToCart('POS System')">
+          <span>🛒 إضافة للسلة</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="h-divider" />
+
+<!-- ─── SERVICES ─── -->
+<section id="services" style="padding:5rem 1.5rem;">
+  <div style="max-width:1200px;margin:auto;">
+    <div class="reveal">
+      <p class="section-label">الخدمات</p>
+      <h2 class="section-title">دعم تقني <span class="gradient-text">شامل</span></h2>
+      <p class="section-desc">نقدم خدمات متكاملة ما بعد البيع، من تركيب الشبكات إلى المراقبة الأمنية.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;margin-top:3rem;">
+
+      <div class="service-card reveal" onclick="addToCart('خدمة الصيانة الدورية')" style="cursor:pointer;">
+        <div class="service-icon">🔧</div>
+        <h4 style="font-weight:600;margin-bottom:.4rem;">صيانة دورية</h4>
+        <p style="color:var(--text-mid);font-size:.85rem;line-height:1.6;">فحص وصيانة أجهزة الحاسوب والطابعات والخوادم بشكل منتظم.</p>
+        <div style="margin-top:.75rem;color:var(--accent);font-size:.78rem;font-family:'Space Mono',monospace;">اضغط للطلب →</div>
+      </div>
+
+      <div class="service-card reveal" onclick="addToCart('تركيب وإدارة الشبكات')" style="cursor:pointer;">
+        <div class="service-icon">🌐</div>
+        <h4 style="font-weight:600;margin-bottom:.4rem;">شبكات LAN/WAN</h4>
+        <p style="color:var(--text-mid);font-size:.85rem;line-height:1.6;">تصميم وتركيب الشبكات السلكية واللاسلكية للشركات والمؤسسات.</p>
+        <div style="margin-top:.75rem;color:var(--accent);font-size:.78rem;font-family:'Space Mono',monospace;">اضغط للطلب →</div>
+      </div>
+
+      <div class="service-card reveal" onclick="addToCart('أنظمة كاميرات المراقبة')" style="cursor:pointer;">
+        <div class="service-icon">📹</div>
+        <h4 style="font-weight:600;margin-bottom:.4rem;">كاميرات مراقبة</h4>
+        <p style="color:var(--text-mid);font-size:.85rem;line-height:1.6;">تركيب أنظمة CCTV/IP للمتاجر والمصانع والمنازل.</p>
+        <div style="margin-top:.75rem;color:var(--accent);font-size:.78rem;font-family:'Space Mono',monospace;">اضغط للطلب →</div>
+      </div>
+
+      <div class="service-card reveal" onclick="addToCart('الدعم الفني عن بُعد')" style="cursor:pointer;">
+        <div class="service-icon">💻</div>
+        <h4 style="font-weight:600;margin-bottom:.4rem;">دعم فني عن بُعد</h4>
+        <p style="color:var(--text-mid);font-size:.85rem;line-height:1.6;">حل مشاكل البرمجيات والأجهزة عن بُعد بسرعة واحترافية.</p>
+        <div style="margin-top:.75rem;color:var(--accent);font-size:.78rem;font-family:'Space Mono',monospace;">اضغط للطلب →</div>
+      </div>
+
+      <div class="service-card reveal" onclick="addToCart('تدريب وتأهيل الموظفين')" style="cursor:pointer;">
+        <div class="service-icon">🎓</div>
+        <h4 style="font-weight:600;margin-bottom:.4rem;">تدريب الكوادر</h4>
+        <p style="color:var(--text-mid);font-size:.85rem;line-height:1.6;">تدريب موظفيك على استخدام البرمجيات بكفاءة عالية.</p>
+        <div style="margin-top:.75rem;color:var(--accent);font-size:.78rem;font-family:'Space Mono',monospace;">اضغط للطلب →</div>
+      </div>
+
+      <div class="service-card reveal" onclick="addToCart('حماية وأمن المعلومات')" style="cursor:pointer;">
+        <div class="service-icon">🔐</div>
+        <h4 style="font-weight:600;margin-bottom:.4rem;">أمن المعلومات</h4>
+        <p style="color:var(--text-mid);font-size:.85rem;line-height:1.6;">حماية بياناتك من الاختراق، نسخ احتياطي، وحلول Antivirus للشركات.</p>
+        <div style="margin-top:.75rem;color:var(--accent);font-size:.78rem;font-family:'Space Mono',monospace;">اضغط للطلب →</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="h-divider" />
+
+<!-- ─── ABOUT ─── -->
+<section id="about" style="padding:5rem 1.5rem;">
+  <div style="max-width:1200px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+    <div class="reveal">
+      <p class="section-label">من نحن</p>
+      <h2 class="section-title">شركاؤك في <span class="gradient-text">التحول الرقمي</span></h2>
+      <p style="color:var(--text-mid);line-height:1.8;margin-bottom:1rem;">
+        TECHNO INFODZ شركة جزائرية متخصصة في تطوير البرمجيات المحاسبية والإدارية وتقديم خدمات الدعم التقني وتركيب الشبكات.
+      </p>
+      <p style="color:var(--text-mid);line-height:1.8;margin-bottom:2rem;">
+        نؤمن بأن التكنولوجيا يجب أن تكون في متناول الجميع، لذلك نقدم حلولاً بأسعار منافسة مع دعم فني مستمر.
+      </p>
+      <a href="https://wa.me/213666636473?text=أريد%20معرفة%20المزيد%20عن%20شركتكم" target="_blank" class="btn-primary">
+        <span>📞 تحدث معنا مباشرة</span>
+      </a>
+    </div>
+    <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+      <div class="glass-card" style="padding:1.5rem;text-align:center;">
+        <div style="font-size:2rem;margin-bottom:.5rem;">🏆</div>
+        <div style="font-family:'Space Mono',monospace;font-size:1.8rem;color:var(--accent);">8+</div>
+        <div style="color:var(--text-mid);font-size:.85rem;">سنوات في السوق</div>
+      </div>
+      <div class="glass-card" style="padding:1.5rem;text-align:center;">
+        <div style="font-size:2rem;margin-bottom:.5rem;">🤝</div>
+        <div style="font-family:'Space Mono',monospace;font-size:1.8rem;color:var(--accent);">150+</div>
+        <div style="color:var(--text-mid);font-size:.85rem;">عميل راضٍ</div>
+      </div>
+      <div class="glass-card" style="padding:1.5rem;text-align:center;">
+        <div style="font-size:2rem;margin-bottom:.5rem;">⚡</div>
+        <div style="font-family:'Space Mono',monospace;font-size:1.8rem;color:var(--accent);">24h</div>
+        <div style="color:var(--text-mid);font-size:.85rem;">وقت الاستجابة</div>
+      </div>
+      <div class="glass-card" style="padding:1.5rem;text-align:center;">
+        <div style="font-size:2rem;margin-bottom:.5rem;">📦</div>
+        <div style="font-family:'Space Mono',monospace;font-size:1.8rem;color:var(--accent);">3</div>
+        <div style="color:var(--text-mid);font-size:.85rem;">منتجات برمجية</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="h-divider" />
+
+<!-- ─── CONTACT ─── -->
+<section id="contact" style="padding:5rem 1.5rem;">
+  <div style="max-width:700px;margin:auto;text-align:center;" class="reveal">
+    <p class="section-label" style="justify-content:center;">تواصل معنا</p>
+    <h2 class="section-title">مستعدون <span class="gradient-text">لمساعدتك</span></h2>
+    <p style="color:var(--text-mid);margin-bottom:2.5rem;line-height:1.7;">
+      سواء كنت تريد شراء برنامجاً أو تحتاج دعماً تقنياً — فريقنا متاح على واتساب طوال أوقات العمل.
+    </p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="https://wa.me/213666636473?text=مرحباً%20TECHNO%20INFODZ،%20أريد%20الاستفسار" target="_blank" class="btn-primary">
+        <span>💬 واتساب: 0666636473</span>
+      </a>
+    </div>
+    <div style="margin-top:2rem;display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;">
+      <div style="text-align:center;">
+        <div style="color:var(--text-dim);font-size:.8rem;margin-bottom:.25rem;">الهاتف</div>
+        <div style="color:var(--text-main);font-family:'Space Mono',monospace;">0666 636 473</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="color:var(--text-dim);font-size:.8rem;margin-bottom:.25rem;">الموقع</div>
+        <div style="color:var(--text-main);">الجزائر</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div style="max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+    <div>
+      <div class="nav-logo" style="font-size:1.1rem;margin-bottom:.3rem;">TECHNO<span style="color:var(--text-dim);">INFODZ</span></div>
+      <div style="color:var(--text-dim);font-size:.8rem;">© 2024 جميع الحقوق محفوظة</div>
+    </div>
+    <div style="color:var(--text-dim);font-size:.75rem;font-family:'Space Mono',monospace;">
+      Built with ❤️ in Algeria
+    </div>
+  </div>
+</footer>
+
+<!-- ─── CART BUTTON ─── -->
+<button id="cart-btn" onclick="toggleCart()">
+  🛒
+  <span id="cart-count" style="display:none;">0</span>
+</button>
+
+<!-- ─── CART PANEL ─── -->
+<div id="cart-panel">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+    <h3 style="font-size:1rem;font-weight:700;">🛒 سلة الطلبات</h3>
+    <button onclick="toggleCart()" style="background:none;border:none;color:var(--text-dim);cursor:pointer;font-size:1.2rem;">✕</button>
+  </div>
+  <div id="cart-items">
+    <p style="color:var(--text-dim);font-size:.85rem;text-align:center;padding:1rem;">السلة فارغة</p>
+  </div>
+  <button id="send-order-btn" class="btn-primary" style="width:100%;justify-content:center;margin-top:1rem;display:none;" onclick="sendOrder()">
+    <span>📩 إرسال الطلب عبر واتساب</span>
+  </button>
+</div>
+
+<!-- ─── PRICE EDITOR MODAL (Admin) ─── -->
+<div id="price-modal" style="display:none;position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);align-items:center;justify-content:center;">
+  <div style="background:var(--bg-panel);border:1px solid var(--border);border-radius:16px;padding:2rem;width:90%;max-width:420px;">
+    <h3 style="margin-bottom:1.25rem;font-weight:700;">✏️ تعديل أسعار المنتجات</h3>
+    <div style="display:flex;flex-direction:column;gap:.75rem;">
+      <label style="font-size:.85rem;color:var(--text-mid);">PME Pro</label>
+      <input id="input-pme" type="text" placeholder="مثال: 25,000 دج" style="background:var(--bg-card);border:1px solid var(--border);color:var(--text-main);padding:.6rem 1rem;border-radius:8px;font-family:inherit;outline:none;" />
+      <label style="font-size:.85rem;color:var(--text-mid);">Hyper Pro</label>
+      <input id="input-hyper" type="text" placeholder="مثال: 35,000 دج" style="background:var(--bg-card);border:1px solid var(--border);color:var(--text-main);padding:.6rem 1rem;border-radius:8px;font-family:inherit;outline:none;" />
+      <label style="font-size:.85rem;color:var(--text-mid);">POS System</label>
+      <input id="input-pos" type="text" placeholder="مثال: 20,000 دج" style="background:var(--bg-card);border:1px solid var(--border);color:var(--text-main);padding:.6rem 1rem;border-radius:8px;font-family:inherit;outline:none;" />
+    </div>
+    <div style="display:flex;gap:.75rem;margin-top:1.5rem;">
+      <button class="btn-primary" style="flex:1;justify-content:center;" onclick="savePrices()"><span>💾 حفظ</span></button>
+      <button class="btn-ghost" style="flex:1;justify-content:center;" onclick="closePriceEditor()">إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── CART STATE ───
+const cart = [];
+
+function addToCart(item) {
+  if (!cart.includes(item)) cart.push(item);
+  renderCart();
+  showToast(`✓ تمت إضافة "${item}"`);
+}
+
+function removeFromCart(i) {
+  cart.splice(i, 1);
+  renderCart();
+}
+
+function renderCart() {
+  const el = document.getElementById('cart-items');
+  const btn = document.getElementById('send-order-btn');
+  const count = document.getElementById('cart-count');
+  if (cart.length === 0) {
+    el.innerHTML = '<p style="color:var(--text-dim);font-size:.85rem;text-align:center;padding:1rem;">السلة فارغة</p>';
+    btn.style.display = 'none';
+    count.style.display = 'none';
+  } else {
+    el.innerHTML = cart.map((item, i) => `
+      <div class="cart-item">
+        <span>${item}</span>
+        <button class="remove-item" onclick="removeFromCart(${i})">✕</button>
+      </div>
+    `).join('');
+    btn.style.display = 'flex';
+    count.style.display = 'flex';
+    count.textContent = cart.length;
+  }
+}
+
+function toggleCart() {
+  document.getElementById('cart-panel').classList.toggle('open');
+}
+
+function sendOrder() {
+  const items = cart.join('%0A• ');
+  const msg = encodeURIComponent(`مرحباً TECHNO INFODZ،\nأريد الاستفسار عن:\n• ${items}`);
+  window.open(`https://wa.me/213666636473?text=${msg}`, '_blank');
+}
+
+// ─── TOAST ───
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ─── NAVBAR SCROLL ───
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// ─── MOBILE MENU ───
+function toggleMenu() {
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
+
+// ─── SCROLL REVEAL ───
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ─── COUNTER ANIMATION ───
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = +el.dataset.count;
+      let cur = 0;
+      const step = Math.ceil(target / 40);
+      const timer = setInterval(() => {
+        cur = Math.min(cur + step, target);
+        el.textContent = cur + (target > 10 ? '+' : '');
+        if (cur >= target) clearInterval(timer);
+      }, 40);
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+
+// ─── ADMIN TOKEN SYSTEM ───
+// Token is checked from URL param or localStorage
+// Never hardcoded — in production, validate against process.env.ADMIN_TOKEN on a serverless function
+const ADMIN_TOKEN_KEY = 'techno_admin_token';
+
+function checkAdminToken() {
+  // Check URL param: ?admin=YOUR_TOKEN
+  const params = new URLSearchParams(window.location.search);
+  const urlToken = params.get('admin');
+  if (urlToken) {
+    localStorage.setItem(ADMIN_TOKEN_KEY, urlToken);
+    // Clean URL without exposing token
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }
+  const storedToken = localStorage.getItem(ADMIN_TOKEN_KEY);
+  if (storedToken) {
+    // In production: verify via API call → fetch('/api/verify-token', { headers: { 'x-token': storedToken } })
+    // For demo: show admin bar if token exists
+    document.getElementById('admin-bar').classList.add('visible');
+    document.body.style.paddingTop = '36px';
+  }
+}
+
+function logout() {
+  localStorage.removeItem(ADMIN_TOKEN_KEY);
+  document.getElementById('admin-bar').classList.remove('visible');
+  document.body.style.paddingTop = '0';
+}
+
+// ─── PRICE EDITOR (Admin) ───
+function openPriceEditor() {
+  const modal = document.getElementById('price-modal');
+  modal.style.display = 'flex';
+  // Pre-fill with stored prices
+  const prices = JSON.parse(localStorage.getItem('techno_prices') || '{}');
+  if (prices.pme) document.getElementById('input-pme').value = prices.pme;
+  if (prices.hyper) document.getElementById('input-hyper').value = prices.hyper;
+  if (prices.pos) document.getElementById('input-pos').value = prices.pos;
+}
+
+function closePriceEditor() {
+  document.getElementById('price-modal').style.display = 'none';
+}
+
+function savePrices() {
+  const pme = document.getElementById('input-pme').value;
+  const hyper = document.getElementById('input-hyper').value;
+  const pos = document.getElementById('input-pos').value;
+  const prices = { pme, hyper, pos };
+  localStorage.setItem('techno_prices', JSON.stringify(prices));
+  applyPrices(prices);
+  closePriceEditor();
+  showToast('✓ تم حفظ الأسعار');
+}
+
+function applyPrices(prices) {
+  if (prices.pme) document.getElementById('price-pme').textContent = 'السعر: ' + prices.pme;
+  if (prices.hyper) document.getElementById('price-hyper').textContent = 'السعر: ' + prices.hyper;
+  if (prices.pos) document.getElementById('price-pos').textContent = 'السعر: ' + prices.pos;
+}
+
+// ─── LOAD PRICES FROM JSON / LOCALSTORAGE ───
+async function loadPrices() {
+  // 1. Try localStorage (admin-saved)
+  const local = JSON.parse(localStorage.getItem('techno_prices') || '{}');
+  if (local.pme || local.hyper || local.pos) {
+    applyPrices(local); return;
+  }
+  // 2. Try external data.json (Netlify / GitHub hosted)
+  try {
+    const res = await fetch('./data.json');
+    if (res.ok) {
+      const data = await res.json();
+      if (data.prices) applyPrices(data.prices);
+    }
+  } catch (e) { /* file not found, keep defaults */ }
+}
+
+// ─── INIT ───
+checkAdminToken();
+loadPrices();
+</script>
+// بيانات الربط من Supabase (تجدها في Settings > API)
+const supabaseUrl = 'https://ysouygwphowpfltzhbpx.supabase.co';
+const supabaseKey = 'اكتب_هنا_الـ_anon_public_key'; // استبدل هذا بالمفتاح الخاص بك
+
+// إنشاء عميل Supabase
+const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+// مثال لوظيفة جلب المنتجات التي أضفتها في قاعدة البيانات
+async function loadProducts() {
+  const { data, error } = await _supabase.from('products').select('*');
+  if (error) {
+    console.error('خطأ في جلب البيانات:', error.message);
+  } else {
+    console.log('المنتجات المتوفرة:', data);
+    // هنا سنقوم بتحديث واجهة الموقع بالبيانات الجديدة
+  }
+}
+</body>
+</html>
