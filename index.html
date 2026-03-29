@@ -117,27 +117,7 @@
             `).join('');
         }
 
-        // إضافة منتج جديد
-        async function showAddModal() {
-            const name = prompt("اسم المنتج:");
-            const price = prompt("السعر:");
-            const category = prompt("الصنف:");
-            const image = prompt("رابط الصورة:");
-            if (name && price) {
-                products.push({ name, price, category, image });
-                await saveToGitHub("Add " + name);
-            }
-        }
-
-        // حذف منتج
-        async function deleteProduct(index) {
-            if (confirm("حذف هذا المنتج؟")) {
-                products.splice(index, 1);
-                await saveToGitHub("Delete product");
-            }
-        }
-
-        // محرك الحفظ في GitHub
+            // محرك الحفظ في GitHub
         async function saveToGitHub(msg) {
             const url = `https://api.github.com/repos/${GITHUB_USER}/${REPO_NAME}/contents/${FILE_PATH}`;
             try {
