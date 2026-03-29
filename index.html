@@ -14,6 +14,17 @@
         .product-card:hover { transform: translateY(-5px); }
         .category-pill:hover { background-color: #1e40af; color: white; }
     </style>
+    /* هذا السطر يضمن أن أي عنصر يحمل هذا الكلاس سيكون مخفياً تماماً عن الزوار */
+    .admin-only { 
+        display: none !important; 
+    }
+
+    /* هذا السطر يظهر العناصر فقط عندما يتم تفعيل وضع الإدارة (is-admin) */
+    .is-admin .admin-only { 
+        display: flex !important; 
+    }
+</style>
+    
 </head>
 <body class="bg-gray-50 text-gray-800">
 
