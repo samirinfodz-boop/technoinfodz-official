@@ -1,0 +1,14 @@
+{
+  "company": "TECHNO INFODZ",
+  "contact": "0666636473",
+  "updated": "2024-01-01",
+  "prices": {
+    "pme":   "25,000 دج",
+    "hyper": "35,000 دج",
+    "pos":   "20,000 دج"
+  },
+  "news": [
+    { "id": 1, "title": "إطلاق PME Pro النسخة 3.0", "date": "2024-01-10" },
+    { "id": 2, "title": "عرض خاص على Hyper Pro لشهر يناير", "date": "2024-01-05" }
+  ]
+}
