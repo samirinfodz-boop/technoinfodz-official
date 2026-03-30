@@ -407,6 +407,7 @@
     </div>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:3rem;" id="products-grid">
+      <div id="dynamic-products" style="display:contents;"></div>
 
       <!-- PME PRO -->
       <div class="glass-card reveal" style="padding:2rem;">
@@ -814,6 +815,43 @@ async function loadPrices() {
 // ─── INIT ───
 checkAdminToken();
 loadPrices();
+</script>
+          <script>
+const GITHUB_USER = 'samirinfodz-boop';
+const REPO_NAME   = 'technoinfodz-official';
+const FILE_PATH   = 'data.json';
+
+async function loadProducts() {
+  try {
+    const response = await fetch(`https://raw.githubusercontent.com/${GITHUB_USER}/${REPO_NAME}/main/${FILE_PATH}?v=${new Date().getTime()}`);
+    if (response.ok) {
+      const data = await response.json();
+      products = Array.isArray(data.products) ? data.products : [];
+      renderDynamicProducts();
+    }
+  } catch(e) {
+    console.error("خطأ في التحميل:", e);
+  }
+}
+
+function renderDynamicProducts() {
+  const container = document.getElementById('dynamic-products');
+  if (!container || !products.length) return;
+  container.innerHTML = products.map(p => `
+    <div class="glass-card reveal" style="padding:2rem;">
+      ${p.img ? `<img src="${p.img}" style="width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:1.25rem;" onerror="this.style.display='none'"/>` : `<div style="font-size:3rem;margin-bottom:1.25rem;">${p.icon||'📦'}</div>`}
+      <h3 style="font-size:1.2rem;font-weight:700;margin-bottom:.5rem;">${p.name}</h3>
+      <p style="color:var(--text-mid);font-size:.9rem;line-height:1.6;margin-bottom:1rem;">${p.desc||''}</p>
+      <div style="font-family:'Space Mono',monospace;color:var(--accent);font-size:1.1rem;font-weight:700;margin-bottom:1rem;">${p.price}</div>
+      <button class="btn-primary" style="width:100%;justify-content:center;" onclick="addToCart('${p.name}')">
+        <span>🛒 إضافة للسلة</span>
+      </button>
+    </div>
+  `).join('');
+  document.querySelectorAll('#dynamic-products .reveal').forEach(el => observer.observe(el));
+}
+
+loadProducts();
 </script>
 </body>
 </html>
