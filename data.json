@@ -1,3 +1,13 @@
 {
-  "products": []
+  "products": [
+    {
+      "id": "1774865578641",
+      "name": "PME PRO MODULE PRODUCTION",
+      "price": "تواصل معنا",
+      "cat": "برمجيات",
+      "icon": "📦",
+      "desc": "",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774865522075.jpg"
+    }
+  ]
 }
