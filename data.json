@@ -1,22 +1,13 @@
 {
   "products": [
     {
-      "id": "1774902609575",
-      "name": "LECTEUR CODE A BARRE SMART SP_X86",
-      "price": "16500",
+      "id": "1774902852206",
+      "name": "LECTEUR CODE A BARRE SMART SO_8608",
+      "price": "15500",
       "cat": "عتاد",
       "icon": "📦",
       "desc": "",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774902542691.jpg"
-    },
-    {
-      "id": "1774902693989",
-      "name": "LECTEUR CODE A BARRE HINEX HC_2210",
-      "price": "14500",
-      "cat": "عتاد",
-      "icon": "📦",
-      "desc": "",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774902631743.jpg"
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774902807756.jpg"
     }
   ]
 }
