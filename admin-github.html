@@ -648,14 +648,14 @@ async function syncAll(){
 async function loadProducts(){
   try {
     const f = await ghGet(DATA_FILE);
-    const d = JSON.parse(fromB64(f.content));
-    products = d.products || d || [];
+    // إزالة أسطر جديدة من Base64 قبل فك التشفير
+    const clean = f.content.replace(/\n/g, '');
+    const d = JSON.parse(fromB64(clean));
+    products = Array.isArray(d.products) ? d.products : (Array.isArray(d) ? d : []);
   } catch(e){
-    // file doesn't exist yet — start empty
     products = [];
   }
 }
-
 async function loadContent(){
   try {
     const f = await ghGet(CONTENT_FILE);
