@@ -853,5 +853,30 @@ function renderDynamicProducts() {
 
 loadProducts();
 </script>
+          <script>
+// ── فتح لوحة التحكم بالضغط 5 مرات على الشعار ──
+let logoClickCount = 0;
+let logoClickTimer = null;
+const SECRET_TOKEN = 'STOKEN'; // ← غيّر هذا إلى كلمة سرك
+
+document.querySelector('.nav-logo').addEventListener('click', function(e) {
+  e.preventDefault();
+  logoClickCount++;
+
+  clearTimeout(logoClickTimer);
+  logoClickTimer = setTimeout(() => { logoClickCount = 0; }, 3000);
+
+  if (logoClickCount >= 5) {
+    logoClickCount = 0;
+    const entered = prompt('🔐 أدخل كلمة المرور:');
+    if (entered ===techno2024) {
+      window.location.href = 'admin-github.html';
+    } else if (entered !== null) {
+      alert('⚠️ كلمة المرور خاطئة');
+    }
+  }
+});
+</script>
+
 </body>
 </html>
