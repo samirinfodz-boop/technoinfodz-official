@@ -328,7 +328,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
   <main class="main">
 
     <!-- ── DASHBOARD ── -->
-    <div id="page-dashboard" class="page on">
+    <div id="page-dashboard" class="page on"><button class="bp" onclick="syncAll()" style="margin-bottom:1rem;">🔄 مزامنة مع GitHub</button>
       <div class="ph">
         <div class="ph-left">
           <h1>مرحباً، Samir 👋</h1>
@@ -648,7 +648,6 @@ async function syncAll(){
 async function loadProducts(){
   try {
     const f = await ghGet(DATA_FILE);
-    // إزالة أسطر جديدة من Base64 قبل فك التشفير
     const clean = f.content.replace(/\n/g, '');
     const d = JSON.parse(fromB64(clean));
     products = Array.isArray(d.products) ? d.products : (Array.isArray(d) ? d : []);
@@ -656,6 +655,7 @@ async function loadProducts(){
     products = [];
   }
 }
+
 async function loadContent(){
   try {
     const f = await ghGet(CONTENT_FILE);
