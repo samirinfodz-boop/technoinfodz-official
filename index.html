@@ -817,6 +817,8 @@ checkAdminToken();
 loadPrices();
 </script>
           <script>
+<script>
+let products = [];
 const GITHUB_USER = 'samirinfodz-boop';
 const REPO_NAME   = 'technoinfodz-official';
 const FILE_PATH   = 'data.json';
@@ -851,12 +853,12 @@ function renderDynamicProducts() {
   document.querySelectorAll('#dynamic-products .reveal').forEach(el => observer.observe(el));
 }
 
+loadProducts();
 </script>
-          let products = [];
 
 async function loadProducts() {
   try {
-    const response = await fetch(`https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/data.json?v=${new Date().getTime()}`);
+    const response = await fetch(`https://raw.githubusercontent.com/${GITHUB_USER}/${REPO_NAME}/main/${FILE_PATH}?v=${new Date().getTime()}`);
     if (response.ok) {
       const data = await response.json();
       products = Array.isArray(data.products) ? data.products : [];
@@ -884,7 +886,7 @@ function renderDynamicProducts() {
   document.querySelectorAll('#dynamic-products .reveal').forEach(el => observer.observe(el));
 }
 
-loadProducts();
+
     
           <script>
 // ── فتح لوحة التحكم بالضغط 5 مرات على الشعار ──
