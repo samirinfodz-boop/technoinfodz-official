@@ -1,94 +1,13 @@
 {
   "products": [
     {
-      "id": "1774865578641",
-      "name": "برنامج تسيير مؤسسات الانتاج والتصنيع",
-      "price": "تواصل معنا",
-      "cat": "برمجيات",
-      "icon": "📦",
-      "desc": "",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774865522075.jpg"
-    },
-    {
-      "id": "1774874130144",
-      "name": "برنامج تسيير محلات مواد غذائية",
-      "price": "تواصل معنا",
-      "cat": "برمجيات",
-      "icon": "📦",
-      "desc": "",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891317602.png"
-    },
-    {
-      "id": "1774874203728",
-      "name": "برنامج تسيير محلات الألبسة",
-      "price": "تواصل معنا",
-      "cat": "برمجيات",
-      "icon": "📦",
-      "desc": "",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891359008.png"
-    },
-    {
-      "id": "1774874328440",
-      "name": "برنامج تسيير المطاعم والكافيتيريا",
-      "price": "تواصل معنا",
-      "cat": "برمجيات",
-      "icon": "📦",
-      "desc": "",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891861082.png"
-    },
-    {
-      "id": "1774891489543",
-      "name": "برنامج تسيير محلات كراء الملابس",
-      "price": "تواصل معنا",
-      "cat": "برمجيات",
-      "icon": "📦",
-      "desc": "",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891476674.png"
-    },
-    {
-      "id": "1774891551390",
-      "name": "برنامج تسيير الموزعين الحترفين",
-      "price": "تواصل معنا",
-      "cat": "برمجيات",
-      "icon": "📦",
-      "desc": "",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891513008.jpg"
-    },
-    {
-      "id": "1774891658446",
-      "name": "تطبيق هاتف للموزعين المحترفين",
-      "price": "تواصل معنا",
-      "cat": "برمجيات",
-      "icon": "📦",
-      "desc": "",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891628734.jpg"
-    },
-    {
-      "id": "1774891746958",
-      "name": "برنامج تسيير القاعات الرياضية",
-      "price": "تواصل معنا",
-      "cat": "برمجيات",
-      "icon": "📦",
-      "desc": "",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891713117.png"
-    },
-    {
-      "id": "1774902351401",
-      "name": "LECTEUR CODE A BARRE SMART FILAIRE SP_2066",
-      "price": "7000",
+      "id": "1774902609575",
+      "name": "LECTEUR CODE A BARRE SMART SP_X86",
+      "price": "16500",
       "cat": "عتاد",
       "icon": "📦",
       "desc": "",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774902316769.jpg"
-    },
-    {
-      "id": "1774902447200",
-      "name": "LECTURE CODE A BARRE SMART SP_9608H",
-      "price": "19009",
-      "cat": "عتاد",
-      "icon": "📦",
-      "desc": "",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774902375722.jpg"
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774902542691.jpg"
     }
   ]
 }
