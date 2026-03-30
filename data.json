@@ -1,14 +1,13 @@
 {
-  "company": "TECHNO INFODZ",
-  "contact": "0666636473",
-  "updated": "2024-01-01",
-  "prices": {
-    "pme":   "30,000 دج",
-    "hyper": "70,000 دج",
-    "pos":   "35,000 دج"
-  },
-  "news": [
-    { "id": 1, "title": "إطلاق PME Pro النسخة 3.0", "date": "2024-01-10" },
-    { "id": 2, "title": "عرض خاص على Hyper Pro لشهر يناير", "date": "2024-01-05" }
+  "products": [
+    {
+      "id": "1774861942466",
+      "name": "PME PRO MODULE PRODUCTION",
+      "price": "70000",
+      "cat": "برمجيات",
+      "icon": "📦",
+      "desc": "",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774861921773.jpg"
+    }
   ]
 }
