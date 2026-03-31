@@ -214,21 +214,19 @@
 <section id="products" style="padding:5rem 1.5rem;">
   <div style="max-width:1200px;margin:auto;">
     <div class="reveal">
-      <p class="section-label">البرمجيات</p>
-      <h2 class="section-title">حلول <span class="gradient-text">إدارية</span> متكاملة</h2>
+      <p class="section-label">المنتجات</p>
+      <h2 class="section-title">حلول <span class="gradient-text">متكاملة</span></h2>
       <p class="section-desc">منتجاتنا مصممة خصيصاً للسوق الجزائري، بواجهات عربية وفرنسية تلبي احتياجات PME والمتاجر.</p>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:3rem;" id="products-grid">
+    <!-- أزرار الفلتر -->
+    <div id="cat-filters" style="display:flex;gap:.65rem;flex-wrap:wrap;margin-top:2rem;"></div>
 
-      <!-- منتجات ديناميكية من GitHub -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:2rem;" id="products-grid">
       <div id="dynamic-products" style="display:contents;"></div>
-
-
     </div>
   </div>
 </section>
-
 <hr class="h-divider" />
 
 <!-- ─── SERVICES ─── -->
@@ -441,12 +439,16 @@ async function loadPrices() {
 // ══════════════════════════════════════
 let products = [];
 
+let products = [];
+let activeCat = 'الكل';
+
 async function loadProducts() {
   try {
     const response = await fetch('https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/data.json?v=' + new Date().getTime());
     if (response.ok) {
       const data = await response.json();
       products = Array.isArray(data.products) ? data.products : [];
+      renderCatFilters();
       renderDynamicProducts();
     }
   } catch(e) {
@@ -454,28 +456,64 @@ async function loadProducts() {
   }
 }
 
+const catColors = {
+  'برمجيات':         { bg: 'rgba(0,102,255,.15)',  color: '#5fa8ff' },
+  'عتاد إعلام آلي':  { bg: 'rgba(91,0,255,.15)',   color: '#a87fff' },
+  'كاميرات مراقبة':  { bg: 'rgba(0,200,150,.1)',   color: '#00c896' },
+  'شبكات':           { bg: 'rgba(255,136,0,.1)',    color: '#ffaa44' },
+};
+
+function renderCatFilters() {
+  const cats = ['الكل', ...new Set(products.map(p => p.cat))];
+  const container = document.getElementById('cat-filters');
+  if (!container) return;
+  container.innerHTML = cats.map(cat => `
+    <button onclick="filterByCat('${cat}')" id="btn-cat-${cat}"
+      style="padding:.5rem 1.1rem; border-radius:8px; border:1px solid ${cat === 'الكل' ? 'var(--accent)' : 'rgba(0,212,255,.2)'}; 
+             background:${cat === 'الكل' ? 'rgba(0,212,255,.1)' : 'transparent'}; 
+             color:${cat === 'الكل' ? 'var(--accent)' : 'var(--text-mid)'}; 
+             cursor:pointer; font-family:inherit; font-size:.85rem; transition:all .2s;">
+      ${cat}
+    </button>
+  `).join('');
+}
+
+function filterByCat(cat) {
+  activeCat = cat;
+  document.querySelectorAll('#cat-filters button').forEach(btn => {
+    const isActive = btn.id === `btn-cat-${cat}`;
+    btn.style.borderColor = isActive ? 'var(--accent)' : 'rgba(0,212,255,.2)';
+    btn.style.background  = isActive ? 'rgba(0,212,255,.1)' : 'transparent';
+    btn.style.color       = isActive ? 'var(--accent)' : 'var(--text-mid)';
+  });
+  renderDynamicProducts();
+}
+
 function renderDynamicProducts() {
   const container = document.getElementById('dynamic-products');
   if (!container || !products.length) return;
-  container.innerHTML = products.map(p => `
+  const list = activeCat === 'الكل' ? products : products.filter(p => p.cat === activeCat);
+  const cat_c = (cat) => catColors[cat] || { bg: 'rgba(0,212,255,.1)', color: '#00d4ff' };
+  container.innerHTML = list.map(p => {
+    const c = cat_c(p.cat);
+    return `
     <div class="glass-card reveal" style="padding:1.5rem; display:flex; flex-direction:column; height:100%;">
-      <div style="width:100%; height:180px; background:#0e1520; border-radius:12px; margin-bottom:1.25rem; display:flex; align-items:center; justify-content:center; overflow:hidden; border:1px solid rgba(255,255,255,0.05);">
+      <div style="width:100%; height:180px; background:#0e1520; border-radius:12px; margin-bottom:1.25rem; display:flex; align-items:center; justify-content:center; overflow:hidden; border:1px solid rgba(255,255,255,0.05); position:relative;">
         ${p.img
           ? `<img src="${p.img}" style="max-width:100%; max-height:100%; object-fit:contain; transition:transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.innerHTML='<div style=font-size:3rem>📦</div>'"/>`
           : `<div style="font-size:3rem;">${p.icon || '📦'}</div>`}
+        <span style="position:absolute; top:8px; right:8px; font-size:.68rem; font-family:'Space Mono',monospace; padding:.2rem .55rem; border-radius:4px; background:${c.bg}; color:${c.color};">${p.cat}</span>
       </div>
-      <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:0.5rem; color:#fff;">${p.name}</h3>
-      <p style="color:var(--text-mid); font-size:0.85rem; line-height:1.5; margin-bottom:1rem; flex-grow:1;">${p.desc || ''}</p>
-      <div style="font-family:'Space Mono',monospace; color:var(--accent); font-size:1.15rem; font-weight:700; margin-bottom:1.25rem;">${p.price}</div>
-      <button class="btn-primary" style="width:100%; justify-content:center; padding:0.8rem;" onclick="addToCart('${p.name}')">
+      <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:.5rem; color:#fff;">${p.name}</h3>
+      <p style="color:var(--text-mid); font-size:.85rem; line-height:1.5; margin-bottom:1rem; flex-grow:1;">${p.desc || ''}</p>
+      <div style="font-family:'Space Mono',monospace; color:var(--accent); font-size:1.1rem; font-weight:700; margin-bottom:1.25rem;">${p.price}</div>
+      <button class="btn-primary" style="width:100%; justify-content:center; padding:.8rem;" onclick="addToCart('${p.name}')">
         <span>🛒 إضافة للسلة</span>
       </button>
     </div>
-  `).join('');
+  `}).join('');
   document.querySelectorAll('#dynamic-products .reveal').forEach(el => observer.observe(el));
 }
-
-// ══════════════════════════════════════
 //  فتح لوحة التحكم — 5 ضغطات على الشعار
 // ══════════════════════════════════════
 let logoClickCount = 0;
