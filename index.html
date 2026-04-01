@@ -480,15 +480,17 @@ async function loadProducts() {
   }
 }
 function renderDynamicProducts() {
-    const container = document.getElementById('products-container'); // تأكد من اسم الـ ID لديك
+    const container = document.getElementById('products-container'); 
+    if (!container) return; // حماية في حال عدم وجود الحاوية
     container.innerHTML = ''; 
 
     products.forEach(product => {
-        // نستخدم وسم <a> بدلاً من <div> لتمكين خيار "نسخ الرابط"
+        // نستخدم وسم <a> لتمكين "كليك يمين -> نسخ الرابط"
+        // نستخدم slug إذا وجد، وإذا لم يوجد نستخدم id كبديل
         const productHTML = `
             <a href="#${product.slug || product.id}" class="product-card" id="${product.slug || product.id}" style="text-decoration: none; color: inherit; display: block;">
                 <div class="product-image">
-                    <img src="${product.img}" alt="${product.name}">
+                    <img src="${product.img}" alt="${product.name}" loading="lazy">
                 </div>
                 <div class="product-info">
                     <span class="category">${product.cat} ${product.icon}</span>
@@ -496,7 +498,7 @@ function renderDynamicProducts() {
                     <p class="description">${product.desc || ''}</p>
                     <div class="product-footer">
                         <span class="price">${product.price}</span>
-                        <button class="add-to-cart-btn" onclick="addToCart('${product.id}'); event.preventDefault();">
+                        <button class="add-to-cart-btn" onclick="event.preventDefault(); addToCart('${product.id}');">
                             🛒 أضف للسلة
                         </button>
                     </div>
