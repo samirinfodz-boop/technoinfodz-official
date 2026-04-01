@@ -2,74 +2,82 @@
   "products": [
     {
       "id": "1774865578641",
+      "slug": "production-management-software",
       "name": "برنامج تسيير مؤسسات الانتاج والتصنيع",
       "price": "تواصل معنا",
       "cat": "برمجيات",
       "icon": "📦",
-      "desc": "",
+      "desc": "حلول متكاملة لتسيير خطوط الإنتاج والتصنيع بما يتناسب مع السوق الجزائري.",
       "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774865522075.jpg"
     },
     {
       "id": "1774874130144",
+      "slug": "grocery-store-software",
       "name": "برنامج تسيير محلات مواد غذائية",
       "price": "تواصل معنا",
       "cat": "برمجيات",
       "icon": "📦",
-      "desc": "",
+      "desc": "نظام POS سريع وسهل الاستخدام لمحلات التجزئة والمواد الغذائية.",
       "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891317602.png"
     },
     {
       "id": "1774874203728",
+      "slug": "clothing-store-software",
       "name": "برنامج تسيير محلات الألبسة",
       "price": "تواصل معنا",
       "cat": "برمجيات",
       "icon": "📦",
-      "desc": "",
+      "desc": "إدارة المخزون، المقاسات، والألوان بكل احترافية.",
       "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891359008.png"
     },
     {
       "id": "1774874328440",
+      "slug": "restaurant-cafe-software",
       "name": "برنامج تسيير المطاعم والكافيتيريا",
       "price": "تواصل معنا",
       "cat": "برمجيات",
       "icon": "📦",
-      "desc": "",
+      "desc": "تسيير الطاولات، الطلبات، والمطبخ مع دعم الطابعات الحرارية.",
       "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891861082.png"
     },
     {
       "id": "1774891489543",
+      "slug": "clothing-rental-software",
       "name": "برنامج تسيير محلات كراء الملابس",
       "price": "تواصل معنا",
       "cat": "برمجيات",
       "icon": "📦",
-      "desc": "",
+      "desc": "نظام خاص لتتبع عمليات الكراء، المواعيد، والتأمين.",
       "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891476674.png"
     },
     {
       "id": "1774891551390",
+      "slug": "professional-distributors-software",
       "name": "برنامج تسيير الموزعين الحترفين",
       "price": "تواصل معنا",
       "cat": "برمجيات",
       "icon": "📦",
-      "desc": "",
+      "desc": "تسيير المناديب، المبيعات، والتحصيل الميداني.",
       "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891513008.jpg"
     },
     {
       "id": "1774891658446",
+      "slug": "distributors-mobile-app",
       "name": "تطبيق هاتف للموزعين المحترفين",
       "price": "تواصل معنا",
       "cat": "برمجيات",
       "icon": "📦",
-      "desc": "",
+      "desc": "تطبيق Android مرتبط بالنظام المركزي لتسهيل العمل الميداني.",
       "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891628734.jpg"
     },
     {
       "id": "1774891746958",
+      "slug": "gym-management-software",
       "name": "برنامج تسيير القاعات الرياضية",
       "price": "تواصل معنا",
       "cat": "برمجيات",
       "icon": "📦",
-      "desc": "",
+      "desc": "إدارة الاشتراكات، الحضور، وتنبيهات انتهاء العضوية.",
       "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891713117.png"
     }
   ]
