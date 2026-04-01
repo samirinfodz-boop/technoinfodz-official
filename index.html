@@ -480,40 +480,26 @@ async function loadProducts() {
   }
 }
 function renderDynamicProducts() {
-    // نستخدم المعرف الصحيح الموجود في HTML الخاص بك وهو dynamic-products
-    const container = document.getElementById('dynamic-products'); 
-    if (!container) return; 
+    const container = document.getElementById('products-container'); 
+    if (!container) return; // حماية في حال عدم وجود الحاوية
     container.innerHTML = ''; 
 
     products.forEach(product => {
-        // إنشاء الهيكل باستخدام وسم <a> لتمكين خيار "Copy Link Address"
+        // نستخدم وسم <a> لتمكين "كليك يمين -> نسخ الرابط"
+        // نستخدم slug إذا وجد، وإذا لم يوجد نستخدم id كبديل
         const productHTML = `
-            <a href="#${product.slug || product.id}" 
-               class="glass-card reveal" 
-               id="${product.slug || product.id}" 
-               style="text-decoration: none; color: inherit; display: block; padding: 1.5rem; margin-bottom: 1rem;">
-                
-                <div class="product-image" style="margin-bottom: 1rem; border-radius: 12px; overflow: hidden;">
-                    <img src="${product.img}" alt="${product.name}" loading="lazy" style="width: 100%; height: auto; display: block;">
+            <a href="#${product.slug || product.id}" class="product-card" id="${product.slug || product.id}" style="text-decoration: none; color: inherit; display: block;">
+                <div class="product-image">
+                    <img src="${product.img}" alt="${product.name}" loading="lazy">
                 </div>
-                
                 <div class="product-info">
-                    <span class="hero-badge" style="margin-bottom: 0.5rem; font-size: 0.7rem;">
-                        ${product.icon} ${product.cat}
-                    </span>
-                    <h3 style="font-size: 1.2rem; font-weight: 700; color: #fff; margin: 0.5rem 0;">${product.name}</h3>
-                    <p style="color: var(--text-mid); font-size: 0.85rem; margin-bottom: 1.5rem; line-height: 1.6;">
-                        ${product.desc || 'حلول برمجية احترافية من TECHNO INFODZ'}
-                    </p>
-                    
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
-                        <span style="font-family: 'Space Mono', monospace; color: var(--accent); font-weight: 700;">
-                            ${product.price}
-                        </span>
-                        <button class="btn-primary" 
-                                style="padding: 0.5rem 1rem; font-size: 0.8rem;" 
-                                onclick="event.preventDefault(); addToCart('${product.name}');">
-                            <span>🛒 أضف للسلة</span>
+                    <span class="category">${product.cat} ${product.icon}</span>
+                    <h3>${product.name}</h3>
+                    <p class="description">${product.desc || ''}</p>
+                    <div class="product-footer">
+                        <span class="price">${product.price}</span>
+                        <button class="add-to-cart-btn" onclick="event.preventDefault(); addToCart('${product.id}');">
+                            🛒 أضف للسلة
                         </button>
                     </div>
                 </div>
@@ -521,11 +507,11 @@ function renderDynamicProducts() {
         `;
         container.innerHTML += productHTML;
     });
-
-    // إعادة تفعيل تأثير الظهور (Reveal) للعناصر الجديدة
-    if (typeof observer !== 'undefined') {
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    }
+}
+  `).join('');
+  
+  // إعادة تفعيل تأثير الظهور (Reveal)
+  document.querySelectorAll('#dynamic-products .reveal').forEach(el => observer.observe(el));
 }
 // ══════════════════════════════════════
 //  فتح لوحة التحكم — 5 ضغطات على الشعار
