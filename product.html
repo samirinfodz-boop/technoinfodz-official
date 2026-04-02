@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TECHNO INFODZ — تفاصيل المنتج</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg-deep:   #090d14;
+      --bg-panel:  #0e1520;
+      --bg-card:   #121b2a;
+      --accent:    #00d4ff;
+      --accent2:   #0066ff;
+      --accent3:   #7b2fff;
+      --text-dim:  #5a7a99;
+      --text-mid:  #8fb0cc;
+      --text-main: #cce0f5;
+      --text-bright:#f0f8ff;
+      --green:     #00ff9d;
+      --border:    rgba(0,212,255,.12);
+      --glow:      0 0 40px rgba(0,212,255,.18);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg-deep);color:var(--text-main);font-family:'IBM Plex Sans Arabic',sans-serif;overflow-x:hidden;min-height:100vh;}
+    body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+      background-image:linear-gradient(rgba(0,212,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,.03) 1px,transparent 1px);
+      background-size:48px 48px;}
+    .orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(120px);opacity:.15;}
+    .orb-1{width:500px;height:500px;background:var(--accent2);top:-150px;right:-150px;}
+    .orb-2{width:350px;height:350px;background:var(--accent3);bottom:10%;left:-100px;}
+    #navbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(9,13,20,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+    .nav-logo{font-family:'Space Mono',monospace;font-size:1.1rem;color:var(--accent);letter-spacing:.05em;text-decoration:none;}
+    .nav-logo span{color:var(--text-dim);}
+    .btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,var(--accent2),var(--accent3));color:#fff;padding:.75rem 1.75rem;border-radius:8px;font-weight:600;font-size:.95rem;border:none;cursor:pointer;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s;text-decoration:none;}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,102,255,.4);}
+    .btn-primary span{position:relative;z-index:1;}
+    .btn-ghost{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);color:var(--text-main);padding:.75rem 1.75rem;border-radius:8px;font-weight:500;cursor:pointer;background:transparent;transition:border-color .2s,color .2s,background .2s;text-decoration:none;}
+    .btn-ghost:hover{border-color:var(--accent);color:var(--accent);background:rgba(0,212,255,.05);}
+    .badge{display:inline-block;font-size:.72rem;font-family:'Space Mono',monospace;padding:.25rem .65rem;border-radius:4px;}
+    #toast{position:fixed;top:5rem;right:1.5rem;z-index:200;background:var(--bg-card);border:1px solid var(--green);color:var(--green);padding:.75rem 1.25rem;border-radius:8px;font-size:.85rem;transform:translateY(-20px);opacity:0;transition:all .3s;pointer-events:none;}
+    #toast.show{transform:translateY(0);opacity:1;}
+    @media(max-width:768px){
+      .product-grid{grid-template-columns:1fr !important;}
+      #navbar{padding:1rem;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div id="toast"></div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">TECHNO<span>INFODZ</span></a>
+  <a href="index.html#products" class="btn-ghost" style="padding:.5rem 1rem;font-size:.85rem;">← العودة للمنتجات</a>
+</nav>
+
+<!-- CONTENT -->
+<main style="position:relative;z-index:1;padding:7rem 1.5rem 4rem;max-width:1100px;margin:auto;">
+
+  <!-- LOADING -->
+  <div id="loading" style="text-align:center;padding:5rem;">
+    <div style="font-family:'Space Mono',monospace;color:var(--accent);font-size:1rem;animation:pulse 1.5s infinite;">
+      ⏳ جاري تحميل المنتج...
+    </div>
+  </div>
+
+  <!-- NOT FOUND -->
+  <div id="not-found" style="display:none;text-align:center;padding:5rem;">
+    <div style="font-size:3rem;margin-bottom:1rem;">😕</div>
+    <h2 style="color:var(--text-bright);margin-bottom:.5rem;">المنتج غير موجود</h2>
+    <p style="color:var(--text-mid);margin-bottom:2rem;">لم يتم العثور على هذا المنتج.</p>
+    <a href="index.html#products" class="btn-primary"><span>← العودة للمنتجات</span></a>
+  </div>
+
+  <!-- PRODUCT DETAIL -->
+  <div id="product-detail" style="display:none;">
+
+    <!-- BREADCRUMB -->
+    <div style="font-size:.8rem;color:var(--text-dim);margin-bottom:2rem;font-family:'Space Mono',monospace;">
+      <a href="index.html" style="color:var(--text-dim);text-decoration:none;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-dim)'">الرئيسية</a>
+      <span style="margin:0 .5rem;">›</span>
+      <a href="index.html#products" style="color:var(--text-dim);text-decoration:none;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-dim)'">المنتجات</a>
+      <span style="margin:0 .5rem;">›</span>
+      <span id="breadcrumb-name" style="color:var(--text-main);"></span>
+    </div>
+
+    <!-- MAIN GRID -->
+    <div class="product-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;">
+
+      <!-- IMAGE -->
+      <div>
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:2rem;display:flex;align-items:center;justify-content:center;min-height:380px;overflow:hidden;">
+          <img id="p-img" src="" alt="" style="max-width:100%;max-height:340px;object-fit:contain;border-radius:8px;"
+               onerror="this.parentElement.innerHTML='<div style=font-size:5rem;text-align:center>📦</div>'"/>
+        </div>
+      </div>
+
+      <!-- INFO -->
+      <div>
+        <span id="p-cat" class="badge" style="margin-bottom:1rem;"></span>
+        <h1 id="p-name" style="font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;color:var(--text-bright);margin-bottom:1rem;line-height:1.3;"></h1>
+        <p id="p-desc" style="color:var(--text-mid);font-size:.95rem;line-height:1.8;margin-bottom:1.75rem;"></p>
+
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;margin-bottom:1.75rem;">
+          <div style="font-size:.75rem;color:var(--text-dim);margin-bottom:.35rem;font-family:'Space Mono',monospace;">السعر</div>
+          <div id="p-price" style="font-family:'Space Mono',monospace;color:var(--accent);font-size:1.6rem;font-weight:700;"></div>
+        </div>
+
+        <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
+          <button class="btn-primary" id="btn-cart" onclick="" style="flex:1;justify-content:center;">
+            <span>🛒 إضافة للسلة</span>
+          </button>
+          <a id="btn-whatsapp" href="" target="_blank" class="btn-ghost" style="flex:1;justify-content:center;">
+            💬 استفسار واتساب
+          </a>
+        </div>
+
+        <!-- SHARE -->
+        <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border);">
+          <div style="font-size:.8rem;color:var(--text-dim);margin-bottom:.75rem;">مشاركة المنتج</div>
+          <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+            <button onclick="copyLink()" class="btn-ghost" style="padding:.45rem 1rem;font-size:.8rem;">🔗 نسخ الرابط</button>
+            <a id="share-whatsapp" href="" target="_blank" class="btn-ghost" style="padding:.45rem 1rem;font-size:.8rem;">📲 مشاركة واتساب</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RELATED PRODUCTS -->
+    <div style="margin-top:4rem;">
+      <h2 style="font-size:1.4rem;font-weight:700;color:var(--text-bright);margin-bottom:1.5rem;">منتجات مشابهة</h2>
+      <div id="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.25rem;"></div>
+    </div>
+
+  </div>
+</main>
+
+<!-- CART -->
+<button id="cart-btn" onclick="toggleCart()" style="position:fixed;bottom:2rem;left:2rem;z-index:90;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--accent2),var(--accent3));border:none;cursor:pointer;font-size:1.3rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(0,102,255,.4);transition:transform .2s;">
+  🛒<span id="cart-count" style="display:none;position:absolute;top:-4px;right:-4px;background:#ff6b35;color:#fff;width:20px;height:20px;border-radius:50%;font-size:.7rem;font-weight:700;display:none;align-items:center;justify-content:center;"></span>
+</button>
+<div id="cart-panel" style="position:fixed;bottom:6rem;left:1.5rem;z-index:90;background:var(--bg-panel);border:1px solid var(--border);border-radius:16px;width:300px;padding:1.25rem;display:none;box-shadow:0 20px 60px rgba(0,0,0,.5);">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+    <h3 style="font-size:1rem;font-weight:700;">🛒 سلة الطلبات</h3>
+    <button onclick="toggleCart()" style="background:none;border:none;color:var(--text-dim);cursor:pointer;font-size:1.2rem;">✕</button>
+  </div>
+  <div id="cart-items"><p style="color:var(--text-dim);font-size:.85rem;text-align:center;padding:1rem;">السلة فارغة</p></div>
+  <button id="send-order-btn" class="btn-primary" style="width:100%;justify-content:center;margin-top:1rem;display:none;" onclick="sendOrder()"><span>📩 إرسال الطلب عبر واتساب</span></button>
+</div>
+
+<script>
+const WHATSAPP = '213666636473';
+const DATA_URL = 'https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/data.json';
+const catStyles = {
+  'برمجيات':         { bg:'rgba(0,102,255,.15)',  color:'#5fa8ff' },
+  'عتاد إعلام آلي':  { bg:'rgba(91,0,255,.15)',   color:'#a87fff' },
+  'كاميرات مراقبة':  { bg:'rgba(0,200,150,.1)',   color:'#00c896' },
+  'شبكات':           { bg:'rgba(255,136,0,.1)',    color:'#ffaa44' },
+};
+
+let allProducts = [];
+const cart = [];
+
+// ── LOAD ──
+async function init() {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+  if (!id) { showNotFound(); return; }
+
+  try {
+    const res = await fetch(DATA_URL + '?v=' + Date.now());
+    if (!res.ok) throw new Error();
+    const data = await res.json();
+    allProducts = Array.isArray(data) ? data : (data.products || []);
+    const product = allProducts.find(p => p.id === id);
+    if (!product) { showNotFound(); return; }
+    renderProduct(product);
+  } catch(e) {
+    showNotFound();
+  }
+}
+
+function showNotFound() {
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('not-found').style.display = 'block';
+}
+
+function renderProduct(p) {
+  document.title = p.name + ' — TECHNO INFODZ';
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('product-detail').style.display = 'block';
+
+  document.getElementById('breadcrumb-name').textContent = p.name;
+
+  if (p.img) {
+    document.getElementById('p-img').src = p.img;
+    document.getElementById('p-img').alt = p.name;
+  } else {
+    document.getElementById('p-img').parentElement.innerHTML = `<div style="font-size:5rem;text-align:center;">${p.icon || '📦'}</div>`;
+  }
+
+  const cs = catStyles[p.cat] || { bg:'rgba(0,212,255,.1)', color:'var(--accent)' };
+  const catEl = document.getElementById('p-cat');
+  catEl.textContent = p.cat;
+  catEl.style.background = cs.bg;
+  catEl.style.color = cs.color;
+
+  document.getElementById('p-name').textContent = p.name;
+  document.getElementById('p-desc').textContent = p.desc || 'حلول تقنية متكاملة من TECHNO INFODZ';
+  document.getElementById('p-price').textContent = p.price;
+
+  document.getElementById('btn-cart').onclick = () => addToCart(p.name);
+
+  const waMsg = encodeURIComponent(`مرحباً TECHNO INFODZ،\nأريد الاستفسار عن: ${p.name}\nالسعر: ${p.price}`);
+  document.getElementById('btn-whatsapp').href = `https://wa.me/${WHATSAPP}?text=${waMsg}`;
+
+  const shareMsg = encodeURIComponent(`${p.name}\n${window.location.href}`);
+  document.getElementById('share-whatsapp').href = `https://wa.me/?text=${shareMsg}`;
+
+  renderRelated(p);
+}
+
+function renderRelated(current) {
+  const related = allProducts.filter(p => p.id !== current.id && p.cat === current.cat).slice(0, 3);
+  const grid = document.getElementById('related-grid');
+  if (!related.length) { grid.parentElement.style.display = 'none'; return; }
+  grid.innerHTML = related.map(p => {
+    const cs = catStyles[p.cat] || { bg:'rgba(0,212,255,.1)', color:'var(--accent)' };
+    return `
+    <a href="product.html?id=${p.id}" style="text-decoration:none;">
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:transform .3s,border-color .3s;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(0,212,255,.3)'" onmouseout="this.style.transform='';this.style.borderColor='var(--border)'">
+        <div style="height:160px;background:#0e1520;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+          ${p.img ? `<img src="${p.img}" style="max-width:90%;max-height:90%;object-fit:contain;" onerror="this.parentElement.innerHTML='<div style=font-size:2.5rem>📦</div>'"/>` : `<div style="font-size:2.5rem;">${p.icon||'📦'}</div>`}
+        </div>
+        <div style="padding:1rem;">
+          <span style="font-size:.65rem;font-family:'Space Mono',monospace;padding:.18rem .5rem;border-radius:4px;background:${cs.bg};color:${cs.color};">${p.cat}</span>
+          <h4 style="font-size:.9rem;font-weight:700;color:#fff;margin-top:.5rem;margin-bottom:.35rem;">${p.name}</h4>
+          <div style="font-family:'Space Mono',monospace;color:var(--accent);font-size:.9rem;font-weight:700;">${p.price}</div>
+        </div>
+      </div>
+    </a>`;
+  }).join('');
+}
+
+function copyLink() {
+  navigator.clipboard.writeText(window.location.href).then(() => showToast('✓ تم نسخ الرابط'));
+}
+
+// ── CART ──
+function addToCart(item) {
+  if (!cart.includes(item)) cart.push(item);
+  renderCart();
+  showToast(`✓ تمت إضافة "${item}"`);
+}
+function removeFromCart(i) { cart.splice(i,1); renderCart(); }
+function renderCart() {
+  const el = document.getElementById('cart-items');
+  const btn = document.getElementById('send-order-btn');
+  const count = document.getElementById('cart-count');
+  if (!cart.length) {
+    el.innerHTML = '<p style="color:var(--text-dim);font-size:.85rem;text-align:center;padding:1rem;">السلة فارغة</p>';
+    btn.style.display = 'none'; count.style.display = 'none';
+  } else {
+    el.innerHTML = cart.map((item,i) => `<div style="display:flex;justify-content:space-between;align-items:center;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:.85rem;"><span>${item}</span><button onclick="removeFromCart(${i})" style="background:none;border:none;color:#ff6b35;cursor:pointer;">✕</button></div>`).join('');
+    btn.style.display = 'flex'; count.style.display = 'flex'; count.textContent = cart.length;
+  }
+}
+function toggleCart() { document.getElementById('cart-panel').style.display = document.getElementById('cart-panel').style.display === 'block' ? 'none' : 'block'; }
+function sendOrder() {
+  const items = cart.join('\n• ');
+  const msg = encodeURIComponent(`مرحباً TECHNO INFODZ،\nأريد الاستفسار عن:\n• ${items}`);
+  window.open(`https://wa.me/${WHATSAPP}?text=${msg}`, '_blank');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+init();
+</script>
+</body>
+</html>
