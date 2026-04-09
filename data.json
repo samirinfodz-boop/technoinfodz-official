@@ -1,58 +1,13 @@
 {
-  "categories": [
+  "products": [
     {
-      "id": "software",
-      "name": "برامج الإدارة",
-      "products": [
-        {
-          "id": "pme-pro",
-          "name": "PME Pro",
-          "category": "software",
-          "price": "",
-          "description": "برنامج إدارة المؤسسات الصغيرة والمتوسطة",
-          "images": [],
-          "whatsapp": "213666636473"
-        },
-        {
-          "id": "hyper-pro",
-          "name": "Hyper Pro",
-          "category": "software",
-          "price": "",
-          "description": "برنامج الإدارة المتقدم",
-          "images": [],
-          "whatsapp": "213666636473"
-        }
-      ]
-    },
-    {
-      "id": "pos",
-      "name": "أنظمة نقاط البيع",
-      "products": [
-        {
-          "id": "pos-system",
-          "name": "نظام POS",
-          "category": "pos",
-          "price": "",
-          "description": "نظام نقطة البيع المتكامل",
-          "images": [],
-          "whatsapp": "213666636473"
-        }
-      ]
-    },
-    {
-      "id": "hardware",
-      "name": "عتاد إعلام آلي",
-      "products": []
-    },
-    {
-      "id": "cameras",
-      "name": "كاميرات المراقبة",
-      "products": []
-    },
-    {
-      "id": "networking",
-      "name": "شبكات وخدمات تقنية",
-      "products": []
+      "id": "1775721441113",
+      "name": "idepad",
+      "price": "55000",
+      "cat": "عتاد إعلام آلي",
+      "icon": "📦",
+      "desc": "",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1775721425271.jpg"
     }
   ]
 }
