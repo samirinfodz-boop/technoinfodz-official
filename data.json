@@ -1,31 +1,13 @@
 {
   "products": [
     {
-      "id": "1",
-      "name": "PME Pro",
-      "price": "اتصل للسعر",
+      "id": "1775725691702",
+      "name": "برنامج تسيير مؤسسات الانتاج والتصنيع",
+      "price": "تواصل معنا",
       "cat": "برمجيات",
-      "icon": "💼",
-      "desc": "برنامج إدارة المؤسسات الصغيرة والمتوسطة",
-      "img": ""
-    },
-    {
-      "id": "2",
-      "name": "Hyper Pro",
-      "price": "اتصل للسعر",
-      "cat": "برمجيات",
-      "icon": "⚡",
-      "desc": "برنامج الإدارة المتقدم",
-      "img": ""
-    },
-    {
-      "id": "3",
-      "name": "نظام POS",
-      "price": "اتصل للسعر",
-      "cat": "برمجيات",
-      "icon": "🖥️",
-      "desc": "نظام نقطة البيع المتكامل",
-      "img": ""
+      "icon": "📦",
+      "desc": "",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774865522075.jpg"
     }
   ]
 }
