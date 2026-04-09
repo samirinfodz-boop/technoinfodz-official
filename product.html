@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TECHNO INFODZ — تفاصيل المنتج</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg-deep:#090d14;--bg-panel:#0e1520;--bg-card:#121b2a;
+      --accent:#00d4ff;--accent2:#0066ff;--accent3:#7b2fff;
+      --text-dim:#5a7a99;--text-mid:#8fb0cc;--text-main:#cce0f5;--text-bright:#f0f8ff;
+      --green:#00ff9d;--warn:#ff6b35;--border:rgba(0,212,255,.12);--glow:0 0 40px rgba(0,212,255,.18);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg-deep);color:var(--text-main);font-family:'IBM Plex Sans Arabic',sans-serif;overflow-x:hidden;min-height:100vh}
+    ::selection{background:var(--accent);color:#000}
+    ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg-deep)}::-webkit-scrollbar-thumb{background:var(--accent2);border-radius:4px}
+    body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+      background-image:linear-gradient(rgba(0,212,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,.03) 1px,transparent 1px);
+      background-size:50px 50px}
+    body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.025;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size:200px}
+    .orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(120px);opacity:.18}
+    .orb-1{width:600px;height:600px;background:var(--accent2);top:-200px;right:-200px}
+    .orb-2{width:400px;height:400px;background:var(--accent3);bottom:10%;left:-150px}
+    .gradient-text{background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 50%,var(--accent3) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,var(--accent2),var(--accent3));color:#fff;padding:.75rem 1.75rem;border-radius:8px;font-weight:600;font-size:.95rem;border:none;cursor:pointer;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s;text-decoration:none;font-family:'IBM Plex Sans Arabic',sans-serif}
+    .btn-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--accent),var(--accent2));opacity:0;transition:opacity .3s}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,102,255,.4)}
+    .btn-primary:hover::before{opacity:1}
+    .btn-primary span{position:relative;z-index:1}
+    .btn-ghost{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);color:var(--text-main);padding:.75rem 1.75rem;border-radius:8px;font-weight:500;cursor:pointer;background:transparent;transition:border-color .2s,color .2s,background .2s;text-decoration:none;font-family:'IBM Plex Sans Arabic',sans-serif}
+    .btn-ghost:hover{border-color:var(--accent);color:var(--accent);background:rgba(0,212,255,.05)}
+    .glass-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s}
+    .glass-card:hover{transform:translateY(-4px);box-shadow:var(--glow);border-color:rgba(0,212,255,.3)}
+    #navbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(9,13,20,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+    .nav-logo{font-family:'Space Mono',monospace;font-size:1.1rem;color:var(--accent);letter-spacing:.05em;text-decoration:none}
+    .nav-logo span{color:var(--text-dim)}
+    #toast{position:fixed;top:5rem;right:1.5rem;z-index:200;background:var(--bg-card);border:1px solid var(--green);color:var(--green);padding:.75rem 1.25rem;border-radius:8px;font-size:.85rem;transform:translateY(-20px);opacity:0;transition:all .3s;pointer-events:none}
+    #toast.show{transform:translateY(0);opacity:1}
+    .spinner{width:40px;height:40px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 1rem}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .img-main{width:100%;aspect-ratio:4/3;background:rgba(0,0,0,.25);border-radius:16px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+    .img-main img{width:100%;height:100%;object-fit:contain;padding:1rem;display:none}
+    .rel-card{display:block;text-decoration:none;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s}
+    .rel-card:hover{transform:translateY(-4px);box-shadow:var(--glow);border-color:rgba(0,212,255,.3)}
+    .rel-img{width:100%;height:150px;background:rgba(0,0,0,.2);display:flex;align-items:center;justify-content:center;overflow:hidden;border-bottom:1px solid var(--border)}
+    .rel-img img{max-width:85%;max-height:85%;object-fit:contain}
+    #cart-btn{position:fixed;bottom:2rem;left:2rem;z-index:90;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--accent2),var(--accent3));border:none;cursor:pointer;font-size:1.3rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(0,102,255,.4);transition:transform .2s}
+    #cart-btn:hover{transform:scale(1.1)}
+    #cart-count{position:absolute;top:-4px;right:-4px;background:var(--warn);color:#fff;width:20px;height:20px;border-radius:50%;font-size:.7rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+    #cart-panel{position:fixed;bottom:6rem;left:1.5rem;z-index:90;background:var(--bg-panel);border:1px solid var(--border);border-radius:16px;width:300px;padding:1.25rem;display:none;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+    #cart-panel.open{display:block}
+    .cart-item{display:flex;justify-content:space-between;align-items:center;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:.85rem}
+    .cart-item:last-child{border-bottom:none}
+    .remove-item{background:none;border:none;color:var(--warn);cursor:pointer;font-size:1rem}
+    .meta-box{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:.85rem 1rem}
+    .meta-lbl{font-size:.68rem;color:var(--text-dim);margin-bottom:.25rem;font-family:'Space Mono',monospace}
+    .meta-val{font-size:.85rem;color:var(--text-bright);font-weight:500}
+    @media(max-width:768px){
+      #cart-panel{width:calc(100vw - 3rem);left:1.5rem}
+      #prod-grid-layout{grid-template-columns:1fr !important;gap:2rem !important}
+    }
+  </style>
+</head>
+<body>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div id="toast"></div>
+
+<nav id="navbar">
+  <a class="nav-logo" href="index.html">TECHNO<span>INFODZ</span></a>
+  <a href="index.html" class="btn-ghost" style="padding:.5rem 1.1rem;font-size:.85rem;">← العودة للمنتجات</a>
+</nav>
+
+<main style="max-width:1100px;margin:0 auto;padding:6rem 1.5rem 4rem;position:relative;z-index:1;">
+
+  <div id="loading" style="text-align:center;padding:5rem 0;">
+    <div class="spinner"></div>
+    <p style="color:var(--text-dim);font-size:.9rem;">جاري تحميل المنتج...</p>
+  </div>
+
+  <div id="not-found" style="display:none;text-align:center;padding:5rem 0;">
+    <div style="font-size:4rem;margin-bottom:1.5rem;opacity:.35;">📦</div>
+    <h2 style="font-size:1.6rem;font-weight:700;color:var(--text-bright);margin-bottom:.75rem;">المنتج غير موجود</h2>
+    <p style="color:var(--text-mid);margin-bottom:2rem;font-size:.9rem;">لم يتم العثور على هذا المنتج، ربما تم حذفه أو الرابط خاطئ.</p>
+    <a href="index.html" class="btn-primary"><span>← عرض جميع المنتجات</span></a>
+  </div>
+
+  <div id="product-content" style="display:none;">
+
+    <!-- BREADCRUMB -->
+    <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:2.5rem;flex-wrap:wrap;">
+      <a href="index.html" style="color:var(--text-dim);text-decoration:none;font-size:.8rem;transition:color .2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-dim)'">الرئيسية</a>
+      <span style="color:var(--text-dim);opacity:.5;">›</span>
+      <a href="index.html#products" style="color:var(--text-dim);text-decoration:none;font-size:.8rem;transition:color .2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-dim)'">المنتجات</a>
+      <span style="color:var(--text-dim);opacity:.5;">›</span>
+      <span id="bc-name" style="color:var(--text-main);font-size:.8rem;">—</span>
+    </div>
+
+    <!-- PRODUCT GRID -->
+    <div id="prod-grid-layout" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-bottom:4rem;">
+
+      <!-- IMAGE -->
+      <div class="reveal">
+        <div class="img-main">
+          <span id="img-ph" style="font-size:5rem;opacity:.3;">📦</span>
+          <img id="main-img" src="" alt=""
+            onload="this.style.display='block';document.getElementById('img-ph').style.display='none';"
+            onerror="this.style.display='none';document.getElementById('img-ph').style.display='block';"/>
+        </div>
+      </div>
+
+      <!-- INFO -->
+      <div class="reveal" style="display:flex;flex-direction:column;gap:1.5rem;">
+
+        <div>
+          <span id="cat-badge" style="display:inline-block;font-size:.7rem;font-family:'Space Mono',monospace;padding:.22rem .7rem;border-radius:4px;background:rgba(0,102,212,.15);color:#5fa8ff;border:1px solid rgba(0,102,212,.25);">—</span>
+        </div>
+
+        <h1 id="prod-title" style="font-size:clamp(1.4rem,3vw,2.1rem);font-weight:700;color:var(--text-bright);line-height:1.3;">—</h1>
+
+        <div id="prod-price" style="font-family:'Space Mono',monospace;font-size:1.5rem;font-weight:700;color:var(--accent);background:rgba(0,212,255,.06);border:1px solid var(--border);padding:.85rem 1.25rem;border-radius:10px;width:fit-content;">—</div>
+
+        <p id="prod-desc" style="color:var(--text-mid);font-size:.9rem;line-height:1.8;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;display:none;"></p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;">
+          <div class="meta-box"><div class="meta-lbl">الفئة</div><div class="meta-val" id="meta-cat">—</div></div>
+          <div class="meta-box"><div class="meta-lbl">الحالة</div><div class="meta-val" style="color:var(--green);">متوفر ✓</div></div>
+          <div class="meta-box"><div class="meta-lbl">الدعم التقني</div><div class="meta-val">مضمون ✓</div></div>
+          <div class="meta-box"><div class="meta-lbl">التغطية</div><div class="meta-val">جميع ولايات الجزائر</div></div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:.75rem;">
+          <a id="wa-btn" href="#" target="_blank" class="btn-primary" style="width:100%;justify-content:center;padding:1rem;font-size:1rem;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;position:relative;z-index:1;">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            <span>طلب عبر واتساب</span>
+          </a>
+          <div style="display:flex;gap:.65rem;">
+            <button id="cart-add-btn" class="btn-ghost" style="flex:1;justify-content:center;"><span>🛒 أضف للسلة</span></button>
+            <button onclick="shareProduct()" class="btn-ghost" style="flex:1;justify-content:center;"><span>🔗 مشاركة</span></button>
+          </div>
+          <div id="share-copied" style="display:none;text-align:center;font-size:.75rem;color:var(--green);">✓ تم نسخ الرابط</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RELATED -->
+    <div id="related-section" style="display:none;">
+      <hr style="border:none;border-top:1px solid var(--border);margin-bottom:2.5rem;"/>
+      <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem;">
+        <span style="font-family:'Space Mono',monospace;font-size:.75rem;color:var(--accent);">//</span>
+        <h2 style="font-size:1.3rem;font-weight:700;color:var(--text-bright);">منتجات <span class="gradient-text">مشابهة</span></h2>
+      </div>
+      <div id="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1.1rem;"></div>
+    </div>
+
+  </div>
+</main>
+
+<footer style="border-top:1px solid var(--border);padding:2.5rem 1.5rem;position:relative;z-index:1;">
+  <div style="max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+    <div>
+      <div class="nav-logo" style="font-size:1.1rem;margin-bottom:.3rem;">TECHNO<span style="color:var(--text-dim);">INFODZ</span></div>
+      <div style="color:var(--text-dim);font-size:.8rem;">© 2024 جميع الحقوق محفوظة</div>
+    </div>
+    <a href="https://wa.me/213666636473" style="color:var(--text-dim);font-size:.8rem;font-family:'Space Mono',monospace;text-decoration:none;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-dim)'">213666636473</a>
+    <div style="color:var(--text-dim);font-size:.75rem;font-family:'Space Mono',monospace;">Built with ❤️ in Algeria</div>
+  </div>
+</footer>
+
+<button id="cart-btn" onclick="toggleCart()">🛒<span id="cart-count" style="display:none;">0</span></button>
+<div id="cart-panel">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+    <h3 style="font-size:1rem;font-weight:700;">🛒 سلة الطلبات</h3>
+    <button onclick="toggleCart()" style="background:none;border:none;color:var(--text-dim);cursor:pointer;font-size:1.2rem;">✕</button>
+  </div>
+  <div id="cart-items"><p style="color:var(--text-dim);font-size:.85rem;text-align:center;padding:1rem;">السلة فارغة</p></div>
+  <button id="send-order-btn" class="btn-primary" style="width:100%;justify-content:center;margin-top:1rem;display:none;" onclick="sendOrder()">
+    <span>📩 إرسال الطلب عبر واتساب</span>
+  </button>
+</div>
+
+<script>
+const PRODUCTS_URL = 'https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/products.json';
+const WA_NUMBER = '213666636473';
+let allProducts = [], currentProduct = null;
+
+const cart = [];
+function addToCart(name){
+  if(!cart.includes(name)) cart.push(name);
+  renderCart(); showToast('✓ تمت إضافة "'+name+'"');
+}
+function removeFromCart(i){cart.splice(i,1);renderCart();}
+function renderCart(){
+  const el=document.getElementById('cart-items'),btn=document.getElementById('send-order-btn'),count=document.getElementById('cart-count');
+  if(!cart.length){el.innerHTML='<p style="color:var(--text-dim);font-size:.85rem;text-align:center;padding:1rem;">السلة فارغة</p>';btn.style.display='none';count.style.display='none';}
+  else{el.innerHTML=cart.map((item,i)=>`<div class="cart-item"><span>${item}</span><button class="remove-item" onclick="removeFromCart(${i})">✕</button></div>`).join('');btn.style.display='flex';count.style.display='flex';count.textContent=cart.length;}
+}
+function toggleCart(){document.getElementById('cart-panel').classList.toggle('open');}
+function sendOrder(){
+  const msg=encodeURIComponent('مرحباً TECHNO INFODZ،\nأريد الاستفسار عن:\n• '+cart.join('\n• '));
+  window.open('https://wa.me/'+WA_NUMBER+'?text='+msg,'_blank');
+}
+
+function showToast(msg){
+  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('visible'),i*80);});
+},{threshold:0.1});
+
+function getProductId(){return new URLSearchParams(window.location.search).get('id');}
+
+async function loadData(){
+  try{
+    const r=await fetch(PRODUCTS_URL+'?v='+Date.now());
+    if(!r.ok) throw new Error('فشل');
+    const d=await r.json();
+    allProducts=Array.isArray(d)?d:(d.products||[]);
+  }catch(e){allProducts=[];}
+}
+
+function renderProduct(p){
+  document.title=p.name+' — TECHNO INFODZ';
+  document.getElementById('bc-name').textContent=p.name;
+  if(p.img){const img=document.getElementById('main-img');img.src=p.img;img.alt=p.name;}
+  document.getElementById('cat-badge').textContent=p.cat||'—';
+  document.getElementById('prod-title').textContent=p.name;
+  document.getElementById('prod-price').textContent=p.price||'تواصل معنا';
+  const descEl=document.getElementById('prod-desc');
+  if(p.desc&&p.desc.trim()){descEl.textContent=p.desc;descEl.style.display='block';}
+  document.getElementById('meta-cat').textContent=p.cat||'—';
+  const waMsg=encodeURIComponent('مرحباً، أريد الاستفسار عن المنتج: '+p.name);
+  document.getElementById('wa-btn').href='https://wa.me/'+WA_NUMBER+'?text='+waMsg;
+  document.getElementById('cart-add-btn').onclick=()=>addToCart(p.name);
+}
+
+function renderRelated(current){
+  const related=allProducts.filter(p=>p.cat===current.cat&&p.id!==current.id).slice(0,4);
+  if(!related.length) return;
+  document.getElementById('related-section').style.display='block';
+  document.getElementById('related-grid').innerHTML=related.map(p=>`
+    <a class="rel-card" href="product.html?id=${p.id}">
+      <div class="rel-img">
+        ${p.img?`<img src="${p.img}" alt="${p.name}" onerror="this.parentElement.innerHTML='<span style=font-size:2.5rem>${p.icon||'📦'}</span>'">`:`<span style="font-size:2.5rem;">${p.icon||'📦'}</span>`}
+      </div>
+      <div style="padding:.9rem;">
+        <div style="font-size:.875rem;font-weight:600;color:var(--text-bright);margin-bottom:.3rem;line-height:1.4;">${p.name}</div>
+        <div style="font-family:'Space Mono',monospace;font-size:.8rem;color:var(--accent);">${p.price||'تواصل معنا'}</div>
+      </div>
+    </a>
+  `).join('');
+  document.querySelectorAll('#related-grid .rel-card').forEach(el=>observer.observe(el));
+}
+
+function shareProduct(){
+  const url=window.location.href;
+  if(navigator.share){navigator.share({title:currentProduct?.name||'TECHNO INFODZ',url});}
+  else{
+    navigator.clipboard.writeText(url).then(()=>{
+      document.getElementById('share-copied').style.display='block';
+      showToast('✓ تم نسخ رابط المنتج');
+      setTimeout(()=>document.getElementById('share-copied').style.display='none',2500);
+    }).catch(()=>showToast('❌ فشل النسخ'));
+  }
+}
+
+async function init(){
+  const id=getProductId();
+  if(!id){document.getElementById('loading').style.display='none';document.getElementById('not-found').style.display='block';return;}
+  await loadData();
+  const product=allProducts.find(p=>String(p.id)===String(id));
+  document.getElementById('loading').style.display='none';
+  if(!product){document.getElementById('not-found').style.display='block';return;}
+  currentProduct=product;
+  renderProduct(product);
+  renderRelated(product);
+  document.getElementById('product-content').style.display='block';
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+}
+init();
+</script>
+</body>
+</html>
