@@ -1,5 +1,5 @@
 {
-  "products": [
+  "software": [
     {
       "id": "1774865578641",
       "name": "برنامج تسيير مؤسسات الانتاج والتصنيع",
@@ -72,6 +72,8 @@
       "desc": "",
       "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891713117.png"
        },
+    {
+  "hardware": [
     {
       "id": "1774891746958",
       "name": "LAPTOP LENOVO",
