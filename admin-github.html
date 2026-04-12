@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>TECHNO INFODZ — لوحة التحكم</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#060b14;--panel:#0a1220;--card:#0e1829;--card2:#121f33;
+  --a:#00e5ff;--a2:#0052d4;--a3:#5b00ff;--a4:#00c896;
+  --red:#ff3d5a;--warn:#ff8800;--gold:#ffd700;
+  --b:rgba(0,229,255,.09);--b2:rgba(0,229,255,.18);
+  --t:#a8c8e8;--t2:#4a7090;--br:#dbeeff;
+  --sh:0 0 40px rgba(0,229,255,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t);font-family:'IBM Plex Sans Arabic',sans-serif;min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:linear-gradient(rgba(0,229,255,.02) 1px,transparent 1px),
+             linear-gradient(90deg,rgba(0,229,255,.02) 1px,transparent 1px);
+  background-size:50px 50px}
+::selection{background:var(--a);color:#000}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:var(--a2);border-radius:3px}
+
+/* ── SETUP SCREEN ── */
+#setup-screen{
+  position:fixed;inset:0;z-index:600;background:var(--bg);
+  display:flex;align-items:center;justify-content:center;padding:1.5rem;
+}
+.setup-box{
+  background:var(--panel);border:1px solid var(--b2);border-radius:22px;
+  padding:2.5rem;width:100%;max-width:460px;position:relative;overflow:hidden;
+}
+.setup-box::after{content:'';position:absolute;top:-100px;left:-100px;
+  width:300px;height:300px;background:var(--a2);border-radius:50%;
+  filter:blur(120px);opacity:.12;pointer-events:none;}
+.setup-logo{font-family:'JetBrains Mono',monospace;font-size:1.15rem;
+  color:var(--a);margin-bottom:.2rem;position:relative;}
+.setup-logo em{color:var(--t2);font-style:normal;}
+.setup-badge{display:inline-flex;align-items:center;gap:.4rem;
+  font-size:.72rem;background:rgba(0,229,255,.08);border:1px solid var(--b2);
+  padding:.25rem .7rem;border-radius:20px;color:var(--a);margin-bottom:1.75rem;}
+.lbl{font-size:.8rem;color:var(--t2);margin-bottom:.4rem;display:block;}
+.inp{width:100%;background:var(--card);border:1px solid var(--b);color:var(--br);
+  padding:.72rem 1rem;border-radius:10px;font-family:'IBM Plex Sans Arabic',sans-serif;
+  font-size:.88rem;outline:none;transition:border-color .2s;}
+.inp:focus{border-color:var(--a);}
+.inp-group{margin-bottom:.9rem;}
+.help-txt{font-size:.72rem;color:var(--t2);margin-top:.35rem;line-height:1.5;}
+.help-txt a{color:var(--a);text-decoration:none;}
+.btn-connect{width:100%;margin-top:1.25rem;background:linear-gradient(135deg,var(--a2),var(--a3));
+  color:#fff;border:none;padding:.85rem;border-radius:11px;font-size:.95rem;font-weight:600;
+  cursor:pointer;font-family:'IBM Plex Sans Arabic',sans-serif;transition:opacity .2s,transform .2s;}
+.btn-connect:hover{opacity:.9;transform:translateY(-1px);}
+.setup-err{color:var(--red);font-size:.78rem;margin-top:.6rem;text-align:center;display:none;padding:.5rem;
+  background:rgba(255,61,90,.06);border-radius:8px;}
+.security-note{margin-top:1.25rem;padding:.85rem;background:rgba(0,200,150,.05);
+  border:1px solid rgba(0,200,150,.15);border-radius:10px;font-size:.72rem;color:var(--t2);line-height:1.6;}
+.security-note span{color:var(--a4);}
+
+/* ── APP ── */
+#app{display:none;position:relative;z-index:1;}
+.sidebar{position:fixed;top:0;right:0;bottom:0;width:230px;
+  background:var(--panel);border-left:1px solid var(--b);
+  padding:1.4rem .9rem;z-index:50;display:flex;flex-direction:column;gap:.3rem;}
+.s-logo{font-family:'JetBrains Mono',monospace;font-size:.9rem;color:var(--a);
+  padding:.5rem .7rem;margin-bottom:.5rem;}
+.s-logo em{color:var(--t2);font-style:normal;}
+.s-repo{font-size:.7rem;color:var(--t2);padding:0 .7rem .9rem;
+  border-bottom:1px solid var(--b);margin-bottom:.5rem;
+  font-family:'JetBrains Mono',monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.nav{display:flex;align-items:center;gap:.6rem;padding:.6rem .8rem;border-radius:9px;
+  color:var(--t2);font-size:.855rem;cursor:pointer;border:none;background:none;
+  width:100%;text-align:right;font-family:'IBM Plex Sans Arabic',sans-serif;transition:all .2s;}
+.nav:hover{background:rgba(0,229,255,.06);color:var(--a);}
+.nav.on{background:rgba(0,229,255,.1);color:var(--a);font-weight:600;}
+.nav .ic{font-size:1rem;min-width:20px;text-align:center;}
+.s-foot{margin-top:auto;}
+.s-status{display:flex;align-items:center;gap:.5rem;padding:.5rem .8rem;
+  font-size:.72rem;color:var(--a4);margin-bottom:.6rem;}
+.s-status::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--a4);
+  animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.btn-out{width:100%;padding:.6rem;border-radius:9px;background:rgba(255,61,90,.07);
+  border:1px solid rgba(255,61,90,.18);color:var(--red);cursor:pointer;font-size:.82rem;
+  font-family:'IBM Plex Sans Arabic',sans-serif;transition:background .2s;}
+.btn-out:hover{background:rgba(255,61,90,.14);}
+
+.main{margin-right:230px;padding:2rem;min-height:100vh;}
+.page{display:none;animation:fadeIn .3s ease;}
+.page.on{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* ── PAGE HEADER ── */
+.ph{margin-bottom:1.75rem;display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.ph-left h1{font-size:1.55rem;font-weight:700;color:var(--br);margin-bottom:.25rem;}
+.ph-left p{color:var(--t2);font-size:.835rem;}
+
+/* ── STATS ── */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:.9rem;margin-bottom:1.75rem;}
+.sc{background:var(--card);border:1px solid var(--b);border-radius:13px;padding:1.1rem;
+  display:flex;align-items:center;gap:.85rem;transition:border-color .2s;}
+.sc:hover{border-color:var(--b2);}
+.sc-ic{width:40px;height:40px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+.sc-v{font-family:'JetBrains Mono',monospace;font-size:1.45rem;color:var(--a);font-weight:600;}
+.sc-l{font-size:.73rem;color:var(--t2);margin-top:.1rem;}
+
+/* ── CARDS / GRID ── */
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:1.1rem;}
+.pc{background:var(--card);border:1px solid var(--b);border-radius:15px;overflow:hidden;
+  transition:transform .25s,box-shadow .25s,border-color .25s;position:relative;}
+.pc:hover{transform:translateY(-4px);box-shadow:var(--sh);border-color:var(--b2);}
+.pc-img{width:100%;height:155px;background:var(--card2);display:flex;align-items:center;
+  justify-content:center;font-size:3rem;border-bottom:1px solid var(--b);overflow:hidden;position:relative;}
+.pc-img img{width:100%;height:100%;object-fit:cover;}
+.pc-img .img-overlay{position:absolute;inset:0;background:rgba(0,0,0,.45);
+  display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;}
+.pc:hover .img-overlay{opacity:1;}
+.pc-body{padding:1rem;}
+.pc-name{font-weight:700;font-size:.975rem;color:var(--br);margin-bottom:.3rem;}
+.pc-cat{display:inline-block;font-size:.65rem;font-family:'JetBrains Mono',monospace;
+  padding:.18rem .5rem;border-radius:4px;margin-bottom:.55rem;}
+.cat-برمجيات{background:rgba(0,82,212,.15);color:#5fa8ff;}
+.cat-عتاد\ إعلام\ آلي{background:rgba(91,0,255,.15);color:#a87fff;}
+.cat-كاميرات{background:rgba(0,200,150,.12);color:#00c896;}
+.cat-شبكات{background:rgba(255,136,0,.1);color:#ffaa44;}
+.pc-desc{font-size:.8rem;color:var(--t2);line-height:1.55;margin-bottom:.75rem;}
+.pc-price{font-family:'JetBrains Mono',monospace;color:var(--a);font-size:1rem;font-weight:600;margin-bottom:.85rem;}
+.pc-acts{display:flex;gap:.45rem;}
+.be,.bd{flex:1;padding:.48rem;border-radius:7px;font-size:.78rem;cursor:pointer;
+  font-family:'IBM Plex Sans Arabic',sans-serif;border:none;transition:background .2s;}
+.be{background:rgba(0,229,255,.09);color:var(--a);}
+.be:hover{background:rgba(0,229,255,.17);}
+.bd{background:rgba(255,61,90,.09);color:var(--red);}
+.bd:hover{background:rgba(255,61,90,.17);}
+
+/* ── FORM ── */
+.fc{background:var(--card);border:1px solid var(--b);border-radius:15px;padding:1.65rem;max-width:640px;}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;}
+.fgi{display:flex;flex-direction:column;gap:.38rem;}
+.fgi.full{grid-column:1/-1;}
+.fl{font-size:.79rem;color:var(--t2);}
+.fi,.fs,.ft{background:var(--card2);border:1px solid var(--b);color:var(--br);
+  padding:.68rem .9rem;border-radius:9px;font-family:'IBM Plex Sans Arabic',sans-serif;
+  font-size:.855rem;outline:none;transition:border-color .2s;width:100%;}
+.fi:focus,.fs:focus,.ft:focus{border-color:var(--a);}
+.ft{resize:vertical;min-height:80px;}
+.fs option{background:var(--panel);}
+
+/* ── IMAGE UPLOAD ── */
+.iu{border:2px dashed var(--b2);border-radius:11px;padding:1.35rem;
+  text-align:center;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;}
+.iu:hover{border-color:var(--a);background:rgba(0,229,255,.03);}
+.iu input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.iu-prev{width:100%;max-height:160px;object-fit:contain;border-radius:7px;margin-bottom:.65rem;display:none;}
+.iu-ic{font-size:1.8rem;margin-bottom:.4rem;}
+.iu-t{font-size:.78rem;color:var(--t2);}
+.uploading-bar{height:3px;background:linear-gradient(90deg,var(--a2),var(--a));
+  border-radius:3px;width:0%;transition:width .3s;margin-top:.5rem;}
+
+/* ── BUTTONS ── */
+.bp{background:linear-gradient(135deg,var(--a2),var(--a3));color:#fff;border:none;
+  padding:.72rem 1.6rem;border-radius:9px;font-size:.875rem;font-weight:600;cursor:pointer;
+  font-family:'IBM Plex Sans Arabic',sans-serif;transition:opacity .2s,transform .2s;
+  display:inline-flex;align-items:center;gap:.45rem;}
+.bp:hover{opacity:.9;transform:translateY(-1px);}
+.bp:disabled{opacity:.4;cursor:not-allowed;transform:none;}
+.bg{background:transparent;border:1px solid var(--b2);color:var(--t);padding:.72rem 1.4rem;
+  border-radius:9px;font-size:.875rem;cursor:pointer;font-family:'IBM Plex Sans Arabic',sans-serif;
+  transition:border-color .2s,color .2s;}
+.bg:hover{border-color:var(--a);color:var(--a);}
+
+/* ── MODAL ── */
+.mo{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.72);backdrop-filter:blur(10px);
+  display:none;align-items:center;justify-content:center;padding:1.5rem;}
+.mo.op{display:flex;}
+.mb{background:var(--panel);border:1px solid var(--b2);border-radius:18px;
+  padding:1.9rem;width:100%;max-width:600px;max-height:90vh;overflow-y:auto;}
+.mh{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.4rem;}
+.mt{font-size:1.1rem;font-weight:700;color:var(--br);}
+.mc{background:none;border:none;color:var(--t2);font-size:1.2rem;cursor:pointer;transition:color .2s;}
+.mc:hover{color:var(--red);}
+
+/* ── TOAST ── */
+#toast{position:fixed;bottom:1.75rem;left:50%;transform:translateX(-50%) translateY(16px);
+  background:var(--card);border:1px solid var(--a4);color:var(--a4);
+  padding:.65rem 1.3rem;border-radius:9px;font-size:.83rem;z-index:500;
+  opacity:0;transition:all .28s;pointer-events:none;white-space:nowrap;
+  display:flex;align-items:center;gap:.5rem;}
+#toast.sh{opacity:1;transform:translateX(-50%) translateY(0);}
+#toast.er{border-color:var(--red);color:var(--red);}
+#toast.ld{border-color:var(--warn);color:var(--warn);}
+
+/* ── CONTENT EDITOR ── */
+.ce-block{background:var(--card);border:1px solid var(--b);border-radius:13px;
+  padding:1.35rem;margin-bottom:1rem;max-width:700px;}
+.ce-title{font-weight:600;color:var(--br);margin-bottom:.9rem;font-size:.92rem;
+  display:flex;align-items:center;gap:.5rem;}
+.ce-row{display:flex;flex-direction:column;gap:.35rem;margin-bottom:.75rem;}
+.ce-row:last-child{margin-bottom:0;}
+
+/* ── CONFIRM ── */
+.cfb{background:var(--panel);border:1px solid rgba(255,61,90,.25);
+  border-radius:16px;padding:1.9rem;max-width:340px;width:100%;text-align:center;}
+.cf-ic{font-size:2.3rem;margin-bottom:.65rem;}
+.cf-ti{font-size:1rem;font-weight:700;color:var(--br);margin-bottom:.4rem;}
+.cf-su{font-size:.82rem;color:var(--t2);margin-bottom:1.35rem;line-height:1.6;}
+.cf-bt{display:flex;gap:.65rem;justify-content:center;}
+
+/* ── COMMIT LOG ── */
+.cl{background:var(--card2);border-radius:9px;padding:1rem;font-family:'JetBrains Mono',monospace;
+  font-size:.75rem;color:var(--t2);margin-top:.75rem;max-height:120px;overflow-y:auto;}
+.cl .ok{color:var(--a4);}
+.cl .er{color:var(--red);}
+.cl .ld{color:var(--warn);}
+
+/* ── TOOLBAR ── */
+.tb{display:flex;align-items:center;gap:.65rem;margin-bottom:1.35rem;flex-wrap:wrap;}
+.si{background:var(--card);border:1px solid var(--b);color:var(--br);
+  padding:.58rem .9rem;border-radius:9px;font-family:inherit;font-size:.835rem;
+  outline:none;flex:1;min-width:170px;transition:border-color .2s;}
+.si:focus{border-color:var(--a);}
+.fb{padding:.5rem .9rem;border-radius:7px;border:1px solid var(--b);
+  background:transparent;color:var(--t2);font-size:.78rem;cursor:pointer;
+  font-family:inherit;transition:all .2s;}
+.fb.on,.fb:hover{background:rgba(0,229,255,.09);color:var(--a);border-color:var(--b2);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .sidebar{display:none;}
+  .main{margin-right:0;padding:1rem;}
+  .fg{grid-template-columns:1fr;}
+  .mob-nav{position:fixed;bottom:0;left:0;right:0;z-index:50;
+    background:var(--panel);border-top:1px solid var(--b);
+    display:flex;justify-content:space-around;padding:.6rem 0;}
+  .mn-item{display:flex;flex-direction:column;align-items:center;gap:.18rem;
+    color:var(--t2);font-size:.62rem;cursor:pointer;padding:.3rem .6rem;
+    background:none;border:none;font-family:inherit;transition:color .2s;}
+  .mn-item.on,.mn-item:hover{color:var(--a);}
+  .mn-item .ic{font-size:1.25rem;}
+  body{padding-bottom:65px;}
+}
+@media(min-width:769px){.mob-nav{display:none!important;}}
+</style>
+</head>
+<body>
+
+<div id="toast"></div>
+
+<!-- ══════════════════════════════════════
+     SETUP / LOGIN
+══════════════════════════════════════ -->
+<div id="setup-screen">
+  <div class="setup-box">
+    <div class="setup-logo">TECHNO<em>INFODZ</em></div>
+    <div class="setup-badge">⚡ GitHub API — لوحة التحكم</div>
+
+    <div class="inp-group">
+      <label class="lbl">GitHub Personal Access Token</label>
+      <input class="inp" id="s-token" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"/>
+      <div class="help-txt">
+        أنشئ Token من:
+        <a href="https://github.com/settings/tokens/new?scopes=repo&description=TechnoInfodz+Admin" target="_blank">
+          github.com → Settings → Developer settings → Tokens (classic)
+        </a><br/>
+        الصلاحية المطلوبة: ✅ <strong>repo</strong>
+      </div>
+    </div>
+
+    <div class="inp-group">
+      <label class="lbl">مالك الـ Repository</label>
+      <input class="inp" id="s-owner" placeholder="مثال: samirinfodz-boop" value="samirinfodz-boop"/>
+    </div>
+
+    <div class="inp-group">
+      <label class="lbl">اسم الـ Repository</label>
+      <input class="inp" id="s-repo" placeholder="مثال: technoinfodz-official" value="technoinfodz-official"/>
+    </div>
+
+    <div class="inp-group">
+      <label class="lbl">اسم الفرع (Branch)</label>
+      <input class="inp" id="s-branch" placeholder="main" value="main"/>
+    </div>
+
+    <button class="btn-connect" onclick="doConnect()">🔗 الاتصال بـ GitHub</button>
+    <div id="s-err" class="setup-err"></div>
+
+    <div class="security-note">
+      🔒 <span>أمان:</span> التوكن يُخزن في localStorage فقط على جهازك ولا يُرسل لأي خادم خارجي. استخدم هذه الصفحة من جهازك الخاص فقط.
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     MAIN APP
+══════════════════════════════════════ -->
+<div id="app">
+
+  <aside class="sidebar">
+    <div class="s-logo">TECHNO<em>INFODZ</em></div>
+    <div class="s-repo" id="repo-label">—</div>
+    <button class="nav on" onclick="go('dashboard',this)"><span class="ic">📊</span>لوحة المعلومات</button>
+    <button class="nav" onclick="go('products',this)"><span class="ic">📦</span>المنتجات</button>
+    <button class="nav" onclick="go('add',this)"><span class="ic">➕</span>إضافة منتج</button>
+    <button class="nav" onclick="go('content',this)"><span class="ic">✍️</span>نصوص الموقع</button>
+    <button class="nav" onclick="go('settings',this)"><span class="ic">⚙️</span>الإعدادات</button>
+    <div class="s-foot">
+      <div class="s-status" id="gh-status">متصل بـ GitHub</div>
+      <a href="https://samirinfodz-boop.github.io/technoinfodz-official/" target="_blank"
+         style="display:flex;align-items:center;gap:.5rem;padding:.5rem .8rem;color:var(--t2);font-size:.78rem;text-decoration:none;border-radius:8px;transition:color .2s;margin-bottom:.4rem;"
+         onmouseover="this.style.color='var(--a)'" onmouseout="this.style.color='var(--t2)'">
+        🌐 عرض الموقع
+      </a>
+      <button class="btn-out" onclick="disconnect()">🔌 قطع الاتصال</button>
+    </div>
+  </aside>
+
+  <nav class="mob-nav">
+    <button class="mn-item on" onclick="go('dashboard',this)"><span class="ic">📊</span>الرئيسية</button>
+    <button class="mn-item" onclick="go('products',this)"><span class="ic">📦</span>المنتجات</button>
+    <button class="mn-item" onclick="go('add',this)"><span class="ic">➕</span>إضافة</button>
+    <button class="mn-item" onclick="go('content',this)"><span class="ic">✍️</span>النصوص</button>
+    <button class="mn-item" onclick="go('settings',this)"><span class="ic">⚙️</span>إعدادات</button>
+  </nav>
+
+  <main class="main">
+
+    <!-- ── DASHBOARD ── -->
+    <div id="page-dashboard" class="page on"><button class="bp" onclick="syncAll()" style="margin-bottom:1rem;">🔄 مزامنة مع GitHub</button>
+      <div class="ph">
+        <div class="ph-left">
+          <h1>مرحباً، Samir 👋</h1>
+          <p>ملخص متجرك — البيانات مباشرة من GitHub</p>
+        </div>
+        <button class="bp" onclick="syncAll()">🔄 مزامنة</button>
+      </div>
+      <div class="stats" id="dash-stats"></div>
+      <div style="background:var(--card);border:1px solid var(--b);border-radius:13px;padding:1.35rem;">
+        <div style="font-weight:600;color:var(--br);margin-bottom:1rem;font-size:.9rem;">📦 آخر المنتجات</div>
+        <div id="dash-recent"></div>
+      </div>
+      <div class="cl" id="commit-log" style="margin-top:1rem;"></div>
+    </div>
+
+    <!-- ── PRODUCTS ── -->
+    <div id="page-products" class="page">
+      <div class="ph">
+        <div class="ph-left"><h1>إدارة المنتجات</h1><p>تعديل وحذف المنتجات الموجودة</p></div>
+        <button class="bp" onclick="go('add',null)">➕ إضافة منتج</button>
+      </div>
+      <div class="tb">
+        <input class="si" placeholder="🔍 بحث..." oninput="filterP(this.value)"/>
+        <button class="fb on" onclick="catF('الكل',this)">الكل</button>
+        <button class="fb" onclick="catF('برمجيات',this)">برمجيات</button>
+        <button class="fb" onclick="catF('عتاد إعلام آلي',this)">عتاد إعلام آلي</button>
+        <button class="fb" onclick="catF('كاميرات',this)">كاميرات</button>
+        <button class="fb" onclick="catF('شبكات',this)">شبكات</button>
+      </div>
+      <div class="pg" id="prod-grid"></div>
+    </div>
+
+    <!-- ── ADD ── -->
+    <div id="page-add" class="page">
+      <div class="ph"><div class="ph-left"><h1>➕ إضافة منتج جديد</h1><p>سيُحفظ مباشرة في GitHub</p></div></div>
+      <div class="fc">
+        <div class="fg">
+          <div class="fgi full">
+            <label class="fl">صورة المنتج</label>
+            <div class="iu" id="add-iu">
+              <img id="add-prev" class="iu-prev" src="" alt=""/>
+              <div class="iu-ic">🖼️</div>
+              <div class="iu-t">اسحب صورة أو اضغط للتحميل (سترفع على GitHub)</div>
+              <div class="uploading-bar" id="add-ubar"></div>
+              <input type="file" accept="image/*" onchange="handleImgUpload(this,'add-prev','add-img-path','add-ubar')"/>
+            </div>
+            <input type="hidden" id="add-img-path"/>
+            <input class="fi" id="add-img-url" placeholder="أو الصق رابط صورة مباشر..." style="margin-top:.5rem;"
+                   oninput="prevUrl(this.value,'add-prev')"/>
+          </div>
+          <div class="fgi"><label class="fl">اسم المنتج *</label><input class="fi" id="add-name" placeholder="مثال: PME Pro"/></div>
+          <div class="fgi"><label class="fl">السعر *</label><input class="fi" id="add-price" placeholder="مثال: 25,000 دج"/></div>
+          <div class="fgi">
+            <label class="fl">الفئة</label>
+            <select class="fs" id="add-cat">
+              <option value="برمجيات">برمجيات</option>
+              <option value="عتاد إعلام آلي">عتاد إعلام آلي</option>
+              <option value="كاميرات">كاميرات مراقبة</option>
+              <option value="شبكات">شبكات</option>
+            </select>
+          </div>
+          <div class="fgi"><label class="fl">الأيقونة (emoji)</label><input class="fi" id="add-icon" placeholder="📦" maxlength="4"/></div>
+          <div class="fgi full"><label class="fl">وصف المنتج</label><textarea class="ft" id="add-desc" placeholder="وصف موجز..."></textarea></div>
+        </div>
+        <div style="display:flex;gap:.65rem;margin-top:1.35rem;flex-wrap:wrap;">
+          <button class="bp" id="add-btn" onclick="addProduct()">💾 حفظ وتحديث GitHub</button>
+          <button class="bg" onclick="resetAdd()">مسح</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CONTENT EDITOR ── -->
+    <div id="page-content" class="page">
+      <div class="ph"><div class="ph-left"><h1>✍️ نصوص الموقع</h1><p>تعديل Hero و About — يُحفظ مباشرة في GitHub</p></div></div>
+
+      <div class="ce-block">
+        <div class="ce-title">🎯 قسم Hero</div>
+        <div class="ce-row"><label class="fl">العنوان الرئيسي</label><input class="fi" id="c-hero-title" placeholder="حلول رقمية ذكية لمؤسستك"/></div>
+        <div class="ce-row"><label class="fl">العنوان الفرعي (النص الصغير)</label><input class="fi" id="c-hero-badge" placeholder="نشط — خدمات جزائر"/></div>
+        <div class="ce-row"><label class="fl">وصف Hero</label><textarea class="ft" id="c-hero-desc" placeholder="برمجيات إدارة متكاملة..."></textarea></div>
+        <div class="ce-row"><label class="fl">نص زر واتساب</label><input class="fi" id="c-hero-btn" placeholder="تواصل عبر واتساب"/></div>
+      </div>
+
+      <div class="ce-block">
+        <div class="ce-title">🏢 قسم About</div>
+        <div class="ce-row"><label class="fl">الفقرة الأولى</label><textarea class="ft" id="c-about-1" placeholder="TECHNO INFODZ شركة جزائرية..."></textarea></div>
+        <div class="ce-row"><label class="fl">الفقرة الثانية</label><textarea class="ft" id="c-about-2" placeholder="نؤمن بأن التكنولوجيا..."></textarea></div>
+      </div>
+
+      <div class="ce-block">
+        <div class="ce-title">📞 بيانات التواصل</div>
+        <div class="ce-row"><label class="fl">رقم واتساب (بدون +)</label><input class="fi" id="c-phone" placeholder="213666636473"/></div>
+        <div class="ce-row"><label class="fl">الموقع الجغرافي</label><input class="fi" id="c-location" placeholder="الجزائر"/></div>
+      </div>
+
+      <div style="display:flex;gap:.65rem;flex-wrap:wrap;">
+        <button class="bp" id="content-btn" onclick="saveContent()">💾 حفظ وتحديث GitHub</button>
+        <button class="bg" onclick="loadContent()">↩️ استعادة من GitHub</button>
+      </div>
+    </div>
+
+    <!-- ── SETTINGS ── -->
+    <div id="page-settings" class="page">
+      <div class="ph"><div class="ph-left"><h1>⚙️ الإعدادات</h1><p>إدارة الاتصال والبيانات</p></div></div>
+
+      <div class="ce-block">
+        <div class="ce-title">🔗 معلومات الاتصال</div>
+        <div class="ce-row"><label class="fl">مالك الـ Repository</label><input class="fi" id="set-owner" readonly/></div>
+        <div class="ce-row"><label class="fl">اسم الـ Repository</label><input class="fi" id="set-repo" readonly/></div>
+        <div class="ce-row"><label class="fl">الفرع</label><input class="fi" id="set-branch" readonly/></div>
+        <div class="ce-row"><label class="fl">التوكن (مخفي)</label>
+          <input class="fi" value="••••••••••••••••••••••" readonly/>
+        </div>
+      </div>
+
+      <div class="ce-block">
+        <div class="ce-title">📤 تصدير / استيراد</div>
+        <div style="display:flex;gap:.65rem;flex-wrap:wrap;">
+          <button class="bp" onclick="exportData()">📥 تصدير data.json</button>
+          <label class="bg" style="cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;">
+            📤 استيراد JSON
+            <input type="file" accept=".json" style="display:none;" onchange="importData(this)"/>
+          </label>
+        </div>
+      </div>
+
+      <div class="ce-block" style="border-color:rgba(255,61,90,.2);">
+        <div class="ce-title" style="color:var(--red);">⚠️ منطقة الخطر</div>
+        <button class="bg" style="color:var(--red);border-color:rgba(255,61,90,.3);" onclick="disconnect()">
+          🔌 قطع الاتصال وحذف التوكن
+        </button>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- EDIT MODAL -->
+<div class="mo" id="edit-mo">
+  <div class="mb">
+    <div class="mh"><span class="mt">✏️ تعديل المنتج</span><button class="mc" onclick="closeMo('edit-mo')">✕</button></div>
+    <div class="fg">
+      <div class="fgi full">
+        <label class="fl">صورة المنتج</label>
+        <div class="iu" id="edit-iu">
+          <img id="edit-prev" class="iu-prev" src="" alt=""/>
+          <div class="iu-ic">🖼️</div>
+          <div class="iu-t">اسحب صورة للتغيير</div>
+          <div class="uploading-bar" id="edit-ubar"></div>
+          <input type="file" accept="image/*" onchange="handleImgUpload(this,'edit-prev','edit-img-path','edit-ubar')"/>
+        </div>
+        <input type="hidden" id="edit-img-path"/>
+        <input class="fi" id="edit-img-url" placeholder="رابط صورة URL..." style="margin-top:.5rem;"
+               oninput="prevUrl(this.value,'edit-prev')"/>
+      </div>
+      <div class="fgi"><label class="fl">اسم المنتج</label><input class="fi" id="edit-name"/></div>
+      <div class="fgi"><label class="fl">السعر</label><input class="fi" id="edit-price"/></div>
+      <div class="fgi">
+        <label class="fl">الفئة</label>
+        <select class="fs" id="edit-cat">
+          <option value="برمجيات">برمجيات</option><option value="عتاد إعلام آلي">عتاد إعلام آلي </option>
+          <option value="كاميرات">كاميرات مراقبة</option><option value="شبكات">شبكات</option>
+        </select>
+      </div>
+      <div class="fgi"><label class="fl">الأيقونة</label><input class="fi" id="edit-icon" maxlength="4"/></div>
+      <div class="fgi full"><label class="fl">الوصف</label><textarea class="ft" id="edit-desc"></textarea></div>
+    </div>
+    <input type="hidden" id="edit-id"/>
+    <div style="display:flex;gap:.65rem;margin-top:1.35rem;">
+      <button class="bp" id="edit-btn" onclick="saveEdit()">💾 حفظ وتحديث GitHub</button>
+      <button class="bg" onclick="closeMo('edit-mo')">إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONFIRM DELETE -->
+<div class="mo" id="del-mo">
+  <div class="cfb">
+    <div class="cf-ic">🗑️</div>
+    <div class="cf-ti">حذف المنتج</div>
+    <div class="cf-su">هل أنت متأكد؟ سيُحذف من GitHub مباشرة ولا يمكن التراجع.</div>
+    <div class="cf-bt">
+      <button class="bp" style="background:linear-gradient(135deg,var(--red),#b02040);" onclick="doDelete()">نعم، احذف</button>
+      <button class="bg" onclick="closeMo('del-mo')">إلغاء</button>
+    </div>
+    <input type="hidden" id="del-id"/>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════
+//  CONFIG & STATE
+// ══════════════════════════════════════════
+const SK = 'ti_cfg';
+let CFG = null;
+let products = [];
+let content  = {};
+let catFilter = 'الكل';
+let searchQ   = '';
+
+const DATA_FILE    = 'data.json';
+const CONTENT_FILE = 'content.json';
+const IMG_FOLDER   = 'images';
+
+// ── GITHUB API HELPERS ──
+function apiUrl(path){ return `https://api.github.com/repos/${CFG.owner}/${CFG.repo}/contents/${path}`; }
+function headers(){ return { Authorization:`token ${CFG.token}`, 'Content-Type':'application/json', Accept:'application/vnd.github.v3+json' }; }
+
+async function ghGet(path){
+  const r = await fetch(apiUrl(path),{headers:headers()});
+  if(!r.ok) throw new Error(`GitHub ${r.status}: ${r.statusText}`);
+  return r.json();
+}
+
+async function ghPut(path, content_b64, sha, msg){
+  const body = { message:msg, content:content_b64, branch:CFG.branch };
+  if(sha) body.sha = sha;
+  const r = await fetch(apiUrl(path),{method:'PUT',headers:headers(),body:JSON.stringify(body)});
+  if(!r.ok){ const e=await r.json(); throw new Error(e.message||r.statusText); }
+  return r.json();
+}
+
+async function ghDelete(path, sha, msg){
+  const body = { message:msg, sha, branch:CFG.branch };
+  const r = await fetch(apiUrl(path),{method:'DELETE',headers:headers(),body:JSON.stringify(body)});
+  if(!r.ok){ const e=await r.json(); throw new Error(e.message||r.statusText); }
+  return r.json();
+}
+
+async function getFileSha(path){
+  try{ const d=await ghGet(path); return d.sha; }catch(e){ return null; }
+}
+
+function toB64(str){ return btoa(unescape(encodeURIComponent(str))); }
+function fromB64(b64){ return decodeURIComponent(escape(atob(b64))); }
+
+// ── LOG ──
+function log(msg, type='ok'){
+  const el = document.getElementById('commit-log');
+  if(!el) return;
+  el.innerHTML += `<div class="${type}">[${new Date().toLocaleTimeString()}] ${msg}</div>`;
+  el.scrollTop = el.scrollHeight;
+}
+
+// ══════════════════════════════════════════
+//  AUTH / CONNECT
+// ══════════════════════════════════════════
+async function doConnect(){
+  const token  = document.getElementById('s-token').value.trim();
+  const owner  = document.getElementById('s-owner').value.trim();
+  const repo   = document.getElementById('s-repo').value.trim();
+  const branch = document.getElementById('s-branch').value.trim()||'main';
+  const errEl  = document.getElementById('s-err');
+  errEl.style.display='none';
+  if(!token||!owner||!repo){ showErr('جميع الحقول مطلوبة'); return; }
+
+  toast('⏳ جاري الاتصال بـ GitHub...','ld');
+  try {
+    // verify token & repo access
+    const r = await fetch(`https://api.github.com/repos/${owner}/${repo}`,
+      {headers:{Authorization:`token ${token}`}});
+    if(!r.ok) throw new Error('تحقق من التوكن واسم الـ repository');
+    CFG = { token, owner, repo, branch };
+    localStorage.setItem(SK, JSON.stringify(CFG));
+    launchApp();
+  } catch(e){
+    showErr('❌ ' + e.message);
+  }
+}
+
+function showErr(msg){
+  const el=document.getElementById('s-err');
+  el.textContent=msg; el.style.display='block';
+}
+
+function disconnect(){
+  localStorage.removeItem(SK);
+  CFG=null; products=[]; content={};
+  document.getElementById('app').style.display='none';
+  document.getElementById('setup-screen').style.display='flex';
+  document.getElementById('s-token').value='';
+}
+
+// ── AUTO LOGIN ──
+(function(){
+  const saved = localStorage.getItem(SK);
+  if(saved){ CFG=JSON.parse(saved); launchApp(); }
+})();
+
+async function launchApp(){
+  document.getElementById('setup-screen').style.display='none';
+  document.getElementById('app').style.display='block';
+  document.getElementById('repo-label').textContent = `${CFG.owner}/${CFG.repo}`;
+  document.getElementById('set-owner').value  = CFG.owner;
+  document.getElementById('set-repo').value   = CFG.repo;
+  document.getElementById('set-branch').value = CFG.branch;
+  await syncAll();
+}
+
+// ══════════════════════════════════════════
+//  SYNC — READ FROM GITHUB
+// ══════════════════════════════════════════
+async function syncAll(){
+  toast('⏳ مزامنة مع GitHub...','ld');
+  log('جاري المزامنة مع GitHub...','ld');
+  try {
+    await Promise.all([loadProducts(), loadContent()]);
+    renderDash(); renderProducts();
+    toast('✓ تمت المزامنة');
+    log('✓ تمت المزامنة بنجاح');
+  } catch(e){
+    toast('⚠️ '+e.message,'er');
+    log('خطأ: '+e.message,'er');
+  }
+}
+
+async function loadProducts(){
+  try {
+    const f = await ghGet(DATA_FILE);
+    const clean = f.content.replace(/\n/g, '');
+    const d = JSON.parse(fromB64(clean));
+    products = Array.isArray(d.products) ? d.products : (Array.isArray(d) ? d : []);
+  } catch(e){
+    products = [];
+  }
+}
+
+async function loadContent(){
+  try {
+    const f = await ghGet(CONTENT_FILE);
+    content = JSON.parse(fromB64(f.content));
+  } catch(e){
+    content = getDefaultContent();
+    log('⚠️ content.json غير موجود — تم تحميل القيم الافتراضية. احفظ من تبويب النصوص لإنشائه.','ld');
+  }
+  fillContentForm();
+}
+
+function getDefaultContent(){
+  return {
+    hero:{ title:'حلول رقمية ذكية لمؤسستك', badge:'نشط — خدمات جزائر',
+           desc:'برمجيات إدارة متكاملة، دعم تقني احترافي، وشبكات آمنة.', btn:'تواصل عبر واتساب' },
+    about:{ p1:'TECHNO INFODZ شركة جزائرية متخصصة في تطوير البرمجيات المحاسبية والإدارية.',
+            p2:'نؤمن بأن التكنولوجيا يجب أن تكون في متناول الجميع.' },
+    contact:{ phone:'213666636473', location:'الجزائر' }
+  };
+}
+
+function fillContentForm(){
+  const c=content;
+  if(c.hero){
+    document.getElementById('c-hero-title').value  = c.hero.title||'';
+    document.getElementById('c-hero-badge').value  = c.hero.badge||'';
+    document.getElementById('c-hero-desc').value   = c.hero.desc||'';
+    document.getElementById('c-hero-btn').value    = c.hero.btn||'';
+  }
+  if(c.about){
+    document.getElementById('c-about-1').value = c.about.p1||'';
+    document.getElementById('c-about-2').value = c.about.p2||'';
+  }
+  if(c.contact){
+    document.getElementById('c-phone').value    = c.contact.phone||'';
+    document.getElementById('c-location').value = c.contact.location||'';
+  }
+}
+
+// ══════════════════════════════════════════
+//  SAVE TO GITHUB
+// ══════════════════════════════════════════
+async function saveProducts(commitMsg){
+  const sha = await getFileSha(DATA_FILE);
+  const json = JSON.stringify({ products }, null, 2);
+  await ghPut(DATA_FILE, toB64(json), sha, commitMsg||'Update products via Admin Panel');
+}
+
+async function saveContent(){
+  const btn = document.getElementById('content-btn');
+  btn.disabled=true; btn.textContent='⏳ جاري الحفظ...';
+  try {
+    content = {
+      hero:{
+        title: document.getElementById('c-hero-title').value,
+        badge: document.getElementById('c-hero-badge').value,
+        desc:  document.getElementById('c-hero-desc').value,
+        btn:   document.getElementById('c-hero-btn').value,
+      },
+      about:{
+        p1: document.getElementById('c-about-1').value,
+        p2: document.getElementById('c-about-2').value,
+      },
+      contact:{
+        phone:    document.getElementById('c-phone').value,
+        location: document.getElementById('c-location').value,
+      }
+    };
+    const sha = await getFileSha(CONTENT_FILE);
+    await ghPut(CONTENT_FILE, toB64(JSON.stringify(content,null,2)), sha, 'Update site content via Admin Panel');
+    toast('✓ تم حفظ النصوص على GitHub');
+    log('✓ تم تحديث content.json على GitHub');
+  } catch(e){
+    toast('❌ '+e.message,'er');
+    log('خطأ: '+e.message,'er');
+  } finally {
+    btn.disabled=false; btn.textContent='💾 حفظ وتحديث GitHub';
+  }
+}
+
+// ══════════════════════════════════════════
+//  PRODUCTS — ADD
+// ══════════════════════════════════════════
+async function addProduct(){
+  const name  = document.getElementById('add-name').value.trim();
+  const price = document.getElementById('add-price').value.trim();
+  if(!name||!price){ toast('⚠️ الاسم والسعر مطلوبان','er'); return; }
+  const btn=document.getElementById('add-btn');
+  btn.disabled=true; btn.textContent='⏳ جاري الحفظ...';
+  try {
+    const imgPath = document.getElementById('add-img-path').value;
+    const imgUrl  = document.getElementById('add-img-url').value.trim();
+    const img = imgPath ? `https://raw.githubusercontent.com/${CFG.owner}/${CFG.repo}/${CFG.branch}/${imgPath}` : imgUrl;
+    const p = {
+      id: Date.now().toString(),
+      name, price,
+      cat:  document.getElementById('add-cat').value,
+      icon: document.getElementById('add-icon').value||'📦',
+      desc: document.getElementById('add-desc').value.trim(),
+      img
+    };
+    products.push(p);
+    await saveProducts(`Add product: ${name}`);
+    renderDash(); renderProducts();
+    toast(`✓ تم إضافة "${name}" على GitHub`);
+    log(`✓ تم إضافة المنتج: ${name}`);
+    resetAdd();
+    go('products',null);
+  } catch(e){
+    products.pop();
+    toast('❌ '+e.message,'er');
+    log('خطأ: '+e.message,'er');
+  } finally {
+    btn.disabled=false; btn.textContent='💾 حفظ وتحديث GitHub';
+  }
+}
+
+function resetAdd(){
+  ['add-name','add-price','add-icon','add-desc','add-img-url','add-img-path'].forEach(id=>document.getElementById(id).value='');
+  const p=document.getElementById('add-prev'); p.src=''; p.style.display='none';
+}
+
+// ── EDIT ──
+function openEdit(id){
+  const p=products.find(x=>x.id===id); if(!p) return;
+  document.getElementById('edit-id').value    = id;
+  document.getElementById('edit-name').value  = p.name;
+  document.getElementById('edit-price').value = p.price;
+  document.getElementById('edit-cat').value   = p.cat;
+  document.getElementById('edit-icon').value  = p.icon||'';
+  document.getElementById('edit-desc').value  = p.desc||'';
+  document.getElementById('edit-img-url').value = p.img||'';
+  document.getElementById('edit-img-path').value = '';
+  const prev=document.getElementById('edit-prev');
+  if(p.img){ prev.src=p.img; prev.style.display='block'; } else { prev.src=''; prev.style.display='none'; }
+  openMo('edit-mo');
+}
+
+async function saveEdit(){
+  const id  = document.getElementById('edit-id').value;
+  const idx = products.findIndex(x=>x.id===id); if(idx<0) return;
+  const btn = document.getElementById('edit-btn');
+  btn.disabled=true; btn.textContent='⏳ جاري الحفظ...';
+  const old = {...products[idx]};
+  try {
+    const imgPath = document.getElementById('edit-img-path').value;
+    const imgUrl  = document.getElementById('edit-img-url').value.trim();
+    const img = imgPath
+      ? `https://raw.githubusercontent.com/${CFG.owner}/${CFG.repo}/${CFG.branch}/${imgPath}`
+      : (imgUrl || products[idx].img);
+    products[idx] = {
+      ...products[idx],
+      name:  document.getElementById('edit-name').value.trim(),
+      price: document.getElementById('edit-price').value.trim(),
+      cat:   document.getElementById('edit-cat').value,
+      icon:  document.getElementById('edit-icon').value,
+      desc:  document.getElementById('edit-desc').value.trim(),
+      img
+    };
+    await saveProducts(`Update product: ${products[idx].name}`);
+    closeMo('edit-mo'); renderProducts(); renderDash();
+    toast(`✓ تم تحديث "${products[idx].name}" على GitHub`);
+    log(`✓ تم تعديل المنتج: ${products[idx].name}`);
+  } catch(e){
+    products[idx]=old;
+    toast('❌ '+e.message,'er');
+    log('خطأ: '+e.message,'er');
+  } finally {
+    btn.disabled=false; btn.textContent='💾 حفظ وتحديث GitHub';
+  }
+}
+
+// ── DELETE ──
+function openDel(id){ document.getElementById('del-id').value=id; openMo('del-mo'); }
+
+async function doDelete(){
+  const id  = document.getElementById('del-id').value;
+  const idx = products.findIndex(x=>x.id===id); if(idx<0) return;
+  const name= products[idx].name;
+  const removed = products.splice(idx,1);
+  try {
+    await saveProducts(`Delete product: ${name}`);
+    closeMo('del-mo'); renderProducts(); renderDash();
+    toast(`🗑️ تم حذف "${name}" من GitHub`);
+    log(`🗑️ تم حذف المنتج: ${name}`);
+  } catch(e){
+    products.splice(idx,0,...removed);
+    toast('❌ '+e.message,'er');
+    log('خطأ: '+e.message,'er');
+  }
+}
+
+// ══════════════════════════════════════════
+//  IMAGE UPLOAD TO GITHUB
+// ══════════════════════════════════════════
+async function handleImgUpload(input, prevId, pathId, ubarId){
+  const file=input.files[0]; if(!file) return;
+  const ubar=document.getElementById(ubarId);
+  ubar.style.width='20%';
+  toast('⏳ جاري رفع الصورة على GitHub...','ld');
+  try {
+    const b64 = await fileToB64(file);
+    const imgB64 = b64.split(',')[1];
+    const ext = file.name.split('.').pop();
+    const fname = `${IMG_FOLDER}/${Date.now()}.${ext}`;
+    ubar.style.width='60%';
+    const sha = await getFileSha(fname);
+    await ghPut(fname, imgB64, sha, `Upload image: ${fname}`);
+    ubar.style.width='100%';
+    document.getElementById(pathId).value = fname;
+    const prev=document.getElementById(prevId);
+    prev.src=b64; prev.style.display='block';
+    toast('✓ تم رفع الصورة على GitHub');
+    log(`✓ تم رفع الصورة: ${fname}`);
+    setTimeout(()=>ubar.style.width='0%',800);
+  } catch(e){
+    toast('❌ فشل رفع الصورة: '+e.message,'er');
+    log('خطأ رفع الصورة: '+e.message,'er');
+    ubar.style.width='0%';
+  }
+}
+
+function fileToB64(file){
+  return new Promise((res,rej)=>{
+    const r=new FileReader();
+    r.onload=e=>res(e.target.result);
+    r.onerror=()=>rej(new Error('فشل قراءة الملف'));
+    r.readAsDataURL(file);
+  });
+}
+
+function prevUrl(url,prevId){
+  const p=document.getElementById(prevId);
+  if(url){p.src=url;p.style.display='block';}else{p.style.display='none';}
+}
+
+// ══════════════════════════════════════════
+//  RENDER
+// ══════════════════════════════════════════
+function renderDash(){
+  const cats=[...new Set(products.map(p=>p.cat))];
+  document.getElementById('dash-stats').innerHTML=`
+    <div class="sc"><div class="sc-ic" style="background:rgba(0,229,255,.1);">📦</div>
+      <div><div class="sc-v">${products.length}</div><div class="sc-l">إجمالي المنتجات</div></div></div>
+    <div class="sc"><div class="sc-ic" style="background:rgba(0,82,212,.1);">🏷️</div>
+      <div><div class="sc-v">${cats.length}</div><div class="sc-l">الفئات</div></div></div>
+    <div class="sc"><div class="sc-ic" style="background:rgba(0,200,150,.1);">🖼️</div>
+      <div><div class="sc-v">${products.filter(p=>p.img).length}</div><div class="sc-l">مع صورة</div></div></div>
+  `;
+  const rec=[...products].reverse().slice(0,5);
+  document.getElementById('dash-recent').innerHTML = rec.length
+    ? rec.map(p=>`
+      <div style="display:flex;align-items:center;gap:.8rem;padding:.6rem 0;border-bottom:1px solid var(--b);">
+        <div style="width:36px;height:36px;border-radius:7px;background:var(--card2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;overflow:hidden;flex-shrink:0;">
+          ${p.img?`<img src="${p.img}" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.textContent='${p.icon||'📦'}'"/>`:(p.icon||'📦')}
+        </div>
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:.855rem;color:var(--br);font-weight:500;">${p.name}</div>
+          <div style="font-size:.73rem;color:var(--t2);">${p.cat}</div>
+        </div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--a);">${p.price}</div>
+      </div>
+    `).join('')
+    : '<p style="color:var(--t2);font-size:.83rem;text-align:center;padding:1rem;">لا توجد منتجات بعد</p>';
+}
+
+function renderProducts(){
+  let list=products;
+  if(catFilter!=='الكل') list=list.filter(p=>p.cat===catFilter);
+  if(searchQ) list=list.filter(p=>p.name.includes(searchQ)||p.desc.includes(searchQ));
+  const g=document.getElementById('prod-grid');
+  if(!list.length){g.innerHTML='<div style="color:var(--t2);font-size:.875rem;padding:2rem;text-align:center;grid-column:1/-1;">لا توجد منتجات مطابقة</div>';return;}
+  g.innerHTML=list.map(p=>`
+    <div class="pc">
+      <div class="pc-img">
+        ${p.img
+          ?`<img src="${p.img}" alt="${p.name}" onerror="this.parentElement.innerHTML='<span style=font-size:3rem>${p.icon||'📦'}</span>'">`
+          :`<span style="font-size:3rem;">${p.icon||'📦'}</span>`}
+        <div class="img-overlay">
+          <button onclick="openEdit('${p.id}')" style="background:rgba(0,229,255,.15);border:1px solid var(--a);color:var(--a);padding:.4rem .9rem;border-radius:7px;cursor:pointer;font-size:.8rem;">✏️ تعديل الصورة</button>
+        </div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-name">${p.name}</div>
+        <span class="pc-cat cat-${p.cat}">${p.cat}</span>
+        <div class="pc-desc">${p.desc||'—'}</div>
+        <div class="pc-price">${p.price}</div>
+        <div class="pc-acts">
+          <button class="be" onclick="openEdit('${p.id}')">✏️ تعديل</button>
+          <button class="bd" onclick="openDel('${p.id}')">🗑️ حذف</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterP(q){searchQ=q;renderProducts();}
+function catF(c,btn){
+  catFilter=c;
+  document.querySelectorAll('.fb').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  renderProducts();
+}
+
+// ══════════════════════════════════════════
+//  EXPORT / IMPORT
+// ══════════════════════════════════════════
+function exportData(){
+  const d=JSON.stringify({products,content},null,2);
+  const a=document.createElement('a');
+  a.href='data:application/json;charset=utf-8,'+encodeURIComponent(d);
+  a.download='techno-infodz-backup.json'; a.click();
+  toast('✓ تم التصدير');
+}
+function importData(input){
+  const file=input.files[0]; if(!file) return;
+  const r=new FileReader();
+  r.onload=async e=>{
+    try{
+      const d=JSON.parse(e.target.result);
+      if(d.products){ products=d.products; await saveProducts('Import products from backup'); }
+      if(d.content){ content=d.content; fillContentForm(); }
+      renderDash(); renderProducts();
+      toast('✓ تم الاستيراد وحفظه على GitHub');
+    }catch(ex){ toast('⚠️ ملف غير صالح','er'); }
+  };
+  r.readAsText(file);
+}
+
+// ══════════════════════════════════════════
+//  NAV / MODAL / TOAST
+// ══════════════════════════════════════════
+function go(id,btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.nav,.mn-item').forEach(b=>b.classList.remove('on'));
+  document.getElementById('page-'+id).classList.add('on');
+  if(btn) btn.classList.add('on');
+  document.querySelectorAll('.nav,.mn-item').forEach(b=>{
+    if(b.getAttribute('onclick')&&b.getAttribute('onclick').includes("'"+id+"'"))
+      b.classList.add('on');
+  });
+  if(id==='dashboard') renderDash();
+  if(id==='products')  renderProducts();
+}
+
+function openMo(id){document.getElementById(id).classList.add('op');}
+function closeMo(id){document.getElementById(id).classList.remove('op');}
+document.querySelectorAll('.mo').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('op');}));
+
+let _tt;
+function toast(msg,type='ok'){
+  const el=document.getElementById('toast');
+  el.textContent=msg;
+  el.className='sh'+(type==='er'?' er':type==='ld'?' ld':'');
+  clearTimeout(_tt); _tt=setTimeout(()=>el.classList.remove('sh'),3200);
+}
+</script>
+</body>
+</html>

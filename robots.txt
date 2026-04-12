@@ -1,0 +1,11 @@
+# robots.txt - TECHNO INFODZ
+# https://samirinfodz-boop.github.io/technoinfodz-official/
+
+User-agent: *
+Allow: /
+
+# إخفاء لوحة الإدارة عن محركات البحث
+Disallow: /admin-github.html
+
+# ملف الخريطة
+Sitemap: https://samirinfodz-boop.github.io/technoinfodz-official/sitemap.xml

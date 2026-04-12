@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- الصفحة الرئيسية -->
+  <url>
+    <loc>https://samirinfodz-boop.github.io/technoinfodz-official/</loc>
+    <lastmod>2026-04-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- صفحة تفاصيل المنتج -->
+  <url>
+    <loc>https://samirinfodz-boop.github.io/technoinfodz-official/product.html</loc>
+    <lastmod>2026-04-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- لوحة الإدارة (اختياري - يمكن حذفها إن أردت إخفاءها عن محركات البحث) -->
+  <!-- 
+  <url>
+    <loc>https://samirinfodz-boop.github.io/technoinfodz-official/admin-github.html</loc>
+    <lastmod>2026-04-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.1</priority>
+  </url>
+  -->
+
+</urlset>
