@@ -1,76 +1,13 @@
 {
   "products": [
     {
-      "id": "1775729212885",
-      "name": "برنامج تسيير مؤسسات الانتاج والتصنيع",
+      "id": "1776675865534",
+      "name": "برمجيات موجهة لإدارة المساحات التجارية الكبرى (المحلات والمراكز التجارية الضخمة)",
       "price": "تواصل معنا",
       "cat": "برمجيات",
       "icon": "📦",
       "desc": "",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774865522075.jpg"
-    },
-    {
-      "id": "1775729311731",
-      "name": "برنامج تسيير محلات مواد غذائية",
-      "price": "تواصل معنا",
-      "cat": "برمجيات",
-      "icon": "📦",
-      "desc": "",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891317602.png"
-    },
-    {
-      "id": "1775729348259",
-      "name": "برنامج تسيير محلات الألبسة",
-      "price": "تواصل معنا",
-      "cat": "برمجيات",
-      "icon": "📦",
-      "desc": "",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891359008.png"
-    },
-    {
-      "id": "1775729473721",
-      "name": "برنامج تسيير المطاعم والكافيتيريا",
-      "price": "تواصل معنا",
-      "cat": "برمجيات",
-      "icon": "📦",
-      "desc": "",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891861082.png"
-    },
-    {
-      "id": "1775729523969",
-      "name": "برنامج تسيير محلات كراء الملابس",
-      "price": "تواصل معنا",
-      "cat": "برمجيات",
-      "icon": "📦",
-      "desc": "",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891476674.png"
-    },
-    {
-      "id": "1775729577624",
-      "name": "تطبيق هاتف للموزعين المحترفين",
-      "price": "تواصل معنا",
-      "cat": "برمجيات",
-      "icon": "📦",
-      "desc": "",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891628734.jpg"
-    },
-    {
-      "id": "1775729630000",
-      "name": "برنامج تسيير الموزعين الحترفين",
-      "price": "تواصل معنا",
-      "cat": "برمجيات",
-      "icon": "📦",
-      "desc": "",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891513008.jpg"
-    },
-    {
-      "id": "1775729672431",
-      "name": "برنامج تسيير القاعات الرياضية",
-      "price": "تواصل معنا",
-      "cat": "برمجيات",
-      "icon": "📦",
-      "desc": "",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891713117.png"
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1776675713613.jpg"
     }
   ]
 }
