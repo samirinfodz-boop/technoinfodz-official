@@ -695,48 +695,83 @@ function fillContentForm(){
 }
 
 // ══════════════════════════════════════════
-//  SAVE TO GITHUB
+//  SAVE TO GITHUB (تحديث ذكي يدمج المنتجات القديمة مع الجديدة)
 // ══════════════════════════════════════════
 async function saveProducts(commitMsg) {
+  // المعلومات التي طلبت التأكد منها
+  const username = 'samirinfodz-boop';
+  const repo = 'technoinfodz-official';
+  const DATA_FILE = 'products.json';
+  
+  if (!token) {
+    toast('⚠️ يرجى إدخال التوكن أولاً', 'er');
+    return;
+  }
+
   try {
-    // 1. جلب البيانات الحالية من GitHub أولاً لمنع ضياع المنتجات القديمة
+    // 1. جلب نسخة حية من الملف من GitHub للحصول على SHA والبيانات الحالية
     const url = `https://api.github.com/repos/${username}/${repo}/contents/${DATA_FILE}`;
     const res = await fetch(url, {
       headers: { 'Authorization': `token ${token}` }
     });
 
     let githubProducts = [];
-    let currentSha = "";
+    let fileSha = "";
 
     if (res.ok) {
-      const fileData = await res.json();
-      currentSha = fileData.sha;
-      const content = decodeURIComponent(escape(atob(fileData.content)));
-      const parsed = JSON.parse(content);
-      githubProducts = parsed.products || [];
+      const fileJson = await res.json();
+      fileSha = fileJson.sha;
+      // فك تشفير المحتوى الحالي مع دعم اللغة العربية
+      const existingContent = decodeURIComponent(escape(atob(fileJson.content)));
+      const parsedData = JSON.parse(existingContent);
+      githubProducts = parsedData.products || [];
     }
 
-    // 2. دمج المنتج الجديد مع القائمة المجلوبة
+    // 2. دمج المنتجات الجديدة مع المنتجات المجلوبة من GitHub
+    // نستخدم مصفوفة نهائية تبدأ بالمنتجات التي جلبناها من السيرفر
     const finalProductsList = [...githubProducts];
-    products.forEach(newP => {
-      const index = finalProductsList.findIndex(p => p.id === newP.id);
+
+    // إضافة أو تحديث المنتجات الموجودة في لوحة التحكم حالياً
+    products.forEach(localP => {
+      const index = finalProductsList.findIndex(gp => gp.id === localP.id);
       if (index > -1) {
-        finalProductsList[index] = newP; 
+        finalProductsList[index] = localP; // تحديث إذا كان موجوداً
       } else {
-        finalProductsList.push(newP);
+        finalProductsList.push(localP); // إضافة إذا كان جديداً
       }
     });
 
-    // 3. التشفير والحفظ النهائي
-    const finalJson = JSON.stringify({ products: finalProductsList }, null, 2);
-    const b64Content = btoa(unescape(encodeURIComponent(finalJson)));
+    // 3. تحضير البيانات النهائية بتنسيق JSON مرتب
+    const finalData = { products: finalProductsList };
+    const jsonString = JSON.stringify(finalData, null, 2);
+    const b64Content = btoa(unescape(encodeURIComponent(jsonString)));
 
-    await ghPut(DATA_FILE, b64Content, currentSha, commitMsg || 'تحديث المنتجات عبر لوحة التحكم');
-    
-    toast('✓ تم حفظ المنتج وتحديث القائمة بنجاح');
-  } catch (error) {
-    console.error("Error saving products:", error);
-    toast('⚠️ فشل في الحفظ، تأكد من الاتصال', 'er');
+    // 4. الإرسال إلى GitHub (استخدام دالة ghPut أو fetch مباشر)
+    const saveRes = await fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `token ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: commitMsg || 'Update products via Techno InfoDZ Admin',
+        content: b64Content,
+        sha: fileSha
+      })
+    });
+
+    if (saveRes.ok) {
+      toast('✓ تم التحديث بنجاح (القديم + الجديد محفوظ)');
+      return true;
+    } else {
+      const err = await saveRes.json();
+      toast('⚠️ خطأ في GitHub: ' + err.message, 'er');
+      return false;
+    }
+  } catch (ex) {
+    console.error(ex);
+    toast('⚠️ فشل الاتصال بـ GitHub', 'er');
+    return false;
   }
 }
   try {
