@@ -697,15 +697,48 @@ function fillContentForm(){
 // ══════════════════════════════════════════
 //  SAVE TO GITHUB
 // ══════════════════════════════════════════
-async function saveProducts(commitMsg){
-  const sha = await getFileSha(DATA_FILE);
-  const json = JSON.stringify({ products }, null, 2);
-  await ghPut(DATA_FILE, toB64(json), sha, commitMsg||'Update products via Admin Panel');
-}
+async function saveProducts(commitMsg) {
+  try {
+    // 1. جلب البيانات الحالية من GitHub أولاً لمنع ضياع المنتجات القديمة
+    const url = `https://api.github.com/repos/${username}/${repo}/contents/${DATA_FILE}`;
+    const res = await fetch(url, {
+      headers: { 'Authorization': `token ${token}` }
+    });
 
-async function saveContent(){
-  const btn = document.getElementById('content-btn');
-  btn.disabled=true; btn.textContent='⏳ جاري الحفظ...';
+    let githubProducts = [];
+    let currentSha = "";
+
+    if (res.ok) {
+      const fileData = await res.json();
+      currentSha = fileData.sha;
+      const content = decodeURIComponent(escape(atob(fileData.content)));
+      const parsed = JSON.parse(content);
+      githubProducts = parsed.products || [];
+    }
+
+    // 2. دمج المنتج الجديد مع القائمة المجلوبة
+    const finalProductsList = [...githubProducts];
+    products.forEach(newP => {
+      const index = finalProductsList.findIndex(p => p.id === newP.id);
+      if (index > -1) {
+        finalProductsList[index] = newP; 
+      } else {
+        finalProductsList.push(newP);
+      }
+    });
+
+    // 3. التشفير والحفظ النهائي
+    const finalJson = JSON.stringify({ products: finalProductsList }, null, 2);
+    const b64Content = btoa(unescape(encodeURIComponent(finalJson)));
+
+    await ghPut(DATA_FILE, b64Content, currentSha, commitMsg || 'تحديث المنتجات عبر لوحة التحكم');
+    
+    toast('✓ تم حفظ المنتج وتحديث القائمة بنجاح');
+  } catch (error) {
+    console.error("Error saving products:", error);
+    toast('⚠️ فشل في الحفظ، تأكد من الاتصال', 'er');
+  }
+}
   try {
     content = {
       hero:{
