@@ -1,13 +1,3 @@
 {
-  "products": [
-    {
-      "id": "1776675865534",
-      "name": "برمجيات موجهة لإدارة المساحات التجارية الكبرى (المحلات والمراكز التجارية الضخمة)",
-      "price": "تواصل معنا",
-      "cat": "برمجيات",
-      "icon": "📦",
-      "desc": "",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1776675713613.jpg"
-    }
-  ]
+  "products": []
 }
