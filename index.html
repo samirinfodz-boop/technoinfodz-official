@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TECHNO INFODZ — الحلول البرمجية المتكاملة والعتاد الذكي</title>
+  
+  <!-- تحسينات محركات البحث المتقدمة (SEO) -->
+  <meta name="description" content="تكنو إنفو دي زاد - شريكك الرقمي الموثوق في الجزائر. نوفر أنظمة إدارة الشركات المتقدمة PME PRO و Hyper PRO، أجهزة الكاشير، والحلول الأمنية المتكاملة."[cite: 8, 10] />
+  <meta name="keywords" content="برامج تسيير, كاشير الجزائر, PME PRO, Hyper PRO, كاميرات مراقبة, عتاد إعلام آلي, تسيير المخزون"[cite: 8, 10] />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  
+  <style>
+    :root {
+      --bg-deep:    #070a12;
+      --bg-panel:   #0d1321;
+      --bg-card:    #11192e;
+      --accent:     #00d4ff;
+      --accent2:    #0066ff;
+      --accent3:    #7b2fff;
+      --text-dim:   #6384a6;
+      --text-mid:   #94b9db;
+      --text-main:  #d1e4f7;
+      --text-bright:#f5f9fc;
+      --green:      #00ff9d;
+      --border:     rgba(0, 212, 255, 0.1);
+      --glow:       0 0 25px rgba(0, 212, 255, 0.12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'IBM Plex Sans Arabic', sans-serif; }
+    body { background-color: var(--bg-deep); color: var(--text-main); line-height: 1.6; overflow-x: hidden; scroll-behavior: smooth; }
+
+    /* الخلفية الشبكية وتأثيرات الإضاءة الخلفية */
+    .cyber-grid {
+      position: fixed; inset: 0; pointer-events: none; z-index: -1;
+      background: 
+        linear-gradient(rgba(0, 212, 255, 0.012) 1px, transparent 1px) 0 0 / 40px 40px,
+        linear-gradient(90deg, rgba(0, 212, 255, 0.012) 1px, transparent 1px) 0 0 / 40px 40px;
+    }
+    .glow-sphere {
+      position: fixed; width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 102, 255, 0.06) 0%, transparent 70%);
+      top: -150px; left: -150px; pointer-events: none; z-index: -1;
+    }
+
+    /* الهيدر ونظام التنقل */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(7, 10, 18, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-container {
+      max-width: 1200px; margin: 0 auto; padding: 0.8rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo {
+      font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.3rem;
+      color: var(--text-bright); text-decoration: none; display: flex; align-items: center; gap: .4rem;
+    }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 1.8rem; align-items: center; list-style: none; }
+    .nav-links a {
+      color: var(--text-mid); text-decoration: none; font-size: .9rem; font-weight: 500;
+      transition: color .25s; padding: .25rem 0;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+    /* أسلوب العرض الاحترافي المستوحى من مواقع الشركات الكبرى */
+    .hero {
+      max-width: 1200px; margin: 0 auto; padding: 6rem 1.5rem 4rem;
+      text-align: center; position: relative;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(0, 212, 255, 0.05); border: 1px solid rgba(0, 212, 255, 0.18);
+      padding: .4rem 1.2rem; border-radius: 50px; color: var(--accent); font-size: .8rem;
+      font-weight: 600; margin-bottom: 1.8rem;
+    }
+    .hero h1 {
+      font-size: 2.8rem; font-weight: 700; color: var(--text-bright);
+      line-height: 1.3; margin-bottom: 1.5rem; max-width: 900px; margin-left: auto; margin-right: auto;
+    }
+    .hero p { color: var(--text-dim); font-size: 1.1rem; max-width: 650px; margin: 0 auto 2.5rem; }
+
+    /* نظام الأزرار المتطور */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: .6rem;
+      background: linear-gradient(135deg, var(--accent2), var(--accent3));
+      color: #fff; text-decoration: none; padding: .9rem 2.2rem; border-radius: 8px;
+      font-weight: 600; font-size: .95rem; border: none; cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0, 102, 255, 0.2); transition: all .2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0, 102, 255, 0.35); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: .6rem;
+      background: rgba(255,255,255,.01); border: 1px solid var(--border);
+      color: var(--text-main); text-decoration: none; padding: .9rem 2rem; border-radius: 8px;
+      font-weight: 500; font-size: .95rem; transition: all .2s;
+    }
+    .btn-ghost:hover { background: rgba(0, 212, 255, 0.04); border-color: rgba(0, 212, 255, 0.3); color: var(--accent); }
+
+    /* قسم الإحصائيات الفورية لتعزيز الموثوقية (مستوحى من المواقع الرسمية) */
+    .stats-bar {
+      max-width: 1000px; margin: 0 auto 5rem;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      background: var(--bg-panel); border: 1px solid var(--border); border-radius: 16px; padding: 2rem;
+    }
+    .stat-item { text-align: center; border-left: 1px solid var(--border); }
+    .stat-item:last-child { border-left: none; }
+    .stat-item h3 { font-size: 2.2rem; color: var(--accent); font-weight: 700; margin-bottom: 0.2rem; }
+    .stat-item p { color: var(--text-dim); font-size: 0.85rem; }
+
+    /* قسم عرض مجالات الخدمة الأساسية للتنظيم الهيكلي */
+    .section-container { max-width: 1200px; margin: 0 auto; padding: 4rem 1.5rem; }
+    .section-title { margin-bottom: 3rem; text-align: center; }
+    .section-title h2 { font-size: 2rem; font-weight: 700; color: var(--text-bright); margin-bottom: .6rem; }
+    .section-title p { color: var(--text-dim); font-size: .95rem; }
+
+    .features-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 4rem;
+    }
+    .feature-card {
+      background: var(--bg-panel); border: 1px solid var(--border); padding: 2rem; border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+    .feature-card:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: var(--glow); }
+    .feature-icon { font-size: 2.5rem; margin-bottom: 1rem; display: inline-block; }
+    .feature-card h3 { color: var(--text-bright); font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .feature-card p { color: var(--text-dim); font-size: 0.88rem; line-height: 1.6; }
+
+    /* تبويبات الفرز الذكية والمعاد صياغتها بروابط حقيقية وقابلة للنسخ */
+    .category-tabs { display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; }
+    .tab-btn {
+      background: var(--bg-panel); border: 1px solid var(--border); color: var(--text-mid);
+      padding: .65rem 1.6rem; border-radius: 8px; cursor: pointer; font-size: .9rem;
+      font-weight: 500; transition: all .25s; text-decoration: none; display: inline-block;
+    }
+    .tab-btn.active, .tab-btn:hover {
+      background: rgba(0, 212, 255, 0.06); border-color: var(--accent); color: var(--accent);
+    }
+
+    /* شبكة عرض المنتجات والبرامج */
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.75rem; }
+    .product-card {
+      background: var(--bg-panel); border: 1px solid var(--border); border-radius: 14px;
+      overflow: hidden; transition: all .3s ease; display: flex; flex-direction: column; height: 100%;
+    }
+    .product-card:hover { transform: translateY(-5px); border-color: rgba(0, 212, 255, 0.25); box-shadow: var(--glow); }
+    .product-img {
+      width: 100%; height: 180px; background: #090e17; position: relative;
+      display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--border);
+    }
+    /* حماية صور البرمجيات والعتاد من التمطط والتشوه */
+    .product-img img { width: 100%; height: 100%; object-fit: contain; background: #090e17; transition: transform .5s; }
+    .product-card:hover .product-img img { transform: scale(1.03); }
+    .product-badge {
+      position: absolute; top: .75rem; right: .75rem; background: rgba(7, 10, 18, 0.85);
+      border: 1px solid var(--border); color: var(--accent); font-size: .7rem; padding: .25rem .65rem; border-radius: 4px; font-weight: 600;
+    }
+    .product-info { padding: 1.4rem; display: flex; flex-direction: column; flex-grow: 1; }
+    .product-info h3 { font-size: 1.1rem; font-weight: 600; color: var(--text-bright); margin-bottom: .6rem; }
+    .product-info p { color: var(--text-dim); font-size: .85rem; line-height: 1.6; margin-bottom: 1.4rem; flex-grow: 1; }
+    .product-price { font-size: 1.2rem; font-weight: 700; color: var(--accent); margin-bottom: 1.4rem; }
+
+    /* فوتر احترافي وقنوات اتصال رسمية ومباشرة */
+    footer { border-top: 1px solid var(--border); background: var(--bg-panel); padding: 2.5rem 1.5rem; text-align: center; }
+    footer p { color: var(--text-dim); font-size: .88rem; }
+    .footer-support { margin-top: 0.5rem; color: var(--text-mid); font-weight: 500; font-size: 0.9rem; }
+
+    /* تأثيرات التحميل والتمرير الانسيابي */
+    .reveal { opacity: 0; transform: translateY(15px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .back-to-top {
+      position: fixed; bottom: 2rem; left: 2rem; background: var(--bg-panel); border: 1px solid var(--border);
+      color: var(--accent); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; text-decoration: none; opacity: 0; pointer-events: none; transition: all 0.3s; z-index: 99;
+    }
+    .back-to-top.visible { opacity: 1; pointer-events: auto; }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      .nav-links { display: none; }
+      .stats-bar { grid-template-columns: 1fr; gap: 1.5rem; }
+      .stat-item { border-left: none; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
+      .stat-item:last-child { border-bottom: none; padding-bottom: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cyber-grid"></div>
+  <div class="glow-sphere"></div>
+
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo" id="nav-logo-btn">TECHNO<span>INFODZ</span></a>[cite: 8]
+      <ul class="nav-links">
+        <li><a href="#" class="active">الرئيسية</a></li>
+        <li><a href="#solutions" onclick="setCategoryFilter('برمجيات')">حلولنا البرمجية</a></li>[cite: 8]
+        <li><a href="#solutions" onclick="setCategoryFilter('عتاد إعلام آلي')">أجهزة ومعدات الكاشير</a></li>[cite: 8]
+        <li><a href="https://wa.me/213666636473" target="_blank" class="btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">💬 طلب استشارة فورية</a></li>[cite: 11]
+      </ul>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-badge">🛡️ TECHNO INFODZ — الشريك التقني المعتمد والموثوق للمؤسسات والشركات</div>[cite: 8]
+    <h1>منظومة رقمية متكاملة لإدارة نشاطك التجاري بدقة وسهولة متناهية</h1>[cite: 8]
+    <p>نحن لا نبيع البرامج والأجهزة فحسب، بل نبني لك نظام تسيير ذكي يربط عملياتك الإدارية والمالية مع دعم فني احترافي مستمر على مدار الساعة.</p>[cite: 8]
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href="https://wa.me/213666636473" class="btn-primary">
+        <span>💬 تواصل مع المستشار الفني الآن</span>[cite: 8]
+      </a>
+      <a href="#solutions" class="btn-ghost"><span>📦 استكشف معرض الحلول والعتاد</span></a>[cite: 8]
+    </div>
+  </section>
+
+  <!-- شريط المؤشرات لتعزيز الثقة الرقمية للمؤسسة -->
+  <section class="max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;">
+    <div class="stats-bar reveal">
+      <div class="stat-item">
+        <h3>+10</h3>
+        <p>أنشطة برمجية وتجارية مدعومة بالكامل</p>
+      </div>
+      <div class="stat-item">
+        <h3>100%</h3>
+        <p>أنظمة حماية وتأمين قواعد بيانات مشفرة</p>
+      </div>
+      <div class="stat-item">
+        <h3>24/7</h3>
+        <p>متابعة ودعم فني معتمد للمشتركين</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- هيكل الخدمات المستوحى من هندسة المواقع التقنية الكبرى للتعريف بنطاق العمل -->
+  <section class="section-container" id="services-overview" style="padding-top: 0;">
+    <div class="section-title reveal">
+      <h2>ركائز خدماتنا الرقمية المتكاملة</h2>
+      <p>نوفر لعملائنا بيئة عمل ذكية ومترابطة تجمع بين قوة الأنظمة وثبات العتاد التقني</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon">⚙️</div>
+        <h3>برمجيات تسيير ذكية</h3>
+        <p>حلول متطورة لإدارة المخزون، المبيعات، الحسابات والأنشطة التجارية الكبرى (Pme pro, Hyper pro) بدقة وسرعة متناهية.</p>[cite: 8]
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🖥️</div>
+        <h3>عتاد كاشير متطور</h3>
+        <p>أجهزة حواسب لمسية متكاملة، طابعات فواتير حرارية، وقوارئ باركود سريعة تلائم ضغط العمل المستمر.</p>[cite: 8]
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🛡️</div>
+        <h3>أنظمة أمنية وشبكات</h3>
+        <p>تأمين منشأتك عبر تركيب كاميرات مراقبة متطورة عالية الدقة وربطها بأنظمة التحكم في الشبكات الداخلية والمحلية.</p>[cite: 8]
+      </div>
+    </div>
+  </section>
+
+  <!-- معرض السلع والبرمجيات الديناميكي المترابط مع المستودع السحابي وجيت هاب -->
+  <section class="section-container" id="solutions">
+    <div class="section-title reveal">
+      <h2>معرض الأنظمة والمعدات والحلول الفورية</h2>
+      <p>إدارة وتسيير من خلال ربط مباشر وتلقائي لقواعد البيانات المرفوعة على السيرفرات أو الأجهزة المحلية</p>
+    </div>
+
+    <!-- التبويبات المحدثة بروابط حقيقية قابلة للنسخ والقراءة الفورية بواسطة عناكب البحث -->
+    <div class="category-tabs reveal" id="tabs-container">
+      <a href="#solutions?cat=all" class="tab-btn active" onclick="filterCategory('الكل', this, event)">الكل</a>[cite: 12]
+      <a href="#solutions?cat=software" class="tab-btn" onclick="filterCategory('برمجيات', this, event)">⚙️ حلول برمجية (Software)</a>[cite: 12]
+      <a href="#solutions?cat=hardware" class="tab-btn" onclick="filterCategory('عتاد إعلام آلي', this, event)">🖥️ أجهزة الكاشير والعتاد</a>[cite: 12]
+      <a href="#solutions?cat=security" class="tab-btn" onclick="filterCategory('كاميرات', this, event)">🛡️ الأمن والمراقبة</a>
+    </div>
+
+    <div class="products-grid" id="dynamic-products"></div>
+  </section>
+
+  <a href="#" class="back-to-top" id="backToTop">▲</a>
+
+  <footer>
+    <p>© 2026 TECHNO INFODZ. جميع الحقوق محفوظة للعلامة الرائدة لحلول البرمجيات والدعم الفني.</p>[cite: 8]
+    <div class="footer-support">خط الدعم والطلب المعتمد: 0666 63 64 73</div>[cite: 8]
+  </footer>
+
+  <script>
+    const GITHUB_OWNER = "samirinfodz-boop";
+    const GITHUB_REPO  = "technoinfodz-official";
+    const DATA_PATH    = "products.json";
+    
+    let productsData = [];
+    let currentCategory = "الكل";
+
+    async function fetchProducts() {
+      const liveUrl = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/main/${DATA_PATH}`;
+      const localUrl = `./${DATA_PATH}`;
+      
+      try {
+        let response = await fetch(liveUrl + '?t=' + Date.now());
+        if (!response.ok) response = await fetch(localUrl);
+        const data = await response.json();
+        productsData = data.products || data;
+      } catch (error) {
+        console.warn("نظام الطوارئ الاحتياطي قيد العمل حالياً لقراءة البيانات.");
+        try {
+          let response = await fetch(localUrl);
+          const data = await response.json();
+          productsData = data.products || data;
+        } catch(e) {
+          console.error("عطل في الاتصال بقاعدة البيانات الموحدة:", e);
+        }
+      }
+      renderProducts();
+      updateTabCounts();
+    }
+
+    function renderProducts() {
+      const container = document.getElementById('dynamic-products');
+      if (!container) return;
+
+      let filtered = productsData;
+      if (currentCategory !== "الكل") {
+        filtered = productsData.filter(p => p.cat === currentCategory);
+      }
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-dim); padding: 3rem 0;">لا توجد عناصر مدرجة حالياً في هذا القسم.</div>`;
+        return;
+      }
+
+      container.innerHTML = filtered.map(p => `
+        <div class="product-card reveal">
+          <div class="product-img">
+            <span class="product-badge">${p.cat || 'برمجيات'}</span>
+            ${p.img ? `<img src="${p.img}" alt="${p.name}" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100%\' height=\'100%\' viewBox=\'0 0 100 100\'><rect width=\'100%\' height=\'100%\' fill=\'%2311192e\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%236384a6\' font-size=\'30\'>📦</text></svg>'">` : `<span style="font-size:3.5rem;">${p.icon || '📦'}</span>`}
+          </div>
+          <div class="product-info">
+            <h3>${p.name}</h3>
+            <p>${p.desc || 'نظام وحل متكامل مصمم خصيصاً لتلبية متطلبات نشاطكم التجاري بكفاءة عالية وبدعم فني مستمر.'}</p>[cite: 8]
+            <div class="product-price">${p.price || 'تواصل معنا لمعرفة السعر'}</div>
+            <div style="display:flex; gap:.65rem; margin-top:auto;">
+              <a href="product.html?id=${p.id}" class="btn-ghost" style="flex:1; justify-content:center; padding:.65rem; font-size:.82rem;"><span>🔍 التفاصيل والميزات</span></a>
+              <a href="https://wa.me/213666636473?text=${encodeURIComponent('مرحباً Techno Infodz، أود الاستفسار عن تفاصيل وسعر عرض: ' + p.name)}" target="_blank" class="btn-primary" style="flex:1; justify-content:center; padding:.65rem; font-size:.82rem; box-shadow:none;"><span>💬 اطلب الآن</span></a>[cite: 8]
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      initRevealEffect();
+    }
+
+    function updateTabCounts() {
+      const tabs = document.querySelectorAll('#tabs-container .tab-btn');
+      if(tabs.length >= 4) {
+        tabs[0].textContent = `الكل (${productsData.length})`;
+        tabs[1].textContent = `⚙️ حلول برمجية (${productsData.filter(p=>p.cat==='برمجيات').length})`;[cite: 8]
+        tabs[2].textContent = `🖥️ أجهزة الكاشير والعتاد (${productsData.filter(p=>p.cat==='عتاد إعلام آلي').length})`;[cite: 8]
+        tabs[3].textContent = `🛡️ الأمن والمراقبة (${productsData.filter(p=>p.cat==='كاميرات').length})`;[cite: 8]
+      }
+    }
+
+    function filterCategory(cat, btn, event) {
+      if(event) event.preventDefault();
+      currentCategory = cat;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      if(btn) btn.classList.add('active');
+      renderProducts();
+    }
+
+    function setCategoryFilter(cat) {
+      currentCategory = cat;
+      const tabs = document.querySelectorAll('.tab-btn');
+      tabs.forEach(b => {
+        if(b.textContent.includes(cat)) {
+          b.classList.add('active');
+        } else {
+          b.classList.remove('active');
+        }
+      });
+      renderProducts();
+    }
+
+    function initRevealEffect() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }
+
+    window.addEventListener('scroll', () => {
+      const topBtn = document.getElementById('backToTop');
+      if(window.scrollY > 300) {
+        topBtn.classList.add('visible');
+      } else {
+        topBtn.classList.remove('visible');
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", fetchProducts);
+
+    // مدخل البوابة السرية للوحة تحكم التحديثات السحابية
+    let logoClickCount = 0;
+    let logoClickTimer = null;
+
+    document.getElementById('nav-logo-btn').addEventListener('click', function(e) {
+      e.preventDefault();
+      logoClickCount++;
+      clearTimeout(logoClickTimer);
+      logoClickTimer = setTimeout(() => { logoClickCount = 0; }, 3000);
+      if (logoClickCount >= 5) {
+        logoClickCount = 0;
+        const entered = prompt('🔐 الدخول الآمن لقاعدة بيانات جيت هاب السحابية:');
+        if (entered === 'techno2024') {
+          window.location.href = 'admin-github.html';
+        } else {
+          alert('❌ غير مصرح.');
+        }
+      }
+    });
+  </script>
+</body>
+</html>
