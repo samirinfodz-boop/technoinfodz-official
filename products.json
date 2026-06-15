@@ -260,6 +260,15 @@
       "icon": "📦",
       "desc": "Grand format\nDimensions : 42 cm x 41 cm x 10 cm\nRangement pour billets : 4\nRangements pour pièces : 8\nConnectivité : RJ12",
       "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781561246233.jpg"
+    },
+    {
+      "id": "1781561449732",
+      "name": "TC-E1 - Tiroir Caisse Economique",
+      "price": "تواصل معنا",
+      "cat": "عتاد إعلام آلي",
+      "icon": "📦",
+      "desc": "Tiroir caisse en métal avec structure solide\nFacilité et rapidité d’ouverture\nBoitier: construction en acier\nInterface: RJ12\nCaisse: 4 Bacs à billets et 8 Bacs à pièces\nSéparateurs réglables pour les Bacs à billets et pièces\nFermeture: 3 positions de verrouillage\nDurabilité: 1,000, 000 opérations\nDimensions: 350 L x 405 P x 90 H (mm)\nPoids: 5.3 Kg",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781561405729.jpg"
     }
   ]
 }
