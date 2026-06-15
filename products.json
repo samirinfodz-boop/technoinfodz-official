@@ -125,6 +125,15 @@
       "icon": "📦",
       "desc": "",
       "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781389872881.jpg"
+    },
+    {
+      "id": "1781541713312",
+      "name": "نظام TECHNO INFODZ المتكامل لإدارة المشاريع",
+      "price": "تواصل معنا",
+      "cat": "برمجيات",
+      "icon": "📦",
+      "desc": "يتضمن أدوات لمتابعة الرواتب (Salariés)، الحضور والغياب (Pointages)، المصاريف (Charges)، الخسائر (Pertes)، والخزينة (Trésorier / Caisse).",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781541607696.jpg"
     }
   ]
 }
