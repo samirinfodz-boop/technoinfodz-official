@@ -1,130 +1,13 @@
 {
   "products": [
     {
-      "id": "1774865578641",
-      "name": "برنامج تسيير مؤسسات الانتاج والتصنيع",
+      "id": "1781519428513",
+      "name": "نظام TECHNO INFODZ المتكامل لإدارة المشاريع",
       "price": "تواصل معنا",
       "cat": "برمجيات",
       "icon": "📦",
-      "desc": "",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774865522075.jpg"
-    },
-    {
-      "id": "1774874130144",
-      "name": "برنامج تسيير محلات مواد غذائية",
-      "price": "تواصل معنا",
-      "cat": "برمجيات",
-      "icon": "📦",
-      "desc": "نظام وحل متكامل مصمم خصيصاً لتلبية متطلبات نشاطكم التجاري بكفاءة عالية وبدعم فني مستمر.",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891317602.png"
-    },
-    {
-      "id": "1774874203728",
-      "name": "برنامج تسيير محلات الألبسة",
-      "price": "تواصل معنا",
-      "cat": "برمجيات",
-      "icon": "📦",
-      "desc": "",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891359008.png"
-    },
-    {
-      "id": "1774874328440",
-      "name": "برنامج تسيير المطاعم والكافيتيريا",
-      "price": "تواصل معنا",
-      "cat": "برمجيات",
-      "icon": "📦",
-      "desc": "",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891861082.png"
-    },
-    {
-      "id": "1774891489543",
-      "name": "برنامج تسيير محلات كراء الملابس",
-      "price": "تواصل معنا",
-      "cat": "برمجيات",
-      "icon": "📦",
-      "desc": "",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891476674.png"
-    },
-    {
-      "id": "1774891551390",
-      "name": "برنامج تسيير الموزعين الحترفين",
-      "price": "تواصل معنا",
-      "cat": "برمجيات",
-      "icon": "📦",
-      "desc": "",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891513008.jpg"
-    },
-    {
-      "id": "1774891658446",
-      "name": "تطبيق هاتف للموزعين المحترفين",
-      "price": "تواصل معنا",
-      "cat": "برمجيات",
-      "icon": "📦",
-      "desc": "",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891628734.jpg"
-    },
-    {
-      "id": "1774891746958",
-      "name": "برنامج تسيير القاعات الرياضية",
-      "price": "تواصل معنا",
-      "cat": "برمجيات",
-      "icon": "📦",
-      "desc": "",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891713117.png"
-    },
-    {
-      "id": "1781358399498",
-      "name": "MINI UNITE LENOVO THINKCENTRE M910Q I3-6EME 8G SSD.128G",
-      "price": "تواصل معنا",
-      "cat": "عتاد إعلام آلي",
-      "icon": "📦",
-      "desc": "",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781363192630.jpg"
-    },
-    {
-      "id": "1781389043087",
-      "name": "PC ALL IN ONE SMART NOIR",
-      "price": "تواصل معنا",
-      "cat": "عتاد إعلام آلي",
-      "icon": "📦",
-      "desc": "CPU I5/RAM 8G/SSD 128",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781388949480.jpeg"
-    },
-    {
-      "id": "1781389279911",
-      "name": "PC ALL IN ONE SMART ROUGE",
-      "price": "تواصل معنا",
-      "cat": "عتاد إعلام آلي",
-      "icon": "📦",
-      "desc": "CPU I5/ RAM 8G/SSD 128G",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781389186494.jpeg"
-    },
-    {
-      "id": "1781389780566",
-      "name": "LECTEUR CODE A BARRE (Scanner) HENEX HC-666N",
-      "price": "تواصل معنا",
-      "cat": "عتاد إعلام آلي",
-      "icon": "📦",
-      "desc": "2D-3D-QR",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781389660717.jpg"
-    },
-    {
-      "id": "1781389859966",
-      "name": "IMPRIMANTE CODE A BARRE S58 USB-SERIE SMARTPOS",
-      "price": "تواصل معنا",
-      "cat": "عتاد إعلام آلي",
-      "icon": "📦",
-      "desc": "",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781389808258.jpg"
-    },
-    {
-      "id": "1781389929822",
-      "name": "IMPRIMANTE TICKET DE CAISSE XP-T80B XPRINTER",
-      "price": "تواصل معنا",
-      "cat": "عتاد إعلام آلي",
-      "icon": "📦",
-      "desc": "",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781389872881.jpg"
+      "desc": "إدارة الموارد والمالية: يتضمن أدوات لمتابعة الرواتب (Salariés)، الحضور والغياب (Pointages)، المصاريف (Charges)، الخسائر (Pertes)، والخزينة (Trésorier / Caisse)",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781519334733.jpg"
     }
   ]
 }
