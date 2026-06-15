@@ -314,6 +314,15 @@
       "icon": "📦",
       "desc": "Model: XP-D200N\nType d'impression: Thermique directe\nRésolution: 203 dpi\nVitesse d'impression: Jusqu'à 250 mm/s\nInterface: USB\nMémoire: 4 Mo de RAM, 8 Mo de Flash\nTaille des caractères: De la police 0 à la police 8\nCodes-barres pris en charge: CODE128, EAN-13, EAN-8, CODE39, UPC-A, UPC-E, CODABAR, CODE93, ITF, EAN128, PDF417, QRCode\nLargeur du papier: De 20 à 58 mm\nDiamètre du rouleau de papier: 40 mm (max)",
       "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781562080274.png"
+    },
+    {
+      "id": "1781562240306",
+      "name": "POSITIVE P60: Lecteur de code barre laser 2D / QR",
+      "price": "تواصل معنا",
+      "cat": "عتاد إعلام آلي",
+      "icon": "📦",
+      "desc": "Lecture : Omnidirectionnel\nCouleurs disponibles : Noir\nConnectivité : USB",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781562214191.jpg"
     }
   ]
 }
