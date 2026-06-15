@@ -251,6 +251,15 @@
       "icon": "📦",
       "desc": "MOTHER BOARD I5 Gen2 (I5-2410M),TDP 35W\nMEMORY (RAM) 4GB / DDR3L 1333MHz, (Samsung)\nHDD / SSD 64GB mSATA\nHRAD DISK SLOT 1xSATA2.0, 1xmSATA,\nDISPLAY (FRONT-LCD) 15 Inch 4:3\nTOUCH PANEL 15\", Capacitive P-CAP\nLAN 1\nSERIAL (RS-232C) 2 (DSUB-9P X 2EA)\nHDMI 1\nVGA 1\nUSB 6 (2out of screen right side,USB3.0*4)\nAUDIO 2 (1x Line out, 1x Mic-in)\nSPEAKER 1\nEXPANSION INTERFACE mini-PCIe\nCOOLER & FAN Fan\nPOWER ADAPTOR (EXTERNAL) 60[W] Adaptor\nInput AC 100~240V/50~60HZ, DC 12V/5.0A\nTILT ADJUSTMENT 0o ~ 90o\nDIMENSION VESA (MM) 7.5 x7.5\nDIMENSION (W X H X D) (MM) T.B.D\n44*43*30CM\nWEIGHT (W/ STAND) 6.625KG / 13.24KG (2PCS )\nOS win 10, win7",
       "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781561055330.png"
+    },
+    {
+      "id": "1781561310772",
+      "name": "TC-S1 - Tiroir Caisse Spéciale",
+      "price": "تواصل معنا",
+      "cat": "عتاد إعلام آلي",
+      "icon": "📦",
+      "desc": "Grand format\nDimensions : 42 cm x 41 cm x 10 cm\nRangement pour billets : 4\nRangements pour pièces : 8\nConnectivité : RJ12",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781561246233.jpg"
     }
   ]
 }
