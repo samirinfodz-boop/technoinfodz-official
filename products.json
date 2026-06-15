@@ -215,6 +215,15 @@
       "icon": "📦",
       "desc": "Balance électronique avec alimentation 220v\nImprimante ticket thermique\n56 touches raccourcis pour PLU\nPoids Max 30Kg\nAfficheur client LCD: Poids, Prix unitaire et prix Total\nPorts: RJ45, RS232 et RJ12 pour tiroir caisse",
       "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781555431484.jpg"
+    },
+    {
+      "id": "1781555529367",
+      "name": "ACLAS LS6 - Balance électronique avec afficheur",
+      "price": "تواصل معنا",
+      "cat": "عتاد إعلام آلي",
+      "icon": "📦",
+      "desc": "Balance électronique à piles ou avec transformateur 6v-1A\nJusqu'à 99 PLU programmables\n15 touches raccourcis pour PLU\nPoids Max 30Kg\nAfficheur client LCD: Poids, prix unitaire et prix total\nPort série RS232",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781555486128.jpg"
     }
   ]
 }
