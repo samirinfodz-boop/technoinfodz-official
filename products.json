@@ -377,6 +377,15 @@
       "icon": "📦",
       "desc": "برنامج تسيير القاعات الرياضية (SmartGym): أدر اشتراكات أعضائك، تحكّم في نظام الدخول عبر الـ RFID، وتابع مبيعات الملحقات ومداخيلك المالية بدقة\n-نظام الرقابة والتحكم في الدخول (Access Control & RFID)\n-إدارة المشتركين والأعضاء (Gestion des Adhérents)\n-متجر ونقاط بيع مدمجة (POS & Inventory)\n-نظام اتصالات وتسويق (SMS & Email)\n-إحصائيات وتقارير مالية معمقة (Statistiques & Résumé)",
       "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781640833913.png"
+    },
+    {
+      "id": "1781642069786",
+      "name": "Dahua Cooper bullet and dome",
+      "price": "تواصل معنا",
+      "cat": "كاميرات",
+      "icon": "📦",
+      "desc": "اقتصادية، ومقاومة للعوامل الجوية (الغبار والأمطار IP67)، وتأتي برؤية ليلية ذكية (Smart IR) تصل إلى 20 متراً.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781641959948.jpg"
     }
   ]
 }
