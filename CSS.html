@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TECHNO INFODZ — حلول برمجية وعتاد ذكي</title>
+  
+  <meta name="description" content="تكنو إنفو دي زاد - حلول برمجية رائدة وموثوقة في الجزائر. برامج PME PRO و Hyper PRO وأنظمة الكاشير وكاميرات المراقبة." />
+  <meta name="keywords" content="برامج تسيير, كاشير, الجزائر, PME PRO, برمجيات تجارية, Techno infodz" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="CSS.css" />
+</head>
+<body>
+
+  <div class="cyber-grid"></div>
+  <div class="glow-sphere"></div>
+  <div class="glow-sphere-2"></div>
+
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo" id="nav-logo-btn">TECHNO<span>INFODZ</span></a>
+      <ul class="nav-links">
+        <li>
+          <a href="https://www.youtube.com/@techno-infodz1994" target="_blank" style="display: inline-flex; align-items: center; gap: .4rem; color: #ff0000; font-weight: 600;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle;">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+            <span>اليوتيوب</span>
+          </a>
+        </li>
+        خدمة الزبائن 08:00-22:00   7/7   رقم الهاتف: 73-64-63-0666
+        <li><a href="#" class="active">الرئيسية</a></li>  
+        <li><a href="#solutions" onclick="setCategoryFilter('برمجيات')">برمجياتنا</a></li>
+        <li><a href="#solutions" onclick="setCategoryFilter('عتاد إعلام آلي')">العتاد والأجهزة</a></li>
+        <li><a href="https://wa.me/213666636473" target="_blank" class="btn-primary" style="padding: 0.5rem 1rem;">💬 اطلب استشارة</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-badge">⚡ TECHNO INFODZ — الحلول الرقمية الشاملة والموثوقة</div>
+    <h1 id="hero-title">حلول برمجية متكاملة وأنظمة عتاد ذكية لإدارة نشاطك التجاري بدقة</h1>
+    <p id="hero-desc">نوفر برامج تسيير متطورة ومعدات كاشير متكاملة وأنظمة أمنية وشبكات تناسب كافة الأنشطة والمؤسسات مع دعم فني مستمر ومتخصص.</p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href="https://wa.me/213666636473" class="btn-primary" id="hero-action-btn">
+        <span>💬 اطلب أو استشر الخبير الآن</span>
+      </a>
+      <a href="#solutions" class="btn-ghost"><span>📦 تصفح العروض والمنتجات</span></a>
+    </div>
+  </section>
+
+  <section class="section-container" id="solutions">
+    <div class="section-title reveal">
+      <h2>معرض الحلول والمعدات المتكاملة</h2>
+      <p>تصفح برامج التسيير الاحترافية (SOFTWARE) والعتاد الذكي وأجهزة الحماية (HARDWARE)</p>
+    </div>
+
+    <div class="category-tabs reveal" id="tabs-container">
+      <a href="#solutions?cat=all" class="tab-btn active" onclick="filterCategory('الكل', this, event)">الكل</a>
+      <a href="#solutions?cat=software" class="tab-btn" onclick="filterCategory('برمجيات', this, event)">⚙️ حلول برمجية (Software)</a>
+      <a href="#solutions?cat=hardware" class="tab-btn" onclick="filterCategory('عتاد إعلام آلي', this, event)">🖥️ أجهزة الكاشير والعتاد</a>
+      <a href="#solutions?cat=security" class="tab-btn" onclick="filterCategory('كاميرات', this, event)">🛡️ الأمن والمراقبة</a>
+    </div>
+
+    <div class="products-grid" id="dynamic-products"></div>
+  </section>
+
+  <a href="#" class="
