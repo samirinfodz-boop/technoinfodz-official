@@ -368,6 +368,15 @@
       "icon": "📦",
       "desc": "",
       "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781607033493.png"
+    },
+    {
+      "id": "1781641015010",
+      "name": "برنامج SMART GYM: النظام الذكي المتكامل لإدارة الصالات الرياضية",
+      "price": "تواصل معنا",
+      "cat": "برمجيات",
+      "icon": "📦",
+      "desc": "برنامج تسيير القاعات الرياضية (SmartGym): أدر اشتراكات أعضائك، تحكّم في نظام الدخول عبر الـ RFID، وتابع مبيعات الملحقات ومداخيلك المالية بدقة\n-نظام الرقابة والتحكم في الدخول (Access Control & RFID)\n-إدارة المشتركين والأعضاء (Gestion des Adhérents)\n-متجر ونقاط بيع مدمجة (POS & Inventory)\n-نظام اتصالات وتسويق (SMS & Email)\n-إحصائيات وتقارير مالية معمقة (Statistiques & Résumé)",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781640833913.png"
     }
   ]
 }
