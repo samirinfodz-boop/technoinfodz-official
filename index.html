@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TECHNO INFODZ — حلول برمجية وعتاد ذكي</title>
+  
+  <meta name="description" content="تكنو إنفو دي زاد - حلول برمجية رائدة وموثوقة في الجزائر. برامج PME PRO و Hyper PRO وأنظمة الكاشير وكاميرات المراقبة." />
+  <meta name="keywords" content="برامج تسيير, كاشير, الجزائر, PME PRO, برمجيات تجارية, Techno infodz" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="cyber-grid"></div>
+  <div class="glow-sphere"></div>
+  <div class="glow-sphere-2"></div>
+
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo" id="nav-logo-btn">TECHNO<span>INFODZ</span></a>
+      <ul class="nav-links">
+        <li>
+          <a href="https://www.youtube.com/@techno-infodz1994" target="_blank" style="display: inline-flex; align-items: center; gap: .4rem; color: #ff0000; font-weight: 600;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle;">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+            <span>اليوتيوب</span>
+          </a>
+        </li>
+        خدمة الزبائن 08:00-22:00   7/7   رقم الهاتف: 73-64-63-0666
+        <li><a href="#" class="active">الرئيسية</a></li>  
+        <li><a href="#solutions?cat=software">برمجياتنا</a></li>
+        <li><a href="#solutions?cat=hardware">العتاد والأجهزة</a></li>
+        <li><a href="https://wa.me/213666636473" target="_blank" class="btn-primary" style="padding: 0.5rem 1rem;">💬 اطلب استشارة</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-badge">⚡ TECHNO INFODZ — الحلول الرقمية الشاملة والموثوقة</div>
+    <h1 id="hero-title">حلول برمجية متكاملة وأنظمة عتاد ذكية لإدارة نشاطك التجاري بدقة</h1>
+    <p id="hero-desc">نوفر برامج تسيير متطورة ومعدات كاشير متكاملة وأنظمة أمنية وشبكات تناسب كافة الأنشطة والمؤسسات مع دعم فني مستمر ومتخصص.</p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href="https://wa.me/213666636473" class="btn-primary" id="hero-action-btn">
+        <span>💬 اطلب أو استشر الخبير الآن</span>
+      </a>
+      <a href="#solutions?cat=all" class="btn-ghost"><span>📦 تصفح العروض والمنتجات</span></a>
+    </div>
+  </section>
+
+  <section class="section-container" id="solutions">
+    <div class="section-title reveal">
+      <h2>معرض الحلول والمعدات المتكاملة</h2>
+      <p>تصفح برامج التسيير الاحترافية (SOFTWARE) والعتاد الذكي وأجهزة الحماية (HARDWARE)</p>
+    </div>
+
+    <div class="category-tabs reveal" id="tabs-container">
+      <a href="#solutions?cat=all" class="tab-btn active" data-cat="all">الكل</a>
+      <a href="#solutions?cat=software" class="tab-btn" data-cat="software">⚙️ حلول برمجية (Software)</a>
+      <a href="#solutions?cat=hardware" class="tab-btn" data-cat="hardware">🖥️ أجهزة الكاشير والعتاد</a>
+      <a href="#solutions?cat=security" class="tab-btn" data-cat="security">🛡️ الأمن والمراقبة</a>
+    </div>
+
+    <div class="products-grid" id="dynamic-products"></div>
+  </section>
+
+  <a href="#" class="back-to-top" id="backToTop">▲</a>
+
+  <footer>
+    <p>© 2026 TECHNO INFODZ. جميع الحقوق محفوظة. رقم الدعم المعتمد والرائد: 73-64-63-0666</p>
+  </footer>
+
+  <script>
+    const GITHUB_OWNER = "samirinfodz-boop";
+    const GITHUB_REPO  = "technoinfodz-official";
+    const DATA_PATH    = "products.json";
+    
+    let productsData = [];
+
+    async function fetchProducts() {
+      const liveUrl = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/main/${DATA_PATH}`;
+      const localUrl = `./${DATA_PATH}`;
+      
+      try {
+        let response = await fetch(liveUrl + '?t=' + Date.now());
+        if (!response.ok) response = await fetch(localUrl);
+        const data = await response.json();
+        productsData = data.products || data;
+      } catch (error) {
+        console.warn("الموقع يقرأ حالياً من نظام الطوارئ المحلي المرفوع على الاستضافة.");
+        try {
+          let response = await fetch(localUrl);
+          const data = await response.json();
+          productsData = data.products || data;
+        } catch(e) {
+          console.error("خطأ في قراءة قاعدة البيانات الموحدة:", e);
+        }
+      }
+      
+      // تشغيل دالة الفلترة الذكية بناء على الرابط الحالي فور تحميل البيانات
+      handleRoutingAndFilter();
+      updateTabCounts();
+    }
+
+    function renderProducts(filteredList) {
+      const container = document.getElementById('dynamic-products');
+      if (!container) return;
+
+      if (filteredList.length === 0) {
+        container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-dim); padding: 3rem 0;">لا توجد منتجات مدرجة في هذا القسم حالياً.</div>`;
+        return;
+      }
+
+      container.innerHTML = filteredList.map(p => `
+        <div class="product-card reveal">
+          <div class="product-img">
+            <span class="product-badge">${p.cat || 'برمجيات'}</span>
+            ${p.img ? `<img src="${p.img}" alt="${p.name}" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100%\' height=\'100%\' viewBox=\'0 0 100 100\'><rect width=\'100%\' height=\'100%\' fill=\'%23121b2a\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%235a7a99\' font-size=\'30\'>📦</text></svg>'">` : `<span style="font-size:3.5rem;">${p.icon || '📦'}</span>`}
+          </div>
+          <div class="product-info">
+            <h3>${p.name}</h3>
+            <p>${p.desc || 'نظام وحل متكامل مصمم خصيصاً لتلبية متطلبات نشاطكم التجاري بكفاءة عالية وبدعم فني مستمر.'}</p>
+            <div class="product-price">${p.price || 'تواصل معنا'}</div>
+            <div style="display:flex; gap:.65rem; margin-top:auto;">
+              <a href="product.html?id=${p.id}" class="btn-ghost" style="flex:1; justify-content:center; padding:.65rem; font-size:.82rem;"><span>🔍 التفاصيل الفنية</span></a>
+              <a href="https://wa.me/213666636473?text=${encodeURIComponent('مرحباً Techno Infodz، أنا مهتم بالحصول على تفاصيل وسعر عرض: ' + p.name)}" target="_blank" class="btn-primary" style="flex:1; justify-content:center; padding:.65rem; font-size:.82rem; box-shadow:none;"><span>💬 اطلب الآن</span></a>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      initRevealEffect();
+    }
+
+    function updateTabCounts() {
+      const tabs = document.querySelectorAll('#tabs-container .tab-btn');
+      if(tabs.length >= 4) {
+        tabs[0].textContent = `الكل (${productsData.length})`;
+        tabs[1].textContent = `⚙️ حلول برمجية (${productsData.filter(p=>p.cat==='برمجيات').length})`;
+        tabs[2].textContent = `🖥️ أجهزة الكاشير والعتاد (${productsData.filter(p=>p.cat==='عتاد إعلام آلي').length})`;
+        tabs[3].textContent = `🛡️ الأمن والمراقبة (${productsData.filter(p=>p.cat==='كاميرات').length})`;
+      }
+    }
+
+    // دالة التحكم الذكي بالروابط وفك التشفير للفلترة المتوافقة مع المتصفح والـ URL
+    function handleRoutingAndFilter() {
+      const hash = window.location.hash;
+      let targetCat = "all";
+      
+      if (hash.includes('cat=')) {
+        targetCat = hash.split('cat=')[1];
+      }
+
+      // تحويل الاسم المار في الرابط لقيمة المطابقة في الـ JSON
+      let dbCategory = "الكل";
+      if (targetCat === "software") dbCategory = "برمجيات";
+      else if (targetCat === "hardware") dbCategory = "عتاد إعلام آلي";
+      else if (targetCat === "security") dbCategory = "كاميرات";
+
+      // تعديل حالة الأزرار النشطة مرئياً
+      const tabs = document.querySelectorAll('.tab-btn');
+      tabs.forEach(btn => {
+        if (btn.getAttribute('data-cat') === targetCat) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      // فلترة وعرض المنتجات الفلتر النهائي
+      let filtered = productsData;
+      if (dbCategory !== "الكل") {
+        filtered = productsData.filter(p => p.cat === dbCategory);
+      }
+      renderProducts(filtered);
+    }
+
+    function initRevealEffect() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }
+
+    // تتبع التغير في الرابط أثناء تنقل المستخدم في الصفحة دون إعادة تحميل
+    window.addEventListener('hashchange', handleRoutingAndFilter);
+
+    // تفعيل وإظهار سهم العودة للأعلى عند النزول عمودياً
+    window.addEventListener('scroll', () => {
+      const topBtn = document.getElementById('backToTop');
+      if(window.scrollY > 300) {
+        topBtn.classList.add('visible');
+      } else {
+        topBtn.classList.remove('visible');
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", fetchProducts);
+
+    // بوابة الاختصار السري للوحة التحكم (5 ضغطات على الشعار)
+    let logoClickCount = 0;
+    let logoClickTimer = null;
+
+    document.getElementById('nav-logo-btn').addEventListener('click', function(e) {
+      e.preventDefault();
+      logoClickCount++;
+      clearTimeout(logoClickTimer);
+      logoClickTimer = setTimeout(() => { logoClickCount = 0; }, 3000);
+      if (logoClickCount >= 5) {
+        logoClickCount = 0;
+        const entered = prompt('🔐 أدخل كلمة المرور للدخول للوحة التحكم السحابية:');
+        if (entered === 'techno2024') {
+          window.location.href = 'admin-github.html';
+        } else {
+          alert('❌ كلمة المرور غير صحيحة.');
+        }
+      }
+    });
+  </script>
+</body>
+</html>
