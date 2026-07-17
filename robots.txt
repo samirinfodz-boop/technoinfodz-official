@@ -1,0 +1,6 @@
+# يسمح لجميع محركات البحث بالوصول إلى الموقع وأرشفته كاملًا
+User-agent: *
+Allow: /
+
+# تحديد موقع خريطة الموقع لمساعدة جوجل على الفهرسة الفورية
+Sitemap: https://samirinfodz-boop.github.io/technoinfodz-official/sitemap.xml
