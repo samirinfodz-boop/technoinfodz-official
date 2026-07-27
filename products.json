@@ -467,6 +467,15 @@
       "icon": "📦",
       "desc": "المواصفات الأساسية\nالمعالج: Intel Core i5-6600U (الجيل السادس - تردد يصل إلى 3.40 GHz، أداء أعلى قليلاً من i5-6200U العادي)\n\nالذاكرة العشوائية (RAM): 8GB DDR4\n\nالتخزين: 256GB SSD\n\nالشاشة: 14 بوصة (HD أو FHD حسب النسخة)\n\nكارت الشاشة: Intel HD Graphics 520\n\nالمنافذ: USB Type-C، USB 3.0، DisplayPort، VGA، وقارئ أقراص قد يحويه بحسب الإصدار.\n\nالاستخدام المناسب: ممتاز للأعمال المكتبية، برامج التسيير التجاري ونقاط البيع، والدراسة والتصفح.",
       "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1785171037903.jfif"
+    },
+    {
+      "id": "1785171514098",
+      "name": "LAPTOP HP ProBook 640",
+      "price": "55000DA",
+      "cat": "عتاد إعلام آلي",
+      "icon": "📦",
+      "desc": "المواصفات الأساسية\nالمعالج: Intel Core i5-8265U (الجيل الثامن - 4 أنوية / 8 خيوط، تردد يصل إلى 3.90 GHz، أداء ممتازة)\n\nالذاكرة العشوائية (RAM): 8GB DDR4\n\nالتخزين: 256GB M.2 NVMe SSD\n\nالشاشة: 14 بوصة (غالباً FHD IPS بدقة 1920×1080)\n\nكارت الشاشة: Intel UHD Graphics 620\n\nالمنافذ: USB Type-C (Power Delivery & DisplayPort)، USB 3.1، HDMI، RJ-45، قارئ بطاقات SD.\n\nالاستخدام المناسب: ممتاز للأعمال الإدارية والمكتبية، البرمجة، إدارة نظم ERP ونقاط البيع، والتنقل اليومي.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1785171439851.jfif"
     }
   ]
 }
