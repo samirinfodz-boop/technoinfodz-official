@@ -512,6 +512,15 @@
       "icon": "📦",
       "desc": "Gestion fluide des patients : Dossiers médicaux électroniques, historique des consultations et suivi personnalisé en quelques clics.\nAgenda & Rendez-vous : Organisation optimale du planning et réduction du temps d'attente.\nSuivi Financier & Comptabilité : Gestion claire des recettes, des charges et de la trésorerie.\nInterface Intuitive : Une prise en main rapide et une navigation simple au quotidien.\nSécurité & Confidentialité : Vos données médicales protégées en toute sécurité.",
       "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1785190105982.png"
+    },
+    {
+      "id": "1785190771351",
+      "name": "LOGICIEL-DENTAIRE PRO",
+      "price": "تواصل معنا",
+      "cat": "برمجيات",
+      "icon": "📦",
+      "desc": "Les atouts majeurs de DENTAIRE PRO :\nDossier Patient & Schéma Dentaire : Historique clinique complet, plans de traitement et suivi des soins en toute simplicité.\nGestion des Rendez-vous & Salle d'attente : Planning fluide pour réduire le temps d'attente et améliorer l'accueil de vos patients.\nSuivi Financier & Actes Médicaux : Facturation claire, gestion des honoraires, des charges et de la trésorerie en temps réel.\nInterface Ergonomique & Intuitive : Prise en main rapide, pensée pour s'adapter parfaitement à votre rythme de travail.\nSécurité des Données : Protection maximale de toutes vos données médicales et financières.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1785190708253.png"
     }
   ]
 }
