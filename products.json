@@ -485,6 +485,15 @@
       "icon": "📦",
       "desc": "المواصفات الأساسية\nالمعالج: AMD Ryzen 5 Pro 3500U (4 أنوية / 8 خيوط - أداء ممتاز ومنافس قوي لـ Intel Core i5 الجيل الثامن)\n\nالذاكرة العشوائية (RAM): 8GB DDR4 (قابلة للترقية)\n\nالتخزين: 256GB NVMe SSD\n\nالشاشة: 14 بوصة Full HD IPS تلمس (Tactile / Touchscreen)\n\nكارت الشاشة: AMD Radeon Vega 8 Graphics (يقدم أداء رسوميات وجرافيك أفضل مقارنة بكروت Intel المدمجة في نفس الفئة)\n\nالهيكل والتصميم: ألومنيوم بالكامل، خفيف الوزن ونحيف جداً ينتمي لفئة الأجهزة الاحترافية العليا (Premium Business).\n\nالاستخدام المناسب: إدارة الأعمال والتسيير التجاري، البرمجة، التصميم الخفيف (Photoshop/Illustrator)، العروض التقديمية والتنقل.",
       "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1785171896190.jfif"
+    },
+    {
+      "id": "1785172125489",
+      "name": "HP EliteBook 830 G5",
+      "price": "58000DA",
+      "cat": "عتاد إعلام آلي",
+      "icon": "📦",
+      "desc": "المواصفات الأساسية\nالمعالج: Intel Core i5 (الجيل الثامن - i5-8250U في G5 أو i5-8265U في G6)\n\nالذاكرة العشوائية (RAM): 8GB DDR4\n\nالتخزين: 256GB NVMe SSD\n\nالشاشة: 13.3 بوصة Full HD IPS (دقة عالية وزوايا رؤية ممتازة)\n\nالهيكل: ألومنيوم بالكامل متين وأنيق (فئة رجال الأعمال Premium Business)\n\nالمنافذ: Thunderbolt 3 (Type-C)، USB 3.1، HDMI، وقارئ بصمة",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1785172119586.jfif"
     }
   ]
 }
