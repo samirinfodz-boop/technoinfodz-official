@@ -503,6 +503,15 @@
       "icon": "📦",
       "desc": "المواصفات الأساسية\nالمعالج: Intel Core i5-10310U (الجيل العاشر - 4 أنوية / 8 خيوط مع تقنية vPro للأداء والأمان العالي)\n\nالذاكرة العشوائية (RAM): 8GB DDR4 (قابلة للترقية)\n\nالتخزين: 256GB NVMe SSD\n\nالشاشة: 13.3 بوصة Full HD IPS (حواف نحيفة جداً وتصميم حديث)\n\nالهيكل والتصميم: هيكل ألومنيوم فضي خفيف الوزن وأنيق للغاية (جيل جديد بتصميم عصري وأصغر حجماً مقارنة بـ G5/G6)\n\nالمنافذ: منفذان Thunderbolt 3 (USB Type-C)، USB 3.1، HDMI 1.4، قارئ بصمة الإصبع.\n\nالاستخدام المناسب: ممتاز جداً للتنقل والمبيعات، البرمجة، إدارة نظم المعلومات والـ ERP، والمهام المكتبية العالية.",
       "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1785172230099.jfif"
+    },
+    {
+      "id": "1785190239911",
+      "name": "LOGICIEL -MEDICAL PRO",
+      "price": "تواصل معنا",
+      "cat": "برمجيات",
+      "icon": "📦",
+      "desc": "Gestion fluide des patients : Dossiers médicaux électroniques, historique des consultations et suivi personnalisé en quelques clics.\nAgenda & Rendez-vous : Organisation optimale du planning et réduction du temps d'attente.\nSuivi Financier & Comptabilité : Gestion claire des recettes, des charges et de la trésorerie.\nInterface Intuitive : Une prise en main rapide et une navigation simple au quotidien.\nSécurité & Confidentialité : Vos données médicales protégées en toute sécurité.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1785190105982.png"
     }
   ]
 }
