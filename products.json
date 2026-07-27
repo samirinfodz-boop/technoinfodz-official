@@ -476,6 +476,15 @@
       "icon": "📦",
       "desc": "المواصفات الأساسية\nالمعالج: Intel Core i5-8265U (الجيل الثامن - 4 أنوية / 8 خيوط، تردد يصل إلى 3.90 GHz، أداء ممتازة)\n\nالذاكرة العشوائية (RAM): 8GB DDR4\n\nالتخزين: 256GB M.2 NVMe SSD\n\nالشاشة: 14 بوصة (غالباً FHD IPS بدقة 1920×1080)\n\nكارت الشاشة: Intel UHD Graphics 620\n\nالمنافذ: USB Type-C (Power Delivery & DisplayPort)، USB 3.1، HDMI، RJ-45، قارئ بطاقات SD.\n\nالاستخدام المناسب: ممتاز للأعمال الإدارية والمكتبية، البرمجة، إدارة نظم ERP ونقاط البيع، والتنقل اليومي.",
       "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1785171439851.jfif"
+    },
+    {
+      "id": "1785171901593",
+      "name": "HP EliteBook 745  (Tactile)",
+      "price": "62000DA",
+      "cat": "عتاد إعلام آلي",
+      "icon": "📦",
+      "desc": "المواصفات الأساسية\nالمعالج: AMD Ryzen 5 Pro 3500U (4 أنوية / 8 خيوط - أداء ممتاز ومنافس قوي لـ Intel Core i5 الجيل الثامن)\n\nالذاكرة العشوائية (RAM): 8GB DDR4 (قابلة للترقية)\n\nالتخزين: 256GB NVMe SSD\n\nالشاشة: 14 بوصة Full HD IPS تلمس (Tactile / Touchscreen)\n\nكارت الشاشة: AMD Radeon Vega 8 Graphics (يقدم أداء رسوميات وجرافيك أفضل مقارنة بكروت Intel المدمجة في نفس الفئة)\n\nالهيكل والتصميم: ألومنيوم بالكامل، خفيف الوزن ونحيف جداً ينتمي لفئة الأجهزة الاحترافية العليا (Premium Business).\n\nالاستخدام المناسب: إدارة الأعمال والتسيير التجاري، البرمجة، التصميم الخفيف (Photoshop/Illustrator)، العروض التقديمية والتنقل.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1785171896190.jfif"
     }
   ]
 }
