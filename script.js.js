@@ -1,6 +1,42 @@
 // script.js — سكريبت التتبع الآلي للموقع الرئيسي
-const GIST_ID = '820098fa0cd23c0d9aa7a23e928c2d47';
-const GIST_TOKEN = 'ضع_هنا_رمز_التوكن_الخاص_بك'; // GitHub Personal Access Token (بصلاحية Gist)
+// 1. المتصفح يبحث عن المفتاح في ذاكرته الداخلية
+let GIST_TOKEN = localStorage.getItem('my_gist_token');
+
+// 2. إذا لم يجد المفتاح (في أول مرة تفتح فيها الصفحة فقط)، سيظهر لك نافذة صغيرة لتنفيذه
+if (!GIST_TOKEN) {
+    GIST_TOKEN = prompt("أدخل رمز GitHub Token الخاص بك:");
+    if (GIST_TOKEN) {
+        // حفظ المفتاح في ذاكرة المتصفح للزيارات القادمة
+        localStorage.setItem('my_gist_token', GIST_TOKEN.trim());
+    }
+}
+
+// 3. كود طلب الـ API الخاص بـ Gist كما هو
+async function sendTrackingData() {
+    if (!GIST_TOKEN) return;
+
+    try {
+        const response = await fetch('https://api.github.com/gists/YOUR_GIST_ID', {
+            method: 'PATCH',
+            headers: {
+                'Authorization': `token ${GIST_TOKEN}`,
+                'Accept': 'application/vnd.github.v3+json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                files: {
+                    "visits.json": { content: JSON.stringify({ views: 1 }) }
+                }
+            })
+        });
+        
+        if (response.ok) {
+            console.log("تم التتبع بنجاح");
+        }
+    } catch (error) {
+        console.error("خطأ:", error);
+    }
+}
 
 async function trackVisitor() {
   // منع تسجيل الزيارات أثناء تجاربك على السيرفر المحلي (Localhost)
