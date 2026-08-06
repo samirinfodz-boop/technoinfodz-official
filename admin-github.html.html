@@ -485,6 +485,7 @@ function log(msg, type='ok'){
 }
 
 // دالة جلب إحصائيات العداد السحابية المتقدمة
+// دالة جلب إحصائيات العداد السحابية المحدثة والمطابقة للموقع
 async function loadCloudStats(){
   const SITE_NAMESPACE = "technoinfodz_official_site";
   const now = new Date();
@@ -495,7 +496,7 @@ async function loadCloudStats(){
   const startDate = new Date(now.getFullYear(), 0, 1);
   const days = Math.floor((now - startDate) / (24 * 60 * 60 * 1000));
   const weekNum = Math.ceil((days + startDate.getDay() + 1) / 7);
-  const weekKey = `${yearKey}_w${weekNum}`;
+  const weekKey = `${yearKey}-W${weekNum < 10 ? '0' + weekNum : weekNum}`;
 
   async function getStat(key) {
     try {
@@ -503,29 +504,32 @@ async function loadCloudStats(){
       if(!res.ok) return 0;
       const data = await res.json();
       return data.count || 0;
-    } catch(e) {
-      return 0;
-    }
+    } catch(e) { return 0; }
   }
 
-  ['stat-today','stat-week','stat-month','stat-year'].forEach(id => {
-    const el = document.getElementById(id);
-    if(el) el.textContent = "...";
-  });
-
-  const [today, week, month, year] = await Promise.all([
-    getStat(`day_${todayKey}`),
+  const [today, week, month, year, mob, desk] = await Promise.all([
+    getStat(todayKey),
     getStat(`week_${weekKey}`),
     getStat(`month_${monthKey}`),
-    getStat(`year_${yearKey}`)
+    getStat(`year_${yearKey}`),
+    getStat(`dev_mobile`),
+    getStat(`dev_desktop`)
   ]);
 
   if(document.getElementById('stat-today')) document.getElementById('stat-today').textContent = today;
-  if(document.getElementById('stat-week')) document.getElementById('stat-week').textContent = week;
+  if(document.getElementById('stat-week')) document.getElementById('stat-week').textContent  = week;
   if(document.getElementById('stat-month')) document.getElementById('stat-month').textContent = month;
-  if(document.getElementById('stat-year')) document.getElementById('stat-year').textContent = year;
-}
+  if(document.getElementById('stat-year')) document.getElementById('stat-year').textContent  = year;
 
+  const totalDev = (mob + desk) || 1;
+  const mobPc  = Math.round((mob / totalDev) * 100);
+  const deskPc = 100 - mobPc;
+
+  if(document.getElementById('stat-mobile-pc')) document.getElementById('stat-mobile-pc').textContent = mobPc + '%';
+  if(document.getElementById('bar-mobile')) document.getElementById('bar-mobile').style.width = mobPc + '%';
+  if(document.getElementById('stat-desktop-pc')) document.getElementById('stat-desktop-pc').textContent = deskPc + '%';
+  if(document.getElementById('bar-desktop')) document.getElementById('bar-desktop').style.width = deskPc + '%';
+}
 async function doConnect(){
   const tokenInput = document.getElementById('s-token').value.trim();
   const owner      = document.getElementById('s-owner').value.trim();
