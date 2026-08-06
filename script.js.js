@@ -2,7 +2,7 @@
 
 // 1. إعداد البيانات الأساسية
 // تنبيه: استبدل YOUR_ACTUAL_GIST_ID بالـ ID الخاص بالـ Gist لديك
-const GIST_ID = 'YOUR_ACTUAL_GIST_ID';
+const GIST_ID = 'f122407760e1f5905fabd84326180ebf';
 
 // 2. تجزئة المفتاح لتفادي حظر GitHub Secret Scanning وبدون إزعاج الزوار بـ prompt
 const p1 = "ghp_xxxxxxxxxxxx"; // النصف الأول من الـ Token
