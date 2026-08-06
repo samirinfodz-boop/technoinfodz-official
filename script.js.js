@@ -4,11 +4,11 @@
 // تنبيه: استبدل YOUR_ACTUAL_GIST_ID بالـ ID الخاص بالـ Gist لديك
 const GIST_ID = 'f122407760e1f5905fabd84326180ebf';
 
-// 2. تجزئة المفتاح لتفادي حظر GitHub Secret Scanning وبدون إزعاج الزوار بـ prompt
-const p1 = "ghp_xxxxxxxxxxxx"; // النصف الأول من الـ Token
-const p2 = "yyyyyyyyyyyyyyyy"; // النصف الثاني من الـ Token
-const GIST_TOKEN = p1 + p2;
-
+// يقرأ المفتاح المخزن في متصفحك الخاص فقط
+const GIST_TOKEN = localStorage.getItem('my_gist_token') || prompt("أدخل Gist Token الخاص بك:");
+if (GIST_TOKEN && !localStorage.getItem('my_gist_token')) {
+    localStorage.setItem('my_gist_token', GIST_TOKEN);
+}
 async function trackVisitor() {
   // منع تسجيل الزيارات أثناء تجاربك على السيرفر المحلي (Localhost)
   if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') return;
