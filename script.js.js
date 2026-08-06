@@ -1,23 +1,29 @@
 // script.js — سكريبت التتبع الآلي للموقع الرئيسي
 
-// 1. إعداد البيانات الأساسية
-// تنبيه: استبدل YOUR_ACTUAL_GIST_ID بالـ ID الخاص بالـ Gist لديك
+// 1. معرّف الـ Gist الخاص بك
 const GIST_ID = 'f122407760e1f5905fabd84326180ebf';
 
-// يقرأ المفتاح المخزن في متصفحك الخاص فقط
-const GIST_TOKEN = localStorage.getItem('my_gist_token') || prompt("أدخل Gist Token الخاص بك:");
-if (GIST_TOKEN && !localStorage.getItem('my_gist_token')) {
-    localStorage.setItem('my_gist_token', GIST_TOKEN);
+// 2. جلب المفتاح من ذاكرة المتصفح المحلية
+let GIST_TOKEN = localStorage.getItem('my_gist_token');
+
+// إذا لم يكن المفتاح حُفظ بعد على جهازك، سيسألك المتصفح عنه مرة واحدة فقط عند فتح الموقع
+if (!GIST_TOKEN && (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1')) {
+    GIST_TOKEN = prompt("يرجى إدخال GitHub Gist Token الخاص بك لتفعيل التتبع:");
+    if (GIST_TOKEN) {
+        localStorage.setItem('my_gist_token', GIST_TOKEN.trim());
+    }
 }
+
 async function trackVisitor() {
   // منع تسجيل الزيارات أثناء تجاربك على السيرفر المحلي (Localhost)
   if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') return;
 
   // تجنب تكرار احتساب الزائر أثناء التنقل بين الصفحات في نفس الجلسة
   if (sessionStorage.getItem('visited_today')) return;
+  if (!GIST_TOKEN) return;
 
   try {
-    // 1. جلب البيانات الحالية من ملف stats.json داخل Gist
+    // جلب البيانات الحالية من ملف stats.json داخل Gist
     const res = await fetch(`https://api.github.com/gists/${GIST_ID}`, {
       headers: { 
         'Authorization': `token ${GIST_TOKEN}`,
@@ -29,25 +35,24 @@ async function trackVisitor() {
 
     const gistData = await res.json();
     
-    // التاكد من وجود الملف أو إنشائه بصيغة افتراضية
     let stats = { visits: 0, today: 0, mobile: 0, desktop: 0, last_date: "" };
     if (gistData.files['stats.json'] && gistData.files['stats.json'].content) {
       stats = JSON.parse(gistData.files['stats.json'].content);
     }
 
-    // 2. تحديث عداد اليوم والأرقام الإجمالية
+    // تحديث عداد اليوم والأرقام الإجمالية
     const todayStr = new Date().toISOString().split('T')[0];
     
     if (stats.last_date !== todayStr) {
       stats.last_date = todayStr;
-      stats.today = 1; // إعادة ضبط عداد اليوم
+      stats.today = 1;
     } else {
       stats.today = (stats.today || 0) + 1;
     }
 
-    stats.visits = (stats.visits || 0) + 1; // الإجمالي العام
+    stats.visits = (stats.visits || 0) + 1;
 
-    // 3. تحديد نوع جهاز الزائر (هاتف أم حاسوب)
+    // تحديد نوع جهاز الزائر (هاتف أم حاسوب)
     const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent);
     if (isMobile) {
       stats.mobile = (stats.mobile || 0) + 1;
@@ -55,7 +60,7 @@ async function trackVisitor() {
       stats.desktop = (stats.desktop || 0) + 1;
     }
 
-    // 4. حفظ التحديثات وإرسالها إلى GitHub Gist
+    // إرسال البيانات المحدثة إلى Gist
     await fetch(`https://api.github.com/gists/${GIST_ID}`, {
       method: 'PATCH',
       headers: {
@@ -70,7 +75,6 @@ async function trackVisitor() {
       })
     });
 
-    // تعليم الزائر كـ "تم تسجيله" لهذه الجلسة
     sessionStorage.setItem('visited_today', 'true');
 
   } catch (err) {
