@@ -471,6 +471,18 @@ function log(msg, type='ok'){
   el.innerHTML += `<div class="${type}">[${new Date().toLocaleTimeString()}] ${msg}</div>`;
   el.scrollTop = el.scrollHeight;
 }
+  async function loadCloudStats() {
+  // كود الجلب
+}
+
+async function loadAnalytics() {
+  // كود الجلب
+}
+
+async function syncAll() {
+  // الاستدعاء يأتي بعد التعريف
+  await Promise.all([loadProducts(), loadContent(), loadCloudStats(), loadAnalytics()]);
+}
 
 // دالة جلب إحصائيات الزوار عبر GitHub Gist
 async function loadCloudStats(){
