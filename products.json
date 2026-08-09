@@ -355,10 +355,10 @@
       "name": "POSITIVE P60: Lecteur de code barre laser 2D / QR",
       "price": "تواصل معنا",
       "cat": "عتاد إعلام آلي",
+      "subcat": "قارئ الكود بار",
       "icon": "📦",
       "desc": "Lecture : Omnidirectionnel\nCouleurs disponibles : Noir\nConnectivité : USB",
-      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781562214191.jpg",
-      "subcat": "إدارة تجارية"
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781562214191.jpg"
     },
     {
       "id": "1781562316650",
