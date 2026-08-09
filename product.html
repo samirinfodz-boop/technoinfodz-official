@@ -39,7 +39,7 @@
     .glass-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s}
     .glass-card:hover{transform:translateY(-4px);box-shadow:var(--glow);border-color:rgba(0,212,255,.3)}
     #navbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(9,13,20,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-    .nav-logo{font-family:'Space Mono',monospace;font-size:1.1rem;color:var(--accent);letter-spacing:.05em;text-decoration:none;cursor:pointer}
+    .nav-logo{font-family:'Space Mono',monospace;font-size:1.1rem;color:var(--accent);letter-spacing:.05em;text-decoration:none}
     .nav-logo span{color:var(--text-dim)}
     #toast{position:fixed;top:5rem;right:1.5rem;z-index:200;background:var(--bg-card);border:1px solid var(--green);color:var(--green);padding:.75rem 1.25rem;border-radius:8px;font-size:.85rem;transform:translateY(-20px);opacity:0;transition:all .3s;pointer-events:none}
     #toast.show{transform:translateY(0);opacity:1}
@@ -76,7 +76,7 @@
 <div id="toast"></div>
 
 <nav id="navbar">
-  <a class="nav-logo" id="nav-logo-btn" href="index.html">TECHNO<span>INFODZ</span></a>
+  <a class="nav-logo" href="index.html">TECHNO<span>INFODZ</span></a>
   <a href="index.html" class="btn-ghost" style="padding:.5rem 1.1rem;font-size:.85rem;">← العودة للمنتجات</a>
 </nav>
 
@@ -172,7 +172,7 @@
   <div style="max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
     <div>
       <div class="nav-logo" style="font-size:1.1rem;margin-bottom:.3rem;">TECHNO<span style="color:var(--text-dim);">INFODZ</span></div>
-      <div style="color:var(--text-dim);font-size:.8rem;">© 2026 جميع الحقوق محفوظة</div>
+      <div style="color:var(--text-dim);font-size:.8rem;">© 2024 جميع الحقوق محفوظة</div>
     </div>
     <a href="https://wa.me/213666636473" style="color:var(--text-dim);font-size:.8rem;font-family:'Space Mono',monospace;text-decoration:none;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-dim)'">213666636473</a>
     <div style="color:var(--text-dim);font-size:.75rem;font-family:'Space Mono',monospace;">Built with ❤️ in Algeria</div>
@@ -192,31 +192,6 @@
 </div>
 
 <script>
-// إعداد حماية الشعار (Logo Protection)
-let logoClickCount = 0;
-let logoClickTimer = null;
-
-document.getElementById('nav-logo-btn').addEventListener('click', function(e) {
-  logoClickCount++;
-  clearTimeout(logoClickTimer);
-
-  // إذا كانت نقرة واحدة عادية ينقلك مباشرة إلى الصفحة الرئيسية
-  if (logoClickCount < 5) {
-    logoClickTimer = setTimeout(() => { logoClickCount = 0; }, 2000);
-    return;
-  }
-
-  // عند النقر 5 مرات متتالية سريعة يفتح مربع كلمة المرور
-  e.preventDefault();
-  logoClickCount = 0;
-  const entered = prompt('🔐 أدخل كلمة المرور للدخول للوحة التحكم:');
-  if (entered === 'techno2024') {
-    window.location.href = 'admin-github.html';
-  } else if (entered !== null) {
-    alert('❌ كلمة المرور غير صحيحة.');
-  }
-});
-
 const PRODUCTS_URL = 'https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/products.json';
 const WA_NUMBER = '213666636473';
 let allProducts = [], currentProduct = null;
