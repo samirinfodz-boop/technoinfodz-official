@@ -39,7 +39,7 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   
   <!-- ربط ملف التنسيقات الخارجي -->
-  <link rel="stylesheet" href="styles.css" />
+ 
 </head>
 <body>
 
@@ -473,7 +473,7 @@
     try {
       var geoData = { country: 'غير معروف', city: 'غير معروف', country_code: 'XX' };
       var geoApis = [
-        { url: 'https://ip-api.com/json/?fields=status,country,countryCode,city', parse: function(g) {
+        { url: 'fetch('https://ipapi.co/json/')', parse: function(g) {
             return g.status==='success' && g.city ? { country: g.country, city: g.city, country_code: g.countryCode } : null;
         }},
         { url: 'https://ipwho.is/', parse: function(g) {
