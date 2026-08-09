@@ -705,7 +705,22 @@
     try {
       var geoData = { country: 'غير معروف', city: 'غير معروف', country_code: 'XX' };
       var geoApis = [
-        { url: 'https://ip-api.com/json/?fields=status,country,countryCode,city', parse: function(g) {
+       // بدلاً من:
+// fetch('https://ip-api.com/json/?fields=status,country,countryCode,city')
+
+// استخدم:
+fetch('https://ipapi.co/json/')
+  .then(res => res.json())
+  .then(data => {
+    const visitorData = {
+      country: data.country_name,
+      country_code: data.country_code,
+      city: data.city,
+      // ... باقي بياناتك
+    };
+    // كود الحفظ في Firebase الخاص بك
+  })
+  .catch(err => console.error(err));
             return g.status==='success' && g.city ? { country: g.country, city: g.city, country_code: g.countryCode } : null;
         }},
         { url: 'https://ipwho.is/', parse: function(g) {
