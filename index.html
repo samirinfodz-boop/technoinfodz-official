@@ -345,6 +345,10 @@
               <a href="product.html?id=${p.id}" class="btn-ghost"><span>🔍 التفاصيل الفنية</span></a>
               <a href="https://wa.me/213666636473?text=${encodeURIComponent('مرحباً Techno Infodz، أنا مهتم بالحصول على تفاصيل وسعر عرض: ' + p.name)}" target="_blank" class="btn-primary"
                 onclick="trackProductClick('${p.id}','${p.name.replace(/'/g,'')}')"><span>💬 اطلب الآن</span></a>
+                <div class="pc-body">
+                 <div class="pc-name">${p.name}</div>
+                 <div class="pc-price">${p.price}</div>
+</div>
             </div>
           </div>
         </div>
