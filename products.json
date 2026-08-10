@@ -544,11 +544,11 @@
       "id": "1785172125489",
       "name": "HP EliteBook 830 G5",
       "price": "58000DA",
-      "cat": "عتاد إعلام آلي",
+      "cat": "حواسب محمولة",
       "icon": "📦",
       "desc": "المواصفات الأساسية\nالمعالج: Intel Core i5 (الجيل الثامن - i5-8250U في G5 أو i5-8265U في G6)\n\nالذاكرة العشوائية (RAM): 8GB DDR4\n\nالتخزين: 256GB NVMe SSD\n\nالشاشة: 13.3 بوصة Full HD IPS (دقة عالية وزوايا رؤية ممتازة)\n\nالهيكل: ألومنيوم بالكامل متين وأنيق (فئة رجال الأعمال Premium Business)\n\nالمنافذ: Thunderbolt 3 (Type-C)، USB 3.1، HDMI، وقارئ بصمة",
       "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1785172119586.jfif",
-      "subcat": "حواسيب محمولة"
+      "subcat": "HP"
     },
     {
       "id": "1785172282841",
