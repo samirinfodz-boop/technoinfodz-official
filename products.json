@@ -514,11 +514,11 @@
       "id": "1785171118042",
       "name": "LAPTOP HP ProBook 640",
       "price": "45000DA",
-      "cat": "عتاد إعلام آلي",
+      "cat": "حواسب محمولة",
       "icon": "📦",
       "desc": "المواصفات الأساسية\nالمعالج: Intel Core i5-6600U (الجيل السادس - تردد يصل إلى 3.40 GHz، أداء أعلى قليلاً من i5-6200U العادي)\n\nالذاكرة العشوائية (RAM): 8GB DDR4\n\nالتخزين: 256GB SSD\n\nالشاشة: 14 بوصة (HD أو FHD حسب النسخة)\n\nكارت الشاشة: Intel HD Graphics 520\n\nالمنافذ: USB Type-C، USB 3.0، DisplayPort، VGA، وقارئ أقراص قد يحويه بحسب الإصدار.\n\nالاستخدام المناسب: ممتاز للأعمال المكتبية، برامج التسيير التجاري ونقاط البيع، والدراسة والتصفح.",
       "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1785171037903.jfif",
-      "subcat": "حواسيب محمولة"
+      "subcat": "HP"
     },
     {
       "id": "1785171514098",
