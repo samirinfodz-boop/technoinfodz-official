@@ -55,8 +55,6 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
   color:#fff;border:none;padding:.85rem;border-radius:11px;font-size:.95rem;font-weight:600;
   cursor:pointer;font-family:'IBM Plex Sans Arabic',sans-serif;transition:opacity .2s,transform .2s;}
 .btn-connect:hover{opacity:.9;transform:translateY(-1px);}
-.setup-err{color:var(--red);font-size:.78rem;margin-top:.6rem;text-align:center;display:none;padding:.5rem;
-  background:rgba(255,61,90,.06);border-radius:8px;}
 
 /* ── APP ── */
 #app{display:none;position:relative;z-index:1;}
@@ -169,7 +167,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 <div id="setup-screen">
   <div class="setup-box">
     <div class="setup-logo">TECHNO<em>INFODZ</em></div>
-    <div class="setup-badge">⚡ GitHub API & Firebase — إدارة العروض والتحليلات</div>
+    <div class="setup-badge">⚡ GitHub API & Firebase — لوحة التحكم</div>
 
     <div class="inp-group">
       <label class="lbl">GitHub Personal Access Token</label>
@@ -189,7 +187,6 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
     </div>
 
     <button class="btn-connect" onclick="doConnect()">🔗 الاتصال بـ GitHub</button>
-    <div id="s-err" class="setup-err"></div>
   </div>
 </div>
 
@@ -241,10 +238,11 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
         <div class="fg">
           <div class="fgi full">
             <label class="fl">صورة المنتج</label>
-            <div style="display:flex;gap:.5rem;">
-              <input class="fi" id="add-img-url" placeholder="الصق رابط الصورة المباشر أو ارفع صورة..."/>
-              <input type="file" id="add-img-file" accept="image/*" style="display:none" onchange="handleFileUpload(this, 'add-img-url')">
-              <button class="bg" style="white-space:nowrap;font-size:.78rem;padding:.5rem .8rem;" onclick="document.getElementById('add-img-file').click()">📁 رفع صورة</button>
+            <div style="display:flex;gap:.5rem;align-items:center;">
+              <input class="fi" id="add-img-url" placeholder="الرابط النصي للصورة أو اختر صورة من جهازك..."/>
+              <!-- عنصر رفع الملف الخفي -->
+              <input type="file" id="add-img-file" accept="image/*" style="display:none;" onchange="handleFileUpload(this, 'add-img-url')"/>
+              <button class="bg" style="white-space:nowrap;font-size:.8rem;padding:.65rem 1rem;" onclick="document.getElementById('add-img-file').click()">📁 رفع صورة</button>
             </div>
           </div>
           <div class="fgi"><label class="fl">اسم المنتج *</label><input class="fi" id="add-name" placeholder="مثال: Hyper pro"/></div>
@@ -280,10 +278,11 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
       <div><label class="fl">الوصف</label><textarea class="fi" id="edit-desc" rows="3"></textarea></div>
       <div>
         <label class="fl">رابط الصورة</label>
-        <div style="display:flex;gap:.5rem;">
+        <div style="display:flex;gap:.5rem;align-items:center;">
           <input class="fi" id="edit-img"/>
-          <input type="file" id="edit-img-file" accept="image/*" style="display:none" onchange="handleFileUpload(this, 'edit-img')">
-          <button class="bg" style="white-space:nowrap;font-size:.78rem;padding:.5rem .8rem;" onclick="document.getElementById('edit-img-file').click()">📁 رفع صورة</button>
+          <!-- عنصر رفع الملف الخفي للنافذة المنبثقة -->
+          <input type="file" id="edit-img-file" accept="image/*" style="display:none;" onchange="handleFileUpload(this, 'edit-img')"/>
+          <button class="bg" style="white-space:nowrap;font-size:.8rem;padding:.65rem 1rem;" onclick="document.getElementById('edit-img-file').click()">📁 رفع صورة</button>
         </div>
       </div>
       <div style="display:flex;gap:.7rem;margin-top:.5rem;">
@@ -312,18 +311,18 @@ function trackProductView(productId) {
   });
 }
 
-// ── دالة معالجة تحميل الصور من جهاز الكمبيوتر/الهاتف ──
+// ── دالة قراءة وتشفير الملف المرفوع من جهاز الحاسوب/الهاتف ──
 function handleFileUpload(inputElement, targetInputId) {
   const file = inputElement.files[0];
   if (file) {
-    if (file.size > 2 * 1024 * 1024) { // الحد 2 ميجابايت
-      toast('⚠️ حجم الصورة كبير جداً، اختر صورة أقل من 2MB', 'er');
+    if (file.size > 2 * 1024 * 1024) { 
+      toast('⚠️ حجم الصورة كبير جداً، اختر صورة حجمها أقل من 2MB', 'er');
       return;
     }
     const reader = new FileReader();
     reader.onload = function(e) {
       document.getElementById(targetInputId).value = e.target.result;
-      toast('✓ تم رفع وتحميل الصورة بنجاح');
+      toast('✓ تم اختيار الصورة ورفعها بنجاح');
     };
     reader.readAsDataURL(file);
   }
@@ -393,7 +392,7 @@ async function launchApp(){
 }
 
 async function syncAll(){
-  toast('⏳ جاري سحب المنتجات...','ld');
+  toast('⏳ جاري سحب البيانات...','ld');
   try {
     await loadProducts();
     await fetchLiveViews();
@@ -412,7 +411,6 @@ async function loadProducts(){
   } catch(e){ products = []; }
 }
 
-// جلب عداد المشاهدات الحي لكل منتج من Firebase Realtime Database
 async function fetchLiveViews() {
   try {
     const snapshot = await firebase.database().ref('products').once('value');
@@ -477,7 +475,6 @@ function renderProducts(){
       <div class="pc-body">
         <span class="pc-cat cat-${p.cat}">${p.cat}</span>
         <div class="pc-name">${p.name}</div>
-        <!-- حقل عداد المشاهدات داخل الكارت -->
         <div class="pc-views">👁️ عدد المشاهدات: <span id="views-${p.id}">${p.views || 0}</span></div>
         <div class="pc-desc">${p.desc||''}</div>
         <div class="pc-price">${p.price}</div>
