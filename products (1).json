@@ -1,0 +1,1107 @@
+{
+  "products": [
+    {
+      "id": "1774865578641",
+      "name": "PME PRO برنامج تسيير مؤسسات الانتاج والتصنيع",
+      "price": "تواصل معنا",
+      "cat": "برمجيات",
+      "icon": "📦",
+      "desc": "برنامج PME PRO الصناعي والتجاري: أداة احترافية لمتابعة ورشات التصنيع، مراقبة استهلاك المواد الأولية، وإدارة المبيعات والمخازن الذكية",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774865522075.jpg",
+      "subcat": "إدارة مؤسسات"
+    },
+    {
+      "id": "1774874130144",
+      "name": "POS برنامج تسيير محلات مواد غذائية",
+      "price": "تواصل معنا",
+      "cat": "برمجيات",
+      "icon": "📦",
+      "desc": "نظام وحل متكامل مصمم خصيصاً لتلبية متطلبات نشاطكم التجاري بكفاءة عالية وبدعم فني مستمر.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891317602.png",
+      "subcat": "إدارة تجارية"
+    },
+    {
+      "id": "1774874203728",
+      "name": "POS برنامج تسيير محلات الألبسة",
+      "price": "تواصل معنا",
+      "cat": "برمجيات",
+      "icon": "📦",
+      "desc": "نظام وحل متكامل مصمم خصيصاً لتلبية متطلبات نشاطكم التجاري بكفاءة عالية وبدعم فني مستمر.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891359008.png",
+      "subcat": "إدارة تجارية"
+    },
+    {
+      "id": "1774874328440",
+      "name": "RESTO برنامج تسيير المطاعم والكافيتيريا",
+      "price": "تواصل معنا",
+      "cat": "برمجيات",
+      "icon": "📦",
+      "desc": "",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891861082.png",
+      "subcat": "إدارة تجارية"
+    },
+    {
+      "id": "1774891489543",
+      "name": "RESERVE-ROBE برنامج تسيير محلات كراء الملابس",
+      "price": "تواصل معنا",
+      "cat": "برمجيات",
+      "icon": "📦",
+      "desc": "",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891476674.png",
+      "subcat": "إدارة تجارية"
+    },
+    {
+      "id": "1774891551390",
+      "name": "PME PRO برنامج تسيير الموزعين الحترفين",
+      "price": "تواصل معنا",
+      "cat": "برمجيات",
+      "icon": "📦",
+      "desc": "",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891513008.jpg",
+      "subcat": "إدارة مؤسسات"
+    },
+    {
+      "id": "1774891658446",
+      "name": "DESTRIBUTE PRO تطبيق هاتف للموزعين المحترفين",
+      "price": "تواصل معنا",
+      "cat": "برمجيات",
+      "icon": "📦",
+      "desc": "",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891628734.jpg",
+      "subcat": "تطبيقات هاتف"
+    },
+    {
+      "id": "1774891746958",
+      "name": "EASY BB برنامج تسيير القاعات الرياضية",
+      "price": "تواصل معنا",
+      "cat": "برمجيات",
+      "icon": "📦",
+      "desc": "",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1774891713117.png",
+      "subcat": "تعليم ورياضة"
+    },
+    {
+      "id": "1781358399498",
+      "name": "MINI UNITE LENOVO THINKCENTRE M910Q I3-6EME 8G SSD.128G",
+      "price": "تواصل معنا",
+      "cat": "عتاد إعلام آلي",
+      "subcat": "حواسيب مكتبية",
+      "icon": "📦",
+      "desc": "",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781363192630.jpg"
+    },
+    {
+      "id": "1781389043087",
+      "name": "PC ALL IN ONE TACTIL- SMART NOIR",
+      "price": "تواصل معنا",
+      "cat": "عتاد إعلام آلي",
+      "subcat": "PC كاشير",
+      "icon": "📦",
+      "desc": "CPU I5/RAM 8G/SSD 128",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781388949480.jpeg"
+    },
+    {
+      "id": "1781389279911",
+      "name": "PC ALL IN ONE TACTIL- SMART ROUGE",
+      "price": "تواصل معنا",
+      "cat": "عتاد إعلام آلي",
+      "subcat": "PC كاشير",
+      "icon": "📦",
+      "desc": "CPU I5/ RAM 8G/SSD 128G",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781389186494.jpeg"
+    },
+    {
+      "id": "1781389780566",
+      "name": "LECTEUR CODE A BARRE (Scanner) HENEX HC-666N",
+      "price": "تواصل معنا",
+      "cat": "عتاد إعلام آلي",
+      "icon": "📦",
+      "desc": "2D-3D-QR",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781389660717.jpg",
+      "subcat": "قارئ الكود بار"
+    },
+    {
+      "id": "1781389859966",
+      "name": "IMPRIMANTE CODE A BARRE S58 USB-SERIE SMARTPOS",
+      "price": "تواصل معنا",
+      "cat": "عتاد إعلام آلي",
+      "icon": "📦",
+      "desc": "",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781389808258.jpg",
+      "subcat": "طابعات"
+    },
+    {
+      "id": "1781389929822",
+      "name": "IMPRIMANTE TICKET DE CAISSE XP-T80Q",
+      "price": "تواصل معنا",
+      "cat": "عتاد إعلام آلي",
+      "icon": "📦",
+      "desc": "",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781389872881.jpg",
+      "subcat": "طابعات"
+    },
+    {
+      "id": "1781541713312",
+      "name": "نظام TECHNO INFODZ المتكامل لإدارة المشاريع",
+      "price": "تواصل معنا",
+      "cat": "برمجيات",
+      "icon": "📦",
+      "desc": "يتضمن أدوات لمتابعة الرواتب (Salariés)، الحضور والغياب (Pointages)، المصاريف (Charges)، الخسائر (Pertes)، والخزينة (Trésorier / Caisse).",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781541730356.jpg",
+      "subcat": "إدارة مؤسسات"
+    },
+    {
+      "id": "1781546776015",
+      "name": "النظام المتكامل لإدارة وكالات كراء السيارات",
+      "price": "تواصل معنا",
+      "cat": "برمجيات",
+      "icon": "📦",
+      "desc": "برنامج تسيير وكالات كراء السيارات: تتبع مركباتك، أدر حجوزاتك، ونظّم عقودك ومصاريفك بكل سهولة",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781546645009.jpg",
+      "subcat": "إدارة مؤسسات"
+    },
+    {
+      "id": "1781547049262",
+      "name": "النظام المتكامل لإدارة مدارس تعليم السياقة والمترشحين",
+      "price": "تواصل معنا",
+      "cat": "برمجيات",
+      "icon": "📦",
+      "desc": "برنامج تسيير مدارس تعليم السياقة: نظّم حصصك، تابع عقود المترشحين، وأدر الامتحانات والمصاريف بكل ذكاء",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781547002055.jpg",
+      "subcat": "إدارة مؤسسات"
+    },
+    {
+      "id": "1781547342958",
+      "name": "النظام المتكامل لإدارة حجوزات قاعات الحفلات والمناسبات",
+      "price": "تواصل معنا",
+      "cat": "برمجيات",
+      "icon": "📦",
+      "desc": "برنامج تسيير قاعات الأفراح والمناسبات: نظّم حجوزاتك، تتبع الموردين والخدمات، وأدر حساباتك بدقة متناهية",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781547302129.jpg",
+      "subcat": "إدارة مؤسسات"
+    },
+    {
+      "id": "1781549514578",
+      "name": "PME النظام المتكامل لتسيير المخازن، المبيعات والإنتاج",
+      "price": "تواصل معنا",
+      "cat": "برمجيات",
+      "icon": "📦",
+      "desc": "برنامج إدارة المؤسسات التجارية والصناعية (PME): تحكّم في مخزونك، أدر عمليات البيع والشراء، وتابع خطوط الإنتاج والمالية بدقة",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781549432219.jpg",
+      "subcat": "إدارة مؤسسات"
+    },
+    {
+      "id": "1781550188024",
+      "name": "النظام المتكامل للتسيير التجاري وإدارة نقاط البيع والسوبر ماركت",
+      "price": "تواصل معنا",
+      "cat": "برمجيات",
+      "icon": "📦",
+      "desc": "برنامج الإدارة التجارية المتقدم (HYPER PRO): أدر مبيعاتك اليومية، تتبع مخزونك بدقة، وتحكم في حسابات الزبائن والموردين بكل سهولة",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781550157120.jpg",
+      "subcat": "إدارة مؤسسات"
+    },
+    {
+      "id": "1781550836463",
+      "name": "النظام المتكامل لإدارة محلات المجوهرات، تسيير المخزون ومتابعة سوق الذهب",
+      "price": "تواصل معنا",
+      "cat": "برمجيات",
+      "icon": "📦",
+      "desc": "برنامج إدارة محلات الذهب والمجوهرات (SAFE BIJOUX): أدر مبيعاتك ومشترياتك، تتبع أسعار الذهب الحالية، ونظّم مخزونك بأمان تام",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781550792094.jpg",
+      "subcat": "إدارة مؤسسات"
+    },
+    {
+      "id": "1781553955082",
+      "name": "برنامج PHARM PRO: النظام المتكامل لتسيير الصيدليات وإدارة الأدوية والمخزون",
+      "price": "تواصل معنا",
+      "cat": "برمجيات",
+      "icon": "📦",
+      "desc": "برنامج إدارة الصيدليات المتقدم (PHARM PRO): نظّم مبيعاتك اليومية، تتبع تواريخ صلاحية الأدوية بدقة، وتحكّم في طلبياتك وحسابات الاتفاقيات بكل سهولة",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781555010641.jpg",
+      "subcat": "صحة وخدمات"
+    },
+    {
+      "id": "1781555088711",
+      "name": "برنامج SAFE PRESSING: النظام المتكامل لإدارة المحلات التجارية لغسيل وتنظيف الملابس",
+      "price": "تواصل معنا",
+      "cat": "برمجيات",
+      "icon": "📦",
+      "desc": "برنامج تسيير محلات الـ Pressing والمصابغ (SAFE PRESSING): تتبع استلام وتسليم الملابس، أدر حسابات زبائنك، ونشّط مبيعاتك بنظام بطاقات الوفاء الذكي",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781555043911.jpg",
+      "subcat": "إدارة تجارية"
+    },
+    {
+      "id": "1781555355903",
+      "name": "RONGTA RLS 1000 - Balance électronique avec afficheur",
+      "price": "تواصل معنا",
+      "cat": "عتاد إعلام آلي",
+      "icon": "📦",
+      "desc": "Balance électronique avec alimentation 220v\nImprimante ticket thermique\n56 touches raccourcis pour PLU\nPoids Max 30Kg\nAfficheur client LCD: Poids, Prix unitaire et prix Total\nPorts: RJ45, RS232 et RJ12 pour tiroir caisse",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781555431484.jpg",
+      "subcat": "أجهزة وزن"
+    },
+    {
+      "id": "1781555529367",
+      "name": "ACLAS LS6 - Balance électronique avec afficheur",
+      "price": "تواصل معنا",
+      "cat": "عتاد إعلام آلي",
+      "icon": "📦",
+      "desc": "Balance électronique à piles ou avec transformateur 6v-1A\nJusqu'à 99 PLU programmables\n15 touches raccourcis pour PLU\nPoids Max 30Kg\nAfficheur client LCD: Poids, prix unitaire et prix total\nPort série RS232",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781555486128.jpg",
+      "subcat": "أجهزة وزن"
+    },
+    {
+      "id": "1781555824695",
+      "name": "PC-TACTILE L60 POSLUX: 2 ECRAN TACTILE",
+      "price": "تواصل معنا",
+      "cat": "عتاد إعلام آلي",
+      "icon": "📦",
+      "desc": "Modele année 2024\nINTEL CORE I5\nRAM 4 Go SSD 2.5\" 64GB\nEcran Tactile 15\" DOUBLE ECRAN\nSensibilité tactile : 700pp\nClavier : 1 PS/2\nUSB : 6 ports, 2 internes et 4 externes\nSérie / COM : 4x COM ( w/ +5V,+12V power selector )\nPort tiroir caisse : 1\nAudio : AC'97 Codec Audio\nParallel : 1\nLAN ( 10 / 100 /1000 ) : 1 ( RJ45 )\n2nd VGA Output : DB-15F\nOption:\nLecteur de carte magnétique et clé dallas: 3 Tracks ( RS-232 / PS2 interface )\nAfficheur client type VFD",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781555685211.png",
+      "subcat": "PC كاشير"
+    },
+    {
+      "id": "1781560949373",
+      "name": "PC-TACTILE POSLUX P500",
+      "price": "تواصل معنا",
+      "cat": "عتاد إعلام آلي",
+      "icon": "📦",
+      "desc": "Modele année 2024\nIntel Celeron J4125 Quad Core 2.0GHz up to 2.5GHz\n4 GB / DDR4 / 128 GB mSATA\nEcran Tactile 15 “ 4:3\nPS / 2 clavier : 1 PS/2\nSouris : 1\nUSB : 6 ports, 2 internes et 4 externes\nSérie / COM : 4x COM ( w/ +5V,+12V power selector )\nPort tiroir caisse : 1\nAudio : AC'97 Codec Audio\nParallel : 1\nLAN ( 10/100/1000 ) : 1 ( RJ45 )\n2nd VGA Output : DB-15F\nLecteur de carte magnétique : 3 Tracks ( RS-232 / PS2 interface )",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781560940525.png",
+      "subcat": "PC كاشير"
+    },
+    {
+      "id": "1781561063605",
+      "name": "PC-TACTILE POSLUX T200",
+      "price": "تواصل معنا",
+      "cat": "عتاد إعلام آلي",
+      "icon": "📦",
+      "desc": "MOTHER BOARD I5 Gen2 (I5-2410M),TDP 35W\nMEMORY (RAM) 4GB / DDR3L 1333MHz, (Samsung)\nHDD / SSD 64GB mSATA\nHRAD DISK SLOT 1xSATA2.0, 1xmSATA,\nDISPLAY (FRONT-LCD) 15 Inch 4:3\nTOUCH PANEL 15\", Capacitive P-CAP\nLAN 1\nSERIAL (RS-232C) 2 (DSUB-9P X 2EA)\nHDMI 1\nVGA 1\nUSB 6 (2out of screen right side,USB3.0*4)\nAUDIO 2 (1x Line out, 1x Mic-in)\nSPEAKER 1\nEXPANSION INTERFACE mini-PCIe\nCOOLER & FAN Fan\nPOWER ADAPTOR (EXTERNAL) 60[W] Adaptor\nInput AC 100~240V/50~60HZ, DC 12V/5.0A\nTILT ADJUSTMENT 0o ~ 90o\nDIMENSION VESA (MM) 7.5 x7.5\nDIMENSION (W X H X D) (MM) T.B.D\n44*43*30CM\nWEIGHT (W/ STAND) 6.625KG / 13.24KG (2PCS )\nOS win 10, win7",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781561055330.png",
+      "subcat": "PC كاشير"
+    },
+    {
+      "id": "1781561310772",
+      "name": "TC-S1 - Tiroir Caisse Spéciale",
+      "price": "تواصل معنا",
+      "cat": "عتاد إعلام آلي",
+      "icon": "📦",
+      "desc": "Grand format\nDimensions : 42 cm x 41 cm x 10 cm\nRangement pour billets : 4\nRangements pour pièces : 8\nConnectivité : RJ12",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781561246233.jpg",
+      "subcat": "أدراج الكاشير"
+    },
+    {
+      "id": "1781561449732",
+      "name": "TC-E1 - Tiroir Caisse Economique",
+      "price": "تواصل معنا",
+      "cat": "عتاد إعلام آلي",
+      "icon": "📦",
+      "desc": "Tiroir caisse en métal avec structure solide\nFacilité et rapidité d’ouverture\nBoitier: construction en acier\nInterface: RJ12\nCaisse: 4 Bacs à billets et 8 Bacs à pièces\nSéparateurs réglables pour les Bacs à billets et pièces\nFermeture: 3 positions de verrouillage\nDurabilité: 1,000, 000 opérations\nDimensions: 350 L x 405 P x 90 H (mm)\nPoids: 5.3 Kg",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781561522537.jpg",
+      "subcat": "أدراج الكاشير"
+    },
+    {
+      "id": "1781561701299",
+      "name": "Tiroir Caisse Classique TC-C1",
+      "price": "تواصل معنا",
+      "cat": "عتاد إعلام آلي",
+      "icon": "📦",
+      "desc": "Tiroir Caisse Classique\nTiroir Caisse en métal robuste et fiable\nConception unique pour Monter le tiroir rapidement\nInterface:  RJ12 imprimante ticket\nCaisse: 4 Bacs à billets et 8 Bacs à pièces\nDurabilité: 1.000.000 opérations\nDimensions: 410W * 430D * 120H (mm)",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781561665156.jpg",
+      "subcat": "أدراج الكاشير"
+    },
+    {
+      "id": "1781561895531",
+      "name": "POSLUX B80 - Imprimante ticket de caisse thermique Multi Ports",
+      "price": "تواصل معنا",
+      "cat": "عتاد إعلام آلي",
+      "subcat": "طابعات",
+      "icon": "📦",
+      "desc": "Taille d'impression : 80mm\nFonction coupe : oui\nConnectivité : USB, RJ12 , RJ45",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781561864659.jpg"
+    },
+    {
+      "id": "1781561974907",
+      "name": "Xprinter XP-303B - Imprimante Ticket Caisse",
+      "price": "تواصل معنا",
+      "cat": "عتاد إعلام آلي",
+      "icon": "📦",
+      "desc": "Taille d'impression : 60mm\nModule ruban protecteur : non\nFonction coupe : non\nConnectivité : USB, RJ12",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781561968427.jpg",
+      "subcat": "طابعات"
+    },
+    {
+      "id": "1781562031771",
+      "name": "XP-D200N Imprimante Ticket de Caisse",
+      "price": "تواصل معنا",
+      "cat": "عتاد إعلام آلي",
+      "icon": "📦",
+      "desc": "Impression Thermique et à Ruban\nInterfaces USB+ RJ12",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781562007562.jpg",
+      "subcat": "طابعات"
+    },
+    {
+      "id": "1781562132707",
+      "name": "80250l - Imprimante Ticket Caisse",
+      "price": "تواصل معنا",
+      "cat": "عتاد إعلام آلي",
+      "icon": "📦",
+      "desc": "Model: XP-D200N\nType d'impression: Thermique directe\nRésolution: 203 dpi\nVitesse d'impression: Jusqu'à 250 mm/s\nInterface: USB\nMémoire: 4 Mo de RAM, 8 Mo de Flash\nTaille des caractères: De la police 0 à la police 8\nCodes-barres pris en charge: CODE128, EAN-13, EAN-8, CODE39, UPC-A, UPC-E, CODABAR, CODE93, ITF, EAN128, PDF417, QRCode\nLargeur du papier: De 20 à 58 mm\nDiamètre du rouleau de papier: 40 mm (max)",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781562080274.png",
+      "subcat": "طابعات"
+    },
+    {
+      "id": "1781562240306",
+      "name": "POSITIVE P60: Lecteur de code barre laser 2D / QR",
+      "price": "تواصل معنا",
+      "cat": "عتاد إعلام آلي",
+      "subcat": "قارئ الكود بار",
+      "icon": "📦",
+      "desc": "Lecture : Omnidirectionnel\nCouleurs disponibles : Noir\nConnectivité : USB",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781562214191.jpg"
+    },
+    {
+      "id": "1781562316650",
+      "name": "Elitepos Lc-5000l - Scanner code à barres 2D",
+      "price": "تواصل معنا",
+      "cat": "عتاد إعلام آلي",
+      "subcat": "قارئ الكود بار",
+      "icon": "📦",
+      "desc": "Lecture :Uni-directionnel\nCouleurs disponibles : Noir\nConnectivité : USB",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781562299107.jpg"
+    },
+    {
+      "id": "1781562369490",
+      "name": "POSLUX S22- Scanner omnidirectionnel à double laser",
+      "price": "تواصل معنا",
+      "cat": "عتاد إعلام آلي",
+      "subcat": "قارئ الكود بار",
+      "icon": "📦",
+      "desc": "Lecture : 3D - Multi-directionnel\nCouleurs disponibles : Noir\nConnectivité : USB",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781562361830.jpg"
+    },
+    {
+      "id": "1781606319889",
+      "name": "ONDULEUR MAXIPOWER ISO 650VA 04 SORTIES",
+      "price": "تواصل معنا",
+      "cat": "عتاد إعلام آلي",
+      "subcat": "مُزوّد الطاقة",
+      "icon": "📦",
+      "desc": "المواصفات الفنية الأساسية:\n\nالاستطاعة (Capacity): 650 VA (تراوح بين 360 إلى 390 واط فعلي).\n\nعدد المنافذ (Outputs): 4 مخرجات كهربائية (Schuko/French ou IEC) لتوصيل عدة أجهزة في وقت واحد.\n\nالتقنية (Topology): Line-Interactive مزود بـ AVR (منظم يدعم تثبيت التوتر الكهربائي تلقائيًا).\n\nالبطارية (Battery): بطارية داخلية بجهد 12V مغلقة ولا تحتاجا للصيانة.\n\nالاستقلالية (Autonomie): توفر تغذية احتياطية بين 5 إلى 15 دقيقة (حسب حجم الحمل والأجهزة الموصلة) لإتاحة الوقت لحفظ البيانات وإيقاف التشغيل بأمان.\n\nالحماية: حماية متكاملة ضد الارتفاع الفجائي للتيار (Surtension)، الانخفاض الحاد، وانقطاع الكهرباء التام.\n\nالاستخدامات المثالية:\n\nوحدات المعالجة المركزية والشاشات (PC de bureau).\n\nأجهزة ومعدات نقاط البيع (أنظمة POS، طابعات الفواتير، وقوارئ الباركود).\n\nأجهزة أجهزة الاتصال والمودم/الروتر لضمان استمرار خدمة الإنترنت.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1781606319889.jpg"
+    },
+    {
+      "id": "1781606697114",
+      "name": "ONDULEUR CAMERA MC 650VA 08 SORTIES MPS/92",
+      "price": "تواصل معنا",
+      "cat": "كاميرات",
+      "icon": "📦",
+      "desc": "",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781606569357.jpg",
+      "subcat": "مستلزمات أخرى"
+    },
+    {
+      "id": "1781607062169",
+      "name": "MODEM RETOUR D-LINK DSL-224 VDSL2/ADSL2+",
+      "price": "تواصل معنا",
+      "cat": "كاميرات",
+      "icon": "📦",
+      "desc": "",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781607033493.png",
+      "subcat": "مستلزمات أخرى"
+    },
+    {
+      "id": "1781641015010",
+      "name": "برنامج SMART GYM: النظام الذكي المتكامل لإدارة الصالات الرياضية",
+      "price": "تواصل معنا",
+      "cat": "برمجيات",
+      "icon": "📦",
+      "desc": "برنامج تسيير القاعات الرياضية (SmartGym): أدر اشتراكات أعضائك، تحكّم في نظام الدخول عبر الـ RFID، وتابع مبيعات الملحقات ومداخيلك المالية بدقة\n-نظام الرقابة والتحكم في الدخول (Access Control & RFID)\n-إدارة المشتركين والأعضاء (Gestion des Adhérents)\n-متجر ونقاط بيع مدمجة (POS & Inventory)\n-نظام اتصالات وتسويق (SMS & Email)\n-إحصائيات وتقارير مالية معمقة (Statistiques & Résumé)",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781640833913.png",
+      "subcat": "تعليم ورياضة"
+    },
+    {
+      "id": "1781642069786",
+      "name": "Dahua Cooper bullet and dome",
+      "price": "تواصل معنا",
+      "cat": "كاميرات",
+      "icon": "📦",
+      "desc": "اقتصادية، ومقاومة للعوامل الجوية (الغبار والأمطار IP67)، وتأتي برؤية ليلية ذكية (Smart IR) تصل إلى 20 متراً.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781641959948.jpg",
+      "subcat": "كاميرات خارجية"
+    },
+    {
+      "id": "1781642288530",
+      "name": "CAMERA DAHUA INTERIEUR 2-5-8 MEGA",
+      "price": "تواصل معنا",
+      "cat": "كاميرات",
+      "icon": "📦",
+      "desc": "الحل الأسهل والأوفر لحماية منزلك أو محلك التجاري من الداخل بأعلى جودة وأقل تكلفة.\nتصميم أنيق: يمتزج بشكل جمالي مع الأسقف والديكور دون تشويه للمكان.\nرؤية واسعة: تغطي زوايا الغرفة بالكامل لضمان عدم وجود زوايا ميتة.\nسعر اقتصادي: تمنحك الأمان وموثوقية ماركة \"داهوا\" العالمية بسعر يناسب ميزانيتك تماماً.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781642261746.jpg",
+      "subcat": "كاميرات داخلية"
+    },
+    {
+      "id": "1781642440410",
+      "name": "Imou Ranger security camera",
+      "price": "تواصل معنا",
+      "cat": "كاميرات",
+      "icon": "📦",
+      "desc": "تغطية كاملة 360 درجة (Pan & Tilt)",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781642379760.jpg",
+      "subcat": "كاميرات داخلية"
+    },
+    {
+      "id": "1781642615170",
+      "name": "Imou outdoor WiFi security",
+      "price": "تواصل معنا",
+      "cat": "كاميرات",
+      "icon": "📦",
+      "desc": "تغطية كاملة 360 درجة (Pan & Tilt)\nمقاومة العوامل الجوية القاسية\nجودة التصوير والرؤية الليلية المتقدمة",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781642535242.jpg",
+      "subcat": "كاميرات خارجية"
+    },
+    {
+      "id": "1781642867570",
+      "name": "Dahua XVR 4CH-8CH-16CH-32CH",
+      "price": "تواصل معنا",
+      "cat": "كاميرات",
+      "icon": "📦",
+      "desc": "أجهزة تسجيل Dahua XVR الذكية: الإدارة الاحترافية والذكية لنظام حمايتك. يدعم الذكاء الاصطناعي لتقليل التنبيهات الخاطئة، يوفر نصف مساحة التخزين بفضل تقنية الضغط الحديثة، ويمنحك وصولاً آمناً ومباشراً لكاميراتك من هاتفك أينما كنت في العالم بضغطة زر واحدة",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781642717398.jpg",
+      "subcat": "أجهزة تسجيل"
+    },
+    {
+      "id": "1782066961588",
+      "name": "برنامج PME PRO-MODULE IMPORTAION",
+      "price": "تواصل معنا",
+      "cat": "برمجيات",
+      "icon": "📦",
+      "desc": "📦 إدارة الاستيراد المعقدة.. أصبحت الآن بلمسة واحدة! 🌍\n\nهل تعاني من حساب التكاليف المتداخلة لسلعك المستوردة؟ هل تأخذ منك مصاريف الجمارك، الشحن، والتأمين وقتاً طويلاً لحساب تكلفة المنتج الصافية؟\n\nبرنامج PME PRO يضع بين يديك الحل الذكي والنهائي مع وحدة الاستيراد المتكاملة (MODULE IMPORTATION). صُمم الخيار خصيصاً للمستوردين والشركات الكبرى ليضمن لك:\n\nتسيير عمليات الاستيراد: تتبع شحناتك من المورد الأجنبي حتى وصولها للمخازن.\n\nالحساب التلقائي للتكاليف والجمارك: وداعاً للأخطاء الحسابية، البرنامج يدمج كافة مصاريف الشحن والرسوم الجمركية بدقة متناهية.\n\nمراقبة هوامش الربح: حدد أسعار بيعك بناءً على تكلفة حقيقية ومضمونة لضمان أعلى عوائد.\n\nتقارير تفصيلية شاملة: احصل على نظرة عامة ودقيقة حول وضعية كل شحنة وفواتير الاستيراد.\n\n🚀 لا تضيع الوقت في الحسابات اليدوية المعقدة واجعل تسييرك أوتوماتيكياً وذكياً.\n📞 اتصل بنا الآن للاستفسار أو طلب نسخة تجريبية: 0666.63.64.73",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1782066517504.jfif",
+      "subcat": "إدارة مؤسسات"
+    },
+    {
+      "id": "1784221100666",
+      "name": "ONDULEUR East 850VA EA285P-06 PRISES FR",
+      "price": "تواصل معنا",
+      "cat": "عتاد إعلام آلي",
+      "subcat": "مُزوّد الطاقة",
+      "icon": "📦",
+      "desc": "",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1784221063137.jfif"
+    },
+    {
+      "id": "1784314081201",
+      "name": "School Pro - برنامج إدارة مؤسسات التكوين والتعليم",
+      "price": "تواصل معنا",
+      "cat": "برمجيات",
+      "icon": "📦",
+      "desc": "إدارة شاملة للمترشحين: سجّل طلابك، تابع ملفاتهم، واضبط وضعياتهم المالية بنقرة زر واحدة.\n\nتنظيم ذكي للحصص والقاعات: انسَ تداخل الجداول! نظّم المجموعات، القاعات، والأساتذة عبر نظام (Planning) متطور.\n\nتحكم مالي دقيق: تتبع أرباح الخزينة، المصاريف اليومية، وحسابات البنوك مع إحصائيات محاسبية دقيقة.\n\nنظام الحضور والغياب (Pointage): راقب حضور الطلاب والأساتذة بمرونة واحترافية.\n\nواجهة مستخدم عصرية وسهلة: باللغة الفرنسية، واضحة ومناسبة لجميع المستخدمين مع نظام حماية ونسخ احتياطي لبياناتك.\n💪 اجعل إدارتك أسرع، وأرباحك مضبوطة، وخدمتك أكثر احترافية.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1784314025347.png",
+      "subcat": "تعليم ورياضة"
+    },
+    {
+      "id": "1785170614715",
+      "name": "-LAPTOP HP ProBook x360 -I3 10110Y - 8GB - 128GB SSD - 11.6\" - X360 - TACTILE",
+      "price": "42000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات الأساسية\nالمعالج: Intel Core i3-10110Y أو i5-10210Y (الجيل العاشر - موفر للطاقة)\n\nالذاكرة العشوائية (RAM): 8GB DDR4\n\nالتخزين: 128GB أو 256GB M.2 SSD\n\nالشاشة: 11.6 بوصة HD (تتش / تعمل باللمس بالكامل)\n\nالتصميم (2 في 1): مفصلات تدور 360 درجة للتحول إلى وضع التابلت، مع أطراف مطاطية واقية صُممت للتحمل المتين مضادة للصدمات وانسكاب السوائل (إصدار EE / Education Edition).\n\nالمنافذ: USB Type-C، USB 3.1، HDMI، منفذ شبكة RJ-45، ومنفذ سماعات.\n\nالاستخدام المناسب: خفيف جداً وعملي للمبيعات السريعة، التنقل المكثف، العروض التقديمية، برامج التسيير التجاري، والدراسة.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1785170605004.jfif",
+      "subcat": "HP"
+    },
+    {
+      "id": "1785171118042",
+      "name": "LAPTOP HP ProBook 640 G2-I5 6600U - 8GB - 256GB SSD - 14\"EC",
+      "price": "45000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات الأساسية\nالمعالج: Intel Core i5-6600U (الجيل السادس - تردد يصل إلى 3.40 GHz، أداء أعلى قليلاً من i5-6200U العادي)\n\nالذاكرة العشوائية (RAM): 8GB DDR4\n\nالتخزين: 256GB SSD\n\nالشاشة: 14 بوصة (HD أو FHD حسب النسخة)\n\nكارت الشاشة: Intel HD Graphics 520\n\nالمنافذ: USB Type-C، USB 3.0، DisplayPort، VGA، وقارئ أقراص قد يحويه بحسب الإصدار.\n\nالاستخدام المناسب: ممتاز للأعمال المكتبية، برامج التسيير التجاري ونقاط البيع، والدراسة والتصفح.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1785171037903.jfif",
+      "subcat": "HP"
+    },
+    {
+      "id": "1785171514098",
+      "name": "LAPTOP HP ProBook 640 G5-i5-8265U | 8Go | SSD 256Go | 14\"EC",
+      "price": "52000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات الأساسية\nالمعالج: Intel Core i5-8265U (الجيل الثامن - 4 أنوية / 8 خيوط، تردد يصل إلى 3.90 GHz، أداء ممتازة)\n\nالذاكرة العشوائية (RAM): 8GB DDR4\n\nالتخزين: 256GB M.2 NVMe SSD\n\nالشاشة: 14 بوصة (غالباً FHD IPS بدقة 1920×1080)\n\nكارت الشاشة: Intel UHD Graphics 620\n\nالمنافذ: USB Type-C (Power Delivery & DisplayPort)، USB 3.1، HDMI، RJ-45، قارئ بطاقات SD.\n\nالاستخدام المناسب: ممتاز للأعمال الإدارية والمكتبية، البرمجة، إدارة نظم ERP ونقاط البيع، والتنقل اليومي.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1785171439851.jfif",
+      "subcat": "HP"
+    },
+    {
+      "id": "1785171901593",
+      "name": "EliteBook 745-Ryzen 5 Pro 3500U | 8Go | SSD 256Go | 14\"  Tactile",
+      "price": "62000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات الأساسية\nالمعالج: AMD Ryzen 5 Pro 3500U (4 أنوية / 8 خيوط - أداء ممتاز ومنافس قوي لـ Intel Core i5 الجيل الثامن)\n\nالذاكرة العشوائية (RAM): 8GB DDR4 (قابلة للترقية)\n\nالتخزين: 256GB NVMe SSD\n\nالشاشة: 14 بوصة Full HD IPS تلمس (Tactile / Touchscreen)\n\nكارت الشاشة: AMD Radeon Vega 8 Graphics (يقدم أداء رسوميات وجرافيك أفضل مقارنة بكروت Intel المدمجة في نفس الفئة)\n\nالهيكل والتصميم: ألومنيوم بالكامل، خفيف الوزن ونحيف جداً ينتمي لفئة الأجهزة الاحترافية العليا (Premium Business).\n\nالاستخدام المناسب: إدارة الأعمال والتسيير التجاري، البرمجة، التصميم الخفيف (Photoshop/Illustrator)، العروض التقديمية والتنقل.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1785171896190.jfif",
+      "subcat": "HP"
+    },
+    {
+      "id": "1785172125489",
+      "name": "HP EliteBook 830 G5/6-i5 8ème Gén - 8Go- SSD 256Go- 13.3\"EC",
+      "price": "58000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات الأساسية\nالمعالج: Intel Core i5 (الجيل الثامن - i5-8250U في G5 أو i5-8265U في G6)\n\nالذاكرة العشوائية (RAM): 8GB DDR4\n\nالتخزين: 256GB NVMe SSD\n\nالشاشة: 13.3 بوصة Full HD IPS (دقة عالية وزوايا رؤية ممتازة)\n\nالهيكل: ألومنيوم بالكامل متين وأنيق (فئة رجال الأعمال Premium Business)\n\nالمنافذ: Thunderbolt 3 (Type-C)، USB 3.1، HDMI، وقارئ بصمة",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1785172119586.jfif",
+      "subcat": "HP"
+    },
+    {
+      "id": "1785172282841",
+      "name": "HP EliteBook 830 G7- i5-10310U-8Go - SSD 256Go - 13.3\"EC",
+      "price": "68000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات الأساسية\nالمعالج: Intel Core i5-10310U (الجيل العاشر - 4 أنوية / 8 خيوط مع تقنية vPro للأداء والأمان العالي)\n\nالذاكرة العشوائية (RAM): 8GB DDR4 (قابلة للترقية)\n\nالتخزين: 256GB NVMe SSD\n\nالشاشة: 13.3 بوصة Full HD IPS (حواف نحيفة جداً وتصميم حديث)\n\nالهيكل والتصميم: هيكل ألومنيوم فضي خفيف الوزن وأنيق للغاية (جيل جديد بتصميم عصري وأصغر حجماً مقارنة بـ G5/G6)\n\nالمنافذ: منفذان Thunderbolt 3 (USB Type-C)، USB 3.1، HDMI 1.4، قارئ بصمة الإصبع.\n\nالاستخدام المناسب: ممتاز جداً للتنقل والمبيعات، البرمجة، إدارة نظم المعلومات والـ ERP، والمهام المكتبية العالية.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1785172230099.jfif",
+      "subcat": "HP"
+    },
+    {
+      "id": "1785190239911",
+      "name": "LOGICIEL -MEDICAL PRO",
+      "price": "تواصل معنا",
+      "cat": "برمجيات",
+      "icon": "📦",
+      "desc": "Gestion fluide des patients : Dossiers médicaux électroniques, historique des consultations et suivi personnalisé en quelques clics.\nAgenda & Rendez-vous : Organisation optimale du planning et réduction du temps d'attente.\nSuivi Financier & Comptabilité : Gestion claire des recettes, des charges et de la trésorerie.\nInterface Intuitive : Une prise en main rapide et une navigation simple au quotidien.\nSécurité & Confidentialité : Vos données médicales protégées en toute sécurité.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1785190105982.png",
+      "subcat": "صحة وخدمات"
+    },
+    {
+      "id": "1785190771351",
+      "name": "LOGICIEL-DENTAIRE PRO",
+      "price": "تواصل معنا",
+      "cat": "برمجيات",
+      "icon": "📦",
+      "desc": "Les atouts majeurs de DENTAIRE PRO :\nDossier Patient & Schéma Dentaire : Historique clinique complet, plans de traitement et suivi des soins en toute simplicité.\nGestion des Rendez-vous & Salle d'attente : Planning fluide pour réduire le temps d'attente et améliorer l'accueil de vos patients.\nSuivi Financier & Actes Médicaux : Facturation claire, gestion des honoraires, des charges et de la trésorerie en temps réel.\nInterface Ergonomique & Intuitive : Prise en main rapide, pensée pour s'adapter parfaitement à votre rythme de travail.\nSécurité des Données : Protection maximale de toutes vos données médicales et financières.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1785190708253.png",
+      "subcat": "صحة وخدمات"
+    },
+    {
+      "id": "1785951804525",
+      "name": "برنامج TECHNO GEST لتسيير المخزون وعمل الفواتير",
+      "price": "تواصل معنا",
+      "cat": "برمجيات",
+      "icon": "📦",
+      "desc": "TECHNO GEST - الحل المتكامل للتسيير التجاري والمبيعات. بسعر  يناسب الجميع\nالمميزات المعروضة:\nإدارة الفواتير والمبيعات اليومية بكل سهولة.\nمتابعة حركة المخزون والمنتجات المتبقية تلقائيًا.\nتقارير مالية وتأكيد الأرباح بضغطة زر.\nدعم قواعد البيانات والنسخ الاحتياطي التلقائي لحماية بياناتك.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1785951626846.png",
+      "subcat": "إدارة مؤسسات"
+    },
+    {
+      "id": "1786349948577",
+      "name": "Dell Latitude 3190 2in1-N4120 | 4Go | SSD 128Go | 11.6\"EC",
+      "price": "33500DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات التقنية:\n\nالمعالج: Intel Celeron N4120 (رباعي النواة، اقتصادي في استهلاك الطاقة).\n\nالذاكرة العشوائية (RAM): 4 Go LPDDR4.\n\nالتخزين: SSD 128 Go (استجابة سريعة للنظام والبرامج).\n\nالشاشة: 11.6 بوصة باللمس (Touchscreen) بدقة HD.\n\nالتصميم: شاشة قابلة للطي 360 درجة مع حواف مطاطية مقاومة الصدمات الخفيفة.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786349948577.jpg",
+      "subcat": "DELL"
+    },
+    {
+      "id": "1786350517449",
+      "name": "Dell Latitude 3190 2in1-N5030 | 8Go | SSD 128Go | 11.6\"EC",
+      "price": "36000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المعالج: Intel Pentium Silver N5030 (رباعي النواة بإنتاجية وأداء أفضل في التصفح والمهام المتعددة).\n\nالذاكرة العشوائية (RAM): 8 Go (ممتازة لفتح عدة برامج وعلامات تبويب دون بطء).\n\nالتخزين: SSD 128 Go (سرعة عالية في التشغيل ونقل البيانات).\n\nالشاشة: 11.6 بوصة باللمس (Touchscreen) قابلة للطي 360 درجة لاستخدامه كـ Tablet أو Laptop.\n\nالبنية: هيكل متين ومقاوم للظروف اليومية والتنقل المستمر.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786350517449.jpg",
+      "subcat": "DELL"
+    },
+    {
+      "id": "1786350644000",
+      "name": "Dell Latitude 3120 2in1-N6000 | 8Go | SSD 128Go | 11.6\"EC",
+      "price": "38000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات التقنية (جيل أحدث وأقوى):\n\nالمعالج: Intel Pentium Silver N6000 (رباعي النواة من جيل أحدث بتكافؤ ممتاز بين سرعة الأداء وكفاءة الطاقة).\n\nالذاكرة العشوائية (RAM): 8 Go LPDDR4x (سلاسة ممتازة في التعامل مع التطبيقات المتعددة).\n\nالتخزين: SSD 128 Go (سرعة عالية في الإقلاع وتحميل الملفات).\n\nالشاشة: 11.6 بوصة تعمل باللمس (Touchscreen)، قابلة للطي 360 درجة لاستخدام الجهاز كـ Tablet أو Laptop.\n\nالتصميم: هيكل عصري ومطوّر مع حواف واقية متينة ومقاومة للصدمات الخفيفة والعمل اليومي المستمر.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786350644000.jpg",
+      "subcat": "DELL"
+    },
+    {
+      "id": "1786350882400",
+      "name": "Dell Latitude 3310-i5 8ème Gén | 8Go | SSD 256Go | 13.3\"EC",
+      "price": "48000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات التقنية:\n\nالمعالج: Intel Core i5 (الجيل الثامن i5-8265U رباعي النواة بثمانية خيوط معالجة - أداء ممتاز للعمل والمكتب).\n\nالذاكرة العشوائية (RAM): 8 Go DDR4 (قابلة للترقية وسريعة في المعالجة).\n\nالتخزين: SSD 256 Go NVMe (مساحة كافية وإقلاع سريع جداً للنظام والبرامج).\n\nالشاشة: 13.3 بوصة (حجم متوازن وسهل الحمل).\n\nالمنافذ: USB Type-C، USB 3.1، HDMI، منفذ شبكة RJ45، وقارئ بطاقات MicroSD.\n\nالبنية: هيكل قوي مع حوافظ متينة مخصصة للتحمل والاستخدام المستمر.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786350882400.jpg",
+      "subcat": "DELL"
+    },
+    {
+      "id": "1786351061304",
+      "name": "Dell Latitude 5290 laptop- i5-8350U | 8Go | SSD 256Go | 12.3\"EC",
+      "price": "49000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات التقنية:\n\nالمعالج: Intel Core i5-8350U (الجيل الثامن رباعي النواة بثمانية خيوط معالجة مع دعم vPro - أداء قوي وسلس للعمل اليومي).\n\nالذاكرة العشوائية (RAM): 8 Go DDR4 (قابلة للترقية).\n\nالتخزين: SSD 256 Go NVMe (إقلاع سريع جداً للنظام والبرامج).\n\nالشاشة: 12.5\" / 12.3\" (حجم مدمج وعملي للغاية للتنقل وخفيف الوزن).\n\nالتصميم والمنافذ: هيكل احترافي متين مصمم لرجال الأعمال والمحترفين، يتضمن منافذ متنوعة مثل USB Type-C وUSB 3.1 وHDMI لقدرة توصيل عالية.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786351061304.jpg",
+      "subcat": "DELL"
+    },
+    {
+      "id": "1786351199039",
+      "name": "Dell Latitude 5400- i5-8250U | 8Go | SSD 256Go | 14\"EC",
+      "price": "52000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات التقنية:\n\nالمعالج: Intel Core i5-8250U (الجيل الثامن رباعي النواة بثمانية خيوط معالجة - أداء ممتاز وموثوق للعمل والتطبيقات المكتبية).\n\nالذاكرة العشوائية (RAM): 8 Go DDR4 (أداء سلس وممتاز قابلة للترقية).\n\nالتخزين: SSD 256 Go M.2 NVMe (سرعة عالية في الإقلاع ومعالجة الملفات).\n\nالشاشة: 14 بوصة HD / FHD (حجم قياسي ومريح جداً للعمل اليومي الممتد).\n\nالتصميم والمنافذ: تصميم احترافي وأنيق من سلسلة Latitude الفاخرة، يضم منافذ متعددة مثل USB Type-C (مع DisplayPort)، USB 3.1، HDMI، منفذ شبكة RJ45، وقارئ بطاقات SD.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786351199039.jpg",
+      "subcat": "DELL"
+    },
+    {
+      "id": "1786351614431",
+      "name": "Dell Latitude 5400 -i5-8250U | 8Go | SSD 256Go | 14\" TACTIL",
+      "price": "53500DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات التقنية (نسخة الشاشة التفاعلية):\n\nالمعالج: Intel Core i5-8250U (الجيل الثامن رباعي النواة - أداء قوي وسلس للمهام الأكاديمية والمهنية).\n\nالذاكرة العشوائية (RAM): 8 Go DDR4 (قابلة للترقية لإنتاجية أعلى).\n\nالتخزين: SSD 256 Go NVMe (سرعة عالية في استجابة النظام وتصفح الملفات).\n\nالشاشة: 14 بوصة FHD Tactile (تعتمد خاصية اللمس) لتجربة استخدام أسرع وأكثر مرونة.\n\nالتصميم والمنافذ: هيكل أنيق ومتين مع منافذ متكاملة (USB Type-C, USB 3.1, HDMI, RJ45, MicroSD Reader).",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786351614431.jpg",
+      "subcat": "DELL"
+    },
+    {
+      "id": "1786351753455",
+      "name": "Latitude 5400 - i7-8665U | 8Go | SSD 256Go | 14\"EC",
+      "price": "57000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات التقنية (نسخة المعالج العالي i7):\n\nالمعالج: Intel Core i7-8665U (الجيل الثامن رباعي النواة بثمانية خيوط معالجة وتردد يصل إلى 4.80GHz مع دعم تقنية vPro - أداء ممتاذ للمهام الصعبة والمتقدمة).\n\nالذاكرة العشوائية (RAM): 8 Go DDR4 (قابلة للترقية حتى 32Go لإنتاجية أعلى).\n\nالتخزين: SSD 256 Go NVMe (استجابة فائقة وإقلاع سريع جداً للنظام).\n\nالشاشة: 14 بوصة HD / Full HD (حجم مثالي للعمل اليومي المكتبي والميداني).\n\nالمنافذ والتوصيل: USB Type-C (مع DisplayPort), 3x USB 3.1, HDMI, منفذ شبكة RJ45, وقارئ بطاقات MicroSD.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786351753455.jpg",
+      "subcat": "DELL"
+    },
+    {
+      "id": "1786351925615",
+      "name": "Dell Latitude 7400-i7-8665U | 8Go | SSD 256Go | 14\"  Tactile",
+      "price": "60000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات التقنية (الفئة الفاخرة Premium):\n\nالمعالج: Intel Core i7-8665U (الجيل الثامن رباعي النواة بثمانية خيوط معالجة وتردد يصل إلى 4.80GHz مع تقنية vPro - أداء قوي وسلس للوظائف والمهام المتقدمة).\n\nالذاكرة العشوائية (RAM): 8 Go DDR4 (أداء ممتاز وسريع).\n\nالتخزين: SSD 256 Go NVMe M.2 (سرعة فائقة في معالجة البيانات وإقلاع النظام).\n\nالشاشة: 14 بوصة Full HD Tactile (تعتمد خاصية اللمس) بزجاج قوي وحواف نحيفة جداً.\n\nالتصميم والإنهاء: هيكل فاخر مصنوع من ألياف الكربون أو الألومنيوم، خفيف الوزن وأنيق مع متانة عالية ومنافذ متعددة (Thunderbolt 3 / USB-C, USB 3.1, HDMI, MicroSD).",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786351925615.jpg",
+      "subcat": "DELL"
+    },
+    {
+      "id": "1786352060774",
+      "name": "Dell Latitude 5410 -i5-10210U | 8Go | SSD 256Go | 14\"EC",
+      "price": "62000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات التقنية (جيل أحدث وأقوى):\n\nالمعالج: Intel Core i5-10210U (الجيل العاشر - 4 أنواة و 8 خيوط معالجة وتردد يصل إلى 4.20GHz مع أداء ممتاز في استهلاك الطاقة والإنتاجية).\n\nالذاكرة العشوائية (RAM): 8 Go DDR4 (قابلة للترقية حتى 32Go).\n\nالتخزين: SSD 256 Go NVMe M.2 (سرعة فائقة في الإقلاع ومعالجة البرامج والتطبيقات).\n\nالشاشة: 14 بوصة Full HD / HD (حجم متوازن للغاية ومريح للعمل المكتبي والتنقل).\n\nالمنافذ والتوصيل: USB Type-C (مع DisplayPort و Power Delivery)، منافذ USB 3.2 Gen 1، HDMI 1.4b، منفذ شبكة RJ45، وقارئ بطاقات MicroSD.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786352060774.jpg",
+      "subcat": "DELL"
+    },
+    {
+      "id": "1786352260406",
+      "name": "Dell Latitude 5480-7-7600U | 8Go | SSD 256Go | NVIDIA 930MX",
+      "price": "55000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات التقنية (نسخة الأداء القوي بكارت شاشة منفصل):\n\nالمعالج: Intel Core i5-7440HQ (الجيل السابع فئة HQ عالية الأداء، 4 أنواة حقيقية وتردد يصل إلى 3.80GHz - أقوى في المعالجة من معالجات U العادية).\n\nبطاقة الشاشة (GPU): NVIDIA GeForce 930MX (كارت شاشة منفصل للتعامل مع البرامج الهندسية، التصميم الخفيف، والمحتوى متعدد الوسائط).\n\nالذاكرة العشوائية (RAM): 8 Go DDR4 (قابلة للترقية).\n\nالتخزين: SSD 256 Go NVMe M.2 (استجابة وسرعة عالية في تشغيل البرامج والنظام).\n\nالشاشة: 14 بوصة HD / Full HD.\n\nالمنافذ والتوصيل: USB Type-C (مع DisplayPort)، منافذ USB 3.0، HDMI، VGA، منفذ شبكة RJ45، وقارئ بطاقات SD.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786352260406.jpg",
+      "subcat": "DELL"
+    },
+    {
+      "id": "1786352379838",
+      "name": "Dell Latitude 5480-i7-8850H | 8Go | SSD 256Go | NVIDIA MX130",
+      "price": "57500DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات التقنية (نسخة i7 مع كارت شاشة منفصل):\n\nالمعالج: Intel Core i7-7600U (الجيل السابع، ثنائي النواة بـ 4 خيوط معالجة وتردد يصل إلى 3.90GHz مع ذاكرة كاش 4MB - أداء متكافئ وسريع في الاستهلاك اليومي).\n\nبطاقة الشاشة (GPU): NVIDIA GeForce 930MX (كارت شاشة منفصل يساعد في تسريع برامج التصميم، المونتاج الخفيف، والبرامج الهندسية).\n\nالذاكرة العشوائية (RAM): 8 Go DDR4 (قابلة للترقية).\n\nالتخزين: SSD 256 Go NVMe M.2 (استجابة وسرعة عالية في تشغيل النظام والبرامج).\n\nالشاشة: 14 بوصة Full HD / HD.\n\nالمنافذ والتوصيل: USB Type-C (مع DisplayPort)، 3 منافذ USB 3.0، HDMI، VGA، منفذ شبكة RJ45، وقارئ بطاقات SD.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786352379838.jpg",
+      "subcat": "DELL"
+    },
+    {
+      "id": "1786352480934",
+      "name": "Dell Latitude 5491 -i7-8850H | 8Go | SSD 256Go | NVIDIA MX130",
+      "price": "63000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "التقنية (فئة الأداء العالي والأشغال الشاقة):\n\nالمعالج: Intel Core i7-8850H (الجيل الثامن فئة H القوية جداً، 6 أنواة حقيقية و 12 خيط معالجة مع تردد يصل إلى 4.30GHz وذاكرة كاش 9MB - أداء ممتاذ للمهام الثقيلة جداً).\n\nبطاقة الشاشة (GPU): NVIDIA GeForce MX130 (كارت شاشة منفصل للتعامل مع برامج التصميم، الهندسية، والمونتاج بمرونة).\n\nالذاكرة العشوائية (RAM): 8 Go DDR4 (قابلة للترقية حتى 32Go).\n\nالتخزين: SSD 256 Go NVMe M.2 (سرعة فائقة في الإقلاع وتشغيل التطبيقات المعقدة).\n\nالشاشة: 14 بوصة Full HD / HD.\n\nالمنافذ والتوصيل: Thunderbolt 3 / USB Type-C، منافذ USB 3.1، HDMI، VGA، منفذ شبكة RJ45، وقارئ بطاقات SD.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786352480934.jpg",
+      "subcat": "DELL"
+    },
+    {
+      "id": "1786352596085",
+      "name": "Dell Latitude 5500-I5 8265U - 8GB - 256GB SSD - 15.6\"EC",
+      "price": "59000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات التقنية (شاشة كبيرة مع لوحة أرقام جانبية NumPad):\n\nالمعالج: Intel Core i5-8265U (الجيل الثامن، 4 أنواة و8 خيوط معالجة وتردد يصل إلى 3.90GHz - أداء قوي وسلس للعمل المكتبي والبرامج الإدارية).\n\nالذاكرة العشوائية (RAM): 8 Go DDR4 (قابلة للترقية لإنتاجية أعلى).\n\nالتخزين: SSD 256 Go NVMe M.2 (سرعة فائقة في الإقلاع ومعالجة البيانات).\n\nالشاشة: 15.6 بوصة Full HD / HD (شاشة واسعة ومريحة جداً للعمل المكتبي وإدخال البيانات).\n\nالمنافذ والتوصيل: USB Type-C (مع DisplayPort وPower Delivery)، منافذ USB 3.1، HDMI، منفذ شبكة RJ45، وقارئ بطاقات MicroSD، بالإضافة إلى لوحة أرقام جانبية (Numeric Keypad).",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786352596085.jpg",
+      "subcat": "DELL"
+    },
+    {
+      "id": "1786352711198",
+      "name": "Dell Latitude 5501-I5 9400H - 8GB - 256GB SSD - 15.6\"EC",
+      "price": "71500DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات التقنية (معالج فئة H قوي وشاشة كبيرة):\n\nالمعالج: Intel Core i5-9400H (الجيل التاسع فئة H عالية الأداء، 4 أنواة و8 خيوط معالجة وتردد يصل إلى 4.30GHz مع ذاكرة كاش 8MB - أداء قوي جداً للمهام المكثفة).\n\nالذاكرة العشوائية (RAM): 8 Go DDR4 (قابلة للترقية حتى 32Go).\n\nالتخزين: SSD 256 Go NVMe M.2 (استجابة وسرعة عالية في تشغيل النظام والبرامج).\n\nالشاشة: 15.6 بوصة Full HD / HD (مريحة ومناسبة جداً للعمل المكتبي الطويل وإدخال البيانات).\n\nالمنافذ والتوصيل: Thunderbolt 3 / USB Type-C، منافذ USB 3.1، HDMI، منفذ شبكة RJ45، قارئ بطاقات MicroSD، ولوحة أرقام جانبية (Numeric Keypad).",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786352711198.jpg",
+      "subcat": "DELL"
+    },
+    {
+      "id": "1786353095854",
+      "name": "Dell Latitude 7490 -I5 8350 - 8GB - 256GB SSD - 14\" TACTIL",
+      "price": "55000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات التقنية (الفئة الفاخرة Premium):\n\nالمعالج: Intel Core i5-8350U (الجيل الثامن رباعي النواة بـ 8 خيوط معالجة مع دعم vPro وتردد يصل إلى 3.60GHz - أداء قوي وسلس للعمل المهني والتنقل).\n\nالذاكرة العشوائية (RAM): 8 Go DDR4 (قابلة للترقية).\n\nالتخزين: SSD 256 Go NVMe M.2 (استجابة فائقة وسرعة عالية في تشغيل البرامج والنظام).\n\nالشاشة: 14 بوصة Full HD Tactile (تعتمد خاصية اللمس) بألوان دقيقة وحواف نحيفة.\n\nالتصميم والتصنيع: هيكل فاخر مصنوع من ألياف الكربون النحيفة والمتينة، خفيف الوزن وخيار مثالي للتنقل والإنتاجية العالية.\n\nالمنافذ والتوصيل: Thunderbolt 3 / USB Type-C، منافذ USB 3.1، HDMI، منفذ شبكة RJ45، وقارئ بطاقات MicroSD.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786353095854.jpg",
+      "subcat": "DELL"
+    },
+    {
+      "id": "1786353372788",
+      "name": "Dell Latitude 5580 -i7-7820HQ | 8Go | SSD 256Go | 15.6\"EC",
+      "price": "59000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات التقنية (معالج HQ عالي الأداء وشاشة كبيرة):\n\nالمعالج: Intel Core i7-7820HQ (الجيل السابع فئة HQ عالية الأداء، 4 أنواة و8 خيوط معالجة مع ذاكرة كاش 8MB وتردد يصل إلى 3.90GHz - أداء ممتاز للمهام الثقيلة والشاقة).\n\nالذاكرة العشوائية (RAM): 8 Go DDR4 (قابلة للترقية حتى 32Go).\n\nالتخزين: SSD 256 Go NVMe M.2 (سرعة فائقة في الإقلاع ومعالجة البيانات).\n\nالشاشة: 15.6 بوصة Full HD / HD (مريحة ومناسبة جداً للعمل المكتبي وإدخال البيانات).\n\nالمنافذ والتوصيل: USB Type-C (مع DisplayPort)، 3 منافذ USB 3.0، HDMI، VGA، منفذ شبكة RJ45، قارئ بطاقات SD، ولوحة أرقام جانبية (Numeric Keypad).",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786353372788.jpg",
+      "subcat": "DELL"
+    },
+    {
+      "id": "1786353531148",
+      "name": "Dell Latitude 5591-i7-8850H | 8Go | SSD 256Go | 15.6\"EC",
+      "price": "63000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات التقنية (أداء خارق مع شاشة كبيرة):\n\nالمعالج: Intel Core i7-8850H (الجيل الثامن فئة H عالية الأداء، 6 أنواة حقيقية و12 خيط معالجة مع ذاكرة كاش 9MB وتردد يصل إلى 4.30GHz - أداء ممتاز جداً للبرامج الثقيلة والعمل المكثف).\n\nالذاكرة العشوائية (RAM): 8 Go DDR4 (قابلة للترقية حتى 32Go).\n\nالتخزين: SSD 256 Go NVMe M.2 (استجابة فائقة وسرعة عالية في تشغيل البرامج والنظام).\n\nالشاشة: 15.6 بوصة Full HD / HD (شاشة كبيرة ومريحة للعمل المكتبي وإدارة البرامج).\n\nالمنافذ والتوصيل: Thunderbolt 3 / USB Type-C، منافذ USB 3.1، HDMI، VGA، منفذ شبكة RJ45، قارئ بطاقات SD، بالإضافة إلى لوحة أرقام جانبية (Numeric Keypad).",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786353531148.jpg",
+      "subcat": "DELL"
+    },
+    {
+      "id": "1786353730692",
+      "name": "Latitude 7200 Detachable - i7-8665U | 16Go | SSD 512Go | 12.3\" Tactile",
+      "price": "77000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات التقنية (تصميم مدمج هجين وعالي الأداء):\n\nالمعالج: Intel Core i7-8665U (الجيل الثامن رباعي النواة بـ 8 خيوط معالجة وتردد يصل إلى 4.80GHz مع تقنية vPro - أداء قوي وسلس).\n\nالذاكرة العشوائية (RAM): 16 Go LPDDR3 (سعة كبيرة فائقة السلاسة لتعدد المهام).\n\nالتخزين: SSD 256 Go NVMe M.2 (سرعة عالية في الاستجابة وإقلاع النظام).\n\nالشاشة: 12.3 بوصة Full HD+ Tactile (شاشة لمس قابلة للفصل عن لوحة المفاتيح) بزجاج Corning Gorilla Glass 5 المتين.\n\nالتصميم والتصنيع: تصميم هجين فاخر وخفيف الوزن يمكن استخدامه كجهاز حاسوب محمول أو كجهاز لوحي (Tablet)، ممتاذ للتنقل والعروض التفاعلية.\n\nالمنافذ والتوصيل: منافذ Thunderbolt 3 / USB Type-C، منفذ USB 3.1 Gen 1، وقارئ بطاقات MicroSD.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786353730692.jpg",
+      "subcat": "DELL"
+    },
+    {
+      "id": "1786353841332",
+      "name": "Latitude 7200 Detachable - i7-8665U | 16Go | SSD 256Go | 12.3\" Tactile",
+      "price": "72500DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات التقنية (جيل حديث فائق الخفة والسرعة):\n\nالمعالج: Intel Core i5-1145G7 (الجيل الحادي عشر، 4 أنواة و8 خيوط معالجة مع تردد يصل إلى 4.40GHz مع كارت شاشة مدمج قوي Intel Iris Xe - أداء ممتاذ وسلس جداً).\n\nالذاكرة العشوائية (RAM): 16 Go LPDDR4x (سعة كبيرة فائقة السرعة لتشغيل عدة برامج في وقت واحد).\n\nالتخزين: SSD 256 Go NVMe M.2 (سرعة فائقة جداً في نقل البيانات وإقلاع النظام).\n\nالشاشة: 13.3 بوصة Full HD بحواف نحيفة جداً ورؤية واضحة ومريحة للعين.\n\nالتصميم والتصنيع: خفيف الوزن وأنيق للغاية مع هيكل متين من الألومنيوم/ألياف الكربون، مثالي للتنقل والعمل الاحترافي.\n\nالمنافذ والتوصيل: منافذ Thunderbolt 4 / USB-C، USB 3.2 Gen 1، HDMI 2.0، وقارئ بطاقات MicroSD.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786353841332.jpg",
+      "subcat": "DELL"
+    },
+    {
+      "id": "1786353929308",
+      "name": "Latitude 7420 - i7-1185G7 | 8Go | SSD 256Go | 14\"EC",
+      "price": "77500DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات التقنية (جيل حديث بجودة فائقة):\n\nالمعالج: Intel Core i7-1185G7 (الجيل الحادي عشر، 4 أنواة و8 خيوط معالجة وتردد يصل إلى 4.80GHz مع ذاكرة كاش 12MB وتقنية vPro مع كارت شاشة Intel Iris Xe - أداء ممتاذ وسلس للغاية للمهام الصعبة).\n\nالذاكرة العشوائية (RAM): 8 Go LPDDR4x (سرعة فائقة واستجابة ممتازة).\n\nالتخزين: SSD 256 Go NVMe M.2 (قراءة وكتابة فائقة السرعة).\n\nالشاشة: 14 بوصة Full HD بحواف نحيفة جداً ورؤية واضحة ومريحة للعين.\n\nالتصميم والتصنيع: تصميم راقٍ وخفيف الوزن بإنهاء ممتاذ من ألياف الكربون أو الألومنيوم، مع متانة عالية لمواكبة متطلبات العمل اليومي والتنقل.\n\nالمنافذ والتوصيل: منافذ Thunderbolt 4 / USB-C حديثة، USB 3.2 Gen 1، HDMI 2.0، وقارئ بطاقات MicroSD.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786353929308.jpg",
+      "subcat": "DELL"
+    },
+    {
+      "id": "1786354053243",
+      "name": "Dell Inspiron 15 5000 series-i7-8550U | 8Go | SSD 256Go | 15.6\"EC",
+      "price": "73500DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات التقنية (شاشة كبيرة وعملية للمستخدم اليومي):\n\nالمعالج: Intel Core i7-8550U (الجيل الثامن، 4 أنواة و8 خيوط معالجة مع تردد يصل إلى 4.00GHz وذاكرة كاش 8MB - أداء قوي وسلس للعمل والتسلية).\n\nالذاكرة العشوائية (RAM): 8 Go DDR4 (أداء ممتاز وقابلية للترقية).\n\nالتخزين: SSD 256 Go NVMe M.2 (إقلاع سريع جداً للنظام واستجابة ممتازة للتطبيقات).\n\nالشاشة: 15.6 بوصة Full HD / HD (مريحة لمشاهدة المحتوى، العمل على الجداول، وإدخال البيانات).\n\nالحالة: جديد (NEUF) بكامل أكسسواراته وهيكله الأنيق.\n\nالمنافذ والتوصيل: USB 3.1, USB 2.0, HDMI, منفذ شبكة RJ45, قارئ بطاقات SD, وقارئ أقراص DVD (في بعض الإصدارات) بالإضافة إلى لوحة أرقام جانبية (Numeric Keypad).",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786354053243.jpg",
+      "subcat": "DELL"
+    },
+    {
+      "id": "1786366717001",
+      "name": "ThinkPad 11E X360 💻 CELERON N4000  | 8Go | SSD 128Go | 11.6\" EC",
+      "price": "35000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات والأداء\nالمعالج (Intel Celeron N4000): معالج اقتصادي ثنائي النواة مخصص للمهام اليومية الأساسية، التصفح، وإدخال البيانات.\n\nالذاكرة (8GB RAM): نقطة قوة ممتازة في هذه النسخة، تجعل النظام ويعمل بسلاسة أعلى مقارنة بحديثي الـ 4GB.\n\nالتخزين (128GB SSD): يضمن سرعة إقلاع واستجابة سريعة جداً لنظام Windows والبرامج.\n\nالشاشة والتصميم (11.6\" Touch x360): شاشة لمسية عملية قابلة للتحول إلى وضع التابلت، مع تصميم متين جداً يتحمل الصدمات والعمل الميداني.\n\n🎯 الاستخدامات الموصى بها\nبرامج التسيير ونقاط البيع (POS): ممتاز جداً للاستخدام في المحلات والمتاجر لشاشته اللمسية وحجمه المدمج.\n\nالعمل الميداني والتنقل: هيكل صلب مقاوم للظروف الصعبة وبطارية اقتصادية.\n\nالمهام المكتبية: التصفح، برامج Microsoft Office، وقراءة المستندات.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786366717001.jpg",
+      "subcat": "LENOVO"
+    },
+    {
+      "id": "1786367076801",
+      "name": "Lenovo ThinkPad 13",
+      "price": "40000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات والأداء\nالمعالج (Intel Core i3 7th Gen): معالج ثنائي النواة يقدم أداءً مستقراً وممتازاً للأعمال المكتبية، إدارة البرامج، والتصفح السريع.\n\nالذاكرة (8GB RAM): سعة ممتازة تضمن فتح عدة تطبيقات وتبويبات متصفح دون تهنيج أو بطء.\n\nالتخزين (128GB SSD): سرعة استجابة عالية للنظام وإقلاع سريع (قابل للترقية لـ 256GB أو أكثر بسهولة).\n\nالشاشة (13.3\" HD/FHD): حجم مثالي يجمع بين وضوح الرؤية وسهولة الحمل في الحقائب.\n\n🎯 الاستخدامات الموصى بها\nإدارة الأعمال وبرامج التسيير: متوافق تماماً مع كافة برامج الإدارة والتسيير التجاري (POS، PME Pro، إلخ).\n\nالعمل المكتبي والتنقل: ممتاز جداً لأعمال Office، البريد الإلكتروني، وإرسال التقارير بفضل خفة وزنه ولائحة المفاتيح المريحة.\n\nالاستخدام اليومي والدراسي: جهاز متين وعملي يعتمد عليه لفترات طويلة.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786367076801.jpg",
+      "subcat": "LENOVO"
+    },
+    {
+      "id": "1786367207144",
+      "name": "Lenovo ThinkPad T480s -i5-8250U | 8Go | SSD 256Go | 14\"EC",
+      "price": "53500DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات والأداء\nالمعالج (Intel Core i5-8250U): معالج رباعي النواة (4 Cores / 8 Threads) يقدم أداءً قوياً وسريعاً جداً ومناسباً للأعمال الشاقة والتعددية (Multitasking).\n\nالذاكرة (8GB RAM DDR4): سعة ممتازة للتشغيل السلس، مع إمكانية الترقية بسهولة.\n\nالتخزين (256GB SSD NVMe): سعة تخزين مناسبة وسريعة جداً للتشغيل ونقل البيانات.\n\nالشاشة (14\" Full HD): مريحة للعين بالحجم الأفضل للعمل المكتبي والميداني.\n\nالمنافذ: يدعم منافذ حديثة مثل Thunderbolt 3 / USB-C، منافذ USB 3.1، HDMI، ومنفذ شبكة RJ-45.\n\n🎯 الاستخدامات الموصى بها\nإدارة الأعمال والبرمجيات الاحترافية: مثالي جداً لتشغيل كافة برامج التسيير والبرمجة والتطوير بدون أي بطء.\n\nالاستخدام الميداني والتنقل: خفيف الوزن وجسم متين مصنع من ألياف الكربون والمغنيسيوم.\n\nالعمل المكتبي المكثف: خيار ممتاز للمحاسبين، التقنيين، والمطوّرين.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786367207144.jpg",
+      "subcat": "LENOVO"
+    },
+    {
+      "id": "1786367384608",
+      "name": "Lenovo ThinkPad T480s-i5-8250U | 8Go | SSD 256Go | 14\"TACTIL",
+      "price": "56500DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات والأداء\nالمعالج (Intel Core i5-8250U): رباعي النواة (4 Cores / 8 Threads)، ممتاز في معالجة البيانات والمهام المتعددة السريعة.\n\nالشاشة اللمسية (14\" FHD Touch): تمنحك مرونة عالية جداً في التنقل وتصفح القوائم والعمل على البرامج التفاعلية دون الحاجة للماوس.\n\nالذاكرة والتخزين (8GB RAM / 256GB SSD NVMe): سرعة فائقة في الإقلاع وسلاسة ممتازة في فتح التطبيقات الكبيرة.\n\nالمنافذ والنظام: يحتوي على Thunderbolt 3، USB-C، USB 3.1، HDMI، وبصمة إصبع (حسب التوفر).\nالاستخدامات الموصى بها\nإدارة البرامج ونقاط البيع (POS & Management): الشاشة اللمسية مع الأداء العالي تجعله مثاليًا للتحكم السريع في البرامج التجارية والتطبيقات.\n\nالعمل الميداني والتقني: خفيف الوزن، بطارية قوية، وهيكل متين يتحمل الاستخدام اليومي الشاق.\n\nالعروض والتصفح السريع: ممتاز جداً للمحتوى التفاعلي وقراءة المستندات والتحكم باللمس.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786367384608.jpg",
+      "subcat": "LENOVO"
+    },
+    {
+      "id": "1786367738368",
+      "name": "Lenovo ThinkPad X395 -Ryzen 5 Pro 3500U | 8Go | SSD 256Go | 13.3\"TACTIL",
+      "price": "60000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات والأداء\nالمعالج (AMD Ryzen 5 Pro 3500U): معالج رباعي النواة أداؤه يتفوق على أجيال i5 القديمة، مع كارت شاشة مدمج قوي AMD Radeon Vega 8 يمنح أداءً رسومياً أسرع للتطبيقات والمرئيات.\n\nالشاشة (13.3\" FHD Touch): حجم مدمج ومثالي جداً مع استجابة لمس سلسة تتيح التحكم السريع ببرامج الإدارة والقوائم.\n\nالذاكرة والتخزين (8GB RAM / 256GB SSD NVMe): أداء سريع وسلس في فتح البرامج، وإقلاع خاطف لنظام Windows.\n\n🎯 الاستخدامات الموصى بها\nإدارة البرمجيات ونقاط البيع (POS): ممتاز جداً للعمل الميداني والمتاجر بفضل الشاشة اللمسية وحجمه المدمج.\n\nالأعمال المكتبية والتنقل: خفيف الوزن، متين، وبطارية متميزة للعمل في أي مكان.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786367738368.jpg",
+      "subcat": "LENOVO"
+    },
+    {
+      "id": "1786367839992",
+      "name": "Lenovo ThinkPad L15-Ryzen 5 4500U | 8Go | SSD 256Go | 15.6\"EC",
+      "price": "66000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات والأداء\nالمعالج (AMD Ryzen 5 4500U): معالج سداسي النواة (6 Cores / 6 Threads) ممتاز وقوي جداً، يتفوق بوضوح على معالجات Intel Core i5 من الجيل العاشر والـ 11 في معالجة البرامج والمهام المتعددة.\n\nالكرت المدمج (AMD Radeon Graphics): أداء أسرع في معالجة الرسوميات وعرض البيانات مقارنة بكرت Intel UHD العادي.\n\nالذاكرة والتخزين (8GB RAM / 256GB SSD NVMe): سرعة استجابة خاطفة للنظام مع إمكانية زيادة الذاكرة بسهولة بفضل المنفذين المتاحين (2 Slots).\n\nالشاشة والراحة (15.6\" Full HD): حجم ممتاز مريح للعين أثناء ساعات العمل الطويلة، مع لوحة أرقام كاملة لتسهيل العمليات الحسابية والمالية.\n\n🎯 الاستخدامات الموصى بها\nإدارة البرامج والمحاسبة (POS / Accounting): الشاشة الكبيرة ولوحة الأرقام تجعلانه الخيار الأفضل لإدارة المخزون وشبكات التسيير المالي.\n\nالتطوير والبرمجة: أداء النوى الست في معالج Ryzen ممتاز في معالجة البيانات والرموز البرمجية الثقيلة.\n\nالعمل المكتبي المكثف: متانة سلسلة ThinkPad الشهيرة مع تهوية ممتازة واستقرار أداء طوال اليوم.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786367839992.jpg",
+      "subcat": "LENOVO"
+    },
+    {
+      "id": "1786368101359",
+      "name": "Lenovo ThinkPad X13 Yoga-I5 10310U - 16GB - 256GB SSD - 13.3\" - TACTILE",
+      "price": "77500DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات والأداء\nالمعالج (Intel Core i5-10310U vPro): معالج رباعي النواة من الجيل العاشر مع تقنية vPro للحماية والتحكم، يقدم أداءً ممتازاً وسريعاً في المعالجة.\n\nالذاكرة (16GB RAM): سعة ضخمة وممتازة تجعل الجهاز سريعاً جداً في فتح العديد من البرامج الثقيلة وتبويبات التصفح بدون أي أدنى بطء.\n\nالتخزين (256GB SSD NVMe): سرعة فائقة في التشغيل والإقلاع (قابل للتوسعة).\n\nالشاشة والتصميم (13.3\" FHD Touch x360): شاشة لمسية عالية الوضوح تدعم القلم والتفاعل، تحول سلس لجميع الأوضاع (تابلت، خيمة، كمبيوتر).\n\n🎯 الاستخدامات الموصى بها\nإدارة الأعمال والبرمجيات الاحترافية: مثالي جداً لتشغيل أعتى برامج التسيير والبرمجة مع فتح ملفات قواعد البيانات الكبيرة بفضل الـ 16GB RAM.\n\nالعمل الميداني والعروض: خفيف الوزن وسهل التنقل مع قلم للكتابة والرسم وتوقيع العقود.\n\nالاستخدام التنفيذي والمكتبي: خيار فاخر وأنيق جداً بحماية ThinkPad المتقدمة.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786368101359.jpg",
+      "subcat": "LENOVO"
+    },
+    {
+      "id": "1786368242527",
+      "name": "Lenovo ThinkPad L13 Yoga-i5-10210U | 8Go | SSD 256Go | 13.3\"EC",
+      "price": "72500DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات والأداء\nالمعالج (Intel Core i5-10210U): معالج رباعي النواة (4 Cores / 8 Threads) ممتازة من الجيل العاشر، يوفر سرعة عالية في المعالجة والتعامل مع البرامج التجارية والمكتبية.\n\nالذاكرة والتخزين (8GB RAM / 256GB SSD NVMe): أداء سلس واستجابة خاطفة للنظام أثناء فتح التطبيقات المتعددة.\n\nالشاشة والتصميم (13.3\" FHD Touch x360): شاشة لمسية بدقة عالية تدعم القلم والتفاعل، عملية جداً في التحكم والمراجعة السريعة.\n\n🎯 الاستخدامات الموصى بها\nإدارة البرامج والمحاسبة (POS / Management): خيار ممتاذ للمحلات والشركات بفضل الشاشة اللمسية القابلة للطي وخفة وزنه.\n\nالعمل الميداني والتنقل: هيكل قوي ومتحمل مع بطارية متميزة تتيح لك العمل في أي مكان.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786368242527.jpg",
+      "subcat": "LENOVO"
+    },
+    {
+      "id": "1786368390975",
+      "name": "Lenovo ThinkPad L14-i5-1135G7 | 16Go | SSD 256Go | 14\"EC",
+      "price": "71500DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات والأداء\nالمعالج (Intel Core i5-1135G7): معالج قوي جداً من الجيل الحادي عشر (4 Cores / 8 Threads) يقدم قفزة نوعية في الأداء وسرعة معالجة البيانات.\n\nالكرت المدمج (Intel Iris Xe Graphics): كارت شاشة مدمج قوي يمنح أداءً ممتازاً في معالجة الجرافيكس والرسوميات وسلاسة العرض مقارنة بالأجيال السابقة.\n\nالذاكرة (16GB RAM DDR4): سعة ضخمة تضمن أداءً خارقاً عند فتح عدة برامج ثقيلة، قواعد بيانات، ومتصفحات في نفس الوقت دون أي بطء.\n\nالتخزين (256GB SSD NVMe): سرعة فائقة في نقل البيانات وإقلاع النظام في ثوانٍ معدودة.\n\nالشاشة (14\" Full HD): قياس ممتاذ ومريح جداً للرؤية مع طبقة مضادة للانعكاس.\n\n🎯 الاستخدامات الموصى بها\nإدارة البرمجة وقواعد البيانات (POS & Advanced Software): مثالي جداً لتشغيل أعتى برامج التسيير والأنظمة المتقدمة وسيرفرات البيانات المحلية بفضل الـ 16GB RAM والمعالج الحديث.\n\nالعمل التقني والميداني: هيكل صلب، منافذ متعددة (USB-C / Thunderbolt، USB 3.2، HDMI، RJ-45)، وبطارية عملية تدوم لفترات طويلة.\n\nالأعمال المكتبية المكثفة: خيار احترافي يعتمد عليه للشركات والمؤسسات.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786368390975.jpg",
+      "subcat": "LENOVO"
+    },
+    {
+      "id": "1786368532703",
+      "name": "Lenovo ThinkPad L13 -Ryzen 5 Pro 5675U | 16Go | SSD 256Go | 13.3\"EC",
+      "price": "68000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات والأداء\nالمعالج (AMD Ryzen 5 Pro 5675U): معالج سداسي النواة (6 Cores / 12 Threads) بجودة وتصنيع متقدمين. يقدم أداءً متفوقاً ويفرمت المهام الشاقة بسرعة أعلى من أجيال Intel Core i5/i7 المقابلة.\n\nالكرت المدمج (AMD Radeon Graphics): كارت شاشة مدمج قوي يوفر سلاسة فائقة في معالجة الجرافيكس والعروض المرئية.\n\nالذاكرة (16GB RAM): سعة ممتازة تضمن فتح عشرات التبويبات والتطبيقات المتقدمة في وقت واحد بدون أي تهنيج.\n\nالتخزين (256GB SSD NVMe): سرعة استجابة خاطفة لنظام Windows والبرامج.\n\nالشاشة (13.3\" Full HD): حجم مدمج، وضوح عالٍ، ومناسب للعمل أثناء التنقل.\n\n🎯 الاستخدامات الموصى بها\nتطوير البرمجيات وقواعد البيانات: معالج بستة أنوية مع ذاكرة 16GB يجعله محطة عمل صغيرة ممتازة للبرمجة وإدارة السيرفرات المحلية.\n\nإدارة الأعمال والتسيير (POS & Business): خيار سريع وموثوق للمؤسسات والمحلات التجارية لتشغيل برامج التسيير المعقدة.\n\nالعمل التنفيذي والميداني: وزن خفيف للغاية، استهلاك طاقة منخفض، وبطارية متميزة.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786368532703.jpg",
+      "subcat": "LENOVO"
+    },
+    {
+      "id": "1786386735541",
+      "name": "EliteBook 840 G5/G6 - i5 8ème Gén- 8Go- SSD 256Go -14\"EC",
+      "price": "62000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات والأداء\nالمعالج (Intel Core i5 8th Gen): معالج رباعي النواة (4 Cores / 8 Threads) يقدم أداءً ثابتاً وسريعاً لمعالجة المهام والبرامج اليومية.\n\nالذاكرة والتخزين (8GB RAM / 256GB SSD NVMe): سرعة فائقة في التشغيل، مع سهولة ترقية الرام والتخزين لوجود منفذين (Slots).\n\nالشاشة (14\" Full HD IPS): شاشة ممتازة بوضوح عالٍ وزوايا رؤية مريحة جداً للعين.\n\nالمنافذ والنظام الصوتيات: يحتوي على Thunderbolt 3 / USB-C، منافذ USB 3.1، HDMI، منفذ شبكة RJ-45، وسماعات قوية معالجة بتقنية Bang & Olufsen.\n\n🎯 الاستخدامات الموصى بها\nإدارة الأعمال والبرمجيات (POS & Management): خيار مثالي ومظهر احترافي جداً للعمل المكتبي وإدارة المحلات والمؤسسات.\n\nالاستخدام الميداني والتنقل: هيكل معدني مقاوم للصدمات وخفيف الوزن للتنقل السلس.\n\nالاتصالات والاجتماعات: كاميرا ومايكروفونات ممتازة مع خاصية إلغاء الضوضاء.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786386735541.jpg",
+      "subcat": "HP"
+    },
+    {
+      "id": "1786435027346",
+      "name": "EliteBook 840 G7 - i5-10210U -8Go- SSD 256Go - 14\"EC",
+      "price": "74000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات والأداء\nالمعالج (Intel Core i5-10210U): معالج رباعي النواة (4 Cores / 8 Threads) من الجيل العاشر، يوفر سرعة عالية واستجابة ممتازة مع استهلاك منخفض للطاقة.\n\nالذاكرة والتخزين (8GB RAM / 256GB SSD NVMe): سرعة فائقة في الإقلاع، مع إمكانية الترقية لـ 16GB أو 32GB لوجود منفذين مزدوجين (2 Slots).\n\nالشاشة (14\" Full HD IPS): شاشة رائعة بدقة عالية وحواف نحيفة توفر مساحة رؤية مريحة جداً.\n\nالمنافذ والتصميم: مزود بمنافذ USB-C Thunderbolt 3 حديثة، منافذ USB 3.1، HDMI، وسماعات Bang & Olufsen قوية ونقية.\n\n🎯 الاستخدامات الموصى بها\nإدارة الأعمال والبرمجيات الاحترافية: خيار فخم جداً للمكاتب والشركات لتشغيل مختلف برامج التسيير والمعالجة بدون بطء.\n\nالتنقل والعمل التنفيذي: خفيف الوزن، بطارية ممتازة، وجسم معدني فضي جذاب يعطي انطباعاً راقياً.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786435027346.jpg",
+      "subcat": "HP"
+    },
+    {
+      "id": "1786435494281",
+      "name": "EliteBook 840 G8 - i5-1135G7- 8Go- SSD 256Go-14\"EC",
+      "price": "80000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات والأداء\nالمعالج (Intel Core i5-1135G7): معالج رباعي النواة (4 Cores / 8 Threads) من الجيل الحادي عشر، يمنح أداءً وسرعة استجابة استثنائية في البرامج والمهام المعقدة.\n\nالكرت المدمج (Intel Iris Xe Graphics): يقدم قفزة كبيرة في معالجة الجرافيكس والرسوميات مقارنة بالأجيال السابقة، مما يوفر سلاسة فائقة في العرض وتشغيل البرامج التفاعلية.\n\nالذاكرة والتخزين (8GB RAM / 256GB SSD NVMe): أداء سريع جداً في فتح البرامج، مع إمكانية زيادة الذاكرة بسهولة لـ 16GB أو 32GB لوجود منفذين (Slots).\n\nالشاشة (14\" Full HD IPS): شاشة رائعة بوضوح ممتاز وزوايا رؤية مريحة جداً للعمل الطويل.\n\nالمنافذ والنظام الصوتي: منافذ Thunderbolt 4 / USB-C سريعة الحديثة، USB 3.1، HDMI، وسماعات Bang & Olufsen عالية الدقة.\n\n🎯 الاستخدامات الموصى بها\nإدارة البرامج والتسيير (POS & Business): خيار احترافي وفاخر جداً للمؤسسات والمحلات التجارية لتشغيل مختلف برامج الإدارة والتطبيقات السحابية.\n\nالعمل التنفيذي والميداني: وزن خفيف، بطارية عملية تدوم لفترات طويلة، وهيكل متين أنيق يمنح انطباعاً راقياً.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786435494281.jpg",
+      "subcat": "HP"
+    },
+    {
+      "id": "1786435846153",
+      "name": "EliteBook 845 G7 - Ryzen 5 Pro 4650U- 8Go - SSD 256Go -14\"EC",
+      "price": "66000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات والأداء\nالمعالج (AMD Ryzen 5 Pro 4650U): معالج سداسي النواة (6 Cores / 12 Threads) متفوق جداً، يتفوق بوضوح على معالجات Intel Core i5 من الجيل العاشر في معالجة البرامج المتعددة والمهام الثقيلة.\n\nالكرت المدمج (AMD Radeon Graphics): كارت شاشة مدمج ممتاز يوفر أداءً رسومياً أسرع وسلاسة عالية في العرض والغرافيكس.\n\nالذاكرة والتخزين (8GB RAM / 256GB SSD NVMe): سرعة استجابة عالية للنظام، مع قابليته لترقية الذاكرة بسهولة لوجود منفذين (2 Slots).\n\nالشاشة (14\" Full HD IPS): شاشة رائعة ومريحة جداً للعين مع ألوان دقيقة وزوايا رؤية واسعة.\n\nالصوت والمنافذ: سماعات Bang & Olufsen قوية، منافذ USB-C، USB 3.1، HDMI، وبصمة إصبع سريعة.\n\n🎯 الاستخدامات الموصى بها\nإدارة البرامج وقواعد البيانات (POS & Management): معالج بستة أنوية يجعله ممتازاً جداً لتشغيل أعتى برامج التسيير والأنظمة المتقدمة دون أي بطء.\n\nالعمل التنفيذي والتنقل: خفيف الوزن، بطارية ممتازة تعيش طويلاً، وهيكل فضي فاخر يمنح احترافية عالية في العمل الميداني.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786435846153.jpg",
+      "subcat": "HP"
+    },
+    {
+      "id": "1786435974633",
+      "name": "EliteBook 845 G8 - Ryzen 5 Pro 5650U -8Go- SSD 256Go - 14\"EC",
+      "price": "66000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات والأداء\nالمعالج (AMD Ryzen 5 Pro 5650U): معالج سداسي النواة (6 Cores / 12 Threads) بمعمارية Zen 3 المتقدمة، يقدم أداءً استثنائياً في التعددية وسرعة المعالجة متفوقاً على معالجات Intel Core i5 من الجيل 11.\n\nالكرت المدمج (AMD Radeon Graphics): كارت شاشة مدمج قوي جداً يضمن سلاسة العرض واستجابة عالية للبرامج والرسوميات.\n\nالذاكرة والتخزين (8GB RAM / 256GB SSD NVMe): سرعة فائقة في التشغيل وإقلاع النظام، مع إمكانية الترقية بسهولة لـ 16GB أو 32GB لوجود منفذين (2 Slots).\n\nالشاشة (14\" Full HD IPS): شاشة مريحة للغاية للعين مع وضوح ممتاز وحواف ضيقة.\n\nالمنافذ والصوت: منافذ USB-C سريعة، USB 3.1، HDMI، وسماعات Bang & Olufsen عالية الجودة.\n\n🎯 الاستخدامات الموصى بها\nإدارة البرامج وقواعد البيانات المتقدمة (POS & Business Systems): قوّته المكونة من 6 أنوية و12 خيط معالجة تجعله مثاليًا للتعامل مع السيرفرات المحلية والأنظمة المتقدمة.\n\nالعمل التنفيذي والتنقل: هيكل معدني فخم، استهلاك طاقة منخفض وعمر بطارية ممتاز جداً.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786435974633.jpg",
+      "subcat": "HP"
+    },
+    {
+      "id": "1786436252944",
+      "name": "EliteBook 850 G6 💻 i5-8250U-8Go- SSD 256Go -AMD RX540-15.6\"EC",
+      "price": "72500DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات والأداء\nالمعالج (Intel Core i5-8250U / i5-8365U): معالج رباعي النواة (4 Cores / 8 Threads) يقدم أداءً مستقراً وموثوقاً في العمل المكتبي والمهام اليومية.\n\nكرت الشاشة المنفصل (AMD Radeon RX 540X - 2GB): معالج رسومات منفصل يساعد في تحسين أداء البرامج الهندسية، التصميم الخفيف، وسلاسة العرض مقارنة بالكرت المدمج فقط.\n\nالذاكرة والتخزين (8GB RAM / 256GB SSD NVMe): أداء سريع مع إمكانية زيادة الذاكرة بسهولة لـ 16GB لوجود منفذين (Slots).\n\nالشاشة (15.6\" Full HD IPS): حجم واسع ومريح جداً للعين، مثالي للعمل على الجداول الممتدة ومتابعة الشاشات المتعددة.\n\nالمنافذ والتصميم: يحتوي على لوحة أرقام مفيدة جداً للحسابات، منافذ Thunderbolt 3 / USB-C، USB 3.1، HDMI، ومنفذ شبكة RJ-45.\n\n🎯 الاستخدامات الموصى بها\nإدارة الحسابات والبرمجيات (POS & Accounting): وجود لوحة الأرقام (Numpad) والشاشة الكبيرة يجعل منه خياراً مثالياً جداً للمحاسبة وإدارة المحلات التجارية والتسيير.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786436252944.jpg",
+      "subcat": "HP"
+    },
+    {
+      "id": "1786436700639",
+      "name": "EliteBook 850 G7 💻 I5 10210U - 8GB - 256 GB SSD - NVIDEA MX250 - 15.6EC\"",
+      "price": "82000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "م الجانبية والشاشة الكبيرة يجعله الخيار الأول للمحاسبة والتسيير اليومي للمحلات والشركات.\n\nالأعمال المكتبية والتصميم الخفيف: معالج الجيل العاشر مع كرت Nvidia المساعد يوفر تجربة عمل سلسة جداً بدون تقطيع.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786436700639.jpg",
+      "subcat": "HP"
+    },
+    {
+      "id": "1786436982174",
+      "name": "ProBook 430 G8 - i5-1135G7 -8Go - SSD 256Go - 13.3\"EC",
+      "price": "67500DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات والأداء\nالمعالج (Intel Core i5-1135G7): معالج رباعي النواة (4 Cores / 8 Threads) من الجيل الحادي عشر، يوفر أداءً ممتازاً وسرعة استجابة عالية في كافة البرامج اليومية والتنفيذية.\n\nالكرت المدمج (Intel Iris Xe Graphics): يقدم كارت الشاشة المدمج Iris Xe أداءً رسومياً ممتازاً وسلساً في معالجة الوسائط المتعددة والغرافيكس الخفيف.\n\nالذاكرة والتخزين (8GB RAM / 256GB SSD NVMe): سرعة فائقة في الإقلاع وتشغيل التطبيقات، مع إمكانية الترقية لـ 16GB لوجود منافذ RAM متوفرة.\n\nالشاشة (13.3\" Full HD IPS): حجم مدمج وصغير ممتاز للتنقل الميداني مع ألوان وضوح عالية ومريحة للعين.\n\nالمنافذ والتجهيزات: مزود بـ USB-C / USB 3.1 / HDMI / منفذ كارت ذاكرة SD وبطارية عملية تدوم لساعات طويلة.\n\n🎯 الاستخدامات الموصى بها\nالعمل الميداني والتنقل السريع: حجمه الصغير ووزنه الخفيف يجعله خياراً مثالياً لمن يحتاج جهازاً محمولاً دائماً في الحقيبة دون إرهاق.\n\nإدارة البرامج والتسيير (POS & Management): مناسب جداً لمتابعة التطبيقات والمبيعات الميدانية أو في المكاتب ذات المساحات المحدودة.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786436982174.jpg",
+      "subcat": "HP"
+    },
+    {
+      "id": "1786437129126",
+      "name": "ProBook 440 G8 - i5-1135G7 - 8Go - SSD 256Go - 14\"EC",
+      "price": "68500DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات والأداء\nالمعالج (Intel Core i5-1135G7): معالج الجيل الحادي عشر رباعي النواة (4 Cores / 8 Threads) بذاكرة كاش 8MB، يوفر سرعة عالية واستجابة ممتازة لتشغيل مختلف برامج الأعمال.\n\nالكرت المدمج (Intel Iris Xe Graphics): قفزة كبيرة في الأداء الرسومي مقارنة بالأجيال السابقة، مما يتيح عرض الغرافيكس والوسائط بسلاسة فائقة.\n\nالذاكرة والتخزين (8GB RAM DDR4 / 256GB SSD NVMe): سرعة فائقة في التشغيل وإقلاع النظام، مع إمكانية زيادة الذاكرة حتى 32GB لوجود منفذين (2 Slots).\n\nالشاشة (14\" Full HD IPS): حجم متوازن جداً (14 بوصة) بوضوح ممتاز وزوايا رؤية مريحة للعين أثناء ساعات العمل الطويلة.\n\nالمنافذ والتجهيزات: منفذ USB-C سريعة (سلسة الشحن والعرض)، منافذ USB 3.1، HDMI، منفذ شبكة RJ-45، وقارئ كروت الذاكرة.\n\n🎯 الاستخدامات الموصى بها\nإدارة البرامج والنظم التجارية (POS & Business): خيار عملي وعالي الاعتمادية للشركات، المكاتب، وتسيير المحلات التجارية.\n\nالعمل الميداني واليومي: وزن مناسب وبناء متين يدعم الحركة والتنقل اليومي بكفاءة عالية.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786437129126.jpg",
+      "subcat": "HP"
+    },
+    {
+      "id": "1786437270318",
+      "name": "ProBook 450 G8 - i5-1135G7- 8Go - SSD 256Go - 15.6\"EC",
+      "price": "73000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات والأداء\nالمعالج (Intel Core i5-1135G7): معالج الجيل الحادي عشر رباعي النواة (4 Cores / 8 Threads)، يقدم أداءً سريعاً وموثوقاً لجميع برامج التسيير والعمل المكتبي.\n\nالكرت المدمج (Intel Iris Xe Graphics): يوفر معالجة رسومية ممتازة وعرضاً سلس الوسائط المتعددة والغرافيكس.\n\nالذاكرة والتخزين (8GB RAM DDR4 / 256GB SSD NVMe): إقلاع فوري للنظام وسرعة استجابة عالية، مع قابليته لترقية الذاكرة بسهولة لـ 16GB أو 32GB لوجود منفذين (2 Slots).\n\nالشاشة (15.6\" Full HD IPS): حجم واسع ومريح جداً للعين للعمل على الجداول الممتدة والشاشات المتعددة.\n\nالمنافذ والتجهيزات: لوحة أرقام جانبية (NumPad) مريحة جداً لإدخال البيانات، منفذ USB-C، منافذ USB 3.1، HDMI، منفذ شبكة RJ-45، وقارئ كروت ذاكرة.\n\n🎯 الاستخدامات الموصى بها\nإدارة الحسابات والبرمجيات (POS & Accounting Systems): وجود أزرار الأرقام الجانبية مع الشاشة الكبيرة يجعله الخيار الأساسي والأنسب للمحاسبة وتسيير المحلات التجارية والمؤسسات.\n\nالأعمال المكتبية والتصحيح: مساحة العرض الوفيرة توفر بيئة عمل مريحة جداً لمتابعة البيانات والتقرير اليومية.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786437270318.jpg",
+      "subcat": "HP"
+    },
+    {
+      "id": "1786451158623",
+      "name": "DELL 7490   I5 8350 - 8GB - 256GB SSD - 14\" TACTIL",
+      "price": "56000DA",
+      "cat": "حواسب محمولة",
+      "icon": "📦",
+      "desc": "المواصفات والأداء\nالمعالج (Intel Core i5-8350U vPro): معالج رباعي النواة (4 Cores / 8 Threads) بذاكرة كاش 6MB، يقدم أداءً مستقراً وقوياً جداً في تشغيل البرامج وتطبيقات التسيير.\n\nالكرت المدمج (Intel UHD Graphics 620): معالج رسومات مدمج موثوق واقتصادي في استهلاك الطاقة، مناسب للعرض اليومي والمهام المكتبية.\n\nالشاشة (14\" Full HD Touch): شاشة لمسية استجابتها سريعة مع دقة Full HD IPS وألوان مريحة للعين.\n\nالذاكرة والتخزين (8GB RAM DDR4 / 256GB SSD NVMe): سرعة استجابة عالية في التشغيل، مع سهولة الترقية إلى 16GB أو 32GB لوجود منفذي ذاكرة (2 Slots).\n\nالمنافذ والتجهيزات: منفذ USB-C / DisplayPort، منافذ USB 3.1، HDMI، منفذ شبكة RJ-45، وقارئ كروت ذاكرة SD.\n\n🎯 الاستخدامات الموصى بها\nإدارة البرامج والنظم التجارية (POS & Management): الشاشة اللمسية تتيح إدخال البيانات والتعامل مع برامج المبيعات والتسيير بسرعة واحترافية.\n\nالعمل الميداني والعمل المكتبي: متانة عالية في التصنيع مقاومة للصدمات والاستخدام اليومي الشاق مع بطارية موثوقة.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786451158623.jpg",
+      "subcat": "DELL"
+    },
+    {
+      "id": "1786521637504",
+      "name": "أنظمة المراقبة والحماية-الدعم الفني والصيانة",
+      "price": "تواصل معنا",
+      "cat": "خدمات (Services)",
+      "icon": "📦",
+      "desc": "تركيب وإعداد شبكات كاميرات المراقبة (Analog & IP).\n\nحلول التخزين وصيانة أجهزة التسجيل (DVR / NVR).\n\nخدمات الدعم الفني والمرافقة بعد البيع.\n\nصيانة الشبكات والأنظمة المعلوماتية.\n\nإنشاء وتطوير مواقع الويب",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786521637504.jpg",
+      "subcat": ""
+    },
+    {
+      "id": "1786525031170",
+      "name": "LECTEUR CODE A BARRE AVEC FIL SP-6221",
+      "price": "تواصل معنا",
+      "cat": "عتاد إعلام آلي",
+      "icon": "📦",
+      "desc": "قارئ الباركود (المقبض اليدوي): جهاز قراءة بتصميم مريح باللونين الأسود والرمادي، مزود بكهف قراءة في المقدمة وزر ضغط (Trigger) رمادي لتفعيل الأشعة.\n\nقاعدة التثبيت والشحن (Cradle/Base): قاعدة بيضاوية باللون الرمادي الداكن يوضع عليها القارئ لتثبيته أو استخدامه في الوضع الثابت (Hands-free Mode).\n\nكابل التوصيل الرئيسي (USB/Data Cable): كابل أسود ملفوف حول القاعدة ينتهي بأسلاك توصيل من بينها منفذ USB للتوصيل بالكمبيوتر أو صندوق الكاشير.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786525031170.jpg",
+      "subcat": "قارئ الكود بار"
+    },
+    {
+      "id": "1786525254433",
+      "name": "IMPRMANTE MOBILE-XP801A",
+      "price": "تواصل معنا",
+      "cat": "عتاد إعلام آلي",
+      "icon": "📦",
+      "desc": "طبيعة العمل (Direct Thermal): طباعة حرارية مباشرة على ورق 80 مم بدون الحاجة إلى حبر أو شريط (Ribbon).\n\nسرعة الطباعة: تتراوح بين 70 مم/ثانية (للموديل المحمول XP-P801A) وحتى 260 - 300 مم/ثانية (للموديلات المكتبية).\n\nعرض الورق/الطباعة: تدعم ورق بعرض 80 مم (عرض طباعة فعلي 72 مم).\n\nالمنافذ ومنافذ الربط:\n\nUSB / Serial (RS232) / LAN: مخصصة للتوصيل أجهزة الكومبيوتر ونقاط البيع POS.\n\nBluetooth / Type-C: متوفرة في الإصدارات المحمولة للتوصيل مع هواتف أندرويد وiOS.\n\nمنفذ درج النقود (RJ11): لإعطاء أمر فتح درج الكاشير تلقائيًا عند الطباعة.\n\nالقاطع الأوتوماتيكي (Auto Cutter): متوفر في الموديلات المكتبية لقص الفواتير تلقائيًا بإنتاجية عالية.\n\nالتوافق والمحاكاة: تدعم لغة الأوامر ESC/POS وتتوافق مع أنظمة التشغيل Windows، Linux، Android، iOS.\n\nإذا كنت تبحث عن:\n\nتعريف الطابعة (Driver): يمكن توفيره لنظام التشغيل المطلوب (Windows / Android).",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786525254433.jpg"
+    },
+    {
+      "id": "1786525688560",
+      "name": "ONDULEUR MAXIPOWER 850VA 05 SORTIES PRISE FR",
+      "price": "تواصل معنا",
+      "cat": "عتاد إعلام آلي",
+      "icon": "📦",
+      "desc": "المواصفات الفنية:\n\nالاستطاعة (Capacity): 850 VA (قدرة فعلية تصل لحوالي 480W - 510W).\n\nالمنافذ (Outputs): 5 منافذ قياسية من النوع الفرنسي (Prise FR) تتيح توصيل الأجهزة مباشرة دون الحاجة لمحولات إضافية.\n\nتقنية العمل: Line-Interactive مزود بمنظم جهد أوتوماتيكي (AVR) لتثبيت التوتر في حالة الارتفاع أو الانخفاض.\n\nالبطارية والاستقلالية: بطارية داخلية (12V) توفر تشغيلاً احتياطياً بين 10 إلى 15 دقيقة (حسب حجم الاستهلاك) لحفظ البيانات وإيقاف التشغيل بأمان.\n\nالحماية: نظام حماية شامل من ارتفاع التوتر الفجائي (Surtension)، الحمل الزائد (Overload)، والدوائر القصيرة (Short Circuit).\n\nالاستخدامات الموصى بها:\n\nمعدات نقاط البيع (POS): تشغيل جهاز الكمبيوتر، طابعة الفواتير الحرارية، قارئ الباركود، وشاشة العرض في وقت واحد.\n\nالأجهزة المكتبية والشبكات: حماية الوحدات المركزية (PC)، الروتر/المودم، وكاميرات المراقبة.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786525688560.jpg"
+    },
+    {
+      "id": "1786525965479",
+      "name": "CABLE ONDULEUR NOIRE 1.2/1.5 METRE 0.75MM",
+      "price": "تواصل معنا",
+      "cat": "عتاد إعلام آلي",
+      "icon": "📦",
+      "desc": "المواصفات الفنية:اللون: أسود (Noir).الطول: 1.2 متر إلى 1.5 متر.سمك السلك الداخلي: $3 \\times 0.75\\text{ mm}^2$ (مصنوع من النحاس لضمان نقل التيار بكفاءة وأمان).شدة التيار والجهد: يتحمل حتى 10A / 250V.\nالأنواع المتوفرة حسب المنافذ:C13 to C14 (Male to Female): للتوصيل المباشر بين جهاز الكمبيوتر/الشاشة والمنافذ الخلفية للـ Onduleur من نوع IEC.C13 to Schuko (EU Plug): للتوصيل بين الـ Onduleur ومقبس الحائط القياسي، أو لتغذية الأجهزة ذات المقبس العادي إذا كان الـ Onduleur يتضمن منافذ Schuko/FR.\nالاستخدام: مثالي لتغذية أجهزة الكمبيوتر، وحدات الـ POS، شاشات العرض، وطابعات الفواتير لضمان نقل آمن للكهرباء ودون تسخين",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786525965479.jpg"
+    },
+    {
+      "id": "1786526300055",
+      "name": "SOURIS SANS FIL RECHARGEABLE COPY ASUS W10",
+      "price": "تواصل معنا",
+      "cat": "عتاد إعلام آلي",
+      "icon": "📦",
+      "desc": "الفأرة اللاسلكية القابلة للشحن (تكون مغلفة بكيس بلاستيكي لحمايتها).كابل شحن قصير من نوع Micro-USB (يستخدم لشحن البطارية الداخلية عبر الكمبيوتر أو شاحن العادي).\nمستقبل الـ USB الصغير (Dongle) المعنون بالتردد $2.4\\text{ GHz}$، وغالباً ما يكون مثبتاً داخل الفتحة المخصصة له في أسفل الفأرة.",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786526300055.jpg"
+    },
+    {
+      "id": "1786548683473",
+      "name": "تكوين وتعليم (Formations)",
+      "price": "تواصل معنا",
+      "cat": "خدمات (Services)",
+      "icon": "📦",
+      "desc": "تكوين تطبيقي وعملي: تدريب شامل ومباشر يغطي كافة تفاصيل إدارة المبيعات، المخزون، والسيطرة الكاملة على نشاطك التجاري.\n\nتأهيل ومتابعة: رفع السرعة والدقة لدى المستخدمين لتقليل الأخطاء وزيادة الإنتاجية.\n\nدعم فني مخصص: إشراف وتوجيه متواصل يضمن استمرارية العمل بسلاسة.\n\n💡 استثمر في تطوير فريقك اليوم وحقق أقصى استفادة من برامجك!",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786548683473.png"
+    },
+    {
+      "id": "1786548845872",
+      "name": "تكوين وتعليم (Formations)",
+      "price": "تواصل معنا",
+      "cat": "خدمات (Services)",
+      "icon": "📦",
+      "desc": "تكوين تطبيقي وعملي: تدريب شامل ومباشر يغطي كافة تفاصيل إدارة المبيعات، المخزون، والسيطرة الكاملة على نشاطك التجاري.\n\nتأهيل ومتابعة: رفع السرعة والدقة لدى المستخدمين لتقليل الأخطاء وزيادة الإنتاجية.\n\nدعم فني مخصص: إشراف وتوجيه متواصل يضمن استمرارية العمل بسلاسة.\n\n💡 استثمر في تطوير فريقك اليوم وحقق أقصى استفادة من برامجك!",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786548845872.png"
+    },
+    {
+      "id": "1786548922032",
+      "name": "تكوين وتعليم (Formations)",
+      "price": "تواصل معنا",
+      "cat": "خدمات (Services)",
+      "icon": "📦",
+      "desc": "تكوين تطبيقي وعملي: تدريب شامل ومباشر يغطي كافة تفاصيل إدارة المبيعات، المخزون، والسيطرة الكاملة على نشاطك التجاري.\n\nتأهيل ومتابعة: رفع السرعة والدقة لدى المستخدمين لتقليل الأخطاء وزيادة الإنتاجية.\n\nدعم فني مخصص: إشراف وتوجيه متواصل يضمن استمرارية العمل بسلاسة.\n\n💡 استثمر في تطوير فريقك اليوم وحقق أقصى استفادة من برامجك!",
+      "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/assets/products/1786548922032.png"
+    }
+  ]
+}
