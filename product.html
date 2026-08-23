@@ -323,10 +323,13 @@ function getProductUrl() {
 }
 
 function shareOnFacebook() {
-  const url  = getProductUrl();
-  const name = currentProduct?.name || 'TECHNO INFODZ';
-  const fbUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url)
-              + '&quote=' + encodeURIComponent(name + ' — TECHNO INFODZ');
+  // استخدام رابط Netlify لدعم OG tags على Facebook
+  const id = new URLSearchParams(window.location.search).get('id');
+  const netlifyBase = 'https://fantastic-dasik-bbe34e.netlify.app';
+  const netlifyUrl  = id
+    ? netlifyBase + '/product.html?id=' + id
+    : netlifyBase + window.location.pathname + window.location.search;
+  const fbUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(netlifyUrl);
   window.open(fbUrl, '_blank', 'width=620,height=450,scrollbars=yes');
 }
 

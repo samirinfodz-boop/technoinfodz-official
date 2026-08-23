@@ -1,0 +1,7 @@
+[[edge_functions]]
+  path = "/product.html"
+  function = "og-product"
+
+[[edge_functions]]
+  path = "/index.html"
+  function = "og-index"
