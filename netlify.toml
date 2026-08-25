@@ -5,3 +5,6 @@
 [[edge_functions]]
   path = "/index.html"
   function = "og-index"
+[[edge_functions]]
+  path = "/api/groq-proxy"
+  function = "groq-proxy"
