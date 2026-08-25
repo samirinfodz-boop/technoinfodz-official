@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>TECHNO INFODZ — لوحة التحكم (admin.html)</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#070d18;--panel:#0c1525;--card:#101e30;--card2:#142133;
+  --accent:#00c8ff;--accent2:#0057e7;--accent3:#6c1fff;
+  --green:#00ffaa;--red:#ff4466;--warn:#ff8c00;
+  --border:rgba(0,200,255,.1);--border2:rgba(0,200,255,.2);
+  --txt:#b8d4ee;--txt2:#6a90b0;--bright:#e8f4ff;
+  --glow:0 0 32px rgba(0,200,255,.15);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:'IBM Plex Sans Arabic',sans-serif;min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:linear-gradient(rgba(0,200,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,200,255,.025) 1px,transparent 1px);
+  background-size:44px 44px}
+::selection{background:var(--accent);color:#000}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-thumb{background:var(--accent2);border-radius:4px}
+
+/* LOGIN SCREEN */
+#login-screen{
+  position:fixed;inset:0;z-index:500;background:var(--bg);
+  display:flex;align-items:center;justify-content:center;padding:1.5rem;
+}
+.login-box{
+  background:var(--panel);border:1px solid var(--border2);
+  border-radius:20px;padding:2.5rem;width:100%;max-width:400px;
+  position:relative;overflow:hidden;
+}
+.login-logo{font-family:'Space Mono',monospace;font-size:1.2rem;color:var(--accent);margin-bottom:.3rem;}
+.login-logo span{color:var(--txt2);}
+.login-sub{color:var(--txt2);font-size:.82rem;margin-bottom:2rem;}
+.field-label{font-size:.8rem;color:var(--txt2);margin-bottom:.4rem;display:block;}
+.field-input{
+  width:100%;background:var(--card);border:1px solid var(--border);
+  color:var(--bright);padding:.75rem 1rem;border-radius:10px;
+  font-family:inherit;font-size:.9rem;outline:none;transition:border-color .2s;
+}
+.field-input:focus{border-color:var(--accent);}
+.btn-login{
+  width:100%;margin-top:1.25rem;background:linear-gradient(135deg,var(--accent2),var(--accent3));
+  color:#fff;border:none;padding:.85rem;border-radius:10px;font-size:.95rem;
+  font-weight:600;cursor:pointer;font-family:inherit;transition:opacity .2s;
+}
+.btn-login:hover{opacity:.9;}
+.login-error{color:var(--red);font-size:.82rem;margin-top:.75rem;text-align:center;display:none;}
+
+/* APP LAYOUT */
+#app{display:none;min-height:100vh;}
+.sidebar{
+  position:fixed;top:0;right:0;bottom:0;width:240px;
+  background:var(--panel);border-left:1px solid var(--border);
+  padding:1.5rem 1rem;z-index:50;display:flex;flex-direction:column;gap:.4rem;
+}
+.sidebar-logo{font-family:'Space Mono',monospace;font-size:.95rem;color:var(--accent);padding:.5rem .75rem;margin-bottom:.75rem;}
+.sidebar-logo span{color:var(--txt2);}
+.nav-item{
+  display:flex;align-items:center;gap:.65rem;padding:.65rem .85rem;
+  border-radius:10px;color:var(--txt2);font-size:.875rem;cursor:pointer;
+  transition:all .2s;border:none;background:none;width:100%;text-align:right;font-family:inherit;
+}
+.nav-item:hover,.nav-item.active{background:rgba(0,200,255,.1);color:var(--accent);font-weight:600;}
+.nav-item .icon{font-size:1.1rem;min-width:22px;text-align:center;}
+.btn-logout{
+  margin-top:auto;width:100%;padding:.65rem;border-radius:10px;
+  background:rgba(255,68,102,.08);border:1px solid rgba(255,68,102,.2);
+  color:var(--red);cursor:pointer;font-size:.85rem;font-family:inherit;
+}
+
+.main{margin-right:240px;padding:2rem;position:relative;z-index:1;}
+.page{display:none;}
+.page.active{display:block;}
+
+.page-header{margin-bottom:2rem;}
+.page-title{font-size:1.6rem;font-weight:700;color:var(--bright);margin-bottom:.3rem;}
+.page-sub{color:var(--txt2);font-size:.875rem;}
+
+/* UI COMPONENTS */
+.form-card,.settings-section{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.75rem;max-width:620px;margin-bottom:1.25rem;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.form-group{display:flex;flex-direction:column;gap:.4rem;}
+.form-group.full{grid-column:1/-1;}
+.form-label{font-size:.82rem;color:var(--txt2);}
+.form-input,.form-select,.form-textarea{
+  background:var(--card2);border:1px solid var(--border);
+  color:var(--bright);padding:.7rem .9rem;border-radius:10px;
+  font-family:inherit;font-size:.875rem;outline:none;width:100%;
+}
+.form-textarea{resize:vertical;min-height:85px;}
+.btn-primary{
+  background:linear-gradient(135deg,var(--accent2),var(--accent3));
+  color:#fff;border:none;padding:.75rem 1.75rem;border-radius:10px;
+  font-size:.9rem;font-weight:600;cursor:pointer;font-family:inherit;
+}
+.btn-ghost{
+  background:transparent;border:1px solid var(--border2);color:var(--txt);
+  padding:.75rem 1.5rem;border-radius:10px;font-size:.9rem;cursor:pointer;font-family:inherit;
+}
+
+/* PRODUCTS GRID */
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem;}
+.prod-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
+.prod-body{padding:1.1rem;}
+.prod-name{font-weight:700;font-size:1rem;color:var(--bright);margin-bottom:.3rem;}
+.prod-price{font-family:'Space Mono',monospace;color:var(--accent);font-size:1.05rem;font-weight:700;margin:.5rem 0;}
+
+#toast{
+  position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(20px);
+  background:var(--card);border:1px solid var(--green);color:var(--green);
+  padding:.7rem 1.4rem;border-radius:10px;font-size:.85rem;z-index:400;
+  opacity:0;transition:all .3s;pointer-events:none;
+}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+#toast.error{border-color:var(--red);color:var(--red);}
+
+@media(max-width:768px){
+  .sidebar{display:none;}
+  .main{margin-right:0;padding:1rem;}
+}
+</style>
+</head>
+<body>
+
+<div id="toast"></div>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">TECHNO<span>INFODZ</span></div>
+    <div class="login-sub">لوحة إدارة النظام — admin.html</div>
+    <label class="field-label">كلمة المرور</label>
+    <input id="pwd-input" class="field-input" type="password" placeholder="أدخل كلمة المرور..." onkeydown="if(event.key==='Enter')doLogin()"/>
+    <button class="btn-login" onclick="doLogin()">دخول ←</button>
+    <div id="login-error" class="login-error">⚠️ كلمة المرور خاطئة</div>
+  </div>
+</div>
+
+<!-- APPLICATION -->
+<div id="app">
+
+  <aside class="sidebar">
+    <div class="sidebar-logo">TECHNO<span>INFODZ</span></div>
+    <button class="nav-item active" onclick="showPage('products',this)"><span class="icon">📦</span> المنتجات</button>
+    <button class="nav-item" onclick="showPage('add-product',this)"><span class="icon">➕</span> إضافة منتج</button>
+    <button class="nav-item" onclick="showPage('settings',this)"><span class="icon">⚙️</span> إعدادات Groq API</button>
+    <button class="btn-logout" onclick="doLogout()">🚪 خروج</button>
+  </aside>
+
+  <main class="main">
+
+    <!-- PRODUCTS PAGE -->
+    <div id="page-products" class="page active">
+      <div class="page-header">
+        <h1 class="page-title">إدارة المنتجات والبرامج</h1>
+      </div>
+      <div class="products-grid" id="products-grid"></div>
+    </div>
+
+    <!-- ADD PRODUCT PAGE -->
+    <div id="page-add-product" class="page">
+      <div class="page-header">
+        <h1 class="page-title">➕ إضافة منتج جديد</h1>
+      </div>
+      <div class="form-card">
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">اسم المنتج/البرنامج *</label>
+            <input class="form-input" id="add-name" placeholder="مثال: PME Pro"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">السعر *</label>
+            <input class="form-input" id="add-price" placeholder="مثال: 25000 دج"/>
+          </div>
+          <div class="form-group full">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:.4rem;">
+              <label class="form-label" style="margin:0;">الوصف التسويقي</label>
+              <button type="button" class="btn-ghost" style="padding:.2rem .6rem; font-size:.75rem; color:var(--accent);" onclick="generateGroqDescription()">
+                ⚡ توليد الوصف بـ Groq AI
+              </button>
+            </div>
+            <textarea class="form-textarea" id="add-desc" placeholder="انقر فوق الخيار أعلاه للتوليد الآلي..."></textarea>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem; display:flex; gap:1rem;">
+          <button class="btn-primary" onclick="addProduct()">💾 حفظ المنتج</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SETTINGS PAGE -->
+    <div id="page-settings" class="page">
+      <div class="page-header">
+        <h1 class="page-title">⚙️ إعدادات Groq API</h1>
+      </div>
+      <div class="settings-section">
+        <div class="form-group">
+          <label class="form-label">Groq API Key</label>
+          <input class="form-input" id="groq-api-key" type="password" placeholder="gsk_..." />
+        </div>
+        <button class="btn-primary" style="margin-top:1rem;" onclick="saveGroqSettings()">💾 حفظ المفتاح</button>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+const STORAGE_KEY = 'techno_products';
+const GROQ_KEY    = 'techno_groq_key';
+const AUTH_KEY    = 'techno_auth';
+
+let products = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+
+function doLogin(){
+  const val = document.getElementById('pwd-input').value;
+  if(val === (localStorage.getItem('techno_pwd') || 'admin123')){
+    sessionStorage.setItem(AUTH_KEY,'1');
+    document.getElementById('login-screen').style.display='none';
+    document.getElementById('app').style.display='block';
+    renderProducts(); loadSettings();
+  } else {
+    document.getElementById('login-error').style.display='block';
+  }
+}
+
+function doLogout(){ sessionStorage.removeItem(AUTH_KEY); location.reload(); }
+
+if(sessionStorage.getItem(AUTH_KEY)==='1'){
+  document.getElementById('login-screen').style.display='none';
+  document.getElementById('app').style.display='block';
+}
+
+function showPage(id, btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(b=>b.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  if(btn) btn.classList.add('active');
+}
+
+function renderProducts(){
+  const grid = document.getElementById('products-grid');
+  if(!products.length){ grid.innerHTML = '<div style="color:var(--txt2);">لا توجد منتجات مسجلة</div>'; return; }
+  grid.innerHTML = products.map(p=>`
+    <div class="prod-card">
+      <div class="prod-body">
+        <div class="prod-name">${p.name}</div>
+        <div class="prod-price">${p.price}</div>
+        <p style="font-size:.82rem; color:var(--txt2);">${p.desc||''}</p>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* GROQ API LOGIC */
+function saveGroqSettings(){
+  const key = document.getElementById('groq-api-key').value.trim();
+  if(!key){ toast('⚠️ يرجى إدخال المفتاح', 'error'); return; }
+  localStorage.setItem(GROQ_KEY, key);
+  toast('✓ تم حفظ مفتاح Groq API');
+}
+
+function loadSettings(){
+  const k = localStorage.getItem(GROQ_KEY);
+  if(k) document.getElementById('groq-api-key').value = k;
+}
+
+async function generateGroqDescription(){
+  const name = document.getElementById('add-name').value.trim();
+  const apiKey = localStorage.getItem(GROQ_KEY);
+
+  if(!name){ toast('⚠️ أدخل اسم المنتج أولاً', 'error'); return; }
+  if(!apiKey){ toast('⚠️ اضبط مفتاح Groq في الإعدادات أولاً', 'error'); return; }
+
+  toast('⏳ جاري التواصل مع Groq AI...');
+
+  try {
+    const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        model: 'llama-3.3-70b-versatile',
+        messages: [{
+          role: 'user',
+          content: `اكتب وصفاً تسويقياً موجزاً واحترافياً باللغة العربية لبرنامج أو منتج اسمه: ${name}`
+        }],
+        temperature: 0.7
+      })
+    });
+    const data = await res.json();
+    if(data.choices && data.choices[0].message.content){
+      document.getElementById('add-desc').value = data.choices[0].message.content.trim();
+      toast('⚡ تم التوليد بنجاح عبر Groq!');
+    } else {
+      toast('❌ خطأ في الاستجابة، تحقق من المفتاح', 'error');
+    }
+  } catch(e) {
+    toast('❌ فشل الاتصال بالسيرفر', 'error');
+  }
+}
+
+function addProduct(){
+  const name = document.getElementById('add-name').value.trim();
+  const price = document.getElementById('add-price').value.trim();
+  const desc = document.getElementById('add-desc').value.trim();
+  if(!name || !price){ toast('⚠️ الاسم والسعر مطلوبان', 'error'); return; }
+  
+  products.push({ id: Date.now().toString(), name, price, desc });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
+  toast(`✓ تم إضافة ${name}`);
+  document.getElementById('add-name').value = '';
+  document.getElementById('add-price').value = '';
+  document.getElementById('add-desc').value = '';
+  renderProducts();
+  showPage('products', null);
+}
+
+let toastTimer;
+function toast(msg, type='ok'){
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = 'show' + (type==='error'?' error':'');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>el.classList.remove('show'), 3000);
+}
+
+if(sessionStorage.getItem(AUTH_KEY)==='1') renderProducts();
+</script>
+</body>
+</html>
