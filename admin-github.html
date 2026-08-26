@@ -892,14 +892,18 @@ async function testGroqKey() {
   const status = document.getElementById('groq-status');
   if (status) status.innerHTML = '<span style="color:#8fb0cc;">⏳ جاري الاختبار...</span>';
 
-  try {
-    // الاتصال بالخادم المباشر مع استهداف موديل Groq الحديث Llama 3.3 وتمرير المفتاح المعتمد
-    const res = await fetch('https://fantastic-dasik-bbe34e.netlify.app/api/groq', {
-      method: 'POST',
-      headers: { 
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${key}`
-      },
+ try {
+  // الاتصال بالخادم المباشر على Vercel مع استهداف دالة groq-proxy
+  const res = await fetch('https://YOUR-VERCEL-DOMAIN.vercel.app/api/groq-proxy', {
+    method: 'POST',
+    headers: { 
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      apiKey: key,
+      prompt: 'اختبار الاتصال' // أو البيانات المطلوبة
+    })
+  });
       body: JSON.stringify({ 
         model: 'llama-3.3-70b-versatile',
         prompt: 'قل: مرحبا فقط', 
