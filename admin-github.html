@@ -894,22 +894,16 @@ async function testGroqKey() {
 
  try {
   // الاتصال بالخادم المباشر على Vercel مع استهداف دالة groq-proxy
-  const res = await fetch('https://YOUR-VERCEL-DOMAIN.vercel.app/api/groq-proxy', {
+  const res = await fetch('https://technoinfodz-official.vercel.app//api/groq-proxy', {
     method: 'POST',
     headers: { 
       'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      apiKey: key,
-      prompt: 'اختبار الاتصال' // أو البيانات المطلوبة
+   },
+      body: JSON.stringify({
+        apiKey: key,
+        prompt: 'قل: مرحبا فقط'
     })
   });
-      body: JSON.stringify({ 
-        model: 'llama-3.3-70b-versatile',
-        prompt: 'قل: مرحبا فقط', 
-        platform: 'test' 
-      })
-    });
     
     const data = await res.json();
     if (res.ok && (data.text || data.choices)) {
