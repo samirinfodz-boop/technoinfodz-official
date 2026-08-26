@@ -919,7 +919,6 @@ async function testGroqKey() {
   if (status) status.innerHTML = '<span style="color:#8fb0cc;">⏳ جاري الاختبار...</span>';
 
   try {
-    // الاتصال بالخادم المباشر على Vercel
     const res = await fetch('https://technoinfodz-official.vercel.app/api/groq-proxy', {
       method: 'POST',
       headers: { 
@@ -930,6 +929,19 @@ async function testGroqKey() {
         prompt: 'قل: مرحبا فقط'
       })
     });
+    
+    const data = await res.json();
+    if (res.ok && (data.text || data.choices)) {
+      if (status) status.innerHTML = '<span style="color:#00ff9d;">✅ الـ Key والموديل يعملان بنجاح!</span>';
+      toast('✅ Groq API يعمل بنجاح');
+    } else {
+      throw new Error(data.error?.message || data.error || 'خطأ 404/400 في النموذج أو مفتاح API');
+    }
+  } catch(e) {
+    if (status) status.innerHTML = '<span style="color:#ff3d5a;">❌ ' + e.message + '</span>';
+    toast('❌ خطأ: ' + e.message, 'er');
+  }
+}
     
     const data = await res.json();
     if (res.ok && (data.text || data.choices)) {
