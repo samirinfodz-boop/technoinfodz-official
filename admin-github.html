@@ -1436,6 +1436,21 @@ async function saveContent(){
     btn.disabled = false;
   }
 }
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // 1. التحقق من مفتاح الأدمن المخزن عند تسجيل الدخول
+    const adminKey = localStorage.getItem("adminKey") || sessionStorage.getItem("adminKey");
+    
+    // 2. تحديد عنصر القائمة الذكية للأدمن
+    const adminTools = document.getElementById("adminTools") || document.querySelector(".admin-tools");
+
+    // 3. إظهار العناصر فقط في حال وجود المفتاح
+    if (adminKey && adminTools) {
+        adminTools.style.display = "block";
+    } else if (adminTools) {
+        adminTools.style.display = "none";
+    }
+});
 </script>
 </body>
 </html>
