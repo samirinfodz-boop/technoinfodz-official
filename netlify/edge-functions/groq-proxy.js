@@ -1,53 +1,41 @@
-export default async (request, context) => {
-  // التعامل مع طلبات CORS Preflight
-  if (request.method === "OPTIONS") {
+export default async (req) => {
+  // 1. التعامل مع طلبات CORS (Preflight)
+  if (req.method === "OPTIONS") {
     return new Response(null, {
       status: 204,
       headers: {
         "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Content-Type",
         "Access-Control-Allow-Methods": "POST, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
       },
     });
   }
 
-  if (request.method !== "POST") {
-    return new Response(JSON.stringify({ error: "Method not allowed" }), {
+  // 2. التحقق من نوع الطلب
+  if (req.method !== "POST") {
+    return new Response(JSON.stringify({ error: "Method Not Allowed" }), {
       status: 405,
       headers: { "Content-Type": "application/json" },
     });
   }
 
   try {
-    const { prompt } = await request.json();
+    const body = await req.json();
+    const apiKey = Deno.env.get("GROQ_API_KEY"); // احرص على إضافة المفتاح في Netlify Environment Variables
 
-    // جلب المفتاح المضاف في Netlify Environment Variables
-    const apiKey = Netlify.env.get("GROQ_API_KEY");
-
-    if (!apiKey) {
-      return new Response(JSON.stringify({ error: "GROQ_API_KEY is not configured" }), {
-        status: 500,
-        headers: { "Content-Type": "application/json" },
-      });
-    }
-
-    // إرسال الطلب إلى Groq API
+    // 3. إرسال الطلب إلى Groq API
     const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${apiKey}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        model: "llama-3.3-70b-versatile",
-        messages: [{ role: "user", content: prompt }],
-        max_tokens: 400,
-        temperature: 0.8,
-      }),
+      body: JSON.stringify(body),
     });
 
     const data = await response.json();
 
+    // 4. إرجاع النتيجة بتنسيق JSON مع إعدادات CORS
     return new Response(JSON.stringify(data), {
       status: response.status,
       headers: {
@@ -55,8 +43,8 @@ export default async (request, context) => {
         "Access-Control-Allow-Origin": "*",
       },
     });
-  } catch (err) {
-    return new Response(JSON.stringify({ error: err.message }), {
+  } catch (error) {
+    return new Response(JSON.stringify({ error: error.message }), {
       status: 500,
       headers: {
         "Content-Type": "application/json",
