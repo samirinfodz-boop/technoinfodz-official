@@ -1278,7 +1278,26 @@ function renderProducts(){
         <div class="pc-desc">${p.description||''}</div>
         <div class="pc-price">${p.price||'تواصل معنا'}</div>
         <div class="pc-acts">
-          <button class="bd" onclick="deleteProduct(${i})">🗑️ حذف</button>
+          // في renderProducts
+<button class="bd" onclick="deleteProduct(${p.id})">🗑️ حذف</button>
+
+// دالة deleteProduct المعدلة:
+async function deleteProduct(id){
+  const idx = products.findIndex(p => p.id === id);
+  if(idx === -1) return;
+  if(!confirm(`هل تريد تأكيد حذف "${products[idx].name}"؟`)) return;
+  
+  const pName = products[idx].name;
+  products.splice(idx, 1);
+  toast('⏳ جاري الحذف والتحديث...','ld');
+  try {
+    await saveProducts(`حذف منتج: ${pName}`);
+    toast('✓ تم الحذف بنجاح');
+    renderDash(); renderProducts();
+  } catch(e){
+    toast('❌ ' + e.message, 'er');
+  }
+}
         </div>
       </div>
     </div>
