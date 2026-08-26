@@ -373,3 +373,10 @@ footer {
 .btn-sm { padding: .5rem 1rem !important; font-size: .82rem; }
 .product-icon { font-size: 3.5rem; }
 .review-section { padding-top: 0; padding-bottom: 2rem; }
+/* إخفاء نافذة أدوات المدير الذكية وأيقونتها */
+#ai-modal,
+#open-ai-btn,
+.ai-modal,
+.ai-floating-btn {
+    display: none !important;
+}
