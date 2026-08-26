@@ -407,7 +407,27 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
           </div>
 
         </div>
-
+<!-- جدول إحصائيات المنتجات الأكثر تفاعلاً -->
+<div style="margin-top:1.2rem;background:var(--card2);border:1px solid var(--b);border-radius:14px;padding:1.2rem;">
+  <h4 style="color:var(--a);font-size:.9rem;margin-bottom:1rem;display:flex;align-items:center;justify-content:space-between;">
+    <span>🔥 المنتجات الأكثر تفاعلاً</span>
+  </h4>
+  <div style="overflow-x:auto;">
+    <table style="width:100%;border-collapse:collapse;font-size:.78rem;">
+      <thead>
+        <tr style="color:var(--t2);border-bottom:1px solid var(--b);">
+          <th style="padding:.5rem .7rem;text-align:right;font-weight:500;">اسم المنتج</th>
+          <th style="padding:.5rem .7rem;text-align:center;font-weight:500;">المشاهدات</th>
+          <th style="padding:.5rem .7rem;text-align:center;font-weight:500;">النشرات/النقرات</th>
+          <th style="padding:.5rem .7rem;text-align:center;font-weight:500;">نسبة التفاعل</th>
+        </tr>
+      </thead>
+      <tbody id="products-stats-body">
+        <tr><td colspan="4" style="text-align:center;color:var(--t2);padding:1rem;">جاري التحميل...</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
         <!-- سجل آخر الزوار -->
         <div style="margin-top:1.2rem;background:var(--card2);border:1px solid var(--b);border-radius:14px;padding:1.2rem;">
           <h4 style="color:var(--a);font-size:.9rem;margin-bottom:1rem;display:flex;align-items:center;justify-content:space-between;">
