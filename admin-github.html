@@ -941,21 +941,34 @@ function refreshAllStats() {
       doConnect();
     } catch(e){}
   }
-  // تعريف دالة فتح التعديل وتصديرها للنطاق العام
 function openEdit(id) {
-  const p = products.find(x => x.id === id);
-  if (!p) return;
-  
+  // 1. الفحص الآمن لمتغير products لمنع خطأ ReferenceError
+  const list = (typeof products !== 'undefined' && Array.isArray(products)) 
+               ? products 
+               : (window.products || []);
+
+  if (!list || list.length === 0) {
+    console.error("مصفوفة المنتجات (products) غير متوفرة أو فارغة.");
+    return;
+  }
+
+  // 2. البحث عن المنتج بناءً على الرقم المعرف
+  const p = list.find(x => x.id === id);
+  if (!p) {
+    console.warn(`المنتج بالرقم المعرف ${id} غير موجود.`);
+    return;
+  }
+
   editingId = id;
 
-  // ملء بيانات المنتج داخل النافذة
+  // 3. ملء الحقول بأمان
   if (document.getElementById('edit-name'))  document.getElementById('edit-name').value  = p.name  || '';
   if (document.getElementById('edit-price')) document.getElementById('edit-price').value = p.price || '';
   if (document.getElementById('edit-desc'))  document.getElementById('edit-desc').value  = p.desc  || '';
   if (document.getElementById('edit-img'))   document.getElementById('edit-img').value   = p.img   || '';
   if (document.getElementById('edit-icon'))  document.getElementById('edit-icon').value  = p.icon  || '📦';
 
-  // ملء القائمة المنسدلة للأقسام
+  // 4. ملء القائمة المنسدلة للأقسام
   const catSelect = document.getElementById('edit-cat');
   if (catSelect) {
     const categories = ['برمجيات', 'عتاد إعلام آلي', 'كاميرات', 'شبكات'];
@@ -964,12 +977,12 @@ function openEdit(id) {
     ).join('');
   }
 
-  // إظهار النافذة المنبثقة
+  // 5. عرض النافذة المنبثقة
   const modal = document.getElementById('edit-modal');
   if (modal) modal.style.display = 'flex';
 }
 
-// جعل الدالة مرئية للأزرار في الـ HTML
+// ربط الدالة بالنافذة العامة لتفادي أخطاء Uncaught ReferenceError
 window.openEdit = openEdit;
 window.editProduct = openEdit;
 })();
