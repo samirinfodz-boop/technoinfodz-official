@@ -720,7 +720,7 @@ function renderProductsGrid(items = productsData) {
         <div class="pc-desc">${(p.desc||'').slice(0, 70)}...</div>
         <div class="pc-price">${p.price||'تواصل معنا'}</div>
         <div class="pc-acts">
-          <button class="be" onclick="editProduct(${p.id})">✏️ تعديل</button>
+          <button class="be" onclick="openEdit('${p.id}')">✏️ تعديل</button>
           <button class="bd" onclick="deleteProduct(${p.id})">🗑️ حذف</button>
         </div>
       </div>
