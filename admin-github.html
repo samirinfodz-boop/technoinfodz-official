@@ -901,7 +901,6 @@ async function testGroq() {
   if (status) status.innerHTML = '<span style="color:#a6e22e">⏳ جاري الاتصال عبر Vercel...</span>';
 
   try {
-    // تم تصحيح الرابط بإزالة الشرطة المائلة الزائدة
     const res = await fetch('https://technoinfodz-official.vercel.app/api/groq-proxy', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -957,42 +956,6 @@ async function askGroq(promptText) {
     return null;
   }
 }
-    console.error('Groq AI Error:', err);
-    if (typeof toast === 'function') toast('❌ ' + err.message, 'er');
-    return null;
-  }
-}
-
-// دالة توليد النصوص عبر الذكاء الاصطناعي
-async function askGroq(promptText) {
-  const key = localStorage.getItem(GROQ_SK);
-  if (!key) {
-    if (typeof toast === 'function') toast('❌ يرجى ضبط مفتاح Groq API أولاً في الإعدادات', 'er');
-    return null;
-  }
-
-  try {
-    const res = await fetch('https://technoinfodz-official.vercel.app/api/groq-proxy', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        prompt: promptText,
-        apiKey: key
-      })
-    });
-
-    const data = await res.json();
-
-    if (!res.ok || data.error) {
-      throw new Error(data.error?.message || data.error || 'فشل توليد النص');
-    }
-
-    return data.choices?.[0]?.message?.content || null;
-
-  } catch (err) {
-    console.error('Groq AI Error:', err);
-    if (typeof toast === 'function') toast('❌ ' + err.message, 'er');
-    return null;
   }
 }
       })
