@@ -957,7 +957,7 @@ async function askGroq(promptText) {
     return null;
   }
 }
-    const data = await res.json();
+async const data = await res.json();
 async function askGroq(promptText) {
   const key = localStorage.getItem(GROQ_SK);
   if (!key) {
