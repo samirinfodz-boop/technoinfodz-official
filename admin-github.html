@@ -957,7 +957,6 @@ async function askGroq(promptText) {
     return null;
   }
 }
-} catch (err) {
     console.error('Groq AI Error:', err);
     if (typeof toast === 'function') toast('❌ ' + err.message, 'er');
     return null;
