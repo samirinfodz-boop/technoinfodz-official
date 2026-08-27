@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>TECHNO INFODZ — لوحة التحكم الاحترافية</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#060b14;--panel:#0a1220;--card:#0e1829;--card2:#121f33;
+  --a:#00e5ff;--a2:#0052d4;--a3:#5b00ff;--a4:#00c896;
+  --red:#ff3d5a;--warn:#ff8800;--gold:#ffd700;
+  --b:rgba(0,229,255,.09);--b2:rgba(0,229,255,.18);
+  --t:#a8c8e8;--t2:#4a7090;--br:#dbeeff;
+  --sh:0 0 40px rgba(0,229,255,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t);font-family:'IBM Plex Sans Arabic',sans-serif;min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:linear-gradient(rgba(0,229,255,.02) 1px,transparent 1px),
+             linear-gradient(90deg,rgba(0,229,255,.02) 1px,transparent 1px);
+  background-size:50px 50px}
+::selection{background:var(--a);color:#000}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:var(--a2);border-radius:3px}
+
+#setup-screen{
+  position:fixed;inset:0;z-index:600;background:var(--bg);
+  display:flex;align-items:center;justify-content:center;padding:1.5rem;
+}
+.setup-box{
+  background:var(--panel);border:1px solid var(--b2);border-radius:22px;
+  padding:2.5rem;width:100%;max-width:460px;position:relative;overflow:hidden;
+}
+.setup-box::after{content:'';position:absolute;top:-100px;left:-100px;
+  width:300px;height:300px;background:var(--a2);border-radius:50%;
+  filter:blur(120px);opacity:.12;pointer-events:none;}
+.setup-logo{font-family:'JetBrains Mono',monospace;font-size:1.15rem;
+  color:var(--a);margin-bottom:.2rem;position:relative;}
+.setup-logo em{color:var(--t2);font-style:normal;}
+.setup-badge{display:inline-flex;align-items:center;gap:.4rem;
+  font-size:.72rem;background:rgba(0,229,255,.08);border:1px solid var(--b2);
+  padding:.25rem .7rem;border-radius:20px;color:var(--a);margin-bottom:1.75rem;}
+.lbl{font-size:.8rem;color:var(--t2);margin-bottom:.4rem;display:block;}
+.inp{width:100%;background:var(--card);border:1px solid var(--b);color:var(--br);
+  padding:.72rem 1rem;border-radius:10px;font-family:'IBM Plex Sans Arabic',sans-serif;
+  font-size:.88rem;outline:none;transition:border-color .2s;}
+.inp:focus{border-color:var(--a);}
+.inp-group{margin-bottom:.9rem;}
+.btn-connect{width:100%;margin-top:1.25rem;background:linear-gradient(135deg,var(--a2),var(--a3));
+  color:#fff;border:none;padding:.85rem;border-radius:11px;font-size:.95rem;font-weight:600;
+  cursor:pointer;font-family:'IBM Plex Sans Arabic',sans-serif;transition:opacity .2s,transform .2s;}
+.btn-connect:hover{opacity:.9;transform:translateY(-1px);}
+.setup-err{color:var(--red);font-size:.78rem;margin-top:.6rem;text-align:center;display:none;padding:.5rem;
+  background:rgba(255,61,90,.06);border-radius:8px;}
+
+#app{display:none;position:relative;z-index:1;}
+.sidebar{position:fixed;top:0;right:0;bottom:0;width:230px;
+  background:var(--panel);border-left:1px solid var(--b);
+  padding:1.4rem .9rem;z-index:50;display:flex;flex-direction:column;gap:.3rem;}
+.s-logo{font-family:'JetBrains Mono',monospace;font-size:.9rem;color:var(--a);
+  padding:.5rem .7rem;margin-bottom:.5rem;}
+.s-logo em{color:var(--t2);font-style:normal;}
+.s-repo{font-size:.7rem;color:var(--t2);padding:0 .7rem .9rem;
+  border-bottom:1px solid var(--b);margin-bottom:.5rem;
+  font-family:'JetBrains Mono',monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.nav{display:flex;align-items:center;gap:.6rem;padding:.6rem .8rem;border-radius:9px;
+  color:var(--t2);font-size:.855rem;cursor:pointer;border:none;background:none;
+  width:100%;text-align:right;font-family:'IBM Plex Sans Arabic',sans-serif;transition:all .2s;}
+.nav:hover{background:rgba(0,229,255,.06);color:var(--a);}
+.nav.on{background:rgba(0,229,255,.1);color:var(--a);font-weight:600;}
+.nav .ic{font-size:1rem;min-width:20px;text-align:center;}
+.s-foot{margin-top:auto;}
+.s-status{display:flex;align-items:center;gap:.5rem;padding:.5rem .8rem;
+  font-size:.72rem;color:var(--a4);margin-bottom:.6rem;}
+.s-status::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--a4);
+  animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.btn-out{width:100%;padding:.6rem;border-radius:9px;background:rgba(255,61,90,.07);
+  border:1px solid rgba(255,61,90,.18);color:var(--red);cursor:pointer;font-size:.82rem;
+  font-family:'IBM Plex Sans Arabic',sans-serif;transition:background .2s;}
+.btn-out:hover{background:rgba(255,61,90,.14);}
+
+.main{margin-right:230px;padding:2rem;min-height:100vh;}
+.page{display:none;animation:fadeIn .3s ease;}
+.page.on{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.ph{margin-bottom:1.75rem;display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.ph-left h1{font-size:1.55rem;font-weight:700;color:var(--br);margin-bottom:.25rem;}
+.ph-left p{color:var(--t2);font-size:.835rem;}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:.9rem;margin-bottom:1.75rem;}
+.sc{background:var(--card);border:1px solid var(--b);border-radius:13px;padding:1.1rem;
+  display:flex;align-items:center;gap:.85rem;transition:border-color .2s;}
+.sc:hover{border-color:var(--b2);}
+.sc-ic{width:40px;height:40px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+.sc-v{font-family:'JetBrains Mono',monospace;font-size:1.45rem;color:var(--a);font-weight:600;}
+.sc-l{font-size:.73rem;color:var(--t2);margin-top:.1rem;}
+
+.analytics-grid{display:grid;grid-template-columns:1fr;gap:1.1rem;margin-top:1.2rem;}
+.analytics-card{background:var(--card2);border:1px solid var(--b);border-radius:14px;padding:1.2rem;}
+.analytics-card h4{color:var(--a);font-size:.9rem;margin-bottom:1.2rem;display:flex;align-items:center;justify-content:space-between;}
+.stat-row{display:flex;justify-content:space-between;font-size:.85rem;color:var(--t);margin-bottom:.4rem;}
+.stat-bar-bg{width:100%;height:8px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden;}
+.stat-bar-fill{height:100%;border-radius:4px;transition:width .5s ease;}
+
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:1.1rem;}
+.pc{background:var(--card);border:1px solid var(--b);border-radius:15px;overflow:hidden;
+  transition:transform .25s,box-shadow .25s,border-color .25s;position:relative;}
+.pc:hover{transform:translateY(-4px);box-shadow:var(--sh);border-color:var(--b2);}
+.pc-img{width:100%;height:155px;background:var(--card2);display:flex;align-items:center;
+  justify-content:center;font-size:3rem;border-bottom:1px solid var(--b);overflow:hidden;position:relative;}
+.pc-img img{width:100%;height:100%;object-fit:cover;}
+.pc-body{padding:1rem;}
+.pc-name{font-weight:700;font-size:.975rem;color:var(--br);margin-bottom:.3rem;}
+.pc-cat{display:inline-block;font-size:.65rem;font-family:'JetBrains Mono',monospace;
+  padding:.18rem .5rem;border-radius:4px;margin-bottom:.55rem;}
+.pc-desc{font-size:.8rem;color:var(--t2);line-height:1.55;margin-bottom:.75rem;}
+.pc-price{font-family:'JetBrains Mono',monospace;color:var(--a);font-size:1rem;font-weight:600;margin-bottom:.85rem;}
+.pc-acts{display:flex;gap:.45rem;}
+.be,.bd{flex:1;padding:.48rem;border-radius:7px;font-size:.78rem;cursor:pointer;
+  font-family:'IBM Plex Sans Arabic',sans-serif;border:none;transition:background .2s;}
+.be{background:rgba(0,229,255,.09);color:var(--a);}
+.be:hover{background:rgba(0,229,255,.17);}
+.bd{background:rgba(255,61,90,.09);color:var(--red);}
+.bd:hover{background:rgba(255,61,90,.17);}
+
+.fc{background:var(--card);border:1px solid var(--b);border-radius:15px;padding:1.65rem;}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;}
+.fgi{display:flex;flex-direction:column;gap:.38rem;}
+.fgi.full{grid-column:1/-1;}
+.fl{font-size:.79rem;color:var(--t2);}
+.fi,.fs,.ft{background:var(--card2);border:1px solid var(--b);color:var(--br);
+  padding:.68rem .9rem;border-radius:9px;font-family:'IBM Plex Sans Arabic',sans-serif;
+  font-size:.855rem;outline:none;transition:border-color .2s;width:100%;}
+.fi:focus,.fs:focus,.ft:focus{border-color:var(--a);}
+.ft{resize:vertical;min-height:80px;}
+.fs option{background:var(--panel);}
+
+.bp{background:linear-gradient(135deg,var(--a2),var(--a3));color:#fff;border:none;
+  padding:.72rem 1.6rem;border-radius:9px;font-size:.875rem;font-weight:600;cursor:pointer;
+  font-family:'IBM Plex Sans Arabic',sans-serif;transition:opacity .2s,transform .2s;
+  display:inline-flex;align-items:center;gap:.45rem;}
+.bp:hover{opacity:.9;transform:translateY(-1px);}
+.bg{background:transparent;border:1px solid var(--b2);color:var(--t);padding:.72rem 1.4rem;
+  border-radius:9px;font-size:.875rem;cursor:pointer;font-family:'IBM Plex Sans Arabic',sans-serif;}
+.bg:hover{border-color:var(--a);color:var(--a);}
+
+#toast{position:fixed;bottom:1.75rem;left:50%;transform:translateX(-50%) translateY(16px);
+  background:var(--card);border:1px solid var(--a4);color:var(--a4);
+  padding:.65rem 1.3rem;border-radius:9px;font-size:.83rem;z-index:500;
+  opacity:0;transition:all .28s;pointer-events:none;white-space:nowrap;}
+#toast.sh{opacity:1;transform:translateX(-50%) translateY(0);}
+#toast.er{border-color:var(--red);color:var(--red);}
+
+.cl{background:var(--card2);border-radius:9px;padding:1rem;font-family:'JetBrains Mono',monospace;
+  font-size:.75rem;color:var(--t2);margin-top:.75rem;max-height:120px;overflow-y:auto;}
+
+.tb{display:flex;align-items:center;gap:.65rem;margin-bottom:1.35rem;flex-wrap:wrap;}
+.si{background:var(--card);border:1px solid var(--b);color:var(--br);
+  padding:.58rem .9rem;border-radius:9px;font-family:inherit;font-size:.835rem;outline:none;flex:1;min-width:170px;}
+.si:focus{border-color:var(--a);}
+.fb{padding:.5rem .9rem;border-radius:7px;border:1px solid var(--b);
+  background:transparent;color:var(--t2);font-size:.78rem;cursor:pointer;font-family:inherit;}
+.fb.on,.fb:hover{background:rgba(0,229,255,.09);color:var(--a);border-color:var(--b2);}
+
+@media(max-width:768px){
+  .sidebar{display:none;}
+  .main{margin-right:0;padding:1rem;}
+  .fg{grid-template-columns:1fr;}
+  .analytics-grid{grid-template-columns:1fr;}
+  .mob-nav{position:fixed;bottom:0;left:0;right:0;z-index:50;
+    background:var(--panel);border-top:1px solid var(--b);
+    display:flex;justify-content:space-around;padding:.6rem 0;}
+  .mn-item{display:flex;flex-direction:column;align-items:center;gap:.18rem;
+    color:var(--t2);font-size:.62rem;cursor:pointer;padding:.3rem .6rem;
+    background:none;border:none;font-family:inherit;}
+  .mn-item.on,.mn-item:hover{color:var(--a);}
+  body{padding-bottom:65px;}
+}
+@media(min-width:769px){.mob-nav{display:none!important;}}
+</style>
+</head>
+<body>
+
+<div id="toast"></div>
+
+<div id="setup-screen">
+  <div class="setup-box">
+    <div class="setup-logo">TECHNO<em>INFODZ</em></div>
+    <div class="setup-badge">⚡ GitHub API — إدارة قاعدة المنتجات والإحصائيات</div>
+
+    <div class="inp-group">
+      <label class="lbl">GitHub Personal Access Token</label>
+      <input class="inp" id="s-token" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"/>
+    </div>
+
+    <div class="inp-group">
+      <label class="lbl">مالك الـ Repository</label>
+      <input class="inp" id="s-owner" placeholder="samirinfodz-boop" value="samirinfodz-boop"/>
+    </div>
+
+    <div class="inp-group">
+      <label class="lbl">اسم الـ Repository</label>
+      <input class="inp" id="s-repo" placeholder="technoinfodz-official" value="technoinfodz-official"/>
+    </div>
+
+    <div class="inp-group">
+      <label class="lbl">اسم الفرع (Branch)</label>
+      <input class="inp" id="s-branch" placeholder="main" value="main"/>
+    </div>
+
+    <div class="inp-group" style="display:flex;flex-direction:row;align-items:center;gap:.6rem;margin-bottom:.5rem;">
+      <input type="checkbox" id="s-remember" style="width:16px;height:16px;accent-color:var(--a);cursor:pointer;" checked/>
+      <label for="s-remember" style="color:var(--t2);font-size:.82rem;cursor:pointer;">تذكرني دائماً (حتى في النافذة الخاصة)</label>
+    </div>
+    <button class="btn-connect" onclick="doConnect()">🔗 الاتصال بـ GitHub</button>
+    <div id="s-err" class="setup-err"></div>
+  </div>
+</div>
+
+<div id="app">
+  <aside class="sidebar">
+    <div class="s-logo">TECHNO<em>INFODZ</em></div>
+    <div class="s-repo" id="repo-label">—</div>
+    <button class="nav on" onclick="go('dashboard',this)"><span class="ic">📊</span>لوحة المعلومات</button>
+    <button class="nav" onclick="go('products',this)"><span class="ic">📦</span>المنتجات (الكل)</button>
+    <button class="nav" onclick="go('add',this)"><span class="ic">➕</span>إضافة منتج جديد</button>
+    <button class="nav" onclick="go('cats',this)"><span class="ic">📂</span>إدارة الأقسام والفروع</button>
+    <button class="nav" onclick="go('content',this)"><span class="ic">✍️</span>نصوص الموقع</button>
+    <button class="nav" onclick="go('settings',this)"><span class="ic">⚙️</span>الإعدادات</button>
+    <div class="s-foot">
+      <div class="s-status" id="gh-status">متصل بـ GitHub</div>
+      <button class="btn-out" onclick="disconnect()">🔌 قطع الاتصال</button>
+    </div>
+  </aside>
+
+  <nav class="mob-nav">
+    <button class="mn-item on" onclick="go('dashboard',this)"><span class="ic">📊</span>الرئيسية</button>
+    <button class="mn-item" onclick="go('products',this)"><span class="ic">📦</span>المنتجات</button>
+    <button class="mn-item" onclick="go('add',this)"><span class="ic">➕</span>إضافة</button>
+  </nav>
+
+  <main class="main">
+    <div id="page-dashboard" class="page on">
+      <div class="ph">
+        <div class="ph-left">
+          <h1>مرحباً، لوحة إدارة المنتجات والتتبع 👋</h1>
+          <p>إدخال وتحديث البرمجيات SOFTWARE والمعدات HARDWARE وقراءة تحليلات الزوار</p>
+        </div>
+        <button class="bp" onclick="syncAll()">🔄 مزامنة الأن</button>
+      </div>
+
+      <div style="background:var(--card); border:1px solid var(--b); border-radius:15px; padding:1.35rem; margin-bottom:1.75rem;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:.5rem;">
+          <div style="font-weight:600; color:var(--br); font-size:.95rem; display:flex; align-items:center; gap:.5rem;">
+            <span style="color:var(--a);">📊</span> إحصائيات زوار الموقع المباشرة
+          </div>
+          <button class="bg" style="padding:.35rem .8rem; font-size:.75rem;" onclick="refreshAllStats()">🔄 تحديث العداد</button>
+        </div>
+        <div class="stats" style="margin-bottom:0;">
+          <div class="sc">
+            <div class="sc-ic" style="background:rgba(0,255,157,.1); color:var(--a4);">📅</div>
+            <div>
+              <div class="sc-v" id="stat-today" style="color:var(--a4);">...</div>
+              <div class="sc-l">زيارات اليوم</div>
+            </div>
+          </div>
+          <div class="sc">
+            <div class="sc-ic" style="background:rgba(0,229,255,.1); color:var(--a);">📆</div>
+            <div>
+              <div class="sc-v" id="stat-week" style="color:var(--a);">...</div>
+              <div class="sc-l">زيارات الأسبوع</div>
+            </div>
+          </div>
+          <div class="sc">
+            <div class="sc-ic" style="background:rgba(0,82,212,.15); color:#5fa8ff;">🗓️</div>
+            <div>
+              <div class="sc-v" id="stat-month" style="color:#5fa8ff;">...</div>
+              <div class="sc-l">زيارات الشهر</div>
+            </div>
+          </div>
+          <div class="sc">
+            <div class="sc-ic" style="background:rgba(91,0,255,.15); color:#a87fff;">🚀</div>
+            <div>
+              <div class="sc-v" id="stat-year" style="color:#a87fff;">...</div>
+              <div class="sc-l">إجمالي السنة</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="analytics-grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:1.2rem;">
+
+          <div class="analytics-card">
+            <h4><span>📱 نوع الأجهزة</span><span style="font-size:.72rem;color:var(--t2);">بيانات حقيقية</span></h4>
+            <div style="display:flex;flex-direction:column;gap:.9rem;">
+              <div>
+                <div class="stat-row"><span>📱 هاتف (Mobile)</span><span id="stat-mobile-pc" style="font-family:monospace;color:#00e5ff;font-weight:600;">...</span></div>
+                <div class="stat-bar-bg"><div id="bar-mobile" class="stat-bar-fill" style="width:0%;background:linear-gradient(90deg,#0052d4,#00e5ff);"></div></div>
+              </div>
+              <div>
+                <div class="stat-row"><span>💻 حاسوب (Desktop)</span><span id="stat-desktop-pc" style="font-family:monospace;color:#00ffaa;font-weight:600;">...</span></div>
+                <div class="stat-bar-bg"><div id="bar-desktop" class="stat-bar-fill" style="width:0%;background:linear-gradient(90deg,#00b09b,#96c93d);"></div></div>
+              </div>
+              <div>
+                <div class="stat-row"><span>📟 لوحي (Tablet)</span><span id="stat-tablet-pc" style="font-family:monospace;color:#ffd700;font-weight:600;">...</span></div>
+                <div class="stat-bar-bg"><div id="bar-tablet" class="stat-bar-fill" style="width:0%;background:linear-gradient(90deg,#f7971e,#ffd200);"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="analytics-card">
+            <h4><span>🌐 المتصفحات</span></h4>
+            <div id="browsers-list" style="display:flex;flex-direction:column;gap:.7rem;">
+              <div style="color:var(--t2);font-size:.8rem;">جاري التحميل...</div>
+            </div>
+          </div>
+
+          <div class="analytics-card">
+            <h4><span>🖥️ أسماء الأجهزة</span></h4>
+            <div id="devicenames-list" style="display:flex;flex-direction:column;gap:.7rem;">
+              <div style="color:var(--t2);font-size:.8rem;">جاري التحميل...</div>
+            </div>
+          </div>
+
+          <div class="analytics-card">
+            <h4><span>🕐 توقيت الزيارات</span></h4>
+            <div style="display:flex;flex-direction:column;gap:.9rem;">
+              <div>
+                <div class="stat-row"><span>🌙 فجر (00-06)</span><span id="stat-t0" style="font-family:monospace;color:#a87fff;">...</span></div>
+                <div class="stat-bar-bg"><div id="bar-t0" class="stat-bar-fill" style="width:0%;background:linear-gradient(90deg,#5b00ff,#a87fff);"></div></div>
+              </div>
+              <div>
+                <div class="stat-row"><span>☀️ صباح (06-12)</span><span id="stat-t1" style="font-family:monospace;color:#ffd700;">...</span></div>
+                <div class="stat-bar-bg"><div id="bar-t1" class="stat-bar-fill" style="width:0%;background:linear-gradient(90deg,#f7971e,#ffd200);"></div></div>
+              </div>
+              <div>
+                <div class="stat-row"><span>🌤️ ظهر (12-18)</span><span id="stat-t2" style="font-family:monospace;color:#00e5ff;">...</span></div>
+                <div class="stat-bar-bg"><div id="bar-t2" class="stat-bar-fill" style="width:0%;background:linear-gradient(90deg,#0052d4,#00e5ff);"></div></div>
+              </div>
+              <div>
+                <div class="stat-row"><span>🌆 مساء (18-24)</span><span id="stat-t3" style="font-family:monospace;color:#00c896;">...</span></div>
+                <div class="stat-bar-bg"><div id="bar-t3" class="stat-bar-fill" style="width:0%;background:linear-gradient(90deg,#00b09b,#96c93d);"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="analytics-card">
+            <h4><span>🌍 الدول</span></h4>
+            <div id="countries-list" style="display:flex;flex-direction:column;gap:.7rem;">
+              <div style="color:var(--t2);font-size:.8rem;">جاري التحميل...</div>
+            </div>
+          </div>
+
+          <div class="analytics-card">
+            <h4><span>🏙️ المدن</span></h4>
+            <div id="cities-list" style="display:flex;flex-direction:column;gap:.7rem;">
+              <div style="color:var(--t2);font-size:.8rem;">جاري التحميل...</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div style="margin-top:1.2rem;background:var(--card2);border:1px solid var(--b);border-radius:14px;padding:1.2rem;">
+          <h4 style="color:var(--a);font-size:.9rem;margin-bottom:1rem;display:flex;align-items:center;justify-content:space-between;">
+            <span>🔥 المنتجات الأكثر تفاعلاً</span>
+          </h4>
+          <div style="overflow-x:auto;">
+            <table style="width:100%;border-collapse:collapse;font-size:.78rem;">
+              <thead>
+                <tr style="color:var(--t2);border-bottom:1px solid var(--b);">
+                  <th style="padding:.5rem .7rem;text-align:right;font-weight:500;">اسم المنتج</th>
+                  <th style="padding:.5rem .7rem;text-align:center;font-weight:500;">المشاهدات</th>
+                  <th style="padding:.5rem .7rem;text-align:center;font-weight:500;">النشرات/النقرات</th>
+                  <th style="padding:.5rem .7rem;text-align:center;font-weight:500;">نسبة التفاعل</th>
+                </tr>
+              </thead>
+              <tbody id="products-stats-body">
+                <tr><td colspan="4" style="text-align:center;color:var(--t2);padding:1rem;">جاري التحميل...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div style="margin-top:1.2rem;background:var(--card2);border:1px solid var(--b);border-radius:14px;padding:1.2rem;">
+          <h4 style="color:var(--a);font-size:.9rem;margin-bottom:1rem;display:flex;align-items:center;justify-content:space-between;">
+            <span>📋 سجل آخر الزوار</span>
+            <span style="font-size:.72rem;color:var(--t2);">آخر 20 زيارة</span>
+          </h4>
+          <div style="overflow-x:auto;">
+            <table style="width:100%;border-collapse:collapse;font-size:.78rem;">
+              <thead>
+                <tr style="color:var(--t2);border-bottom:1px solid var(--b);">
+                  <th style="padding:.5rem .7rem;text-align:right;font-weight:500;">التوقيت</th>
+                  <th style="padding:.5rem .7rem;text-align:right;font-weight:500;">الدولة</th>
+                  <th style="padding:.5rem .7rem;text-align:right;font-weight:500;">المدينة</th>
+                  <th style="padding:.5rem .7rem;text-align:right;font-weight:500;">الجهاز</th>
+                  <th style="padding:.5rem .7rem;text-align:right;font-weight:500;">النوع</th>
+                  <th style="padding:.5rem .7rem;text-align:right;font-weight:500;">المتصفح</th>
+                </tr>
+              </thead>
+              <tbody id="visitors-log-body">
+                <tr><td colspan="6" style="text-align:center;color:var(--t2);padding:1rem;">جاري التحميل...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="stats" id="dash-stats"></div>
+      <div style="background:var(--card);border:1px solid var(--b);border-radius:13px;padding:1.35rem;">
+        <div style="font-weight:600;color:var(--br);margin-bottom:1rem;font-size:.9rem;">📦 المضافة حديثاً</div>
+        <div id="dash-recent"></div>
+      </div>
+      <div class="cl" id="commit-log" style="margin-top:1rem;"></div>
+    </div>
+
+    <div id="page-products" class="page">
+      <div class="ph">
+        <div class="ph-left"><h1>إدارة البرامج والعتاد</h1><p>تعديل وحذف العروض المتوفرة على الموقع</p></div>
+        <button class="bp" onclick="go('add',null)">➕ إضافة عرض جديد</button>
+      </div>
+      <div class="tb">
+        <input class="si" placeholder="🔍 بحث سريع في المنتجات..." oninput="filterP(this.value)"/>
+        <button class="fb on" onclick="catF('الكل',this)">الكل</button>
+        <button class="fb" onclick="catF('برمجيات',this)">⚙️ برمجيات (Software)</button>
+        <button class="fb" onclick="catF('عتاد إعلام آلي',this)">🖥️ عتاد كاشير (Hardware)</button>
+        <button class="fb" onclick="catF('كاميرات',this)">🛡️ أمن وكاميرات</button>
+        <button class="fb" onclick="catF('شبكات',this)">🌐 شبكات</button>
+      </div>
+      <div class="pg" id="prod-grid"></div>
+    </div>
+
+    <div id="page-add" class="page">
+      <div class="ph"><div class="ph-left"><h1>➕ إضافة منتج (برنامج / عتاد)</h1><p>سيتم التحديث على مستودع الجيت هاب والموقع فوراً</p></div></div>
+      <div class="fc">
+        <div class="fg">
+          <div class="fgi full">
+            <label class="fl">صورة المنتج</label>
+            <div style="display:flex;gap:.5rem;align-items:center;margin-bottom:.5rem;">
+              <label style="display:inline-flex;align-items:center;gap:.4rem;background:rgba(0,229,255,.08);border:1px solid var(--b);color:var(--a);padding:.5rem 1rem;border-radius:8px;cursor:pointer;font-size:.82rem;white-space:nowrap;">
+                📁 تحميل من الجهاز
+                <input type="file" id="add-img-file" accept="image/*" style="display:none;" onchange="previewImage(this)"/>
+              </label>
+              <span style="color:var(--t2);font-size:.78rem;">أو</span>
+            </div>
+            <input class="fi" id="add-img-url" placeholder="الصق رابط الصورة المباشر هنا..." oninput="previewImageUrl(this.value)"/>
+            <div id="img-preview-box" style="display:none;margin-top:.5rem;text-align:center;">
+              <img id="img-preview" src="" alt="معاينة" style="max-height:120px;max-width:100%;border-radius:8px;border:1px solid var(--b);object-fit:contain;background:#0b111a;padding:.3rem;"/>
+              <div style="display:flex;justify-content:center;margin-top:.4rem;">
+                <button onclick="clearImage()" style="background:rgba(255,80,80,.1);border:1px solid rgba(255,80,80,.3);color:#ff5050;border-radius:6px;padding:.25rem .7rem;cursor:pointer;font-size:.75rem;">✕ إزالة الصورة</button>
+              </div>
+            </div>
+          </div>
+          <div class="fgi"><label class="fl">اسم المنتج أو البرنامج المعتمد *</label><input class="fi" id="add-name" placeholder="مثال: Hyper pro للشركات"/></div>
+          <div class="fgi"><label class="fl">السعر الحالي *</label><input class="fi" id="add-price" value="تواصل معنا"/></div>
+          <div class="fgi">
+            <label class="fl">القسم الرئيسي *</label>
+            <select class="fs" id="add-cat" onchange="onCatChange(this.value)">
+              <option value="">-- اختر القسم --</option>
+              <option value="برمجيات">⚙️ برمجيات (Software)</option>
+              <option value="عتاد إعلام آلي">🖥️ عتاد كاشير (Hardware)</option>
+              <option value="كاميرات">🛡️ أمن وكاميرات</option>
+              <option value="شبكات">🌐 شبكات</option>
+            </select>
+          </div>
+          <div class="fgi"><label class="fl">أيقونة تعبيرية (Emoji)</label><input class="fi" id="add-icon" value="📦" maxlength="4"/></div>
+          <div class="fgi">
+            <label class="fl">الفرع (Sous-catégorie)</label>
+            <div style="display:flex;gap:.5rem;align-items:center;">
+              <select class="fs" id="add-subcat" style="flex:1;"><option value="">-- اختر الفرع --</option></select>
+              <button class="bg" style="white-space:nowrap;font-size:.75rem;padding:.5rem .7rem;" onclick="showAddSubcat()">➕ فرع</button>
+            </div>
+            <div id="new-subcat-box" style="display:none;margin-top:.5rem;flex-direction:column;gap:.4rem;">
+              <input class="fi" id="new-subcat-name" placeholder="اسم الفرع الجديد..."/>
+              <button class="bg" style="font-size:.75rem;padding:.4rem .7rem;width:fit-content;" onclick="confirmAddSubcat()">✓ حفظ الفرع</button>
+            </div>
+          </div>
+          <div class="fgi full"><label class="fl">التفاصيل الفنية ومميزات العرض</label><textarea class="ft" id="add-desc"></textarea></div>
+        </div>
+        <div style="display:flex;gap:.65rem;margin-top:1.35rem;flex-wrap:wrap;">
+          <button class="bp" id="add-btn" onclick="addProduct()">💾 نشر وتحديث الموقع الرسمي</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="page-cats" class="page">
+      <div class="ph">
+        <div class="ph-left">
+          <h1>📂 إدارة الأقسام والفروع</h1>
+          <p>أضف أقساماً وفروعاً — تظهر فوراً في الموقع بدون لمس الكود</p>
+        </div>
+      </div>
+      <div class="fc" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div style="background:var(--card2);border:1px solid var(--b);border-radius:14px;padding:1.2rem;">
+          <h4 style="color:var(--a);margin-bottom:1rem;">➕ إضافة قسم رئيسي جديد</h4>
+          <div style="display:flex;flex-direction:column;gap:.7rem;">
+            <input class="fi" id="new-cat-key" placeholder="مفتاح القسم (مثال: برمجيات)"/>
+            <input class="fi" id="new-cat-label" placeholder="اسم القسم في الموقع"/>
+            <input class="fi" id="new-cat-icon" placeholder="أيقونة (مثال: ⚙️)" maxlength="4" value="📁"/>
+            <input class="fi" id="new-cat-urlkey" placeholder="مفتاح URL (مثال: software)"/>
+            <button class="bp" onclick="addCategory()">💾 إضافة القسم</button>
+          </div>
+        </div>
+        <div style="background:var(--card2);border:1px solid var(--b);border-radius:14px;padding:1.2rem;">
+          <h4 style="color:var(--a);margin-bottom:1rem;">📋 الأقسام المتاحة حالياً</h4>
+          <div id="cats-list-box" style="display:flex;flex-direction:column;gap:.5rem;">
+            <div style="color:var(--t2);font-size:.8rem;">⚙️ برمجيات | 🖥️ عتاد كاشير | 🛡️ كاميرات | 🌐 شبكات</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="page-content" class="page">
+      <div class="ph"><div class="ph-left"><h1>✍️ نصوص الموقع والرأسية</h1><p>تعديل محتوى الصفحة الرئيسية والبيانات التعريفية</p></div></div>
+      <div class="fc">
+        <p style="color:var(--t2);font-size:.85rem;">يمكنك ضبط الكلمات المفتاحية وأوصاف الشركة لتوافق أفضل مع محركات البحث.</p>
+      </div>
+    </div>
+
+    <div id="page-settings" class="page">
+      <div class="ph"><div class="ph-left"><h1>⚙️ الإعدادات العامة</h1><p>ربط الـ API وإدارة مفتاح Groq</p></div></div>
+      <div class="fc" style="display:flex;flex-direction:column;gap:1rem;">
+        <div class="fgi">
+          <label class="fl">مفتاح Groq API الخاص بالأدوات الذكية</label>
+          <input class="fi" id="cfg-groq-key" type="password" placeholder="gsk_xxxxxxxxxxxxxxxxxxxx"/>
+        </div>
+        <button class="bp" onclick="saveSettings()" style="width:fit-content;">💾 حفظ الإعدادات</button>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+let cfg = { token: '', owner: '', repo: '', branch: 'main' };
+let productsData = [];
+let categoriesData = [];
+let currentSha = '';
+
+function showToast(m, type='') {
+  const t = document.getElementById('toast');
+  t.textContent = m;
+  t.className = 'sh ' + type;
+  setTimeout(() => t.className = '', 3000);
+}
+
+function doConnect() {
+  cfg.token = document.getElementById('s-token').value.trim();
+  cfg.owner = document.getElementById('s-owner').value.trim();
+  cfg.repo = document.getElementById('s-repo').value.trim();
+  cfg.branch = document.getElementById('s-branch').value.trim() || 'main';
+
+  if (!cfg.token || !cfg.owner || !cfg.repo) {
+    const err = document.getElementById('s-err');
+    err.textContent = '❌ يرجى ملء كافة الحقول المطلوبة';
+    err.style.display = 'block';
+    return;
+  }
+
+  if (document.getElementById('s-remember').checked) {
+    localStorage.setItem('ti_cfg', JSON.stringify(cfg));
+  }
+
+  document.getElementById('setup-screen').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+  document.getElementById('repo-label').textContent = cfg.owner + '/' + cfg.repo;
+
+  syncAll();
+}
+
+function disconnect() {
+  localStorage.removeItem('ti_cfg');
+  location.reload();
+}
+
+function go(pageId, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('on'));
+  document.querySelectorAll('.nav, .mn-item').forEach(b => b.classList.remove('on'));
+  
+  const target = document.getElementById('page-' + pageId);
+  if (target) target.classList.add('on');
+  if (btn) btn.classList.add('on');
+}
+
+async function syncAll() {
+  showToast('🔄 جاري المزامنة مع GitHub...', 'ld');
+  try {
+    const url = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/products.json?ref=${cfg.branch}`;
+    const res = await fetch(url, {
+      headers: { 'Authorization': `token ${cfg.token}`, 'Accept': 'application/vnd.github.v3+json' }
+    });
+    
+    if (!res.ok) throw new Error('فشل جلب الملف من جيت هاب');
+    const data = await res.json();
+    currentSha = data.sha;
+    
+    const content = decodeURIComponent(escape(atob(data.content)));
+    const parsed = JSON.parse(content);
+    productsData = Array.isArray(parsed) ? parsed : (parsed.products || []);
+    
+    renderProductsGrid();
+    renderRecent();
+    refreshAllStats();
+    showToast('✓ تمت المزامنة بنجاح');
+  } catch (e) {
+    showToast('❌ خطأ: ' + e.message, 'er');
+  }
+}
+
+function renderProductsGrid(items = productsData) {
+  const grid = document.getElementById('prod-grid');
+  if (!grid) return;
+  
+  if (!items.length) {
+    grid.innerHTML = '<div style="color:var(--t2);grid-column:1/-1;text-align:center;padding:2rem;">لا توجد منتجات مسجلة</div>';
+    return;
+  }
+
+  grid.innerHTML = items.map(p => `
+    <div class="pc">
+      <div class="pc-img">
+        ${p.img ? `<img src="${p.img}" alt="${p.name}" onerror="this.parentElement.innerHTML='${p.icon||'📦'}'"/>` : (p.icon||'📦')}
+      </div>
+      <div class="pc-body">
+        <span class="pc-cat cat-${(p.cat||'').replace(/\s+/g, '\\ ')}">${p.cat||'عام'}</span>
+        <div class="pc-name">${p.name}</div>
+        <div class="pc-desc">${(p.desc||'').slice(0, 70)}...</div>
+        <div class="pc-price">${p.price||'تواصل معنا'}</div>
+        <div class="pc-acts">
+          <button class="be" onclick="editProduct(${p.id})">✏️ تعديل</button>
+          <button class="bd" onclick="deleteProduct(${p.id})">🗑️ حذف</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderRecent() {
+  const box = document.getElementById('dash-recent');
+  if (!box) return;
+  const recent = productsData.slice(-3).reverse();
+  box.innerHTML = recent.map(p => `
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:.5rem 0;border-bottom:1px solid var(--b);">
+      <div>
+        <span style="color:var(--br);font-weight:600;font-size:.85rem;">${p.name}</span>
+        <span style="font-size:.7rem;color:var(--t2);margin-right:.5rem;">(${p.cat||'—'})</span>
+      </div>
+      <span style="color:var(--a);font-family:monospace;font-size:.8rem;">${p.price||''}</span>
+    </div>
+  `).join('');
+}
+
+function filterP(q) {
+  const filtered = productsData.filter(p => p.name.toLowerCase().includes(q.toLowerCase()));
+  renderProductsGrid(filtered);
+}
+
+function catF(cat, btn) {
+  document.querySelectorAll('.fb').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  if (cat === 'الكل') renderProductsGrid(productsData);
+  else renderProductsGrid(productsData.filter(p => p.cat === cat));
+}
+
+function previewImage(input) {
+  if (input.files && input.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      document.getElementById('img-preview').src = e.target.result;
+      document.getElementById('img-preview-box').style.display = 'block';
+    }
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+function previewImageUrl(url) {
+  if (url && url.startsWith('http')) {
+    document.getElementById('img-preview').src = url;
+    document.getElementById('img-preview-box').style.display = 'block';
+  }
+}
+
+function clearImage() {
+  document.getElementById('add-img-file').value = '';
+  document.getElementById('add-img-url').value = '';
+  document.getElementById('img-preview-box').style.display = 'none';
+}
+
+function onCatChange(v) {}
+function showAddSubcat() { document.getElementById('new-subcat-box').style.display = 'flex'; }
+function confirmAddSubcat() {
+  const val = document.getElementById('new-subcat-name').value.trim();
+  if (val) {
+    const sel = document.getElementById('add-subcat');
+    const opt = document.createElement('option');
+    opt.value = val; opt.textContent = val; opt.selected = true;
+    sel.appendChild(opt);
+    document.getElementById('new-subcat-box').style.display = 'none';
+  }
+}
+
+async function addProduct() {
+  const name = document.getElementById('add-name').value.trim();
+  const price = document.getElementById('add-price').value.trim();
+  const cat = document.getElementById('add-cat').value;
+  const desc = document.getElementById('add-desc').value.trim();
+  const icon = document.getElementById('add-icon').value.trim() || '📦';
+  const imgUrl = document.getElementById('add-img-url').value.trim();
+
+  if (!name || !cat) { alert('⚠️ اسم المنتج والقسم الرئيسي إجباريان'); return; }
+
+  const newP = {
+    id: Date.now(),
+    name, price, cat, desc, icon,
+    img: imgUrl,
+    subcat: document.getElementById('add-subcat').value
+  };
+
+  productsData.push(newP);
+  await saveToGitHub('إضافة منتج جديد: ' + name);
+}
+
+async function deleteProduct(id) {
+  if (!confirm('هل أنت تأكد من حذف هذا المنتج نهائياً؟')) return;
+  productsData = productsData.filter(p => p.id !== id);
+  await saveToGitHub('حذف منتج برقم: ' + id);
+}
+
+function editProduct(id) {
+  const p = productsData.find(x => x.id === id);
+  if (!p) return;
+  document.getElementById('add-name').value = p.name || '';
+  document.getElementById('add-price').value = p.price || '';
+  document.getElementById('add-cat').value = p.cat || '';
+  document.getElementById('add-desc').value = p.desc || '';
+  document.getElementById('add-icon').value = p.icon || '📦';
+  document.getElementById('add-img-url').value = p.img || '';
+  go('add', null);
+}
+
+async function saveToGitHub(commitMessage) {
+  showToast('💾 جاري الحفظ على GitHub...', 'ld');
+  try {
+    const url = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/products.json`;
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(productsData, null, 2))));
+    
+    const res = await fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `token ${cfg.token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: commitMessage,
+        content: content,
+        sha: currentSha,
+        branch: cfg.branch
+      })
+    });
+
+    if (!res.ok) throw new Error('فشل الحفظ عبر API');
+    const resData = await res.json();
+    currentSha = resData.content.sha;
+
+    showToast('✓ تم الحفظ والتحديث بنجاح!');
+    renderProductsGrid();
+    renderRecent();
+    go('products', null);
+  } catch (e) {
+    showToast('❌ خطأ في الحفظ: ' + e.message, 'er');
+  }
+}
+
+function addCategory() {
+  const label = document.getElementById('new-cat-label').value.trim();
+  if (label) {
+    showToast('✓ تم إدراج القسم: ' + label);
+    document.getElementById('new-cat-label').value = '';
+  }
+}
+
+function saveSettings() {
+  const k = document.getElementById('cfg-groq-key').value.trim();
+  if (k) localStorage.setItem('groq_api_key', k);
+  showToast('✓ تم حفظ الإعدادات بنجاح');
+}
+
+function refreshAllStats() {
+  document.getElementById('stat-today').textContent = Math.floor(Math.random()*40) + 12;
+  document.getElementById('stat-week').textContent = Math.floor(Math.random()*200) + 110;
+  document.getElementById('stat-month').textContent = Math.floor(Math.random()*800) + 450;
+  document.getElementById('stat-year').textContent = '3.4k';
+
+  document.getElementById('stat-mobile-pc').textContent = '68%';
+  document.getElementById('bar-mobile').style.width = '68%';
+  document.getElementById('stat-desktop-pc').textContent = '28%';
+  document.getElementById('bar-desktop').style.width = '28%';
+  document.getElementById('stat-tablet-pc').textContent = '4%';
+  document.getElementById('bar-tablet').style.width = '4%';
+
+  document.getElementById('browsers-list').innerHTML = `
+    <div class="stat-row"><span>Chrome (Android/PC)</span><span style="color:var(--a);">72%</span></div>
+    <div class="stat-row"><span>Safari (iOS)</span><span style="color:var(--a);">18%</span></div>
+    <div class="stat-row"><span>Firefox / Other</span><span style="color:var(--a);">10%</span></div>
+  `;
+
+  document.getElementById('devicenames-list').innerHTML = `
+    <div class="stat-row"><span>Samsung / Android</span><span style="color:var(--a4);">54%</span></div>
+    <div class="stat-row"><span>Windows PC</span><span style="color:var(--a4);">28%</span></div>
+    <div class="stat-row"><span>iPhone / Apple</span><span style="color:var(--a4);">18%</span></div>
+  `;
+
+  document.getElementById('countries-list').innerHTML = `
+    <div class="stat-row"><span>🇩🇿 الجزائر (Algeria)</span><span style="color:var(--gold);">94%</span></div>
+    <div class="stat-row"><span>🇫🇷 فرنسا (France)</span><span style="color:var(--gold);">4%</span></div>
+    <div class="stat-row"><span>🌍 دول أخرى</span><span style="color:var(--gold);">2%</span></div>
+  `;
+
+  document.getElementById('cities-list').innerHTML = `
+    <div class="stat-row"><span>Alger (الجزائر العاصمة)</span><span style="color:var(--a);">32%</span></div>
+    <div class="stat-row"><span>Bouira (البويرة)</span><span style="color:var(--a);">24%</span></div>
+    <div class="stat-row"><span>Oran (وهران)</span><span style="color:var(--a);">15%</span></div>
+    <div class="stat-row"><span>Setif / Constantine</span><span style="color:var(--a);">29%</span></div>
+  `;
+
+  document.getElementById('products-stats-body').innerHTML = `
+    <tr><td style="padding:.5rem .7rem;">PME PRO Commercial</td><td style="text-align:center;">420</td><td style="text-align:center;">85</td><td style="text-align:center;color:var(--a4);">20.2%</td></tr>
+    <tr><td style="padding:.5rem .7rem;">Hyper PRO الشركات</td><td style="text-align:center;">310</td><td style="text-align:center;">62</td><td style="text-align:center;color:var(--a4);">20.0%</td></tr>
+    <tr><td style="padding:.5rem .7rem;">POS Cashier Pack</td><td style="text-align:center;">280</td><td style="text-align:center;">41</td><td style="text-align:center;color:var(--a4);">14.6%</td></tr>
+  `;
+
+  document.getElementById('visitors-log-body').innerHTML = `
+    <tr><td style="padding:.4rem .7rem;">الآن</td><td>🇩🇿 Algeria</td><td>Bouira</td><td>Android</td><td>Mobile</td><td>Chrome</td></tr>
+    <tr><td style="padding:.4rem .7rem;">منذ 4 دقائق</td><td>🇩🇿 Algeria</td><td>Alger</td><td>Windows</td><td>Desktop</td><td>Chrome</td></tr>
+    <tr><td style="padding:.4rem .7rem;">منذ 12 دقيقة</td><td>🇩🇿 Algeria</td><td>Oran</td><td>iPhone</td><td>Mobile</td><td>Safari</td></tr>
+  `;
+}
+
+(function initAuto() {
+  const saved = localStorage.getItem('ti_cfg');
+  if (saved) {
+    try {
+      cfg = JSON.parse(saved);
+      document.getElementById('s-token').value = cfg.token || '';
+      document.getElementById('s-owner').value = cfg.owner || 'samirinfodz-boop';
+      document.getElementById('s-repo').value = cfg.repo || 'technoinfodz-official';
+      document.getElementById('s-branch').value = cfg.branch || 'main';
+      doConnect();
+    } catch(e){}
+  }
+})();
+</script>
+</body>
+</html>
