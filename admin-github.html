@@ -941,6 +941,37 @@ function refreshAllStats() {
       doConnect();
     } catch(e){}
   }
+  // تعريف دالة فتح التعديل وتصديرها للنطاق العام
+function openEdit(id) {
+  const p = products.find(x => x.id === id);
+  if (!p) return;
+  
+  editingId = id;
+
+  // ملء بيانات المنتج داخل النافذة
+  if (document.getElementById('edit-name'))  document.getElementById('edit-name').value  = p.name  || '';
+  if (document.getElementById('edit-price')) document.getElementById('edit-price').value = p.price || '';
+  if (document.getElementById('edit-desc'))  document.getElementById('edit-desc').value  = p.desc  || '';
+  if (document.getElementById('edit-img'))   document.getElementById('edit-img').value   = p.img   || '';
+  if (document.getElementById('edit-icon'))  document.getElementById('edit-icon').value  = p.icon  || '📦';
+
+  // ملء القائمة المنسدلة للأقسام
+  const catSelect = document.getElementById('edit-cat');
+  if (catSelect) {
+    const categories = ['برمجيات', 'عتاد إعلام آلي', 'كاميرات', 'شبكات'];
+    catSelect.innerHTML = categories.map(c => 
+      `<option value="${c}" ${p.cat === c ? 'selected' : ''}>${c}</option>`
+    ).join('');
+  }
+
+  // إظهار النافذة المنبثقة
+  const modal = document.getElementById('edit-modal');
+  if (modal) modal.style.display = 'flex';
+}
+
+// جعل الدالة مرئية للأزرار في الـ HTML
+window.openEdit = openEdit;
+window.editProduct = openEdit;
 })();
 </script>
 </body>
