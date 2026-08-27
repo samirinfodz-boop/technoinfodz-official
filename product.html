@@ -324,20 +324,6 @@ function renderRelated(current){
   document.querySelectorAll('#related-grid .rel-card').forEach(el=>observer.observe(el));
 }
 
-// الخيار الأفضل (ديناميكي يتكيف تلقائياً مع الموقع الحالي):
-const NETLIFY_BASE = window.location.origin;
-
-// أو كود ثابت موجّه لـ Vercel مباشرة:
-NETLIFY_BASE = window.location.origin;
-
-function getProductUrl() {
-  // دائماً استخدم رابط Netlify للمشاركة (يدعم OG tags)
-  const id = new URLSearchParams(window.location.search).get('id');
-  return id
-    ? NETLIFY_BASE + '/product.html?id=' + id
-    : window.location.href;
-}
-
 function shareOnFacebook() {
   const fbUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(getProductUrl());
   window.open(fbUrl, '_blank', 'width=620,height=450,scrollbars=yes');
@@ -533,7 +519,9 @@ let atbCurrentTab = 'ai';
   const interval = setInterval(() => {
     if (currentProduct) {
       const el = document.getElementById('atb-pname');
-      if (el) el.textContent = '📦 ' + currentProduct.name;
+     if (typeof currentProduct !== 'undefined' && currentProduct) {
+    el.textContent = currentProduct.name;
+}
       clearInterval(interval);
     }
   }, 500);
