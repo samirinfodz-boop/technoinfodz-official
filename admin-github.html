@@ -889,27 +889,109 @@ function toggleGroqKeyVisibility() {
   input.type = input.type === 'password' ? 'text' : 'password';
 }
 
-async function testGroqKey() {
+async function testGroq() {
   const key = localStorage.getItem(GROQ_SK) || document.getElementById('groq-key-input')?.value.trim();
-  if (!key) { toast('⚠️ أدخل الـ Key أولاً', 'er'); return; }
   const status = document.getElementById('groq-status');
-  if (status) status.innerHTML = '<span style="color:#8fb0cc;">⏳ جاري الاختبار...</span>';
+
+  if (!key) {
+    if (status) status.innerHTML = '<span style="color:#ff4d4d">❌ يرجى إدخال المفتاح أولاً</span>';
+    return;
+  }
+
+  if (status) status.innerHTML = '<span style="color:#a6e22e">⏳ جاري الاتصال عبر Vercel...</span>';
+
   try {
-    const res = await fetch('https://fantastic-dasik-bbe34e.netlify.app/api/groq', {
+    // تم تصحيح الرابط بإزالة الشرطة المائلة الزائدة
+    const res = await fetch('https://technoinfodz-official.vercel.app/api/groq-proxy', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prompt: 'قل: مرحبا فقط', platform: 'test' })
+      body: JSON.stringify({
+        prompt: 'اختبار الاتصال',
+        apiKey: key
+      })
     });
+
     const data = await res.json();
-    if (res.ok && data.text) {
-      if (status) status.innerHTML = '<span style="color:#00ff9d;">✅ الـ Key يعمل بشكل صحيح!</span>';
-      toast('✅ Groq API يعمل بنجاح');
+
+    if (res.ok && !data.error) {
+      if (status) status.innerHTML = '<span style="color:#a6e22e">✓ تم الاتصال بـ Groq AI بنجاح!</span>';
+      if (typeof toast === 'function') toast('✓ تم اختبار المفتاح بنجاح');
     } else {
-      throw new Error(data.error || 'خطأ غير معروف');
+      throw new Error(data.error?.message || data.error || 'فشل الاتصال');
     }
-  } catch(e) {
-    if (status) status.innerHTML = '<span style="color:#ff3d5a;">❌ ' + e.message + '</span>';
-    toast('❌ خطأ: ' + e.message, 'er');
+  } catch (e) {
+    if (status) status.innerHTML = '<span style="color:#ff4d4d">❌ ' + e.message + '</span>';
+    if (typeof toast === 'function') toast('❌ ' + e.message, 'er');
+  }
+}
+
+async function askGroq(promptText) {
+  const key = localStorage.getItem(GROQ_SK) || document.getElementById('groq-key-input')?.value.trim();
+
+  if (!key) {
+    if (typeof toast === 'function') toast('❌ يرجى ضبط مفتاح Groq API في الإعدادات أولاً', 'er');
+    return null;
+  }
+
+  try {
+    const res = await fetch('https://technoinfodz-official.vercel.app/api/groq-proxy', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        prompt: promptText,
+        apiKey: key
+      })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok || data.error) {
+      throw new Error(data.error?.message || data.error || 'فشل توليد النص');
+    }
+
+    return data.choices?.[0]?.message?.content || null;
+
+  } catch (err) {
+    console.error('Groq AI Error:', err);
+    if (typeof toast === 'function') toast('❌ ' + err.message, 'er');
+    return null;
+  }
+}
+    const data = await res.json();
+async function askGroq(promptText) {
+  const key = localStorage.getItem(GROQ_SK);
+  if (!key) {
+    toast('❌ يرجى ضبط مفتاح Groq API في الإعدادات أولاً', 'er');
+    return null;
+  }
+
+  try {
+    const res = await fetch('https://technoinfodz-official.vercel.app/api/groq-proxy', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        prompt: promptText,
+        apiKey: key
+      })
+    });
+
+    const data = await res.json();
+    return data.choices?.[0]?.message?.content || null;
+  } catch (err) {
+    console.error('Groq AI Error:', err);
+    toast('❌ تعذر الحصول على استجابة من الذكاء الاصطناعي', 'er');
+    return null;
+  }
+}
+    if (res.ok && !data.error) {
+      if (status) status.innerHTML = '<span style="color:#a6e22e">✓ تم الاتصال بـ Groq AI بنجاح!</span>';
+      toast('✓ تم اختبار المفتاح بنجاح');
+    } else {
+      throw new Error(data.error?.message || data.error || 'فشل الاتصال');
+    }
+  } catch (e) {
+    if (status) status.innerHTML = '<span style="color:#ff4d4d">❌ ' + e.message + '</span>';
+    toast('❌ ' + e.message, 'er');
   }
 }
 
