@@ -324,7 +324,11 @@ function renderRelated(current){
   document.querySelectorAll('#related-grid .rel-card').forEach(el=>observer.observe(el));
 }
 
-const NETLIFY_BASE = 'https://fantastic-dasik-bbe34e.netlify.app';
+// الخيار الأفضل (ديناميكي يتكيف تلقائياً مع الموقع الحالي):
+const NETLIFY_BASE = window.location.origin;
+
+// أو كود ثابت موجّه لـ Vercel مباشرة:
+const NETLIFY_BASE = 'https://technoinfodz-official.vercel.app';
 
 function getProductUrl() {
   // دائماً استخدم رابط Netlify للمشاركة (يدعم OG tags)
@@ -511,7 +515,7 @@ init();
 // ══════════════════════════════════════════════════════════
 
 // ── إعداد Groq عبر Netlify Proxy (آمن) ──
-const GROQ_PROXY = 'https://fantastic-dasik-bbe34e.netlify.app/api/groq';
+const GROQ_PROXY = `${window.location.origin}/api/groq-proxy`;
 
 // ── حالة الـ Toolbar ──
 let atbOpen = false;
