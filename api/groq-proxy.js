@@ -47,7 +47,7 @@ module.exports = async function handler(req, res) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: 'llama-3.3-70b-versatile',
+        model: 'openai/gpt-oss-120b',
         messages: [{ role: 'user', content: promptText }],
         max_tokens: 500,
         temperature: 0.8
