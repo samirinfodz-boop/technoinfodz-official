@@ -1,54 +1,71 @@
-export default async function handler(req, res) {
-  // 1. ضبط هيدرز CORS للسماح بالطلبات من أي مصدر
+// api/groq-proxy.js — Vercel Serverless Function
+// يستخدم CommonJS (module.exports) وليس ESM (export default)
+
+module.exports = async function handler(req, res) {
+
+  // CORS headers
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization'
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,POST,PUT');
+  res.setHeader('Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Content-Type, Authorization, X-Groq-Key'
   );
 
-  // 2. معالجة طلب OPTIONS الخاص بـ Preflight
+  // Preflight
   if (req.method === 'OPTIONS') {
     res.status(200).end();
     return;
   }
 
-  // 3. التحقق من نوع الطلب POST
+  // POST فقط
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
   try {
-    const { name, prompt, apiKey } = req.body || {};
-    
-    // استخدام المفتاح القادم من العميل أو الموجود في متغيّرات بيئة Vercel
-    const GROQ_API_KEY = apiKey || process.env.GROQ_API_KEY;
+    const { prompt, name, apiKey } = req.body || {};
+
+    // الـ Key: من Vercel Environment Variables أولاً، ثم من الطلب
+    const GROQ_API_KEY = process.env.GROQ_API_KEY
+                      || apiKey
+                      || req.headers['x-groq-key']
+                      || '';
 
     if (!GROQ_API_KEY) {
-      return res.status(400).json({ error: 'مفتاح GROQ API غير متوفر' });
+      return res.status(400).json({ error: 'مفتاح GROQ_API_KEY غير موجود' });
     }
 
-    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+    const promptText = prompt || name || '';
+    if (!promptText) {
+      return res.status(400).json({ error: 'prompt مطلوب' });
+    }
+
+    const groqRes = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${GROQ_API_KEY}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: 'llama-3.1-8b-instant',
-        messages: [
-          { role: 'user', content: prompt || name }
-        ]
+        model: 'llama-3.3-70b-versatile',
+        messages: [{ role: 'user', content: promptText }],
+        max_tokens: 500,
+        temperature: 0.8
       })
     });
 
-    const data = await response.json();
+    const data = await groqRes.json();
 
-    // إرجاع نفس حالة الاستجابة التي أرجعها Groq (مثلاً 200 أو 400 أو 401)
-    return res.status(response.status).json(data);
+    if (!groqRes.ok) {
+      return res.status(groqRes.status).json({
+        error: data.error?.message || 'خطأ من Groq API'
+      });
+    }
 
-  } catch (error) {
-    return res.status(500).json({ error: error.message });
+    const text = data.choices?.[0]?.message?.content || '';
+    return res.status(200).json({ text, choices: data.choices });
+
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
   }
-}
+};
