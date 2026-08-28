@@ -257,7 +257,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
       <div class="settings-section">
         <label class="form-label">GitHub Personal Access Token</label>
         <input type="password" id="gh-token" class="form-input" placeholder="ghp_xxxxxxxxxxxx" onchange="saveToken()"/>
-        <p style="font-size:.78rem; color:var(--txt2); margin-top:.5rem;">أدخل Token الخاص بك للحفاظ على المزامنة الدائمة في ملف <code>data.json</code>.</p>
+        <p style="font-size:.78rem; color:var(--txt2); margin-top:.5rem;">أدخل Token الخاص بك للحفاظ على المزامنة الدائمة في ملف <code>products.json</code>.</p>
       </div>
     </div>
 
@@ -276,7 +276,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 
 <script>
 const GITHUB_REPO = 'samirinfodz-boop/technoinfodz-official';
-const FILE_PATH = 'data.json';
+const FILE_PATH = 'products.json';
 const AUTH_KEY = 'techno_auth';
 
 let products = [];
@@ -446,7 +446,7 @@ async function addProduct(){
     if(res.ok){
       const resData = await res.json();
       fileSha = resData.content.sha;
-      toast('✅ تم إضافة المنتج وتحديث data.json بنجاح!');
+      toast('✅ تم إضافة المنتج وتحديث products.json بنجاح!');
       renderProducts();
       showPage('products');
     } else {
