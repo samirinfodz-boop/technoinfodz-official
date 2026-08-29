@@ -1577,7 +1577,9 @@ function openEdit(id) {
   editingId = id;
   document.getElementById('edit-name').value    = p.name  || '';
   document.getElementById('edit-price').value   = p.price || '';
-  document.getElementById('edit-desc').value    = p.desc  || '';
+  document.getElementById('edit-desc').value    = p.desc  || '';<button type="button" onclick="generateAiDescriptionForEditModal()" style="margin-bottom: 8px; padding: 6px 12px; background: #2563eb; color: #fff; border: none; border-radius: 6px; cursor: pointer;">
+  ✨ توليد الوصف بالذكاء الاصطناعي (Groq)
+</button>
   document.getElementById('edit-img').value     = p.img   || '';
   loadEditImagePreview(p.img || '');
   document.getElementById('edit-icon').value    = p.icon  || '📦';
