@@ -1745,9 +1745,13 @@ function initAiToolsPage() {
 </body>
 </html>
 <script>
-// دالة توليد الوصف عند إضافة منتج جديد
+// دالة توليد الوصف لإضافة منتج جديد (تعمل بالاسمين لتفادي أي خطأ)
+async function generateAiDescriptionForAdd() {
+  await generateAiDescriptionForModal();
+}
+
 async function generateAiDescriptionForModal() {
-  const nameInput = document.getElementById('add-title')?.value.trim();
+  const nameInput = document.getElementById('add-title')?.value.trim() || document.getElementById('prod-name-input')?.value.trim();
   const descInput = document.getElementById('add-desc');
 
   if (!nameInput) {
@@ -1772,7 +1776,7 @@ async function generateAiDescriptionForModal() {
   }
 }
 
-// دالة توليد الوصف عند تعديل منتج حالي
+// دالة توليد الوصف لتعديل منتج حالي
 async function generateAiDescriptionForEditModal() {
   const editNameInput = document.getElementById('edit-title')?.value.trim();
   const editDescInput = document.getElementById('edit-desc');
