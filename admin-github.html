@@ -1744,12 +1744,9 @@ function initAiToolsPage() {
 
 <script>
 async function generateAiDescriptionForAddModal() {
-  // جلب اسم المنتج تلقائياً من أي حقل إدخال داخل النافذة
-  const nameInputEl = document.querySelector('#add-name, #add-title, #prod-name-input, input[placeholder*="مثال"]');
+  const nameInputEl = document.querySelector('.modal input[type="text"], #add-name, #add-title, #prod-name-input, input[placeholder*="مثال"]');
   const nameInput = nameInputEl ? nameInputEl.value.trim() : '';
-
-  // جلب منطقة نص الوصف
-  const descInput = document.querySelector('#add-desc, #prod-desc-input, textarea');
+  const descInput = document.querySelector('.modal textarea, #add-desc, #prod-desc-input, textarea');
 
   if (!nameInput) {
     if (typeof toast === 'function') toast('❌ يرجى كتابة اسم المنتج أولاً لتوليد الوصف', 'er');
@@ -1773,11 +1770,11 @@ async function generateAiDescriptionForAddModal() {
   }
 }
 
-// ربط الدالة بالاسم الآخر احتياطاً
+// ربط المسميات المختلفة التي يناديها الزر بنفس الدالة
+async function generateAiDescriptionForModal() {
+  await generateAiDescriptionForAddModal();
+}
 async function generateAiDescriptionForAdd() {
   await generateAiDescriptionForAddModal();
 }
 </script>
-
-</body>
-</html>
