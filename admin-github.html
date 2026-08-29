@@ -1744,12 +1744,9 @@ function initAiToolsPage() {
 
 </body>
 </html>
-async function generateAiDescriptionForAdd() {
-  await generateAiDescriptionForModal();
-}
-
-async function generateAiDescriptionForModal() {
-  // فحص جميع الـ IDs المحتملة لخانة اسم المنتج
+<script>
+// دالة توليد الوصف لإضافة منتج جديد (مطابقة لـ onclick في السطر 450)
+async function generateAiDescriptionForAddModal() {
   const nameInput = (
     document.getElementById('add-name')?.value ||
     document.getElementById('add-title')?.value ||
@@ -1757,7 +1754,6 @@ async function generateAiDescriptionForModal() {
     ''
   ).trim();
 
-  // فحص جميع الـ IDs المحتملة لخانة الوصف
   const descInput = 
     document.getElementById('add-desc') || 
     document.getElementById('prod-desc-input');
@@ -1770,7 +1766,7 @@ async function generateAiDescriptionForModal() {
 
   if (typeof toast === 'function') toast('⏳ جاري كتابة الوصف بواسطة الذكاء الاصطناعي...');
 
-  const prompt = `اكتب وصفاً تسويقياً محترفاً وموجزاً باللغة العربية لمنتج باسم: "${nameInput}". اذكر أهم المميزات والاستخدامات للمحلات والشركات.`;
+  const prompt = `اكتب وصفاً تسويقياً محترفاً وموجزاً باللغة العربية لمنتج باسم: "${nameInput}". اذكر أهم المميزات والاستخدامات.`;
 
   try {
     const aiResponse = await askGroq(prompt);
@@ -1783,3 +1779,9 @@ async function generateAiDescriptionForModal() {
     if (typeof toast === 'function') toast('❌ حدث خطأ أثناء التوليد', 'er');
   }
 }
+
+// دالة احتياطية بنفس الاسم القديم
+async function generateAiDescriptionForAdd() {
+  await generateAiDescriptionForAddModal();
+}
+</script>
