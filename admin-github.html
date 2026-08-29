@@ -1744,15 +1744,23 @@ function initAiToolsPage() {
 
 </body>
 </html>
-<script>
-// دالة توليد الوصف لإضافة منتج جديد (تعمل بالاسمين لتفادي أي خطأ)
 async function generateAiDescriptionForAdd() {
   await generateAiDescriptionForModal();
 }
 
 async function generateAiDescriptionForModal() {
-  const nameInput = document.getElementById('add-title')?.value.trim() || document.getElementById('prod-name-input')?.value.trim();
-  const descInput = document.getElementById('add-desc');
+  // فحص جميع الـ IDs المحتملة لخانة اسم المنتج
+  const nameInput = (
+    document.getElementById('add-name')?.value ||
+    document.getElementById('add-title')?.value ||
+    document.getElementById('prod-name-input')?.value ||
+    ''
+  ).trim();
+
+  // فحص جميع الـ IDs المحتملة لخانة الوصف
+  const descInput = 
+    document.getElementById('add-desc') || 
+    document.getElementById('prod-desc-input');
 
   if (!nameInput) {
     if (typeof toast === 'function') toast('❌ يرجى كتابة اسم المنتج أولاً لتوليد الوصف', 'er');
@@ -1766,7 +1774,7 @@ async function generateAiDescriptionForModal() {
 
   try {
     const aiResponse = await askGroq(prompt);
-    if (aiResponse) {
+    if (aiResponse && descInput) {
       descInput.value = aiResponse;
       if (typeof toast === 'function') toast('✓ تم توليد الوصف بنجاح!');
     }
@@ -1775,31 +1783,3 @@ async function generateAiDescriptionForModal() {
     if (typeof toast === 'function') toast('❌ حدث خطأ أثناء التوليد', 'er');
   }
 }
-
-// دالة توليد الوصف لتعديل منتج حالي
-async function generateAiDescriptionForEditModal() {
-  const editNameInput = document.getElementById('edit-title')?.value.trim();
-  const editDescInput = document.getElementById('edit-desc');
-
-  if (!editNameInput) {
-    if (typeof toast === 'function') toast('❌ لا يوجد اسم للمنتج لتوليد الوصف', 'er');
-    else alert('لا يوجد اسم للمنتج لتوليد الوصف');
-    return;
-  }
-
-  if (typeof toast === 'function') toast('⏳ جاري إعـادة كتابة الوصف...');
-
-  const prompt = `اكتب وصفاً تسويقياً وموجزاً باللغة العربية لمنتج باسم: "${editNameInput}". اذكر أهم المميزات والاستخدامات.`;
-
-  try {
-    const aiResponse = await askGroq(prompt);
-    if (aiResponse) {
-      editDescInput.value = aiResponse;
-      if (typeof toast === 'function') toast('✓ تم تحديث الوصف بنجاح!');
-    }
-  } catch (err) {
-    console.error(err);
-    if (typeof toast === 'function') toast('❌ حدث خطأ أثناء التوليد', 'er');
-  }
-}
-</script>
