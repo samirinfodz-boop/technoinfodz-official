@@ -644,7 +644,15 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
               <button class="bg" style="font-size:.75rem;padding:.4rem .7rem;width:fit-content;" onclick="confirmAddSubcat()">✓ حفظ الفرع</button>
             </div>
           </div>
-          <div class="fgi full"><label class="fl">التفاصيل الفنية ومميزات العرض</label><textarea class="ft" id="add-desc"></textarea></div>
+         <div class="fg fg-full">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+    <label class="fl">التفاصيل والوصف:</label>
+    <button type="button" onclick="generateAiDescriptionForModal()" style="background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; border: none; padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: bold;">
+      ✨ توليد الوصف بالذكاء الاصطناعي (Groq)
+    </button>
+  </div>
+  <textarea id="add-desc" class="fi" rows="4" placeholder="التفاصيل الفنية ومميزات الـعرض..."></textarea>
+</div>
         </div>
         <div style="display:flex;gap:.65rem;margin-top:1.35rem;flex-wrap:wrap;">
           <button class="bp" id="add-btn" onclick="addProduct()">💾 نشر وتحديث الموقع الرسمي</button>
