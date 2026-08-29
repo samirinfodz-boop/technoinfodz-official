@@ -1742,21 +1742,16 @@ function initAiToolsPage() {
   </div>
 </div>
 
-</body>
-</html>
-<script>
-// دالة توليد الوصف لإضافة منتج جديد (مطابقة لـ onclick في السطر 450)
-async function generateAiDescriptionForAddModal() {
-  const nameInput = (
-    document.getElementById('add-name')?.value ||
-    document.getElementById('add-title')?.value ||
-    document.getElementById('prod-name-input')?.value ||
-    ''
-  ).trim();
+<!-- هنا ينتهي آخر عنصر HTML أو Modal في الصفحة -->
 
-  const descInput = 
-    document.getElementById('add-desc') || 
-    document.getElementById('prod-desc-input');
+<script>
+async function generateAiDescriptionForAddModal() {
+  // جلب اسم المنتج تلقائياً من أي حقل إدخال داخل النافذة
+  const nameInputEl = document.querySelector('#add-name, #add-title, #prod-name-input, input[placeholder*="مثال"]');
+  const nameInput = nameInputEl ? nameInputEl.value.trim() : '';
+
+  // جلب منطقة نص الوصف
+  const descInput = document.querySelector('#add-desc, #prod-desc-input, textarea');
 
   if (!nameInput) {
     if (typeof toast === 'function') toast('❌ يرجى كتابة اسم المنتج أولاً لتوليد الوصف', 'er');
@@ -1780,8 +1775,11 @@ async function generateAiDescriptionForAddModal() {
   }
 }
 
-// دالة احتياطية بنفس الاسم القديم
+// ربط الدالة بالاسم الآخر احتياطاً
 async function generateAiDescriptionForAdd() {
   await generateAiDescriptionForAddModal();
 }
 </script>
+
+</body>
+</html>
