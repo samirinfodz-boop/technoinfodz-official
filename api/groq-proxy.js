@@ -1,71 +1,100 @@
-// api/groq-proxy.js — Vercel Serverless Function
-// يستخدم CommonJS (module.exports) وليس ESM (export default)
+// api/og-product.js — Vercel Serverless Function
+// توليد وسوم Open Graph ديناميكياً لمعاينات الفيس بوك وواتساب
 
 module.exports = async function handler(req, res) {
-
   // CORS headers
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,POST,PUT');
-  res.setHeader('Access-Control-Allow-Headers',
-    'X-CSRF-Token, X-Requested-With, Accept, Content-Type, Authorization, X-Groq-Key'
-  );
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
 
-  // Preflight
   if (req.method === 'OPTIONS') {
     res.status(200).end();
     return;
   }
 
-  // POST فقط
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method Not Allowed' });
+  const { id } = req.query;
+
+  // الإعدادات المباشرة للموقع
+  const GITHUB_PAGES_URL = 'https://samirinfodz-boop.github.io/technoinfodz-official';
+  const PRODUCTS_JSON_URL = `${GITHUB_PAGES_URL}/products.json`;
+  const DEFAULT_IMAGE = `${GITHUB_PAGES_URL}/assets/logo.jpg`;
+
+  const targetUrl = id 
+    ? `${GITHUB_PAGES_URL}/product.html?id=${encodeURIComponent(id)}`
+    : `${GITHUB_PAGES_URL}/index.html`;
+
+  let title = "TECHNO INFODZ — حلول برمجية وعتاد ذكي بالجزائر";
+  let description = "نوفر برامج تسيير ومعدات كاشير وأنظمة أمنية بالجزائر";
+  let image = DEFAULT_IMAGE;
+
+  if (id) {
+    try {
+      const response = await fetch(PRODUCTS_JSON_URL, { cache: 'no-store' });
+      if (response.ok) {
+        const data = await response.json();
+        const products = Array.isArray(data) ? data : (data.products || []);
+        const product = products.find(p => String(p.id) === String(id));
+
+        if (product) {
+          title = `${product.name} — TECHNO INFODZ`;
+          if (product.price) {
+            title += ` (${product.price})`;
+          }
+          description = product.desc && product.desc.trim() 
+            ? product.desc.slice(0, 200) 
+            : `اكتشف تفاصيل ومواصفات ${product.name} من TECHNO INFODZ.`;
+          
+          if (product.img && product.img.startsWith('http')) {
+            image = product.img;
+          }
+        }
+      }
+    } catch (err) {
+      console.error('Error fetching products:', err);
+    }
   }
 
-  try {
-    const { prompt, name, apiKey } = req.body || {};
+  // إرجاع صفحة HTML مع وسوم Open Graph ورابط التحويل المباشر
+  const html = `<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>${escapeHtml(title)}</title>
+  
+  <!-- وسوم Open Graph الخاصة بفيسبوك وواتساب -->
+  <meta property="og:site_name" content="TECHNO INFODZ" />
+  <meta property="og:type" content="product" />
+  <meta property="og:locale" content="ar_DZ" />
+  <meta property="og:title" content="${escapeHtml(title)}" />
+  <meta property="og:description" content="${escapeHtml(description)}" />
+  <meta property="og:image" content="${escapeHtml(image)}" />
+  <meta property="og:url" content="${escapeHtml(targetUrl)}" />
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="${escapeHtml(title)}" />
+  <meta name="twitter:description" content="${escapeHtml(description)}" />
+  <meta name="twitter:image" content="${escapeHtml(image)}" />
+  
+  <!-- تحويل الزائر الحقيقي مباشرة للمنتج -->
+  <meta http-equiv="refresh" content="0;url=${escapeHtml(targetUrl)}">
+  <script>window.location.href = "${escapeHtml(targetUrl)}";</script>
+</head>
+<body>
+  <p>جاري إعادة التوجيه إلى المنتج... <a href="${escapeHtml(targetUrl)}">اضغط هنا إذا لم يتم التحويل تلقائياً</a></p>
+</body>
+</html>`;
 
-    // الـ Key: من Vercel Environment Variables أولاً، ثم من الطلب
-    const GROQ_API_KEY = process.env.GROQ_API_KEY
-                      || apiKey
-                      || req.headers['x-groq-key']
-                      || '';
-
-    if (!GROQ_API_KEY) {
-      return res.status(400).json({ error: 'مفتاح GROQ_API_KEY غير موجود' });
-    }
-
-    const promptText = prompt || name || '';
-    if (!promptText) {
-      return res.status(400).json({ error: 'prompt مطلوب' });
-    }
-
-    const groqRes = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${GROQ_API_KEY}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        model: 'openai/gpt-oss-120b',
-        messages: [{ role: 'user', content: promptText }],
-        max_tokens: 500,
-        temperature: 0.8
-      })
-    });
-
-    const data = await groqRes.json();
-
-    if (!groqRes.ok) {
-      return res.status(groqRes.status).json({
-        error: data.error?.message || 'خطأ من Groq API'
-      });
-    }
-
-    const text = data.choices?.[0]?.message?.content || '';
-    return res.status(200).json({ text, choices: data.choices });
-
-  } catch (err) {
-    return res.status(500).json({ error: err.message });
-  }
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
+  return res.status(200).send(html);
 };
+
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
