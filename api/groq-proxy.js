@@ -1,5 +1,4 @@
 // api/og-product.js — Vercel Serverless Function
-// توليد وسوم Open Graph ديناميكياً لمعاينات الفيس بوك وواتساب
 
 module.exports = async function handler(req, res) {
   // CORS headers
@@ -16,8 +15,9 @@ module.exports = async function handler(req, res) {
 
   // الإعدادات المباشرة للموقع
   const GITHUB_PAGES_URL = 'https://samirinfodz-boop.github.io/technoinfodz-official';
-  const PRODUCTS_JSON_URL = `${GITHUB_PAGES_URL}/products.json`;
-  const DEFAULT_IMAGE = `${GITHUB_PAGES_URL}/assets/logo.jpg`;
+  // 1. تصحيح المسار ليكون داخل مجلد data
+  const PRODUCTS_JSON_URL = `${GITHUB_PAGES_URL}/data/products.json`;
+  const DEFAULT_IMAGE = `${GITHUB_PAGES_URL}/assets/images/logo.png`;
 
   const targetUrl = id 
     ? `${GITHUB_PAGES_URL}/product.html?id=${encodeURIComponent(id)}`
@@ -36,16 +36,29 @@ module.exports = async function handler(req, res) {
         const product = products.find(p => String(p.id) === String(id));
 
         if (product) {
-          title = `${product.name} — TECHNO INFODZ`;
+          // 2. تصحيح ألقاب الحقول إلى title و description
+          const prodTitle = product.title || product.name || '';
+          const prodDesc = product.description || product.desc || '';
+          
+          title = `${prodTitle} — TECHNO INFODZ`;
           if (product.price) {
             title += ` (${product.price})`;
           }
-          description = product.desc && product.desc.trim() 
-            ? product.desc.slice(0, 200) 
-            : `اكتشف تفاصيل ومواصفات ${product.name} من TECHNO INFODZ.`;
           
-          if (product.img && product.img.startsWith('http')) {
-            image = product.img;
+          description = prodDesc && prodDesc.trim() 
+            ? prodDesc.slice(0, 200) 
+            : `اكتشف تفاصيل ومواصفات ${prodTitle} من TECHNO INFODZ.`;
+          
+          // 3. تصحيح جلب مسار الصورة وتنسيق الروابط النسبية
+          let rawImg = product.image || product.img || '';
+          if (rawImg) {
+            if (rawImg.startsWith('http')) {
+              image = rawImg;
+            } else {
+              // تحويل المسار النسبي مثل ./assets/img.jpg إلى رابط مطلق
+              const cleanPath = rawImg.replace(/^\.\//, '').replace(/^\//, '');
+              image = `${GITHUB_PAGES_URL}/${cleanPath}`;
+            }
           }
         }
       }
@@ -54,20 +67,21 @@ module.exports = async function handler(req, res) {
     }
   }
 
-  // إرجاع صفحة HTML مع وسوم Open Graph ورابط التحويل المباشر
+  // إرجاع صفحة HTML مع وسوم Open Graph المحدثة
   const html = `<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <title>${escapeHtml(title)}</title>
   
-  <!-- وسوم Open Graph الخاصة بفيسبوك وواتساب -->
+  <!-- وسوم Open Graph الخاصّة بـ Facebook / Messenger / WhatsApp -->
   <meta property="og:site_name" content="TECHNO INFODZ" />
   <meta property="og:type" content="product" />
   <meta property="og:locale" content="ar_DZ" />
   <meta property="og:title" content="${escapeHtml(title)}" />
   <meta property="og:description" content="${escapeHtml(description)}" />
   <meta property="og:image" content="${escapeHtml(image)}" />
+  <meta property="og:image:secure_url" content="${escapeHtml(image)}" />
   <meta property="og:url" content="${escapeHtml(targetUrl)}" />
   
   <!-- Twitter Card -->
@@ -76,7 +90,7 @@ module.exports = async function handler(req, res) {
   <meta name="twitter:description" content="${escapeHtml(description)}" />
   <meta name="twitter:image" content="${escapeHtml(image)}" />
   
-  <!-- تحويل الزائر الحقيقي مباشرة للمنتج -->
+  <!-- إعادة توجيه الزائر الحقيقي -->
   <meta http-equiv="refresh" content="0;url=${escapeHtml(targetUrl)}">
   <script>window.location.href = "${escapeHtml(targetUrl)}";</script>
 </head>
