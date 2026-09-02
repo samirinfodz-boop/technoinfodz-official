@@ -784,10 +784,26 @@ async function syncAll(){
 async function loadProducts(){
   try {
     const f = await ghGet(DATA_FILE);
-    const clean = f.content.replace(/\n/g, '');
-    const d = JSON.parse(fromB64(clean));
+    let jsonText;
+    if (f.content) {
+      // ملف عادي (أقل من 1 ميغابايت) — GitHub يرجع content مشفر base64
+      jsonText = fromB64(f.content.replace(/\n/g, ''));
+    } else if (f.download_url) {
+      // ملف كبير (أكبر من 1 ميغابايت) — GitHub Contents API لا يرجع content
+      // في هذه الحالة، فقط download_url متاح لجلب المحتوى الخام مباشرة
+      const raw = await fetch(f.download_url);
+      if (!raw.ok) throw new Error('فشل تحميل الملف الكبير (download_url): ' + raw.status);
+      jsonText = await raw.text();
+    } else {
+      throw new Error('استجابة GitHub لا تحتوي على content ولا download_url');
+    }
+    const d = JSON.parse(jsonText);
     products = Array.isArray(d.products) ? d.products : (Array.isArray(d) ? d : []);
-  } catch(e){ products = []; }
+  } catch(e){
+    products = [];
+    toast('⚠️ فشل تحميل المنتجات: ' + e.message, 'er');
+    log('خطأ في loadProducts: ' + e.message, 'er');
+  }
 }
 
 async function loadContent(){
