@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/share",
+      "destination": "/api/share"
+    },
+    {
+      "source": "/api/groq-proxy",
+      "destination": "/api/groq-proxy"
+    }
+  ]
+}
