@@ -389,7 +389,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
       <input type="checkbox" id="s-remember" style="width:16px;height:16px;accent-color:var(--a);cursor:pointer;" checked/>
       <label for="s-remember" style="color:var(--t2);font-size:.82rem;cursor:pointer;">تذكرني دائماً (حتى في النافذة الخاصة)</label>
     </div>
-    <button class="btn-connect" onclick="doConnect()">🔗 الاتصال بـ GitHub</button>
+    <button class="btn-connect" onclick="connectGitHub()">🔗 الاتصال بـ GitHub</button>
     <div id="s-err" class="setup-err"></div>
   </div>
 </div>
@@ -1336,8 +1336,6 @@ async function generateAIImage(target) {
     // المكتبة الرسمية تتولى اختيار المزوّد الصحيح تلقائياً.
     const { InferenceClient } = await import('https://cdn.jsdelivr.net/npm/@huggingface/inference/+esm');
     const client = new InferenceClient(key);
-
-const client = new InferenceClient(key);
 
 // تحسين النص لتجنب الصور العشوائية
 const enhancedPrompt = `High quality commercial product shot of ${prompt}, studio lighting, white background, e-commerce catalog photo, 8k resolution`;
