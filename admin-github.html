@@ -1337,13 +1337,16 @@ async function generateAIImage(target) {
     const { InferenceClient } = await import('https://cdn.jsdelivr.net/npm/@huggingface/inference/+esm');
     const client = new InferenceClient(key);
 
-    const blob = await client.textToImage({
-      model: 'black-forest-labs/FLUX.1-schnell',
-      inputs: prompt,
-      provider: 'auto'
-    });
+const client = new InferenceClient(key);
 
-    const b64 = await blobToBase64(blob);
+// تحسين النص لتجنب الصور العشوائية
+const enhancedPrompt = `High quality commercial product shot of ${prompt}, studio lighting, white background, e-commerce catalog photo, 8k resolution`;
+
+const blob = await client.textToImage({
+  model: 'black-forest-labs/FLUX.1-schnell',
+  inputs: enhancedPrompt,
+  provider: 'auto'
+});
     const ext = (blob.type && blob.type.includes('png')) ? 'png' : 'jpg';
 
     // 2) رفع الصورة كملف دائم داخل مستودع GitHub (images/) بدل تركها base64 كبيرة
