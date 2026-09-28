@@ -592,7 +592,8 @@
       "icon": "📦",
       "desc": "Les atouts majeurs de DENTAIRE PRO :\nDossier Patient & Schéma Dentaire : Historique clinique complet, plans de traitement et suivi des soins en toute simplicité.\nGestion des Rendez-vous & Salle d'attente : Planning fluide pour réduire le temps d'attente et améliorer l'accueil de vos patients.\nSuivi Financier & Actes Médicaux : Facturation claire, gestion des honoraires, des charges et de la trésorerie en temps réel.\nInterface Ergonomique & Intuitive : Prise en main rapide, pensée pour s'adapter parfaitement à votre rythme de travail.\nSécurité des Données : Protection maximale de toutes vos données médicales et financières.",
       "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1785190708253.png",
-      "subcat": "صحة وخدمات"
+      "subcat": "صحة وخدمات",
+      "trial_url": "https://github.com/samirinfodz-boop/technoinfodz-official/releases/download/TECHNO-GEST7.2026/DENTAIRE-PRO.zip"
     },
     {
       "id": "1785951804525",
