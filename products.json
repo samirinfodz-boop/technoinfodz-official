@@ -155,7 +155,8 @@
       "icon": "📦",
       "desc": "يتضمن أدوات لمتابعة الرواتب (Salariés)، الحضور والغياب (Pointages)، المصاريف (Charges)، الخسائر (Pertes)، والخزينة (Trésorier / Caisse).",
       "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1781541730356.jpg",
-      "subcat": "إدارة مؤسسات"
+      "subcat": "إدارة مؤسسات",
+      "trial_url": "https://github.com/samirinfodz-boop/technoinfodz-official/releases/download/TECHNO-GEST7.2026/SOFT-GDP.zip"
     },
     {
       "id": "1781546776015",
