@@ -582,7 +582,8 @@
       "icon": "📦",
       "desc": "Gestion fluide des patients : Dossiers médicaux électroniques, historique des consultations et suivi personnalisé en quelques clics.\nAgenda & Rendez-vous : Organisation optimale du planning et réduction du temps d'attente.\nSuivi Financier & Comptabilité : Gestion claire des recettes, des charges et de la trésorerie.\nInterface Intuitive : Une prise en main rapide et une navigation simple au quotidien.\nSécurité & Confidentialité : Vos données médicales protégées en toute sécurité.",
       "img": "https://raw.githubusercontent.com/samirinfodz-boop/technoinfodz-official/main/images/1785190105982.png",
-      "subcat": "صحة وخدمات"
+      "subcat": "صحة وخدمات",
+      "trial_url": "https://github.com/samirinfodz-boop/technoinfodz-official/releases/download/TECHNO-GEST7.2026/MEDICAL-PRO.zip"
     },
     {
       "id": "1785190771351",
